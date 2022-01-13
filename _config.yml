@@ -14,16 +14,16 @@ latex:
     targetname: book.tex
 html:
   home_page_in_navbar : true
-  use_repository_button: true
-  use_issues_button: true
-  use_edit_page_button: true
+  use_repository_button: false
+#  use_issues_button: true
+#  use_edit_page_button: true
   navbar_number_sections : false
-  baseurl : "https://firasm.github.io/jupyterbook_course_template/"  # The base URL where your book will be hosted. Used for creating image previews and social links. e.g.: https://mypage.com/mybook/
+  baseurl : "https://cdenniston.github.io/NumericalAnalysis/"  # The base URL where your book will be hosted. Used for creating image previews and social links. e.g.: https://mypage.com/mybook/
   # google_analytics_id: UA-11111111 # add your Google Analytics Tracking Code
   comments:
-    hypothesis: false
-    utterances:
-      repo: "firasm/jupyterbook_course_template"
+    hypothesis: true
+#    utterances:
+#      repo: "firasm/jupyterbook_course_template"
     dokieli: true
   extra_footer : |
       <div>
