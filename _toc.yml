@@ -134,18 +134,16 @@ parts:
       - file: class/week12/test
       - file: class/week12/lab
       - file: class/week12/learninglogs
-- caption: Week 13 - Exam Review
+- caption: Mikko Extras
   chapters:
-  - file: class/week13/week13_summary
-    title: Week 13 - Review
+  - file: extras/coding-notes-general
+    title: Practical Notes
     sections:
-      - file: class/week13/readings
-      - file: class/week13/videos
-      - file: class/week13/homework
-      - file: class/week13/lecture
-      - file: class/week13/test
-      - file: class/week13/lab
-      - file: class/week13/learninglogs
+      - file: extras/install-wsl
+      - file: extras/python-virtual-environment
+      - file: extras/vi-editor
+      - file: extras/editing-ascii
+      - file: extras/helpful-software      
 - caption: Final Exam
   chapters:
   - file: class/final
