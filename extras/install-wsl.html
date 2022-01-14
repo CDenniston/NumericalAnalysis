@@ -59,8 +59,8 @@
     <link rel="canonical" href="https://cdenniston.github.io/NumericalAnalysis/extras/install-wsl.html" />
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="Python virtual environments" href="python-virtual-environment.html" />
-    <link rel="prev" title="On computation and codes" href="coding-notes-general.html" />
+    <link rel="next" title="Linux: Some basic &amp; useful commands" href="linux-basic-commands-2.html" />
+    <link rel="prev" title="Linux - the basics" href="Linux-basics.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="None">
     
@@ -702,12 +702,34 @@
  </span>
 </p>
 <ul class="current nav bd-sidenav">
- <li class="toctree-l1 current active has-children">
+ <li class="toctree-l1 has-children">
   <a class="reference internal" href="coding-notes-general.html">
-   Practical Notes
+   Python &amp; programming
   </a>
-  <input checked="" class="toctree-checkbox" id="toctree-checkbox-13" name="toctree-checkbox-13" type="checkbox"/>
+  <input class="toctree-checkbox" id="toctree-checkbox-13" name="toctree-checkbox-13" type="checkbox"/>
   <label for="toctree-checkbox-13">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="python-intro.html">
+     Brief introduction to Python
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="python-virtual-environment.html">
+     Python virtual environments
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 current active has-children">
+  <a class="reference internal" href="Linux-basics.html">
+   Linux Intro
+  </a>
+  <input checked="" class="toctree-checkbox" id="toctree-checkbox-14" name="toctree-checkbox-14" type="checkbox"/>
+  <label for="toctree-checkbox-14">
    <i class="fas fa-chevron-down">
    </i>
   </label>
@@ -718,21 +740,22 @@
     </a>
    </li>
    <li class="toctree-l2">
-    <a class="reference internal" href="python-virtual-environment.html">
-     Python virtual environments
+    <a class="reference internal" href="linux-basic-commands-2.html">
+     Linux: Some basic &amp; useful commands
     </a>
    </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="vi-editor.html">
-     The
-     <code class="docutils literal notranslate">
-      <span class="pre">
-       vi
-      </span>
-     </code>
-     editor
-    </a>
-   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="vi-editor.html">
+   Other software
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-15" name="toctree-checkbox-15" type="checkbox"/>
+  <label for="toctree-checkbox-15">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
    <li class="toctree-l2">
     <a class="reference internal" href="editing-ascii.html">
      Editing ASCII files
@@ -744,42 +767,6 @@
     </a>
    </li>
   </ul>
- </li>
-</ul>
-<p aria-level="2" class="caption" role="heading">
- <span class="caption-text">
-  Final Exam
- </span>
-</p>
-<ul class="nav bd-sidenav">
- <li class="toctree-l1">
-  <a class="reference internal" href="../class/final.html">
-   Final Exam Information
-  </a>
- </li>
-</ul>
-<p aria-level="2" class="caption" role="heading">
- <span class="caption-text">
-  Lab Materials
- </span>
-</p>
-<ul class="nav bd-sidenav">
- <li class="toctree-l1">
-  <a class="reference internal" href="../class/labs.html">
-   Lab Stuff
-  </a>
- </li>
-</ul>
-<p aria-level="2" class="caption" role="heading">
- <span class="caption-text">
-  Course Feedback
- </span>
-</p>
-<ul class="nav bd-sidenav">
- <li class="toctree-l1">
-  <a class="reference internal" href="../about/feedback.html">
-   Anonymous Feedback Form
-  </a>
  </li>
 </ul>
 
@@ -980,7 +967,7 @@
 <p>That same location has also <code class="docutils literal notranslate"><span class="pre">XQuartz</span></code> that will be needed to run GUI based applications.</p>
 <div class="figure align-left" id="id1">
 <a class="reference internal image-reference" href="week01/img/linux-decision.svg"><img alt="Linux vs others" src="week01/img/linux-decision.svg" width="700px" /></a>
-<p class="caption"><span class="caption-number">Fig. 1 </span><span class="caption-text"><em>The three main operating systems and the main options.</em></span><a class="headerlink" href="#id1" title="Permalink to this image">¶</a></p>
+<p class="caption"><span class="caption-number">Fig. 4 </span><span class="caption-text"><em>The three main operating systems and the main options.</em></span><a class="headerlink" href="#id1" title="Permalink to this image">¶</a></p>
 </div>
 <p>If you are happy with the recommended choices, the move on the next section and installation. If you want more information, just click the <code class="docutils literal notranslate"><span class="pre">dropdown</span></code> below to read more.</p>
 <div class="admonition important">
@@ -1138,13 +1125,13 @@ It is important to you back up your data and essential files. Doing that ensures
 Proceed through Tasks 1-3 in this order. As for Tasks 4-5, you can change their mutual order (but must be after Tasks 1-3).
 -->
 <div class="tabbed-set docutils">
-<input checked="checked" id="74697daf-e1ba-4e88-81b4-d7553eb94164" name="5e4c6685-db60-4f43-bf39-929d5d4a1b08" type="radio">
-</input><label class="tabbed-label" for="74697daf-e1ba-4e88-81b4-d7553eb94164">
+<input checked="checked" id="61f76db0-5817-431d-a301-4ccfca95e459" name="3f0e0da5-8fdd-4a6f-8a8e-d445f626b6cb" type="radio">
+</input><label class="tabbed-label" for="61f76db0-5817-431d-a301-4ccfca95e459">
 Linux</label><div class="tabbed-content docutils">
 <p>Update your system if necessary. Go to the next step.</p>
 </div>
-<input id="f1938a5c-c20f-4afd-9cbd-ea5ed0b76957" name="5e4c6685-db60-4f43-bf39-929d5d4a1b08" type="radio">
-</input><label class="tabbed-label" for="f1938a5c-c20f-4afd-9cbd-ea5ed0b76957">
+<input id="058bbe21-7e40-408f-ad59-2d326e21a4c0" name="3f0e0da5-8fdd-4a6f-8a8e-d445f626b6cb" type="radio">
+</input><label class="tabbed-label" for="058bbe21-7e40-408f-ad59-2d326e21a4c0">
 Windows 10: Install WSL/WSL2</label><div class="tabbed-content docutils">
 <p>WSL/WSL2 is needed for command line terminal. It gives Linux distribution <em>without</em> GUI. It is possible to also use GUI with some extra software as will be indicated.</p>
 <p>Here is the procedure:</p>
@@ -1245,8 +1232,8 @@ These instructions are from <a class="reference external" href="https://stackove
 <div style="padding:56.25% 0 0 0;position:relative;"><iframe src="https://player.vimeo.com/video/501562652?title=0&byline=0&portrait=0" style="position:absolute;top:0;left:0;width:100%;height:100%;" frameborder="0" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen></iframe></div><script src="https://player.vimeo.com/api/player.js"></script>
 </div>
 </details></div>
-<input id="dd33f0d5-18f2-43ee-8690-ce8ac26bd4ef" name="5e4c6685-db60-4f43-bf39-929d5d4a1b08" type="radio">
-</input><label class="tabbed-label" for="dd33f0d5-18f2-43ee-8690-ce8ac26bd4ef">
+<input id="156f6622-70a6-4e5c-b581-c27b3965a245" name="3f0e0da5-8fdd-4a6f-8a8e-d445f626b6cb" type="radio">
+</input><label class="tabbed-label" for="156f6622-70a6-4e5c-b581-c27b3965a245">
 MacOS</label><div class="tabbed-content docutils">
 <ul class="simple">
 <li><p>Check which version of MacOS you have (under <code class="docutils literal notranslate"><span class="pre">About</span> <span class="pre">this</span> <span class="pre">Mac</span></code>).</p>
@@ -1270,18 +1257,18 @@ MacOS</label><div class="tabbed-content docutils">
 <div class="section" id="task-2-package-manager">
 <h2>Task 2: Package manager<a class="headerlink" href="#task-2-package-manager" title="Permalink to this headline">¶</a></h2>
 <div class="tabbed-set docutils">
-<input checked="checked" id="360efb22-eda9-41f9-991a-e93b0f679afb" name="389c4ad5-2c03-4824-81c2-951de8463101" type="radio">
-</input><label class="tabbed-label" for="360efb22-eda9-41f9-991a-e93b0f679afb">
+<input checked="checked" id="d5e7615b-1154-4d29-97b7-d422dd5f8e5d" name="a356df0d-6a04-447c-a080-55bc69ca97b9" type="radio">
+</input><label class="tabbed-label" for="d5e7615b-1154-4d29-97b7-d422dd5f8e5d">
 Linux</label><div class="tabbed-content docutils">
 <p>You already have a package manager, so there is nothing to do.</p>
 </div>
-<input id="111da8a0-883e-4109-afaa-995c3937d3ed" name="389c4ad5-2c03-4824-81c2-951de8463101" type="radio">
-</input><label class="tabbed-label" for="111da8a0-883e-4109-afaa-995c3937d3ed">
+<input id="0d630761-c31c-47be-a27e-02b4f91a7dcb" name="a356df0d-6a04-447c-a080-55bc69ca97b9" type="radio">
+</input><label class="tabbed-label" for="0d630761-c31c-47be-a27e-02b4f91a7dcb">
 WSL/WSL2</label><div class="tabbed-content docutils">
 <p>When WSL/WSL2 was installed, you got a package manager. There is nothing to do at this step.</p>
 </div>
-<input id="165f9cf9-e64f-4960-9545-f59109aa02c7" name="389c4ad5-2c03-4824-81c2-951de8463101" type="radio">
-</input><label class="tabbed-label" for="165f9cf9-e64f-4960-9545-f59109aa02c7">
+<input id="2da15042-f873-4f46-88e1-32200b957184" name="a356df0d-6a04-447c-a080-55bc69ca97b9" type="radio">
+</input><label class="tabbed-label" for="2da15042-f873-4f46-88e1-32200b957184">
 MacOS</label><div class="tabbed-content docutils">
 <p>The next task is to install a package manager such as  <a class="reference external" href="https://www.macports.org/">MacPorts</a> or <a class="reference external" href="https://brew.sh/">Homebrew</a>. Here, we use <a class="reference external" href="https://brew.sh/">Homebrew</a> but MacPorts works well too. However, the instructions on these pages are for Homebrew only.</p>
 <p>See the installation and operating instructions at the <a class="reference external" href="https://brew.sh/">Homebrew</a> web site. Here is a copy from the web site.</p>
@@ -1370,17 +1357,17 @@ MacOS</label><div class="tabbed-content docutils">
             
                 <!-- Previous / next buttons -->
 <div class='prev-next-area'> 
-    <a class='left-prev' id="prev-link" href="coding-notes-general.html" title="previous page">
+    <a class='left-prev' id="prev-link" href="Linux-basics.html" title="previous page">
         <i class="fas fa-angle-left"></i>
         <div class="prev-next-info">
             <p class="prev-next-subtitle">previous</p>
-            <p class="prev-next-title">On computation and codes</p>
+            <p class="prev-next-title">Linux - the basics</p>
         </div>
     </a>
-    <a class='right-next' id="next-link" href="python-virtual-environment.html" title="next page">
+    <a class='right-next' id="next-link" href="linux-basic-commands-2.html" title="next page">
     <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">Python virtual environments</p>
+        <p class="prev-next-title">Linux: Some basic &amp; useful commands</p>
     </div>
     <i class="fas fa-angle-right"></i>
     </a>

@@ -59,8 +59,8 @@
     <link rel="canonical" href="https://cdenniston.github.io/NumericalAnalysis/extras/python-virtual-environment.html" />
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="The vi editor" href="vi-editor.html" />
-    <link rel="prev" title="Installation of tools: WSL2/Linux etc." href="install-wsl.html" />
+    <link rel="next" title="Linux - the basics" href="Linux-basics.html" />
+    <link rel="prev" title="Brief introduction to Python" href="python-intro.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="None">
     
@@ -704,7 +704,7 @@
 <ul class="current nav bd-sidenav">
  <li class="toctree-l1 current active has-children">
   <a class="reference internal" href="coding-notes-general.html">
-   Practical Notes
+   Python &amp; programming
   </a>
   <input checked="" class="toctree-checkbox" id="toctree-checkbox-13" name="toctree-checkbox-13" type="checkbox"/>
   <label for="toctree-checkbox-13">
@@ -713,8 +713,8 @@
   </label>
   <ul class="current">
    <li class="toctree-l2">
-    <a class="reference internal" href="install-wsl.html">
-     Installation of tools: WSL2/Linux etc.
+    <a class="reference internal" href="python-intro.html">
+     Brief introduction to Python
     </a>
    </li>
    <li class="toctree-l2 current active">
@@ -722,17 +722,40 @@
      Python virtual environments
     </a>
    </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="Linux-basics.html">
+   Linux Intro
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-14" name="toctree-checkbox-14" type="checkbox"/>
+  <label for="toctree-checkbox-14">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
    <li class="toctree-l2">
-    <a class="reference internal" href="vi-editor.html">
-     The
-     <code class="docutils literal notranslate">
-      <span class="pre">
-       vi
-      </span>
-     </code>
-     editor
+    <a class="reference internal" href="install-wsl.html">
+     Installation of tools: WSL2/Linux etc.
     </a>
    </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="linux-basic-commands-2.html">
+     Linux: Some basic &amp; useful commands
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="vi-editor.html">
+   Other software
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-15" name="toctree-checkbox-15" type="checkbox"/>
+  <label for="toctree-checkbox-15">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
    <li class="toctree-l2">
     <a class="reference internal" href="editing-ascii.html">
      Editing ASCII files
@@ -744,42 +767,6 @@
     </a>
    </li>
   </ul>
- </li>
-</ul>
-<p aria-level="2" class="caption" role="heading">
- <span class="caption-text">
-  Final Exam
- </span>
-</p>
-<ul class="nav bd-sidenav">
- <li class="toctree-l1">
-  <a class="reference internal" href="../class/final.html">
-   Final Exam Information
-  </a>
- </li>
-</ul>
-<p aria-level="2" class="caption" role="heading">
- <span class="caption-text">
-  Lab Materials
- </span>
-</p>
-<ul class="nav bd-sidenav">
- <li class="toctree-l1">
-  <a class="reference internal" href="../class/labs.html">
-   Lab Stuff
-  </a>
- </li>
-</ul>
-<p aria-level="2" class="caption" role="heading">
- <span class="caption-text">
-  Course Feedback
- </span>
-</p>
-<ul class="nav bd-sidenav">
- <li class="toctree-l1">
-  <a class="reference internal" href="../about/feedback.html">
-   Anonymous Feedback Form
-  </a>
  </li>
 </ul>
 
@@ -914,8 +901,8 @@
 <div class="section" id="installation-practical-example">
 <h2>Installation &amp; practical example<a class="headerlink" href="#installation-practical-example" title="Permalink to this headline">¶</a></h2>
 <div class="tabbed-set docutils">
-<input checked="checked" id="97962d6f-29f8-4e44-b550-b70548a266d6" name="985b34a1-f241-4bb9-826c-ef2bed05ed2f" type="radio">
-</input><label class="tabbed-label" for="97962d6f-29f8-4e44-b550-b70548a266d6">
+<input checked="checked" id="528b36ed-17be-41ec-bc4f-52dbb6844948" name="a2424a62-6f72-427b-b561-e72f93c02077" type="radio">
+</input><label class="tabbed-label" for="528b36ed-17be-41ec-bc4f-52dbb6844948">
 Using Anaconda command line</label><div class="tabbed-content docutils">
 <p>Here’s how to create virtual environments with <code class="docutils literal notranslate"><span class="pre">conda</span></code> using the command line terminal. This works in Linux, WSL/WSL2 and Mac. Mac and Windows 10 have also the Anaconda GUI but using command line is quicker. Note that <code class="docutils literal notranslate"><span class="pre">conda</span></code> stores the information about environments in <code class="docutils literal notranslate"><span class="pre">${HOME}/anaconda3/envs/</span></code>. In practise that means that environments can activated and deactivated very conveniently (this is different from <code class="docutils literal notranslate"><span class="pre">pip</span></code>).</p>
 <p><strong>1. Check the version and existing environments:</strong></p>
@@ -979,8 +966,8 @@ packages into any environment. Leaving <code class="docutils literal notranslate
 </pre></div>
 </div>
 </div>
-<input id="435a8236-c9ff-422f-8e02-b5f79741cd2f" name="985b34a1-f241-4bb9-826c-ef2bed05ed2f" type="radio">
-</input><label class="tabbed-label" for="435a8236-c9ff-422f-8e02-b5f79741cd2f">
+<input id="176dbfb8-c3b5-46b4-8cf9-8a285a4924f5" name="a2424a62-6f72-427b-b561-e72f93c02077" type="radio">
+</input><label class="tabbed-label" for="176dbfb8-c3b5-46b4-8cf9-8a285a4924f5">
 Using the Anaconda GUI</label><div class="tabbed-content docutils">
 <ul class="simple">
 <li><p>Open the Anaconda Navigator</p></li>
@@ -988,8 +975,8 @@ Using the Anaconda GUI</label><div class="tabbed-content docutils">
 <li><p>Click on <code class="docutils literal notranslate"><span class="pre">Create</span></code> at the bottom of the Navigator menu</p></li>
 </ul>
 </div>
-<input id="577f358c-f97a-4677-8ac5-aa631fb30d81" name="985b34a1-f241-4bb9-826c-ef2bed05ed2f" type="radio">
-</input><label class="tabbed-label" for="577f358c-f97a-4677-8ac5-aa631fb30d81">
+<input id="a3ed8af9-5fbf-4f80-88d2-8bd91a936695" name="a2424a62-6f72-427b-b561-e72f93c02077" type="radio">
+</input><label class="tabbed-label" for="a3ed8af9-5fbf-4f80-88d2-8bd91a936695">
 Virtual environments with pip</label><div class="tabbed-content docutils">
 <p><code class="docutils literal notranslate"><span class="pre">pip</span></code> works a bit differently, but using it is equally easy. First, install the package <code class="docutils literal notranslate"><span class="pre">virtualenv</span></code> using</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">python3</span> <span class="o">-</span><span class="n">m</span> <span class="n">pip</span> <span class="n">install</span> <span class="o">--</span><span class="n">user</span> <span class="n">virtualenv</span>
@@ -1058,17 +1045,17 @@ a virtual environment and its directories at the location where you currently ar
             
                 <!-- Previous / next buttons -->
 <div class='prev-next-area'> 
-    <a class='left-prev' id="prev-link" href="install-wsl.html" title="previous page">
+    <a class='left-prev' id="prev-link" href="python-intro.html" title="previous page">
         <i class="fas fa-angle-left"></i>
         <div class="prev-next-info">
             <p class="prev-next-subtitle">previous</p>
-            <p class="prev-next-title">Installation of tools: WSL2/Linux etc.</p>
+            <p class="prev-next-title">Brief introduction to Python</p>
         </div>
     </a>
-    <a class='right-next' id="next-link" href="vi-editor.html" title="next page">
+    <a class='right-next' id="next-link" href="Linux-basics.html" title="next page">
     <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">The <code class="docutils literal notranslate"><span class="pre">vi</span></code> editor</p>
+        <p class="prev-next-title">Linux - the basics</p>
     </div>
     <i class="fas fa-angle-right"></i>
     </a>
