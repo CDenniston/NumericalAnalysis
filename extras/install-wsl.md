@@ -18,7 +18,7 @@ Finder -> Applications -> Utilities -> Terminal
 ```
 That same location has also `XQuartz` that will be needed to run GUI based applications.
 
-```{figure} ../week01/img/linux-decision.svg
+```{figure} ./img/linux-decision.svg
 :alt: Linux vs others
 :width: 700px
 :align: left
