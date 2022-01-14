@@ -146,10 +146,10 @@ parts:
     sections:
       - file: extras/install-wsl     
       - file: extras/linux-basic-commands-2.md
-  - file: extras/vi-editor
+  - file: extras/editing-ascii
     title: Other software
     sections:
-      - file: extras/editing-ascii
+      - file: extras/vi-editor
       - file: extras/helpful-software
 
 
