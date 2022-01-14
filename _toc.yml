@@ -136,22 +136,20 @@ parts:
       - file: class/week12/learninglogs
 - caption: Mikko Extras
   chapters:
-  - file: extras/coding-notes-general
-    title: Practical Notes
+    title: Python & programming
+    sections:
+     - file: extras/coding-notes-general
+     - file: extras/python-intro
+     - file: extras/python-virtual-environment
+    title: Linux Intro
     sections:
       - file: extras/install-wsl
-      - file: extras/python-virtual-environment
+      - file: extras/Linux-basics
+      - file: extras/linux-basic-commands-2.md
+    title: Other software
+    sections:
       - file: extras/vi-editor
       - file: extras/editing-ascii
-      - file: extras/helpful-software      
-- caption: Final Exam
-  chapters:
-  - file: class/final
-- caption: Lab Materials
-  chapters:
-  - file: class/labs
-    title: Lab Stuff
-- caption: Course Feedback
-  chapters:
-  - file: about/feedback
-    title: Anonymous Feedback Form
+      - file: extras/helpful-software
+
+
