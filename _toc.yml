@@ -136,19 +136,19 @@ parts:
       - file: class/week12/learninglogs
 - caption: Mikko Extras
   chapters:
+  - file: extras/coding-notes-general
     title: Python & programming
     sections:
-     - file: extras/coding-notes-general
      - file: extras/python-intro
      - file: extras/python-virtual-environment
+  - file: extras/Linux-basics
     title: Linux Intro
     sections:
-      - file: extras/install-wsl
-      - file: extras/Linux-basics
+      - file: extras/install-wsl     
       - file: extras/linux-basic-commands-2.md
+  - file: extras/vi-editor
     title: Other software
     sections:
-      - file: extras/vi-editor
       - file: extras/editing-ascii
       - file: extras/helpful-software
 
