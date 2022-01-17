@@ -5,7 +5,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Week 1 &#8212; Numerical Analysis</title>
+    <title>Numerical Analysis &#8212; Numerical Analysis</title>
     
   <link href="../../_static/css/theme.css" rel="stylesheet">
   <link href="../../_static/css/index.ff1ffe594081f20da1ef19478df9384b.css" rel="stylesheet">
@@ -49,6 +49,8 @@
     <script async="async" kind="dokieli" src="https://dokie.li/scripts/dokieli.js"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
     <script src="../../_static/sphinx-book-theme.d59cb220de22ca1c485ebbdc042f0030.js"></script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
     <script async="async" src="https://unpkg.com/thebe@0.5.1/lib/index.js"></script>
     <script>
         const thebe_selector = ".thebe,.cell"
@@ -692,7 +694,7 @@
 <ul class="nav bd-sidenav">
  <li class="toctree-l1">
   <a class="reference internal" href="../demo01/lecture1.html">
-   Demo for course template
+   Demo from course template
   </a>
  </li>
 </ul>
@@ -767,13 +769,13 @@
             <nav id="bd-toc-nav" aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#course-introductions">
-   Course Introductions!
+  <a class="reference internal nav-link" href="#sources-of-errors-in-scientific-computing">
+   Sources of Errors in Scientific Computing
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#navigating-the-course-website">
-   Navigating the course website
+  <a class="reference internal nav-link" href="#quantifying-error">
+   Quantifying Error
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
@@ -806,7 +808,7 @@
         <div class="col-12 col-md-9 pl-md-3 pr-md-0">
             <!-- Table of contents that is only displayed when printing the page -->
             <div id="jb-print-docs-body" class="onlyprint">
-                <h1>Week 1</h1>
+                <h1>Numerical Analysis</h1>
                 <!-- Table of contents -->
                 <div id="print-main-content">
                     <div id="jb-print-toc">
@@ -817,13 +819,13 @@
                         <nav aria-label="Page">
                             <ul class="visible nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#course-introductions">
-   Course Introductions!
+  <a class="reference internal nav-link" href="#sources-of-errors-in-scientific-computing">
+   Sources of Errors in Scientific Computing
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#navigating-the-course-website">
-   Navigating the course website
+  <a class="reference internal nav-link" href="#quantifying-error">
+   Quantifying Error
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
@@ -855,17 +857,29 @@
             
               <div>
                 
-  <div class="tex2jax_ignore mathjax_ignore section" id="week-1">
-<span id="page-topic1"></span><h1>Week 1<a class="headerlink" href="#week-1" title="Permalink to this headline">¶</a></h1>
-<p>This week we will be doing course introductions, I will be showing you how to navigate the course website, and how the course is set up.
-In terms of content, we will use this week to do a math diagnostic, get everyone access to the textbook and homework system, and understand the syllabus.</p>
-<div class="section" id="course-introductions">
-<h2>Course Introductions!<a class="headerlink" href="#course-introductions" title="Permalink to this headline">¶</a></h2>
-<p>Hello, my name is Firas Moosvi and I am your instructor for Physics 111!</p>
+  <div class="tex2jax_ignore mathjax_ignore section" id="numerical-analysis">
+<span id="page-topic1"></span><h1>Numerical Analysis<a class="headerlink" href="#numerical-analysis" title="Permalink to this headline">¶</a></h1>
+<p>People often describe <em>Numerical Analysis</em> as being “as much an art as a science”.  What they appear to mean by this is that while the results clearly appear to be valuable, they are not altogther sure of how the “artist” decided on the process by which these results were derived, or even the sanity of said “artist’s” thought process.  In this course we will try to make these processes clearer and put them on a solid footing.  However, it is hard to deny that mastery of Numberical Analysis does require a certain amount of intuition.  The best, and really only, way to build this intuition is by using the concepts we will learn about in practical, hands-on problems.</p>
+<p>What makes <em>Numerical Analysis</em> different from fields such as computer animation is that we use <em>analysis</em> to ensure that our answer does not just “look right”, but actually is in some quantitative way “close” to the exact result.  In fact, it is ideally the exact result of a <em>nearby</em> problem.  This requirement of a quantitative analysis of our errors necessitates that we first define a way to measure errors and where they come from, which is the subject of this first chapter.</p>
+<div class="section" id="sources-of-errors-in-scientific-computing">
+<h2>Sources of Errors in Scientific Computing<a class="headerlink" href="#sources-of-errors-in-scientific-computing" title="Permalink to this headline">¶</a></h2>
+<p>Errors can come from a number of sources and it is helpful to catergorize these sources first:</p>
+<ol class="simple">
+<li><p><strong>Blunders</strong>.  This includes <em>syntax errors</em> and <em>logic errors</em> in your code.  The first are relatively easy to find, especially if you use a compiled language such as C/C++ and learn how to read the error messages from the compiler/interpreter.  The second are much harder to find but should be your assumption when your code gives results that don’t seem to make sense.</p></li>
+<li><p><strong>Data errors from measurements</strong>.  The old saying “garbage in = garbage out” is relevent here.  This is can be a significant problem in data sciences.  It includes “over-fitting” where the misguided researcher fits not just the signal in a measurement but also the noise.  Another example we will examine in more detail in the section on interpolation is the “Runge Phenomenon”.  This is an error that arises from using polynomial interpolation on equally spaced data points that can cause huge errors near the boundaries of the fitted domain.  It is also something that is common in extrapolation which is rarely succesful just fitting data without an underlying model that you have strong reason to believe is valid outside the fitted domain.</p></li>
+<li><p><strong>Truncation or discretization errors</strong>.  We will discuss this in more detail later in this chapter.  These arise from the fact that our models and algorithms usually only try to approximate the solution.</p></li>
+<li><p><strong>Finite precision arithmetic</strong>.  These stem from the fact that we cannot represent all possible real numbers on a computer.  This leads to issues of over/underflow and roundoff errors which we will explore in more detail in this chapter.</p></li>
+<li><p><strong>Attempting to solve the wrong problem</strong>.  This is much more common that you would think.  An example is trying to predict whether or not it will rain in a certain location 60 days from now (i.e. yes or no).  This is a poorly conditioned problem.  However, if you change the problem slightly and ask for the probability that it will rain in a certain location 60 days from now, this new problem is now solvable within reasonably well-defined error bounds.</p></li>
+</ol>
+<p>The first of these sources of errors are the sort of thing that is usually addressed in a computer science course and we will not spend much time here discussing it.  However, when you sit down to do the excercises this is likely to be the primarly source of errors that will consume your time.  Good coding practise and ensuring you understand the algorithm you are trying to implement before trying to code it up are the best way to avoid spending too much time on blunders.</p>
+<p>While we will return to data errors later in the course when we discuss interoplation and regression, they are not the main focus of a numerical analysis course.  A good understanding of probability and statistics will help you in knowing how significant these sorts of errors may be in the problem you are trying to solve.</p>
+<p>The last three sources of error will be something we will cover in detail in this course and by completion you should be adept at avoiding them.</p>
 </div>
-<div class="section" id="navigating-the-course-website">
-<h2>Navigating the course website<a class="headerlink" href="#navigating-the-course-website" title="Permalink to this headline">¶</a></h2>
-<p>Live demo…</p>
+<div class="section" id="quantifying-error">
+<h2>Quantifying Error<a class="headerlink" href="#quantifying-error" title="Permalink to this headline">¶</a></h2>
+<p>If <span class="math notranslate nohighlight">\(p^*\)</span> is an approximation to <span class="math notranslate nohighlight">\(p\)</span>, then the:</p>
+<p>-<em>absolute</em> error is <span class="math notranslate nohighlight">\(|p-p^*|\)</span>;
+-<em>relative</em> error is <span class="math notranslate nohighlight">\(\frac{|p-p^*|}{|p|}\)</span>;</p>
 </div>
 <div class="section" id="navigating-mastering-physics">
 <h2>Navigating Mastering Physics<a class="headerlink" href="#navigating-mastering-physics" title="Permalink to this headline">¶</a></h2>
