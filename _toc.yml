@@ -131,7 +131,7 @@ parts:
 - caption: Demo section
   chapters:
   - file: class/demo01/lecture1
-    title: Demo for course template
+    title: Demo from course template
 
 
 
