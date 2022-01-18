@@ -7,7 +7,7 @@ parts:
     title: Error Sources
     sections:
       - file: class/ErrorsModule/Error_sources
-      - file: class/ErrorsModule/
+      - file: class/ErrorsModule/TaylorExample
   - file: class/week03/week03_summary
     title: Week 3 - Chapter 3
     sections:
