@@ -61,7 +61,7 @@
     <link rel="canonical" href="https://cdenniston.github.io/NumericalAnalysis/class/ErrorsModule/TaylorExample.html" />
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
-    <link rel="next" title="Week 3 Summary" href="../week03/week03_summary.html" />
+    <link rel="next" title="Finite Precision" href="FinitePrecision.html" />
     <link rel="prev" title="Sources of Errors in Scientific Computing" href="Error_sources.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="None">
@@ -130,6 +130,11 @@
    <li class="toctree-l2 current active">
     <a class="current reference internal" href="#">
      Truncation Error in Taylor’s series
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="FinitePrecision.html">
+     Finite Precision
     </a>
    </li>
   </ul>
@@ -809,7 +814,7 @@
                 
   <div class="section" id="truncation-error-in-taylor-s-series">
 <h1>Truncation Error in Taylor’s series<a class="headerlink" href="#truncation-error-in-taylor-s-series" title="Permalink to this headline">¶</a></h1>
-<p>To illustrate the concept of a <em>truncation</em> error it is helpful to recall Taylor’s theorem from first year calculus:</p>
+<p>Most algorithms in Numerical Analysis suffer from some form of truncation error.  Often this truncation error comes about from some series solution to the problem of interest that we <em>truncate</em> at some finite order in order to solve.  To illustrate the concept of a <em>truncation</em> error, let’s look at an example for Taylor’s series.  It is helpful to recall Taylor’s theorem from first year calculus:</p>
 <div class="section" id="taylor-s-theorem">
 <h2>Taylor’s Theorem<a class="headerlink" href="#taylor-s-theorem" title="Permalink to this headline">¶</a></h2>
 <p>Suppose we have a function <span class="math notranslate nohighlight">\(f\in C^n[a,b]\)</span>  (i.e. <span class="math notranslate nohighlight">\(f\)</span> is <span class="math notranslate nohighlight">\(n\)</span> times continuously differentiable), that <span class="math notranslate nohighlight">\(f^{(n+1)}\)</span> exists on <span class="math notranslate nohighlight">\([a,b]\)</span> and <span class="math notranslate nohighlight">\(x_0\in [a,b]\)</span>.  Then for <span class="math notranslate nohighlight">\(x\in [a,b]\)</span> we have</p>
@@ -897,10 +902,10 @@ Plugging this into the bound on the absolute error gives</p>
             <p class="prev-next-title">Sources of Errors in Scientific Computing</p>
         </div>
     </a>
-    <a class='right-next' id="next-link" href="../week03/week03_summary.html" title="next page">
+    <a class='right-next' id="next-link" href="FinitePrecision.html" title="next page">
     <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">Week 3 Summary</p>
+        <p class="prev-next-title">Finite Precision</p>
     </div>
     <i class="fas fa-angle-right"></i>
     </a>

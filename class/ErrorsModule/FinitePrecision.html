@@ -5,7 +5,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Sources of Errors in Scientific Computing &#8212; Numerical Analysis</title>
+    <title>Finite Precision &#8212; Numerical Analysis</title>
     
   <link href="../../_static/css/theme.css" rel="stylesheet">
   <link href="../../_static/css/index.ff1ffe594081f20da1ef19478df9384b.css" rel="stylesheet">
@@ -58,11 +58,11 @@
         const thebe_selector_output = ".output,.cell_output"
     </script>
     <script async="async" src="../../_static/sphinx-thebe.js"></script>
-    <link rel="canonical" href="https://cdenniston.github.io/NumericalAnalysis/class/ErrorsModule/Error_sources.html" />
+    <link rel="canonical" href="https://cdenniston.github.io/NumericalAnalysis/class/ErrorsModule/FinitePrecision.html" />
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
-    <link rel="next" title="Truncation Error in Taylor’s series" href="TaylorExample.html" />
-    <link rel="prev" title="Numerical Analysis" href="Errors_summary.html" />
+    <link rel="next" title="Week 3 Summary" href="../week03/week03_summary.html" />
+    <link rel="prev" title="Truncation Error in Taylor’s series" href="TaylorExample.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="None">
     
@@ -122,8 +122,8 @@
    </i>
   </label>
   <ul class="current">
-   <li class="toctree-l2 current active">
-    <a class="current reference internal" href="#">
+   <li class="toctree-l2">
+    <a class="reference internal" href="Error_sources.html">
      Sources of Errors in Scientific Computing
     </a>
    </li>
@@ -132,8 +132,8 @@
      Truncation Error in Taylor’s series
     </a>
    </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="FinitePrecision.html">
+   <li class="toctree-l2 current active">
+    <a class="current reference internal" href="#">
      Finite Precision
     </a>
    </li>
@@ -713,7 +713,7 @@
         <!-- ipynb file if we had a myst markdown file -->
         
         <!-- Download raw file -->
-        <a class="dropdown-buttons" href="../../_sources/class/ErrorsModule/Error_sources.md"><button type="button"
+        <a class="dropdown-buttons" href="../../_sources/class/ErrorsModule/FinitePrecision.md"><button type="button"
                 class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
                 data-placement="left">.md</button></a>
         <!-- Download PDF via print -->
@@ -743,14 +743,14 @@
             </div>
             <nav id="bd-toc-nav" aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
- <li class="toc-h1 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#">
-   Sources of Errors in Scientific Computing
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#precision-versus-accuracy">
+   Precision versus Accuracy
   </a>
  </li>
- <li class="toc-h1 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#quantifying-error">
-   Quantifying Error
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#under-over-flow">
+   Under/Over flow
   </a>
  </li>
 </ul>
@@ -763,7 +763,7 @@
         <div class="col-12 col-md-9 pl-md-3 pr-md-0">
             <!-- Table of contents that is only displayed when printing the page -->
             <div id="jb-print-docs-body" class="onlyprint">
-                <h1>Sources of Errors in Scientific Computing</h1>
+                <h1>Finite Precision</h1>
                 <!-- Table of contents -->
                 <div id="print-main-content">
                     <div id="jb-print-toc">
@@ -773,14 +773,14 @@
                         </div>
                         <nav aria-label="Page">
                             <ul class="visible nav section-nav flex-column">
- <li class="toc-h1 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#">
-   Sources of Errors in Scientific Computing
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#precision-versus-accuracy">
+   Precision versus Accuracy
   </a>
  </li>
- <li class="toc-h1 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#quantifying-error">
-   Quantifying Error
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#under-over-flow">
+   Under/Over flow
   </a>
  </li>
 </ul>
@@ -792,28 +792,73 @@
             
               <div>
                 
-  <div class="section" id="sources-of-errors-in-scientific-computing">
-<h1>Sources of Errors in Scientific Computing<a class="headerlink" href="#sources-of-errors-in-scientific-computing" title="Permalink to this headline">¶</a></h1>
-<p>Errors can come from a number of sources and it is helpful to catergorize these sources first:</p>
-<ol class="simple">
-<li><p><strong>Blunders</strong>.  This includes <em>syntax errors</em> and <em>logic errors</em> in your code.  The first are relatively easy to find, especially if you use a compiled language such as C/C++ and learn how to read the error messages from the compiler/interpreter.  The second are much harder to find but are problably most likely when your code gives results that don’t seem to make sense.</p></li>
-<li><p><strong>Data errors from measurements</strong>.  The old saying “garbage in = garbage out” is relevent here.  This is can be a significant problem in data sciences.  It includes “over-fitting” where the misguided researcher fits not just the signal in a measurement but also the noise.  Another example we will examine in more detail in the section on interpolation is the “Runge Phenomenon”.  This is an error that arises from using polynomial interpolation on equally spaced data points that can cause huge errors near the boundaries of the fitted domain.  It is also something that is common in extrapolation which is rarely succesful just fitting data without an underlying model that you have strong reason to believe is valid outside the fitted domain.</p></li>
-<li><p><strong>Truncation or discretization errors</strong>.  We will discuss this in more detail later in this chapter.  These arise from the fact that our models and algorithms usually only try to approximate the solution.</p></li>
-<li><p><strong>Finite precision arithmetic</strong>.  These stem from the fact that we cannot represent all possible real numbers on a computer.  This leads to issues of over/underflow and roundoff errors which we will explore in more detail in this chapter.</p></li>
-<li><p><strong>Attempting to solve the wrong problem</strong>.  This is much more common that you would think.  An example is trying to predict whether or not it will rain in a certain location 60 days from now (i.e. yes or no).  This is a poorly conditioned problem.  However, if you change the problem slightly and ask for the probability that it will rain in a certain location 60 days from now, this new problem is now solvable within reasonably well-defined error bounds.</p></li>
-</ol>
-<p>The first of these sources of errors are the sort of thing that is usually addressed in a computer science course and we will not spend much time here discussing it.  However, when you sit down to do the excercises this is likely to be the primarly source of errors that will consume your time.  Good coding practise and ensuring you understand the algorithm you are trying to implement before trying to code it up are the best way to avoid spending too much time on blunders.</p>
-<p>While we will return to data errors later in the course when we discuss interoplation and regression, they are not the main focus of a numerical analysis course.  A good understanding of probability and statistics will help you in knowing how significant these sorts of errors may be in the problem you are trying to solve.</p>
-<p>The last three sources of error will be something we will cover in detail in this course and by completion you should be adept at avoiding them.</p>
+  <div class="section" id="finite-precision">
+<h1>Finite Precision<a class="headerlink" href="#finite-precision" title="Permalink to this headline">¶</a></h1>
+<p>A transcendental number like <span class="math notranslate nohighlight">\(\pi\)</span> has an infinite number of digits.  Clearly, a computer is capable of only storing a finite number of these digits.  We are familar with the idea that rational numbers like <span class="math notranslate nohighlight">\(1/3 = 0.333333...\)</span> in base 10, or <span class="math notranslate nohighlight">\(0.0101010101...\)</span> in binary, must typically be truncated.  However, it is important to remember that computers store numbers in base 2 (binary) so that numbers like <span class="math notranslate nohighlight">\(1/10 = 0.1\)</span> in base 10, is <span class="math notranslate nohighlight">\(0.000110011001100...\)</span> have an infinite number of digits in binary and will have to be truncated when represented in a computer.  In this section we will discuss the impact of the computer’s finite precision on numerical algorithms.</p>
+<div class="section" id="precision-versus-accuracy">
+<h2>Precision versus Accuracy<a class="headerlink" href="#precision-versus-accuracy" title="Permalink to this headline">¶</a></h2>
+<p>It is important to distinguish what we mean by precision versus what we mean by accuracy.  In numerical computation we typically have 32 or 64 binary digits of <em>precision</em> in our calculations (which translates to roughly 8 or 16 decimal digits).  This does not mean we have anything like this amount of accuracy (as measured by absolute or relative errors).  In high school you may have been taught to discard any digits that were not accurate by keeping only significant digits in calculations.  This philosophy places value only on accuracy and none on precision.  However, there is also value in precision even if it far exceeds the accuracy of the numbers involved.</p>
+<p>An example of the value of precision, even in the absense of accuracy, was in the Hubble space telescope (see <a class="reference external" href="https://www.nasa.gov/content/hubbles-mirror-flaw">https://www.nasa.gov/content/hubbles-mirror-flaw</a>).  The Hubble was a complete embarassment for NASA when it was first launched.  It was ground to the wrong specifications due to a calibration error.  As a result, it produced fuzzy images.  Fortunately, it was ground to a very high precision (with poor accuracy).  The high precision allowed NASA to install corrective lenses to cancel the error (the poor accuracy) resulting in the amazing clear images you are now familar with.</p>
+<p>As we will discuss below, the finite precision of floating-point numbers can result in a loss of accuracy as they lead to errors that can not just propogate but be significantly magnified by arithmetic operations.  The easiest, but not necessarily the best, way to deal with these errors is to increase the number of digits used to store numbers.  Over the years, this has lead to the number of binary digits used to store numbers increasing from 16-bit, to 32-bit, and then to 64-bit.  In addition, typically CPUS use 80-bit registers (at time of writing in 2022) to store intermediate results for 64-bit floating point calculations.  However, many computationally intensive calculations are now moving to GPU-computing (graphics processing unit) which are either limited to 32-bit floating point numbers, or perform significantly faster in 32-bit rather than 64-bit mode.  In addition, many of the typical “shortcuts” done for performance can often lead to a preproducability problem (ie. the program may give slightly different results from one run to the next, see <a class="reference external" href="https://www.intel.com/content/dam/develop/public/us/en/documents/fp-consistency-121918.pdf">https://www.intel.com/content/dam/develop/public/us/en/documents/fp-consistency-121918.pdf</a>).  The best way to avoid these problems is to have a firm understanding of the origin of errors originating from finite precision arithmetic and design your algorithm and code in such a way to avoid them, or at least minimize their effects.</p>
 </div>
-<div class="section" id="quantifying-error">
-<h1>Quantifying Error<a class="headerlink" href="#quantifying-error" title="Permalink to this headline">¶</a></h1>
-<p>To quantify error we need to first define what we mean.
-If <span class="math notranslate nohighlight">\(p^*\)</span> is an approximation to <span class="math notranslate nohighlight">\(p\)</span>, then:</p>
-<p>-the <em>absolute</em> error is <span class="math notranslate nohighlight">\(|p-p^*|\)</span>,</p>
-<p>-the <em>relative</em> error is <span class="math notranslate nohighlight">\(\frac{|p-p^*|}{|p|}\)</span>,</p>
-<p>-and the number of <em>significant digits</em> is <span class="math notranslate nohighlight">\(t\)</span> if <span class="math notranslate nohighlight">\(t\)</span> is the largest positive integer with <span class="math notranslate nohighlight">\(\frac{|p-p^*|}{|p|} \leq 5 \times 10^{-t}\)</span>.</p>
-<p>The advantage of the relative error is that it is scale invariant.  For example, if you measure the length of a pencil with a ruler to be <span class="math notranslate nohighlight">\(16\)</span> cm with an absolute error of <span class="math notranslate nohighlight">\(0.5\)</span> mm.  This absolute error depends on the unit of measurment.  If you measure in nm, then it is huge.  If you measure in parsecs, it is miniscule.  However, the relative error is <span class="math notranslate nohighlight">\(0.003\)</span> independent of the units of measurement.  Note that the formula above actually says the realtive error is <span class="math notranslate nohighlight">\(0.003125\)</span>, but we typically only quote errors to one significant digit.</p>
+<div class="section" id="under-over-flow">
+<h2>Under/Over flow<a class="headerlink" href="#under-over-flow" title="Permalink to this headline">¶</a></h2>
+<p>As we mentioned, numbers have a finite precision in order to be stored in a computer.  Different types of numbers have different precision.  The table below gives the number of digits and range of several types of numerical types.</p>
+<table class="colwidths-auto table">
+<thead>
+<tr class="row-odd"><th class="head"><p>mathematical type</p></th>
+<th class="head"><p>C-style code type</p></th>
+<th class="head"><p>number of binary digits</p></th>
+<th class="head"><p>range</p></th>
+<th class="head"><p>decimal precision</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>integer</p></td>
+<td><p>‘short’</p></td>
+<td><p>16-bit</p></td>
+<td><p><span class="math notranslate nohighlight">\(-2^{15}=-32 768\)</span> to <span class="math notranslate nohighlight">\(2^{15}-1=32 767\)</span></p></td>
+<td><p>-</p></td>
+</tr>
+<tr class="row-odd"><td><p></p></td>
+<td><p>‘int’</p></td>
+<td><p>32-bit</p></td>
+<td><p><span class="math notranslate nohighlight">\(-2^{32}=-2 147 483 648\)</span> to <span class="math notranslate nohighlight">\(2^{32}-1\)</span></p></td>
+<td><p>-</p></td>
+</tr>
+<tr class="row-even"><td><p></p></td>
+<td><p>‘long’</p></td>
+<td><p>64-bit</p></td>
+<td><p><span class="math notranslate nohighlight">\(-2^{64}\)</span> to <span class="math notranslate nohighlight">\(2^{63}-1\)</span></p></td>
+<td><p>-</p></td>
+</tr>
+<tr class="row-odd"><td><p>——————-</p></td>
+<td><p>——————-</p></td>
+<td><p>————————-</p></td>
+<td><p>————–</p></td>
+<td><p>————</p></td>
+</tr>
+<tr class="row-even"><td><p>real number</p></td>
+<td><p>‘float’</p></td>
+<td><p>32-bit</p></td>
+<td><p>‘1.2E-38’ to ‘3.4E+38’</p></td>
+<td><p>6 digit</p></td>
+</tr>
+<tr class="row-odd"><td><p></p></td>
+<td><p>‘double’</p></td>
+<td><p>64-bit</p></td>
+<td><p>‘2.3E-308’ to ‘1.7E+308’</p></td>
+<td><p>15 digit</p></td>
+</tr>
+<tr class="row-even"><td><p></p></td>
+<td><p>‘long double’</p></td>
+<td><p>80-bit</p></td>
+<td><p>‘3.4E-4932’ to ‘1.1E+4932’</p></td>
+<td><p>19 digit</p></td>
+</tr>
+</tbody>
+</table>
+</div>
 </div>
 
     <script type="text/x-thebe-config">
@@ -841,17 +886,17 @@ If <span class="math notranslate nohighlight">\(p^*\)</span> is an approximation
             
                 <!-- Previous / next buttons -->
 <div class='prev-next-area'> 
-    <a class='left-prev' id="prev-link" href="Errors_summary.html" title="previous page">
+    <a class='left-prev' id="prev-link" href="TaylorExample.html" title="previous page">
         <i class="fas fa-angle-left"></i>
         <div class="prev-next-info">
             <p class="prev-next-subtitle">previous</p>
-            <p class="prev-next-title">Numerical Analysis</p>
+            <p class="prev-next-title">Truncation Error in Taylor’s series</p>
         </div>
     </a>
-    <a class='right-next' id="next-link" href="TaylorExample.html" title="next page">
+    <a class='right-next' id="next-link" href="../week03/week03_summary.html" title="next page">
     <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">Truncation Error in Taylor’s series</p>
+        <p class="prev-next-title">Week 3 Summary</p>
     </div>
     <i class="fas fa-angle-right"></i>
     </a>
