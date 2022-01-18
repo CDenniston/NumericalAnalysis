@@ -19,9 +19,9 @@ As we mentioned, numbers have a finite precision in order to be stored in a comp
 | integer           | 'short'           | 16-bit                  | $-2^{15}=-32 768$ to $2^{15}-1=32 767$ | - |
 |                   | 'int'             | 32-bit                  | $-2^{32}=-2 147 483 648$ to $2^{32}-1$ | - |
 |                   | 'long'            | 64-bit                  | $-2^{64}$ to $2^{63}-1$ | - |
-| real number       | 'float'           | 32-bit                  | '1.2E-38' to '3.4E+38' | 6 digit|
-|                   | 'double'          | 64-bit                  | '2.3E-308' to '1.7E+308' | 15 digit |
-|                   | 'long double'     | 80-bit                  | '3.4E-4932' to '1.1E+4932' | 19 digit |
+| real number       | 'float'           | 32-bit                  | `1.2E-38` to `3.4E+38` | 6 digit|
+|                   | 'double'          | 64-bit                  | `2.3E-308` to `1.7E+308` | 15 digit |
+|                   | 'long double'     | 80-bit                  | `3.4E-4932` to `1.1E+4932` | 19 digit |
 
 
 
