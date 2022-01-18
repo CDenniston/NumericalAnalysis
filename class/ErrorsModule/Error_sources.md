@@ -1,10 +1,6 @@
-(page_topic1)=
-Numerical Analysis
+(page_topic2)=
+Error Sources
 =======================
-
-People often describe *Numerical Analysis* as being "as much an art as a science".  What they appear to mean by this is that while the results clearly appear to be valuable, they are not altogther sure of how the "artist" decided on the process by which these results were derived, or even the sanity of said "artist's" thought process.  In this course we will try to make these processes clearer and put them on a solid footing.  However, it is hard to deny that mastery of Numberical Analysis does require a certain amount of intuition.  The best, and really only, way to build this intuition is by using the concepts we will learn about in practical, hands-on problems.
-
-What makes *Numerical Analysis* different from fields such as computer animation is that we use *analysis* to ensure that our answer does not just "look right", but actually is in some quantitative way "close" to the exact result.  In fact, it is ideally the exact result of a *nearby* problem.  This requirement of a quantitative analysis of our errors necessitates that we first define a way to measure errors and where they come from, which is the subject of this first chapter.
 
 ## Sources of Errors in Scientific Computing
 
@@ -39,34 +35,3 @@ If $p^*$ is an approximation to $p$, then:
 
 The advantage of the relative error is that it is scale invariant.  For example, if you measure the length of a pencil with a ruler to be $16$ cm with an absolute error of $0.5$ mm.  This absolute error depends on the unit of measurment.  If you measure in nm, then it is huge.  If you measure in parsecs, it is miniscule.  However, the relative error is $0.003$ independent of the units of measurement.  Note that the formula above actually says the realtive error is $0.003125$, but we typically only quote errors to one significant digit.
 
-## Truncation Error in Taylor's series
-
-To illustrate the concept of a *truncation* error it is helpful to recall Taylor's theorem from first year calculus:
-
-
-
-```{tip}
-I have added an assignment called "Introduction to Mastering Physics" to help familiarize you with the interface. It is due, but there are no marks associated with it.
-```
-
-## Online polls using Sli.do
-
-Event Code: Physics111
-
-<iframe src="https://app.sli.do/event/lk89xpvr" width="500px" height="700px"></iframe>
-
-## Math Diagnostic
-
-```{tip}
-I have added an assignment called "Introduction to Mastering Physics" to help familiarize you with the interface. It is due, but there are no marks associated with it.
-```
-
-## Example videos you should expect to see starting next week
-
-<div class="container youtube">
-<iframe class="responsive-iframe" src="https://www.youtube-nocookie.com/embed/yBMeYW8Nm_s" frameborder="0" allow="accelerometer; autoplay="0"; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-</div>
-
-<div class="container youtube">
-<iframe class="responsive-iframe" src="https://www.youtube-nocookie.com/embed/OoO5d5P0Jn4" frameborder="0" allow="accelerometer; autoplay="0"; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-</div>

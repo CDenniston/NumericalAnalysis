@@ -1,20 +1,13 @@
 format: jb-book
 root: about/syllabus
 parts:
-- caption: Part 1 - Kinematics
+- caption: Part 1 - Errors in Scientific Computing
   chapters:
-  - file: class/week01/week01_summary
-    title: Week 1 - Introductions!
-  - file: class/week02/week02_summary
-    title: Week 2 - Chapter 2
+  - file: class/ErrorsModule/Errors_summary
+    title: Error Sources
     sections:
-      - file: class/week02/readings
-      - file: class/week02/videos
-      - file: class/week02/homework
-      - file: class/week02/lecture
-      - file: class/week02/test
-      - file: class/week02/lab
-      - file: class/week02/learninglogs
+      - file: class/ErrorsModule/Error_sources
+      - file: class/ErrorsModule/
   - file: class/week03/week03_summary
     title: Week 3 - Chapter 3
     sections:
