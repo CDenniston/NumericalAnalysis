@@ -49,6 +49,8 @@
     <script async="async" kind="dokieli" src="https://dokie.li/scripts/dokieli.js"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
     <script src="../../_static/sphinx-book-theme.d59cb220de22ca1c485ebbdc042f0030.js"></script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
     <script async="async" src="https://unpkg.com/thebe@0.5.1/lib/index.js"></script>
     <script>
         const thebe_selector = ".thebe,.cell"
@@ -751,6 +753,24 @@
         <!-- Table of contents -->
         <div class="d-none d-md-block col-md-2 bd-toc show noprint">
             
+            <div class="tocsection onthispage pt-5 pb-3">
+                <i class="fas fa-list"></i> Contents
+            </div>
+            <nav id="bd-toc-nav" aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#taylor-s-theorem">
+   Taylor’s Theorem
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#example">
+   Example
+  </a>
+ </li>
+</ul>
+
+            </nav>
         </div>
     </div>
 </div>
@@ -763,6 +783,24 @@
                 <div id="print-main-content">
                     <div id="jb-print-toc">
                         
+                        <div>
+                            <h2> Contents </h2>
+                        </div>
+                        <nav aria-label="Page">
+                            <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#taylor-s-theorem">
+   Taylor’s Theorem
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#example">
+   Example
+  </a>
+ </li>
+</ul>
+
+                        </nav>
                     </div>
                 </div>
             </div>
@@ -772,6 +810,30 @@
   <div class="section" id="truncation-error-in-taylor-s-series">
 <h1>Truncation Error in Taylor’s series<a class="headerlink" href="#truncation-error-in-taylor-s-series" title="Permalink to this headline">¶</a></h1>
 <p>To illustrate the concept of a <em>truncation</em> error it is helpful to recall Taylor’s theorem from first year calculus:</p>
+<div class="section" id="taylor-s-theorem">
+<h2>Taylor’s Theorem<a class="headerlink" href="#taylor-s-theorem" title="Permalink to this headline">¶</a></h2>
+<p>Suppose we have a function <span class="math notranslate nohighlight">\(f\in C^n[a,b]\)</span>  (i.e. <span class="math notranslate nohighlight">\(f\)</span> is <span class="math notranslate nohighlight">\(n\)</span> times continuously differentiable), that <span class="math notranslate nohighlight">\(f^{(n+1)}\)</span> exists on <span class="math notranslate nohighlight">\([a,b]\)</span> and <span class="math notranslate nohighlight">\(x_0\in [a,b]\)</span>.  Then for <span class="math notranslate nohighlight">\(x\in [a,b]\)</span> we have
+$<span class="math notranslate nohighlight">\(f(x)=f(x_0)+f'(x_0)(x-x_0)+\frac{f''(x_0)}{2}(x-x_0)^2+ ... + \frac{f^{(n)}(x_0)}{n!}(x-x_0)^n  + R_n(x,x_0),\)</span><span class="math notranslate nohighlight">\(
+provided \)</span>R_n\rightarrow 0<span class="math notranslate nohighlight">\( as \)</span>n\rightarrow \infty<span class="math notranslate nohighlight">\(, where the *truncation error* (from truncating the series at the \)</span>n<span class="math notranslate nohighlight">\('th term is
+\)</span><span class="math notranslate nohighlight">\(R_n(x,x_0) = \frac{f^{(n+1)}(\xi)}{(n+1)!}(x-x_0)^{n+1},\)</span><span class="math notranslate nohighlight">\(
+for some \)</span>\xi \in [x_0,x]$.</p>
+<p>Note that</p>
+<ul class="simple">
+<li><p><span class="math notranslate nohighlight">\(R_n\)</span> could be positive or negative so the absolute error, <span class="math notranslate nohighlight">\(|R_n|\)</span> is usually what one would quote for the error.</p></li>
+<li><p>we do not usually know what <span class="math notranslate nohighlight">\(\xi\)</span> is, other than it is in <span class="math notranslate nohighlight">\((x_0,x)\)</span>.  However, if we can guess <span class="math notranslate nohighlight">\(max|f^{(n+1)}(x)|\)</span> on <span class="math notranslate nohighlight">\([a,b]\)</span> then we can bound the absolute error.</p></li>
+</ul>
+</div>
+<div class="section" id="example">
+<h2>Example<a class="headerlink" href="#example" title="Permalink to this headline">¶</a></h2>
+<p>Let’s construct the Taylor series and bound the truncation error for the function <span class="math notranslate nohighlight">\(f(x)=1/(1+x)\)</span> about <span class="math notranslate nohighlight">\(x_0=0\)</span>.  First note that <span class="math notranslate nohighlight">\(f^{(n)}(x)=\frac{(-1)^n}{(1+x)^{n+1}}\)</span>.  So, using Taylor’s theorem, we see that
+$<span class="math notranslate nohighlight">\(\frac{1}{1+x} = 1 - x + x^2 - x^3 + ... + (-1)^n x^n + R_n,\)</span><span class="math notranslate nohighlight">\(
+and in this case the truncation error is
+\)</span><span class="math notranslate nohighlight">\( R_n(x,0) = \frac{(-1)^{n+1}x^{n+1}}{(1+\xi)^{n+2}}.\)</span>$
+To bound the truncation (absolute) error, we need to consider a few points:</p>
+<ul class="simple">
+<li><p>We need an interval over which we are considering the Taylor series.  In this case the series only converges for <span class="math notranslate nohighlight">\(|x|&lt;1\)</span> so let’s assume <span class="math notranslate nohighlight">\(x \in [0,1)\)</span> (i.e. the <span class="math notranslate nohighlight">\(a\)</span> and <span class="math notranslate nohighlight">\(b\)</span> in Taylor’s theorem will be taken to be <span class="math notranslate nohighlight">\(a=0\)</span> and <span class="math notranslate nohighlight">\(b=1\)</span>).</p></li>
+<li><p>It is ok if the bound in <span class="math notranslate nohighlight">\(|R_n|\)</span> depends on <span class="math notranslate nohighlight">\(x\)</span> as we will certainly know what <span class="math notranslate nohighlight">\(x\)</span> is.  However, the only thing we know about <span class="math notranslate nohighlight">\(\xi\)</span> is that it must be in the interval <span class="math notranslate nohighlight">\([0,x)\)</span>.  So to bound the error, we first must bound the deriviative <span class="math notranslate nohighlight">\(|f^{(n+1)}(x)|=|\frac{(-1)^(n+1)}{(1+x)^{n+1}}|=\frac{1}{(1+x)^{n+1}}\)</span>.  To get an idea of how to do this, a plot is always a good place to start.</p></li>
+</ul>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">matplotlib</span> <span class="kn">import</span> <span class="n">pyplot</span> <span class="k">as</span> <span class="n">plt</span>
@@ -788,8 +850,13 @@
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../_images/TaylorExample_1_0.png" src="../../_images/TaylorExample_1_0.png" />
+<img alt="../../_images/TaylorExample_2_0.png" src="../../_images/TaylorExample_2_0.png" />
 </div>
+</div>
+<p>From the plot it is clear that <span class="math notranslate nohighlight">\(\frac{1}{(1+x)^{n+1}}\)</span> is a monotonically decreasing function on the interval <span class="math notranslate nohighlight">\([0,1]\)</span> and that its maximum
+is at its leftmost endpoint, <span class="math notranslate nohighlight">\(x=1\)</span> where it takes the value 1 independent of <span class="math notranslate nohighlight">\(n\)</span>.
+Plugging this into the bound on the absolute error gives
+$<span class="math notranslate nohighlight">\( |R_n| \leq x^{n+1} \)</span>$.</p>
 </div>
 </div>
 
