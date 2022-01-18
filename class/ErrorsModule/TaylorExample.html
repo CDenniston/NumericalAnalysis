@@ -813,9 +813,9 @@
 <div class="section" id="taylor-s-theorem">
 <h2>Taylor’s Theorem<a class="headerlink" href="#taylor-s-theorem" title="Permalink to this headline">¶</a></h2>
 <p>Suppose we have a function <span class="math notranslate nohighlight">\(f\in C^n[a,b]\)</span>  (i.e. <span class="math notranslate nohighlight">\(f\)</span> is <span class="math notranslate nohighlight">\(n\)</span> times continuously differentiable), that <span class="math notranslate nohighlight">\(f^{(n+1)}\)</span> exists on <span class="math notranslate nohighlight">\([a,b]\)</span> and <span class="math notranslate nohighlight">\(x_0\in [a,b]\)</span>.  Then for <span class="math notranslate nohighlight">\(x\in [a,b]\)</span> we have
-$<span class="math notranslate nohighlight">\(f(x)=f(x_0)+f'(x_0)(x-x_0)+\frac{f''(x_0)}{2}(x-x_0)^2+ ... + \frac{f^{(n)}(x_0)}{n!}(x-x_0)^n  + R_n(x,x_0),\)</span><span class="math notranslate nohighlight">\(
-provided \)</span>R_n\rightarrow 0<span class="math notranslate nohighlight">\( as \)</span>n\rightarrow \infty<span class="math notranslate nohighlight">\(, where the *truncation error* (from truncating the series at the \)</span>n<span class="math notranslate nohighlight">\('th term is
-\)</span><span class="math notranslate nohighlight">\(R_n(x,x_0) = \frac{f^{(n+1)}(\xi)}{(n+1)!}(x-x_0)^{n+1},\)</span><span class="math notranslate nohighlight">\(
+$<span class="math notranslate nohighlight">\(f(x)=f(x_0)+f'(x_0)(x-x_0)+\frac{f''(x_0)}{2}(x-x_0)^2+ ... + \frac{f^{(n)}(x_0)}{n!}(x-x_0)^n  + R_n(x,x_0),\)</span>$</p>
+<p>provided <span class="math notranslate nohighlight">\(R_n\rightarrow 0\)</span> as <span class="math notranslate nohighlight">\(n\rightarrow \infty\)</span>, where the <em>truncation error</em> (from truncating the series at the <span class="math notranslate nohighlight">\(n\)</span>’th term is
+$<span class="math notranslate nohighlight">\(R_n(x,x_0) = \frac{f^{(n+1)}(\xi)}{(n+1)!}(x-x_0)^{n+1},\)</span><span class="math notranslate nohighlight">\(
 for some \)</span>\xi \in [x_0,x]$.</p>
 <p>Note that</p>
 <ul class="simple">
@@ -826,9 +826,9 @@ for some \)</span>\xi \in [x_0,x]$.</p>
 <div class="section" id="example">
 <h2>Example<a class="headerlink" href="#example" title="Permalink to this headline">¶</a></h2>
 <p>Let’s construct the Taylor series and bound the truncation error for the function <span class="math notranslate nohighlight">\(f(x)=1/(1+x)\)</span> about <span class="math notranslate nohighlight">\(x_0=0\)</span>.  First note that <span class="math notranslate nohighlight">\(f^{(n)}(x)=\frac{(-1)^n}{(1+x)^{n+1}}\)</span>.  So, using Taylor’s theorem, we see that
-$<span class="math notranslate nohighlight">\(\frac{1}{1+x} = 1 - x + x^2 - x^3 + ... + (-1)^n x^n + R_n,\)</span><span class="math notranslate nohighlight">\(
-and in this case the truncation error is
-\)</span><span class="math notranslate nohighlight">\( R_n(x,0) = \frac{(-1)^{n+1}x^{n+1}}{(1+\xi)^{n+2}}.\)</span>$
+$<span class="math notranslate nohighlight">\(\frac{1}{1+x} = 1 - x + x^2 - x^3 + ... + (-1)^n x^n + R_n,\)</span>$</p>
+<p>and in this case the truncation error is
+$<span class="math notranslate nohighlight">\( R_n(x,0) = \frac{(-1)^{n+1}x^{n+1}}{(1+\xi)^{n+2}}.\)</span>$
 To bound the truncation (absolute) error, we need to consider a few points:</p>
 <ul class="simple">
 <li><p>We need an interval over which we are considering the Taylor series.  In this case the series only converges for <span class="math notranslate nohighlight">\(|x|&lt;1\)</span> so let’s assume <span class="math notranslate nohighlight">\(x \in [0,1)\)</span> (i.e. the <span class="math notranslate nohighlight">\(a\)</span> and <span class="math notranslate nohighlight">\(b\)</span> in Taylor’s theorem will be taken to be <span class="math notranslate nohighlight">\(a=0\)</span> and <span class="math notranslate nohighlight">\(b=1\)</span>).</p></li>
