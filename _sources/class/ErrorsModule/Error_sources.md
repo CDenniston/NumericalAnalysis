@@ -1,12 +1,8 @@
-(page_topic2)=
-Error Sources
-=======================
-
 ## Sources of Errors in Scientific Computing
 
 Errors can come from a number of sources and it is helpful to catergorize these sources first:
 
-1. **Blunders**.  This includes *syntax errors* and *logic errors* in your code.  The first are relatively easy to find, especially if you use a compiled language such as C/C++ and learn how to read the error messages from the compiler/interpreter.  The second are much harder to find but should be your assumption when your code gives results that don't seem to make sense.
+1. **Blunders**.  This includes *syntax errors* and *logic errors* in your code.  The first are relatively easy to find, especially if you use a compiled language such as C/C++ and learn how to read the error messages from the compiler/interpreter.  The second are much harder to find but are problably most likely when your code gives results that don't seem to make sense.
 
 2. **Data errors from measurements**.  The old saying "garbage in = garbage out" is relevent here.  This is can be a significant problem in data sciences.  It includes "over-fitting" where the misguided researcher fits not just the signal in a measurement but also the noise.  Another example we will examine in more detail in the section on interpolation is the "Runge Phenomenon".  This is an error that arises from using polynomial interpolation on equally spaced data points that can cause huge errors near the boundaries of the fitted domain.  It is also something that is common in extrapolation which is rarely succesful just fitting data without an underlying model that you have strong reason to believe is valid outside the fitted domain.
 

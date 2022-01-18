@@ -5,7 +5,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Error Sources &#8212; Numerical Analysis</title>
+    <title>Sources of Errors in Scientific Computing &#8212; Numerical Analysis</title>
     
   <link href="../../_static/css/theme.css" rel="stylesheet">
   <link href="../../_static/css/index.ff1ffe594081f20da1ef19478df9384b.css" rel="stylesheet">
@@ -61,7 +61,7 @@
     <link rel="canonical" href="https://cdenniston.github.io/NumericalAnalysis/class/ErrorsModule/Error_sources.html" />
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
-    <link rel="next" title="Week 3 Summary" href="../week03/week03_summary.html" />
+    <link rel="next" title="Truncation Error in Taylor’s series" href="TaylorExample.html" />
     <link rel="prev" title="Numerical Analysis" href="Errors_summary.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="None">
@@ -124,7 +124,12 @@
   <ul class="current">
    <li class="toctree-l2 current active">
     <a class="current reference internal" href="#">
-     Error Sources
+     Sources of Errors in Scientific Computing
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="TaylorExample.html">
+     Truncation Error in Taylor’s series
     </a>
    </li>
   </ul>
@@ -733,12 +738,12 @@
             </div>
             <nav id="bd-toc-nav" aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#sources-of-errors-in-scientific-computing">
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#">
    Sources of Errors in Scientific Computing
   </a>
  </li>
- <li class="toc-h2 nav-item toc-entry">
+ <li class="toc-h1 nav-item toc-entry">
   <a class="reference internal nav-link" href="#quantifying-error">
    Quantifying Error
   </a>
@@ -753,7 +758,7 @@
         <div class="col-12 col-md-9 pl-md-3 pr-md-0">
             <!-- Table of contents that is only displayed when printing the page -->
             <div id="jb-print-docs-body" class="onlyprint">
-                <h1>Error Sources</h1>
+                <h1>Sources of Errors in Scientific Computing</h1>
                 <!-- Table of contents -->
                 <div id="print-main-content">
                     <div id="jb-print-toc">
@@ -763,12 +768,12 @@
                         </div>
                         <nav aria-label="Page">
                             <ul class="visible nav section-nav flex-column">
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#sources-of-errors-in-scientific-computing">
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#">
    Sources of Errors in Scientific Computing
   </a>
  </li>
- <li class="toc-h2 nav-item toc-entry">
+ <li class="toc-h1 nav-item toc-entry">
   <a class="reference internal nav-link" href="#quantifying-error">
    Quantifying Error
   </a>
@@ -782,13 +787,11 @@
             
               <div>
                 
-  <div class="tex2jax_ignore mathjax_ignore section" id="error-sources">
-<span id="page-topic2"></span><h1>Error Sources<a class="headerlink" href="#error-sources" title="Permalink to this headline">¶</a></h1>
-<div class="section" id="sources-of-errors-in-scientific-computing">
-<h2>Sources of Errors in Scientific Computing<a class="headerlink" href="#sources-of-errors-in-scientific-computing" title="Permalink to this headline">¶</a></h2>
+  <div class="section" id="sources-of-errors-in-scientific-computing">
+<h1>Sources of Errors in Scientific Computing<a class="headerlink" href="#sources-of-errors-in-scientific-computing" title="Permalink to this headline">¶</a></h1>
 <p>Errors can come from a number of sources and it is helpful to catergorize these sources first:</p>
 <ol class="simple">
-<li><p><strong>Blunders</strong>.  This includes <em>syntax errors</em> and <em>logic errors</em> in your code.  The first are relatively easy to find, especially if you use a compiled language such as C/C++ and learn how to read the error messages from the compiler/interpreter.  The second are much harder to find but should be your assumption when your code gives results that don’t seem to make sense.</p></li>
+<li><p><strong>Blunders</strong>.  This includes <em>syntax errors</em> and <em>logic errors</em> in your code.  The first are relatively easy to find, especially if you use a compiled language such as C/C++ and learn how to read the error messages from the compiler/interpreter.  The second are much harder to find but are problably most likely when your code gives results that don’t seem to make sense.</p></li>
 <li><p><strong>Data errors from measurements</strong>.  The old saying “garbage in = garbage out” is relevent here.  This is can be a significant problem in data sciences.  It includes “over-fitting” where the misguided researcher fits not just the signal in a measurement but also the noise.  Another example we will examine in more detail in the section on interpolation is the “Runge Phenomenon”.  This is an error that arises from using polynomial interpolation on equally spaced data points that can cause huge errors near the boundaries of the fitted domain.  It is also something that is common in extrapolation which is rarely succesful just fitting data without an underlying model that you have strong reason to believe is valid outside the fitted domain.</p></li>
 <li><p><strong>Truncation or discretization errors</strong>.  We will discuss this in more detail later in this chapter.  These arise from the fact that our models and algorithms usually only try to approximate the solution.</p></li>
 <li><p><strong>Finite precision arithmetic</strong>.  These stem from the fact that we cannot represent all possible real numbers on a computer.  This leads to issues of over/underflow and roundoff errors which we will explore in more detail in this chapter.</p></li>
@@ -799,14 +802,13 @@
 <p>The last three sources of error will be something we will cover in detail in this course and by completion you should be adept at avoiding them.</p>
 </div>
 <div class="section" id="quantifying-error">
-<h2>Quantifying Error<a class="headerlink" href="#quantifying-error" title="Permalink to this headline">¶</a></h2>
+<h1>Quantifying Error<a class="headerlink" href="#quantifying-error" title="Permalink to this headline">¶</a></h1>
 <p>To quantify error we need to first define what we mean.
 If <span class="math notranslate nohighlight">\(p^*\)</span> is an approximation to <span class="math notranslate nohighlight">\(p\)</span>, then:</p>
 <p>-the <em>absolute</em> error is <span class="math notranslate nohighlight">\(|p-p^*|\)</span>,</p>
 <p>-the <em>relative</em> error is <span class="math notranslate nohighlight">\(\frac{|p-p^*|}{|p|}\)</span>,</p>
 <p>-and the number of <em>significant digits</em> is <span class="math notranslate nohighlight">\(t\)</span> if <span class="math notranslate nohighlight">\(t\)</span> is the largest positive integer with <span class="math notranslate nohighlight">\(\frac{|p-p^*|}{|p|} \leq 5 \times 10^{-t}\)</span>.</p>
 <p>The advantage of the relative error is that it is scale invariant.  For example, if you measure the length of a pencil with a ruler to be <span class="math notranslate nohighlight">\(16\)</span> cm with an absolute error of <span class="math notranslate nohighlight">\(0.5\)</span> mm.  This absolute error depends on the unit of measurment.  If you measure in nm, then it is huge.  If you measure in parsecs, it is miniscule.  However, the relative error is <span class="math notranslate nohighlight">\(0.003\)</span> independent of the units of measurement.  Note that the formula above actually says the realtive error is <span class="math notranslate nohighlight">\(0.003125\)</span>, but we typically only quote errors to one significant digit.</p>
-</div>
 </div>
 
     <script type="text/x-thebe-config">
@@ -841,10 +843,10 @@ If <span class="math notranslate nohighlight">\(p^*\)</span> is an approximation
             <p class="prev-next-title">Numerical Analysis</p>
         </div>
     </a>
-    <a class='right-next' id="next-link" href="../week03/week03_summary.html" title="next page">
+    <a class='right-next' id="next-link" href="TaylorExample.html" title="next page">
     <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">Week 3 Summary</p>
+        <p class="prev-next-title">Truncation Error in Taylor’s series</p>
     </div>
     <i class="fas fa-angle-right"></i>
     </a>
