@@ -48,6 +48,8 @@ $$ \pm 0.\underbrace{d_1 d_2 d_3 d_4...}_\text{mantissa} \times \beta^n, $$
 
 where $\beta$ is the base and $n$ is the exponent.  To reduce the number of digits that need to be stored, we normalize (ie. adjust the exponent) so that $d_1 \neq 0$.  For a computer, we use base 2 (binary) so $\beta=2$ and we store numbers with a finite precision (fixed number of digits in the mantissa).
 
+Inside most computers, a 64-bit real number is stored as:
+
 ```{figure} ./img/IEEE_754_Double_Floating_Point_Format.svg  
 :alt: floating-point-format
 :width: 700px
@@ -55,3 +57,26 @@ where $\beta$ is the base and $n$ is the exponent.  To reduce the number of digi
 
 *<sub><sup>Based on [this source](https://commons.wikimedia.org/wiki/File:IEEE_754_Double_Floating_Point_Format.svg) </sup></sub>* 
 ```
+
+If we call this number $x$, it can be converted back to decimal via
+
+$$ x = (-1)^s(1+f)2^{c-1023} $$
+
+where $s$ is the sign bit, $c$ is the 11-bit exponent, and $f$ is the mantissa.  Note that nonzero numbers are normalized to that the first digit in the mantissa is nonzero.  In binary this means that this digit must be 1 so does not need to be stored,  thus explaining the addition of 1 to $f$ in the formula. There are a few special cases such as when $c=0$ and $f=0$ being a "signed" zero and $c$ having all digits 1 idicating infinity if $f=0$ and the imfamous NaN if $f\neq 0$.  That later (and $c=0$ with $f\neq 0$) is generally an indicator of overflow/underflow.  This allows your code a means for checking for over/underflow and take corrective action.  However, if you do not do this the code will likely continue running and crash at a later point when these values are used blindly.
+
+Of particular interest is the smallest value you can add to unity and get a computationally discernably different number.  This is called the [*machine epsilon*](https://en.wikipedia.org/wiki/Machine_epsilon) and its value for 64-bit floating point numbers is
+
+$$ \epsilon = 2^{-25} \approx 10^{-16}. $$
+
+In order to fully implement floating point numbers, one also needs to decide hwo intermediate results terminate the mantissa at 64 bits.  Two standard methods are
+
+- **chop** : just delete the extra digits
+- **round** : add 5 to the first "extra" digit and then chop.
+
+Note that the later is equivalent to the normal rounding operation.  The chop operation is faster and what you will often get if you compile your code with full "optimization".  However, the second is slightly more accurate and is part of the IEEE standard for floating point numbers.
+What this does mean, however, is that we have the potential to lose at least 1 binary digit or accuracy with each arithemtic operation.  In fact, you might be suprised to learn that you can actually lose many more than just one digit.  We will illustrate this with a few examples, along with some strategies to avoid the worst of these effects.
+
+While a good knowledge of binary numbers is crucial for designing hardware, it is not the goal here.  Here we want to understand how roundoff can be avoided or at least minimized.  Strategies for this are independent of the actual base used so we will illustrate our examples with an imaginary decimal computer with $k$ digits in the mantissa.  This separates the concept of avoiding roundoff errors from the vagaries on binary numbers.
+
+Our first example of the accumulation of roundoff effors comes from the [Vancouver stock exchange](https://en.wikipedia.org/wiki/Vancouver_Stock_Exchange) (now defunct, this wasn't its only problem).  In 1982 the exchange instituted a new index initialized to a value of 1000.000 (having 7 digits was part of the index's definition and is what is usually quoted for stock exchange indices.  At that time 32-bit floating point numbers were the !["state-of-the-art" at the time](./img/styleatthetime.jpg) and as we noted above these only have about 7 decimal digits.).  Note that the index is just the total value of the companies that trade on the exchange.  To provide continuous updates for the index you could recalcuate the index by adding up all the stock values for all companies at fixed intervals, or you could just add the net change of a given stock after each trade.  Mathematically both should give the same value, but the second should generally be much faster to compute as it only involves one stock.  For an individual operation the difference between a chop and a round is very small.  However, these computations in question were done in floating point using a chop (this predated the current IEEE standard) and were done about 3000 times each day.  Note that the chop operation biases results down.  The accumulated truncations resulted in an erroneous drop of around 25 points per month until it was noticed and corrected almost two years later .  This resulted in a Friday close of 524.811 being corrected to 1098.892 on Monday morning, a change of over 50% !.
+
