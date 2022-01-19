@@ -778,8 +778,8 @@
 <p>Round-off errors occur when we perform arithmetic operations with floating-point numbers. These errors can accumulate and become amplified by subsequent operations leading to catastrophic results.  A tragic example of this occured in 1991 in the “first” Gulf War when an <a class="reference external" href="https://www.gao.gov/assets/imtec-92-26.pdf">American Patriot missle failed to track an Iraqi Scud missle</a>.  Instead, it hit an army barracks, killing 26 people.  The cause was determined to be related to <a class="reference external" href="https://web.archive.org/web/20080801202418/http://www.mc.edu/campus/users/travis/syllabi/381/patriot.htm">measuring time in tenths of a second</a>.  <span class="math notranslate nohighlight">\(1/10\)</span> cannot be represented exactly in binary, and particular in the 24-bit floating point numbers used at the time.  A poorly designed algorithm that did not account for this consistently caused an accumulation of these errors leading to the disaster.</p>
 <p>To understand how these errors occur and accumulated, we first need to examine how floating-point numbers are stored.  We can represent any number in the form</p>
 <div class="math notranslate nohighlight">
-\[ \pm 0.\underbrace{d_1 d_2 d_3 d_4...}_\text{mantissa} \times \beta^n \]</div>
-<p>where we refer to <span class="math notranslate nohighlight">\(\beta\)</span> as the base and <span class="math notranslate nohighlight">\(n\)</span> as the exponent.</p>
+\[ \pm 0.\underbrace{d_1 d_2 d_3 d_4...}_\text{mantissa} \times \underbrace{\beta}_\text{base}^\overbrace{n}^text{exponent}. \]</div>
+<p>.</p>
 </div>
 </div>
 

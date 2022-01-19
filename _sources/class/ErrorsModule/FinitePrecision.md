@@ -44,6 +44,6 @@ Round-off errors occur when we perform arithmetic operations with floating-point
 
 To understand how these errors occur and accumulated, we first need to examine how floating-point numbers are stored.  We can represent any number in the form
 
-$$ \pm 0.\underbrace{d_1 d_2 d_3 d_4...}_\text{mantissa} \times \beta^n $$
+$$ \pm 0.\underbrace{d_1 d_2 d_3 d_4...}_\text{mantissa} \times \underbrace{\beta}_\text{base}^\overbrace{n}^text{exponent}. $$
 
-where we refer to $\beta$ as the base and $n$ as the exponent.
+.
