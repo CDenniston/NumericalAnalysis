@@ -6,27 +6,8 @@ parts:
     - file: class/ErrorsModule/Errors_summary
     - file: class/ErrorsModule/Error_sources
     - file: class/ErrorsModule/TaylorExample
-    - file: class/ErrorsModule/FinitePrecision 
-  - file: class/week03/week03_summary
-    title: Week 3 - Chapter 3
-    sections:
-      - file: class/week03/readings
-      - file: class/week03/videos
-      - file: class/week03/homework
-      - file: class/week03/lecture
-      - file: class/week03/test
-      - file: class/week03/lab
-      - file: class/week03/learninglogs
-  - file: class/week04/week04_summary
-    title: Week 4 - Chapter 4
-    sections:
-      - file: class/week04/readings
-      - file: class/week04/videos
-      - file: class/week04/homework
-      - file: class/week04/lecture
-      - file: class/week04/test
-      - file: class/week04/lab
-      - file: class/week04/learninglogs
+    - file: class/ErrorsModule/FinitePrecision
+
 - caption: Part 2 - Dynamics
   chapters:
   - file: class/week05/week05_summary
