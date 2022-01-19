@@ -86,7 +86,17 @@ While a good knowledge of binary numbers is crucial for designing hardware, it i
 
 Our first example of the accumulation of roundoff effors comes from the [Vancouver stock exchange](https://en.wikipedia.org/wiki/Vancouver_Stock_Exchange) (now defunct, this wasn't its only problem).  In 1982 the exchange instituted a new index initialized to a value of 1000.000 (having 7 digits was part of the index's definition and is what is usually quoted for stock exchange indices.  At that time 32-bit floating point numbers were the "state-of-the-art" at the time and as we noted above these only have about 7 decimal digits.).  Note that the index is just the total value of the companies that trade on the exchange.  To provide continuous updates for the index you could recalcuate the index by adding up all the stock values for all companies at fixed intervals, or you could just add the net change of a given stock after each trade.  Mathematically both should give the same value, but the second should generally be much faster to compute as it only involves one stock.  For an individual operation the difference between a chop and a round is very small.  However, these computations in question were done in floating point using a chop (this predated the current IEEE standard) and were done about 3000 times each day.  Note that the chop operation biases results down.  The accumulated truncations resulted in an erroneous drop of around 25 points per month until it was noticed and corrected almost two years later .  This resulted in a Friday close of 524.811 being corrected to 1098.892 on Monday morning, a change of over 50% !.
 
+### Example: Evaluating polynomials
 
+*Example*: To illustrate the affect of accumulation of roundoff errors let's imagine a decimal computer that does floating point arithemetic using a 3-digit chop.  Let's use this to compute the value of a polynomial written in the standard monomial basis:
+
+$$ f(x) = x^3-6x^2+3x-0.147 $$
+
+at the point $x=4.71$.  Using exact arithmetic
+
+$$ p=f(4.71) = -14.634489. $$
+
+Let $\mathcal{fl}(.)$ denote the 3 digit chop operation and note that this imaginary computer must do this recursively (i.e. after every arithemtic operation) so an expression like  $\mathcal{fl}(6 x^2)$ is evaluated as $\mathcal{fl}(6 \mathcal{fl}(x^2))$.
 
 
 
