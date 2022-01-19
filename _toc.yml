@@ -3,12 +3,10 @@ root: about/syllabus
 parts:
 - caption: Part 1 - Errors in Scientific Computing
   chapters:
-  - file: class/ErrorsModule/Errors_summary
-    title: Error Sources
-    sections:
-      - file: class/ErrorsModule/Error_sources
-      - file: class/ErrorsModule/TaylorExample
-      - file: class/ErrorsModule/FinitePrecision 
+    - file: class/ErrorsModule/Errors_summary
+    - file: class/ErrorsModule/Error_sources
+    - file: class/ErrorsModule/TaylorExample
+    - file: class/ErrorsModule/FinitePrecision 
   - file: class/week03/week03_summary
     title: Week 3 - Chapter 3
     sections:
