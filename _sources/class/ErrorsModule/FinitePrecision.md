@@ -44,15 +44,16 @@ Round-off errors occur when we perform arithmetic operations with floating-point
 
 To understand how these errors occur and accumulated, we first need to examine how floating-point numbers are stored.  We can represent any number in the form
 
-$$ \pm 0.\underbrace{d_1 d_2 d_3 d_4...}_\text{mantissa} \times \underbrace{\beta}_\text{base}^{\overbrace{n}^text{exponent}}. $$
+$$ \pm 0.\underbrace{d_1 d_2 d_3 d_4...}_\text{mantissa} \times {\underbrace{\beta}_\text{base}}^{n}, $$
 
-To reduce the number of digits that need to be stored, we normalize (ie. adjust the exponent) so that $d_1 \neq 0$.  For a computer, we use base 2 (binary) so $\beta=2$ and we store numbers with a finite precision (fixed number of digits in the mantissa).
+where $n$ is the exponent.  To reduce the number of digits that need to be stored, we normalize (ie. adjust the exponent) so that $d_1 \neq 0$.  For a computer, we use base 2 (binary) so $\beta=2$ and we store numbers with a finite precision (fixed number of digits in the mantissa).
 
 [![floating-point-format](img/IEEE_754_Double_Floating_Point_Format.svg)](Based on &lt;a href=&quot;//commons.wikimedia.org/w/index.php?title=User:Codekaizen&amp;amp;action=edit&amp;amp;redlink=1&quot; class=&quot;new&quot; title=&quot;User:Codekaizen (page does not exist)&quot;&gt;Codekaizen&lt;/a&gt; - &lt;span class=&quot;int-own-work&quot; lang=&quot;en&quot;&gt;Own work&lt;/span&gt;, <a href="https://creativecommons.org/licenses/by-sa/4.0" title="Creative Commons Attribution-Share Alike 4.0">CC BY-SA 4.0</a>, <a href="https://commons.wikimedia.org/w/index.php?curid=3595583">Link</a>)
 
-```{figure} ./img/IEEE_754_Double_Floating_Point_Format.svg
+```{figure} ./img/IEEE_754_Double_Floating_Point_Format.svg  
 :alt: floating-point-format
 :width: 700px
 :align: left
-*<sup><sup>Based on [this source](https://commons.wikimedia.org/wiki/File:IEEE_754_Double_Floating_Point_Format.svg#/media/File:IEEE_754_Double_Floating_Point_Format.svg) </sup></sub>* 
+
+*<sup><sup>Based on [this source](https://commons.wikimedia.org/wiki/File:IEEE_754_Double_Floating_Point_Format.svg) </sup></sub>* 
 ```
