@@ -779,7 +779,8 @@
 <p>To understand how these errors occur and accumulated, we first need to examine how floating-point numbers are stored.  We can represent any number in the form</p>
 <div class="math notranslate nohighlight">
 \[ \pm 0.\underbrace{d_1 d_2 d_3 d_4...}_\text{mantissa} \times \underbrace{\beta}_\text{base}^\overbrace{n}^text{exponent}. \]</div>
-<p>.</p>
+<p>To reduce the number of digits that need to be stored, we normalize (ie. adjust the exponent) so that <span class="math notranslate nohighlight">\(d_1 \neq 0\)</span>.  For a computer, we use base 2 (binary) so <span class="math notranslate nohighlight">\(\beta=2\)</span> and we store numbers with a finite precision (fixed number of digits in the mantissa).</p>
+<p>[<img alt="floating-point-format" src="class/ErrorsModule/img/IEEE_754_Double_Floating_Point_Format.svg" />](Based on &lt;a href=”<span class="xref myst">//commons.wikimedia.org/w/index.php?title=User:Codekaizen&amp;action=edit&amp;redlink=1</span>” class=”new” title=”User:Codekaizen (page does not exist)”&gt;Codekaizen&lt;/a&gt; - &lt;span class=”int-own-work” lang=”en”&gt;Own work&lt;/span&gt;, <a href="https://creativecommons.org/licenses/by-sa/4.0" title="Creative Commons Attribution-Share Alike 4.0">CC BY-SA 4.0</a>, <a href="https://commons.wikimedia.org/w/index.php?curid=3595583">Link</a>)</p>
 </div>
 </div>
 
