@@ -693,8 +693,16 @@
 \[ p^* = \mathcal{fl}(p(4.71)) = -14.0 \]</div>
 <p>Clearly we have lost a full digit of accuracy here (so only have 2 significant digits).  In this case, the result is not significantly improved using a rounding operation instead of a chop.  The question is:  Can we do any better or is this something we have to accept as part of not doing exact arithemtic?  The answer is that we can do better by rewriting the polynomial into a different, but mathematically equivalent form.  In this case, a nested multiplication:</p>
 <div class="math notranslate nohighlight">
-\[ \begin{align}\begin{aligned} \bar{p}(x) = ((x-6)x+3)x-0.147) $$.  \\It should not be too hard to see that $\bar{p}(x)$ is mathematically equivalent to our original polynomial $p(x)$.  If we evaluate this expression as written we get  \\$$ \bar{p}^* =  \mathcal{fl}(\bar{p}(4.71)) = -14.5 $$,  \\much closer to the exact result (and still retaining 3 significant digits).  Why?  It turns out that $\bar{p}(x)$ requires fewer arithmetic operations to compute than $p(x)$ and this results in a smaller accumulation of roundoff errors.    \\Let's generalize this to a generic polynomial in an [algorithm usually attributed to William Horner](https://en.wikipedia.org/wiki/Horner%27s_method#:~:text=In%20mathematics%20and%20computer%20science%2C%20Horner%27s%20method%20%28or,hundreds%20of%20years%20to%20Chinese%20and%20Persian%20mathematicians.).  There is evidence, however, that it is actually much older.\\**Horner's Algorithm** (a.k.a. &quot;nested multiplication&quot;)
-To evaluate the polynomial  \\$$p(x) = a_{n-1} x^{n-1} + a_{n-2} x^{n-2} + ... + a_1 x + a_0,\end{aligned}\end{align} \]</div>
+\[ \bar{p}(x) = ((x-6)x+3)x-0.147). \]</div>
+<p>It should not be too hard to see that <span class="math notranslate nohighlight">\(\bar{p}(x)\)</span> is mathematically equivalent to our original polynomial <span class="math notranslate nohighlight">\(p(x)\)</span>.  If we evaluate this expression as written we get</p>
+<div class="math notranslate nohighlight">
+\[ \bar{p}^* =  \mathcal{fl}(\bar{p}(4.71)) = -14.5, \]</div>
+<p>much closer to the exact result (and still retaining 3 significant digits).  Why?  It turns out that <span class="math notranslate nohighlight">\(\bar{p}(x)\)</span> requires fewer arithmetic operations to compute than <span class="math notranslate nohighlight">\(p(x)\)</span> and this results in a smaller accumulation of roundoff errors.</p>
+<p>Let’s generalize this to a generic polynomial in an <a class="reference external" href="https://en.wikipedia.org/wiki/Horner%27s_method#:~:text=In%20mathematics%20and%20computer%20science%2C%20Horner%27s%20method%20%28or,hundreds%20of%20years%20to%20Chinese%20and%20Persian%20mathematicians.">algorithm usually attributed to William Horner</a>.  There is evidence, however, that it is actually much older.</p>
+<p><strong>Horner’s Algorithm</strong> (a.k.a. “nested multiplication”)
+To evaluate the polynomial</p>
+<div class="math notranslate nohighlight">
+\[p(x) = a_{n-1} x^{n-1} + a_{n-2} x^{n-2} + ... + a_1 x + a_0,\]</div>
 <p>first rewrite it in the form:</p>
 <div class="math notranslate nohighlight">
 \[p(x) = ((...((a_{n-1} x + a_{n-2})x+a_{n-3})x+...)x+a_1)x + a_0.\]</div>
