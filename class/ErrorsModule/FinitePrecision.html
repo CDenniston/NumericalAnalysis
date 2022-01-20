@@ -61,7 +61,7 @@
     <link rel="canonical" href="https://cdenniston.github.io/NumericalAnalysis/class/ErrorsModule/FinitePrecision.html" />
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
-    <link rel="next" title="Week 5 Summary" href="../week05/week05_summary.html" />
+    <link rel="next" title="Example: Evaluating polynomials" href="HornersAlgorithm.html" />
     <link rel="prev" title="Truncation Error in Taylor’s series" href="TaylorExample.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="None">
@@ -130,6 +130,11 @@
  <li class="toctree-l1 current active">
   <a class="current reference internal" href="#">
    Finite Precision
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="HornersAlgorithm.html">
+   Example: Evaluating polynomials
   </a>
  </li>
 </ul>
@@ -657,11 +662,6 @@
    Round-off Errors
   </a>
  </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#example-evaluating-polynomials">
-   Example: Evaluating polynomials
-  </a>
- </li>
 </ul>
 
             </nav>
@@ -695,11 +695,6 @@
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#round-off-errors">
    Round-off Errors
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#example-evaluating-polynomials">
-   Example: Evaluating polynomials
   </a>
  </li>
 </ul>
@@ -813,16 +808,6 @@ What this does mean, however, is that we have the potential to lose at least 1 b
 <a class="reference internal image-reference" href="../../_images/styleatthetime.jpg"><img alt="the Style at the time" class="align-right" src="../../_images/styleatthetime.jpg" style="width: 200px;" /></a>
 <p>Our first example of the accumulation of roundoff effors comes from the <a class="reference external" href="https://en.wikipedia.org/wiki/Vancouver_Stock_Exchange">Vancouver stock exchange</a> (now defunct, this wasn’t its only problem).  In 1982 the exchange instituted a new index initialized to a value of 1000.000 (having 7 digits was part of the index’s definition and is what is usually quoted for stock exchange indices.  At that time 32-bit floating point numbers were the “state-of-the-art” at the time and as we noted above these only have about 7 decimal digits.).  Note that the index is just the total value of the companies that trade on the exchange.  To provide continuous updates for the index you could recalcuate the index by adding up all the stock values for all companies at fixed intervals, or you could just add the net change of a given stock after each trade.  Mathematically both should give the same value, but the second should generally be much faster to compute as it only involves one stock.  For an individual operation the difference between a chop and a round is very small.  However, these computations in question were done in floating point using a chop (this predated the current IEEE standard) and were done about 3000 times each day.  Note that the chop operation biases results down.  The accumulated truncations resulted in an erroneous drop of around 25 points per month until it was noticed and corrected almost two years later .  This resulted in a Friday close of 524.811 being corrected to 1098.892 on Monday morning, a change of over 50% !.</p>
 </div>
-<div class="section" id="example-evaluating-polynomials">
-<h2>Example: Evaluating polynomials<a class="headerlink" href="#example-evaluating-polynomials" title="Permalink to this headline">¶</a></h2>
-<p><em>Example</em>: To illustrate the affect of accumulation of roundoff errors let’s imagine a decimal computer that does floating point arithemetic using a 3-digit chop.  Let’s use this to compute the value of a polynomial written in the standard monomial basis:</p>
-<div class="math notranslate nohighlight">
-\[ f(x) = x^3-6x^2+3x-0.147 \]</div>
-<p>at the point <span class="math notranslate nohighlight">\(x=4.71\)</span>.  Using exact arithmetic</p>
-<div class="math notranslate nohighlight">
-\[ p=f(4.71) = -14.634489. \]</div>
-<p>Let <span class="math notranslate nohighlight">\(\mathcal{fl}(.)\)</span> denote the 3 digit chop operation and note that this imaginary computer must do this recursively (i.e. after every arithemtic operation) so an expression like  <span class="math notranslate nohighlight">\(\mathcal{fl}(6 x^2)\)</span> is evaluated as <span class="math notranslate nohighlight">\(\mathcal{fl}(6 \mathcal{fl}(x^2))\)</span>.</p>
-</div>
 </div>
 
     <script type="text/x-thebe-config">
@@ -857,10 +842,10 @@ What this does mean, however, is that we have the potential to lose at least 1 b
             <p class="prev-next-title">Truncation Error in Taylor’s series</p>
         </div>
     </a>
-    <a class='right-next' id="next-link" href="../week05/week05_summary.html" title="next page">
+    <a class='right-next' id="next-link" href="HornersAlgorithm.html" title="next page">
     <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">Week 5 Summary</p>
+        <p class="prev-next-title">Example: Evaluating polynomials</p>
     </div>
     <i class="fas fa-angle-right"></i>
     </a>

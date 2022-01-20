@@ -5,7 +5,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Week 10 Summary &#8212; Numerical Analysis</title>
+    <title>Example: Evaluating polynomials &#8212; Numerical Analysis</title>
     
   <link href="../../_static/css/theme.css" rel="stylesheet">
   <link href="../../_static/css/index.ff1ffe594081f20da1ef19478df9384b.css" rel="stylesheet">
@@ -49,6 +49,8 @@
     <script async="async" kind="dokieli" src="https://dokie.li/scripts/dokieli.js"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
     <script src="../../_static/sphinx-book-theme.d59cb220de22ca1c485ebbdc042f0030.js"></script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
     <script async="async" src="https://unpkg.com/thebe@0.5.1/lib/index.js"></script>
     <script>
         const thebe_selector = ".thebe,.cell"
@@ -56,11 +58,11 @@
         const thebe_selector_output = ".output,.cell_output"
     </script>
     <script async="async" src="../../_static/sphinx-thebe.js"></script>
-    <link rel="canonical" href="https://cdenniston.github.io/NumericalAnalysis/class/week10/week10_summary.html" />
+    <link rel="canonical" href="https://cdenniston.github.io/NumericalAnalysis/class/ErrorsModule/HornersAlgorithm.html" />
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
-    <link rel="next" title="Readings" href="readings.html" />
-    <link rel="prev" title="Learning Logs" href="../week09/learninglogs.html" />
+    <link rel="next" title="Week 5 Summary" href="../week05/week05_summary.html" />
+    <link rel="prev" title="Finite Precision" href="FinitePrecision.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="None">
     
@@ -109,29 +111,29 @@
   Part 1 - Errors in Scientific Computing
  </span>
 </p>
-<ul class="nav bd-sidenav">
+<ul class="current nav bd-sidenav">
  <li class="toctree-l1">
-  <a class="reference internal" href="../ErrorsModule/Errors_summary.html">
+  <a class="reference internal" href="Errors_summary.html">
    Numerical Analysis
   </a>
  </li>
  <li class="toctree-l1">
-  <a class="reference internal" href="../ErrorsModule/Error_sources.html">
+  <a class="reference internal" href="Error_sources.html">
    Sources of Errors in Scientific Computing
   </a>
  </li>
  <li class="toctree-l1">
-  <a class="reference internal" href="../ErrorsModule/TaylorExample.html">
+  <a class="reference internal" href="TaylorExample.html">
    Truncation Error in Taylor’s series
   </a>
  </li>
  <li class="toctree-l1">
-  <a class="reference internal" href="../ErrorsModule/FinitePrecision.html">
+  <a class="reference internal" href="FinitePrecision.html">
    Finite Precision
   </a>
  </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="../ErrorsModule/HornersAlgorithm.html">
+ <li class="toctree-l1 current active">
+  <a class="current reference internal" href="#">
    Example: Evaluating polynomials
   </a>
  </li>
@@ -341,49 +343,49 @@
   Part 3 - Energy &amp; Momentum
  </span>
 </p>
-<ul class="current nav bd-sidenav">
- <li class="toctree-l1 current active has-children">
-  <a class="current reference internal" href="#">
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../week10/week10_summary.html">
    Week 10 - Chapter 9
   </a>
-  <input checked="" class="toctree-checkbox" id="toctree-checkbox-5" name="toctree-checkbox-5" type="checkbox"/>
+  <input class="toctree-checkbox" id="toctree-checkbox-5" name="toctree-checkbox-5" type="checkbox"/>
   <label for="toctree-checkbox-5">
    <i class="fas fa-chevron-down">
    </i>
   </label>
   <ul>
    <li class="toctree-l2">
-    <a class="reference internal" href="readings.html">
+    <a class="reference internal" href="../week10/readings.html">
      Readings
     </a>
    </li>
    <li class="toctree-l2">
-    <a class="reference internal" href="videos.html">
+    <a class="reference internal" href="../week10/videos.html">
      Videos
     </a>
    </li>
    <li class="toctree-l2">
-    <a class="reference internal" href="homework.html">
+    <a class="reference internal" href="../week10/homework.html">
      Homework
     </a>
    </li>
    <li class="toctree-l2">
-    <a class="reference internal" href="lecture.html">
+    <a class="reference internal" href="../week10/lecture.html">
      Lecture
     </a>
    </li>
    <li class="toctree-l2">
-    <a class="reference internal" href="test.html">
+    <a class="reference internal" href="../week10/test.html">
      Test
     </a>
    </li>
    <li class="toctree-l2">
-    <a class="reference internal" href="lab.html">
+    <a class="reference internal" href="../week10/lab.html">
      Lab
     </a>
    </li>
    <li class="toctree-l2">
-    <a class="reference internal" href="learninglogs.html">
+    <a class="reference internal" href="../week10/learninglogs.html">
      Learning Logs
     </a>
    </li>
@@ -615,9 +617,9 @@
         <!-- ipynb file if we had a myst markdown file -->
         
         <!-- Download raw file -->
-        <a class="dropdown-buttons" href="../../_sources/class/week10/week10_summary.md"><button type="button"
+        <a class="dropdown-buttons" href="../../_sources/class/ErrorsModule/HornersAlgorithm.ipynb"><button type="button"
                 class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
-                data-placement="left">.md</button></a>
+                data-placement="left">.ipynb</button></a>
         <!-- Download PDF via print -->
         <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
                 onclick="printPdf(this)" data-toggle="tooltip" data-placement="left">.pdf</button>
@@ -635,24 +637,31 @@
 
             <!-- Launch buttons -->
 
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Launch interactive content"><i class="fas fa-rocket"></i></button>
+    <div class="dropdown-buttons">
+        
+        <a class="binder-button" href="https://mybinder.org/v2/gh/firasm/jupyterbook_course_template/master?urlpath=lab/tree/class/ErrorsModule/HornersAlgorithm.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Launch Binder" data-toggle="tooltip"
+                data-placement="left"><img class="binder-button-logo"
+                    src="../../_static/images/logo_binder.svg"
+                    alt="Interact on binder">Binder</button></a>
+        
+        
+        
+        <button type="button" class="btn btn-secondary topbarbtn"
+            onclick="initThebeSBT()" title="Launch Thebe" data-toggle="tooltip" data-placement="left"><i
+                class="fas fa-play"></i><span style="margin-left: .4em;">Live Code</span></button>
+        
+    </div>
+</div>
+
         </div>
 
         <!-- Table of contents -->
         <div class="d-none d-md-block col-md-2 bd-toc show noprint">
             
-            <div class="tocsection onthispage pt-5 pb-3">
-                <i class="fas fa-list"></i> Contents
-            </div>
-            <nav id="bd-toc-nav" aria-label="Page">
-                <ul class="visible nav section-nav flex-column">
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#list-of-things-to-do-this-week">
-   List of things to do this week
-  </a>
- </li>
-</ul>
-
-            </nav>
         </div>
     </div>
 </div>
@@ -660,46 +669,73 @@
         <div class="col-12 col-md-9 pl-md-3 pr-md-0">
             <!-- Table of contents that is only displayed when printing the page -->
             <div id="jb-print-docs-body" class="onlyprint">
-                <h1>Week 10 Summary</h1>
+                <h1>Example: Evaluating polynomials</h1>
                 <!-- Table of contents -->
                 <div id="print-main-content">
                     <div id="jb-print-toc">
                         
-                        <div>
-                            <h2> Contents </h2>
-                        </div>
-                        <nav aria-label="Page">
-                            <ul class="visible nav section-nav flex-column">
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#list-of-things-to-do-this-week">
-   List of things to do this week
-  </a>
- </li>
-</ul>
-
-                        </nav>
                     </div>
                 </div>
             </div>
             
               <div>
                 
-  <div class="tex2jax_ignore mathjax_ignore section" id="week-10-summary">
-<span id="page-topic10"></span><h1>Week 10 Summary<a class="headerlink" href="#week-10-summary" title="Permalink to this headline">¶</a></h1>
-<div class="section" id="list-of-things-to-do-this-week">
-<h2>List of things to do this week<a class="headerlink" href="#list-of-things-to-do-this-week" title="Permalink to this headline">¶</a></h2>
-<p>Below is a list of things you need to do this week, links to where you can do them, as well as roughly the order you should do it.
-Note that these are just SUGGESTIONS and you are by no means required to them this way.
-I have put the labs at the end, but if your lab section is earlier in the week, you may want to shift things around to accommodate that.</p>
-<p><label><input type="checkbox" id="week10_task1" class="box"> <a class="reference internal" href="readings.html"><span class="doc std std-doc"><strong>Read/skim the assigned textbook chapter</strong></span></a></input></label></p>
-<p><label><input type="checkbox" id="week10_task2" class="box"> <a class="reference internal" href="videos.html"><span class="doc std std-doc"><strong>Watch the lecture videos</strong></span></a> </input></label></p>
-<p><label><input type="checkbox" id="week10_task3" class="box"> <a class="reference internal" href="homework.html"><span class="doc std std-doc"><strong>Complete the MasteringPhysics homework</strong></span></a> </input></label></p>
-<p><label><input type="checkbox" id="week10_task4" class="box"> <a class="reference external" href="https://canvas.ubc.ca/courses/63995/external_tools/5284"><strong>Attend yor tutorial section to get help</strong></a> </input></label></p>
-<p><label><input type="checkbox" id="week10_task5" class="box"> <a class="reference internal" href="test.html"><span class="doc std std-doc"><strong>Write bonus test 01 (60 mins)</strong></span></a> </input></label></p>
-<p><label><input type="checkbox" id="week10_task6" class="box"> <a class="reference internal" href="lab.html"><span class="doc std std-doc"><strong>Complete the lab</strong></span></a> </input></label></p>
-<p><label><input type="checkbox" id="week10_task7" class="box"> <a class="reference internal" href="learninglogs.html"><span class="doc std std-doc"><strong>Complete your Learning Log assignment</strong></span></a> </input></label></p>
+  <div class="section" id="example-evaluating-polynomials">
+<h1>Example: Evaluating polynomials<a class="headerlink" href="#example-evaluating-polynomials" title="Permalink to this headline">¶</a></h1>
+<p><em>Example</em>: To illustrate the affect of accumulation of roundoff errors let’s imagine a decimal computer that does floating point arithemetic using a 3-digit chop.  Let’s use this to compute the value of a polynomial written in the standard monomial basis:</p>
+<div class="math notranslate nohighlight">
+\[ p(x) = x^3-6x^2+3x-0.147 \]</div>
+<p>at the point <span class="math notranslate nohighlight">\(x=4.71\)</span>.  Using exact arithmetic</p>
+<div class="math notranslate nohighlight">
+\[ p(4.71) = -14.634489. \]</div>
+<p>Let <span class="math notranslate nohighlight">\(\mathcal{fl}(.)\)</span> denote the 3 digit chop operation and note that this imaginary computer must do this recursively (i.e. after every arithemtic operation) so an expression like  <span class="math notranslate nohighlight">\(\mathcal{fl}(6 x^2)\)</span> is evaluated as <span class="math notranslate nohighlight">\(\mathcal{fl}(6 \mathcal{fl}(x^2))\)</span>.  In particular, <span class="math notranslate nohighlight">\( \mathcal{fl}(4.71^2)=\mathcal{fl}(22.1841)=22.1\)</span> and <span class="math notranslate nohighlight">\(\mathcal{fl}(6 \mathcal{fl}(4.71^2))=\mathcal{fl}(6\times 22.1)=\mathcal{fl}(132.6)=132\)</span>.  Doing this for every arithmetic operation leads to</p>
+<div class="math notranslate nohighlight">
+\[ p^* = \mathcal{fl}(p(4.71)) = -14.0 \]</div>
+<p>Clearly we have lost a full digit of accuracy here (so only have 2 significant digits).  In this case, the result is not significantly improved using a rounding operation instead of a chop.  The question is:  Can we do any better or is this something we have to accept as part of not doing exact arithemtic?  The answer is that we can do better by rewriting the polynomial into a different, but mathematically equivalent form.  In this case, a nested multiplication:</p>
+<div class="math notranslate nohighlight">
+\[ \begin{align}\begin{aligned} \bar{p}(x) = ((x-6)x+3)x-0.147) $$.\\It should not be too hard to see that $\bar{p}(x)$ is mathematically equivalent to our original polynomial $p(x)$.  If we evaluate this expression as written we get\\$$ \bar{p}^* =  \mathcal{fl}(\bar{p}(4.71)) = -14.5 $$,\\much closer to the exact result (and still retaining 3 significant digits).  Why?  It turns out that $\bar{p}(x)$ requires fewer arithmetic operations to compute than $p(x)$ and this results in a smaller accumulation of roundoff errors.  \\Let's generalize this to a generic polynomial in an [algorithm usually attributed to William Horner](https://en.wikipedia.org/wiki/Horner%27s_method#:~:text=In%20mathematics%20and%20computer%20science%2C%20Horner%27s%20method%20%28or,hundreds%20of%20years%20to%20Chinese%20and%20Persian%20mathematicians.).  There is evidence, however, that it is actually much older.\\**Horner's Algorithm** (a.k.a. &quot;nested multiplication&quot;)
+To evaluate the polynomial\\$$p(x) = a_{n-1} x^{n-1} + a_{n-2} x^{n-2} + ... + a_1 x + a_0,\end{aligned}\end{align} \]</div>
+<p>first rewrite it in the form:</p>
+<div class="math notranslate nohighlight">
+\[p(x) = ((...((a_{n-1} x + a_{n-2})x+a_{n-3})x+...)x+a_1)x + a_0.\]</div>
+<p>Note that, without loss of generality and in anticipation of coding this up, the coefficiencts have been labelled from <span class="math notranslate nohighlight">\(0\)</span> to <span class="math notranslate nohighlight">\(n-1\)</span> rather than <span class="math notranslate nohighlight">\(0\)</span> to <span class="math notranslate nohighlight">\(n\)</span>.  This can now be easily turned into a short python code as follows.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Use Horner&#39;s algorithm to compute and return the polynomial</span>
+<span class="c1">#    p(x) = a[0] + a[1] x^1 + a[2] x^2 + ... + a[n-1] x^(n-1)</span>
+<span class="c1"># evaluated at x.</span>
+<span class="k">def</span> <span class="nf">horners</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">x</span><span class="p">):</span>
+    <span class="n">result</span> <span class="o">=</span> <span class="n">poly</span><span class="p">[</span><span class="nb">len</span><span class="p">(</span><span class="n">a</span><span class="p">)</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">a</span><span class="p">)</span><span class="o">-</span><span class="mi">2</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">):</span>
+        <span class="n">result</span> <span class="o">=</span> <span class="n">result</span><span class="o">*</span><span class="n">x</span> <span class="o">+</span> <span class="n">a</span><span class="p">[</span><span class="n">i</span><span class="p">]</span>
+    <span class="k">return</span> <span class="n">result</span>
+ 
+<span class="c1"># Let us the horners function defined above to evaluate the polynomial from the example above</span>
+<span class="n">coefficients</span> <span class="o">=</span> <span class="p">[</span><span class="o">-</span><span class="mf">0.147</span><span class="p">,</span> <span class="mf">3.</span><span class="p">,</span> <span class="o">-</span><span class="mf">6.</span><span class="p">,</span> <span class="mf">1.</span><span class="p">]</span>
+<span class="n">x</span> <span class="o">=</span> <span class="mf">4.71</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;p(x) = &quot;</span><span class="p">,</span> <span class="n">horners</span><span class="p">(</span><span class="n">coefficients</span><span class="p">,</span> <span class="n">x</span><span class="p">))</span>
+</pre></div>
 </div>
-<div class="toctree-wrapper compound">
+</div>
+<div class="cell_output docutils container">
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">NameError</span><span class="g g-Whitespace">                                 </span>Traceback (most recent call last)
+<span class="n">Input</span> <span class="n">In</span> <span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
+<span class="g g-Whitespace">     </span><span class="mi">11</span> <span class="n">coefficients</span> <span class="o">=</span> <span class="p">[</span><span class="o">-</span><span class="mf">0.147</span><span class="p">,</span> <span class="mf">3.</span><span class="p">,</span> <span class="o">-</span><span class="mf">6.</span><span class="p">,</span> <span class="mf">1.</span><span class="p">]</span>
+<span class="g g-Whitespace">     </span><span class="mi">12</span> <span class="n">x</span> <span class="o">=</span> <span class="mf">4.71</span>
+<span class="ne">---&gt; </span><span class="mi">14</span> <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;p(x) = &quot;</span><span class="p">,</span> <span class="n">horners</span><span class="p">(</span><span class="n">coefficients</span><span class="p">,</span> <span class="n">x</span><span class="p">))</span>
+
+<span class="nn">Input In [1],</span> in <span class="ni">horners</span><span class="nt">(a, x)</span>
+<span class="g g-Whitespace">      </span><span class="mi">4</span> <span class="k">def</span> <span class="nf">horners</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">x</span><span class="p">):</span>
+<span class="ne">----&gt; </span><span class="mi">5</span>     <span class="n">result</span> <span class="o">=</span> <span class="n">poly</span><span class="p">[</span><span class="nb">len</span><span class="p">(</span><span class="n">a</span><span class="p">)</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
+<span class="g g-Whitespace">      </span><span class="mi">6</span>     <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">a</span><span class="p">)</span><span class="o">-</span><span class="mi">2</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">):</span>
+<span class="g g-Whitespace">      </span><span class="mi">7</span>         <span class="n">result</span> <span class="o">=</span> <span class="n">result</span><span class="o">*</span><span class="n">x</span> <span class="o">+</span> <span class="n">a</span><span class="p">[</span><span class="n">i</span><span class="p">]</span>
+
+<span class="ne">NameError</span>: name &#39;poly&#39; is not defined
+</pre></div>
+</div>
+</div>
 </div>
 </div>
 
@@ -716,7 +752,7 @@ I have put the labs at the end, but if your lab section is earlier in the week, 
         },
         kernelOptions: {
             kernelName: "python3",
-            path: "./class/week10"
+            path: "./class/ErrorsModule"
         },
         predefinedOutput: true
     }
@@ -728,17 +764,17 @@ I have put the labs at the end, but if your lab section is earlier in the week, 
             
                 <!-- Previous / next buttons -->
 <div class='prev-next-area'> 
-    <a class='left-prev' id="prev-link" href="../week09/learninglogs.html" title="previous page">
+    <a class='left-prev' id="prev-link" href="FinitePrecision.html" title="previous page">
         <i class="fas fa-angle-left"></i>
         <div class="prev-next-info">
             <p class="prev-next-subtitle">previous</p>
-            <p class="prev-next-title">Learning Logs</p>
+            <p class="prev-next-title">Finite Precision</p>
         </div>
     </a>
-    <a class='right-next' id="next-link" href="readings.html" title="next page">
+    <a class='right-next' id="next-link" href="../week05/week05_summary.html" title="next page">
     <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">Readings</p>
+        <p class="prev-next-title">Week 5 Summary</p>
     </div>
     <i class="fas fa-angle-right"></i>
     </a>
