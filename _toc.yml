@@ -7,7 +7,7 @@ parts:
     - file: class/ErrorsModule/Error_sources
     - file: class/ErrorsModule/TaylorExample
     - file: class/ErrorsModule/FinitePrecision
-
+    - file: class/ErrorsModule/HornersAlgorithm
 - caption: Part 2 - Dynamics
   chapters:
   - file: class/week05/week05_summary
