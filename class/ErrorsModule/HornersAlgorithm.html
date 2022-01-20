@@ -718,7 +718,7 @@ To evaluate the polynomial</p>
         <span class="n">result</span> <span class="o">=</span> <span class="n">result</span><span class="o">*</span><span class="n">x</span> <span class="o">+</span> <span class="n">a</span><span class="p">[</span><span class="n">i</span><span class="p">]</span>
     <span class="k">return</span> <span class="n">result</span>
  
-<span class="c1"># Let us the horners function defined above to evaluate the polynomial from the example above</span>
+<span class="c1"># Let&#39;s use the horners function defined above to evaluate the polynomial from the example above</span>
 <span class="n">coefficients</span> <span class="o">=</span> <span class="p">[</span><span class="o">-</span><span class="mf">0.147</span><span class="p">,</span> <span class="mf">3.</span><span class="p">,</span> <span class="o">-</span><span class="mf">6.</span><span class="p">,</span> <span class="mf">1.</span><span class="p">]</span>
 <span class="n">x</span> <span class="o">=</span> <span class="mf">4.71</span>
 
@@ -732,6 +732,25 @@ To evaluate the polynomial</p>
 </div>
 </div>
 </div>
+<p>To analyze the efficiency of algorithms like this, one usually counts the number of flops.</p>
+<p><strong>flop</strong>: floating point operation consisting of one * and one + (i.e. <span class="math notranslate nohighlight">\(a*x+b\)</span> is 1 flop).</p>
+<p>Comparing Horner’s algorithm with the evaluation using the monomial basis it is not too hard to see</p>
+<table class="colwidths-auto table">
+<thead>
+<tr class="row-odd"><th class="head"><p>method</p></th>
+<th class="head"><p>number of flops</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>Horner</p></td>
+<td><p><span class="math notranslate nohighlight">\(n\)</span></p></td>
+</tr>
+<tr class="row-odd"><td><p>monomial basis</p></td>
+<td><p><span class="math notranslate nohighlight">\(2 n -1\)</span></p></td>
+</tr>
+</tbody>
+</table>
+<p>The fewer flops involved, the lower the chance for the accumulation of roundoff errors plus you get the bonus of a faster and more efficient program.</p>
 </div>
 
     <script type="text/x-thebe-config">
