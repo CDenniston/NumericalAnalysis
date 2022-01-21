@@ -48,9 +48,9 @@ Where we will assume $\mathbf{A}$ is a $n\times n$ matrix, $\mathbf{x}$ is the u
 
 $$E_f=||\mathbf{x}-\tilde{\mathbf{x}}||$$
 
-where $||\cdot||$ indicates a suitable vector norm (for error estimates it is usually sufficient to justuse the $\infty$-norm, the absolute value of the largest element in magnitude). The absolute *backward* error is just the measure of how well our approximate solution solves the exact formulation of the problem,  
+where $||\cdot||$ indicates a suitable vector norm (for error estimates it is usually sufficient to just use the $\infty$-norm, the absolute value of the largest element in magnitude). The absolute *backward* error is just the measure of how well our approximate solution solves the exact formulation of the problem,  
 
-$$E_b=||\mathbf{A} \tilde{\mathbf{x}}-\mathbf{b}||.  
+$$E_b=||\mathbf{A} \tilde{\mathbf{x}}-\mathbf{b}||.$$  
 
 Note, however, that we can also consider $\tilde{\mathbf{x}}$ to be the exact solution to a different, but "nearby" problem  
 
