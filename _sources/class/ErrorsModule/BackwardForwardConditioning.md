@@ -36,7 +36,7 @@ In our example above where we solve the differential equation analytically, the 
 
 $$\mathcal{C} =  \frac{E_f}{E_b} = e^t.$$
 
-The condition number here grows with time.  What this means is that if we refine our question to something like: What is $x(T)$ for $T=0.5$?  The condition number for this more precise problem is $\mathcal{C}=e^{0.5}\approx 1.64$ which makes this a reasonable question to ask (i.e. is reasonably well-conditioned).  However, if you ask the question: What is $x(T)$ for $T=25$? then the condition number is $\mathcal{C}=e^25 \approx 7\times 10^{10}$ which is a very poorly conditioned problem, meaning it is not really a question you can give a meaningful answer to.
+The condition number here grows with time.  What this means is that if we refine our question to something like: What is $x(T)$ for $T=0.5$?  The condition number for this more precise problem is $\mathcal{C}=e^{0.5}\approx 1.64$ which makes this a reasonable question to ask (i.e. is reasonably well-conditioned).  However, if you ask the question: What is $x(T)$ for $T=25$? then the condition number is $\mathcal{C}=e^{25} \approx 7\times 10^{10}$ which is a very poorly conditioned problem, meaning it is not really a question you can give a meaningful answer to.
 
 ### Example: Conditioning for linear systems
 
@@ -48,9 +48,9 @@ Where we will assume $\mathbf{A}$ is a $n\times n$ matrix, $\mathbf{x}$ is the u
 
 $$E_f=||\mathbf{x}-\tilde{\mathbf{x}}||$$
 
-where $||\cdot||$ indicates a suitable vector norm (for error estimates it is usually sufficient to justuse the $\infty$-norm, the absolute value of the largest element in magnitude). The absolute *backward* error is just the measure of how well our approximate solution solves the exact formulation of the problem,
+where $||\cdot||$ indicates a suitable vector norm (for error estimates it is usually sufficient to justuse the $\infty$-norm, the absolute value of the largest element in magnitude). The absolute *backward* error is just the measure of how well our approximate solution solves the exact formulation of the problem,  
 
-$$E_b=||\mathbf{A} \tilde{\mathbf{x}}-\mathbf{b}||.
+$$E_b=||\mathbf{A} \tilde{\mathbf{x}}-\mathbf{b}||.  
 
 Note, however, that we can also consider $\tilde{\mathbf{x}}$ to be the exact solution to a different, but "nearby" problem  
 
