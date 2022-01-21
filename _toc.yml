@@ -9,6 +9,7 @@ parts:
     - file: class/ErrorsModule/FinitePrecision
     - file: class/ErrorsModule/HornersAlgorithm
     - file: class/ErrorsModule/RoundoffAmplification
+    - file: class/ErrorsModule/BackwardForwardConditioning
 - caption: Part 2 - Dynamics
   chapters:
   - file: class/week05/week05_summary
