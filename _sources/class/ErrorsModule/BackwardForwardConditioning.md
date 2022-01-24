@@ -32,7 +32,7 @@ We refer to problems like this as *ill-conditioned* problems.  Meaning that smal
 
 Note that these definitions are not precise in the sense that they leave a few choices open, such as whether $E_f$ and $E_b$ are absolute or relative errors.  However, independent of this choice, a larger condition number $\mathcal{C}$ indicates a more poorly conditioned problem.  As such, the relative magnitude of $\mathcal{C}$ can be used to evaluate different formulations of a given mathematical problem to decide which formulation is better conditioned.
 
-In our example above where we solve the differential equation analytically, the perturbed solution $\tilda{x}(t)$ satisfies the differential equation exactly so the only source of backward error here is the initial condition so $E_b=\epsilon$.  The forward error is also fairly straightforward as $E_f = |x(t)-\tilde{x}(t)| = \epsilon e^t$.  So here we see the condition number
+In our example above where we solve the differential equation analytically, the perturbed solution $\tilde{x}(t)$ satisfies the differential equation exactly so the only source of backward error here is the initial condition so $E_b=\epsilon$.  The forward error is also fairly straightforward as $E_f = |x(t)-\tilde{x}(t)| = \epsilon\, e^t$.  So here we see the condition number
 
 $$\mathcal{C} =  \frac{E_f}{E_b} = e^t.$$
 
