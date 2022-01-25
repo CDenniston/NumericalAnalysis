@@ -19,8 +19,8 @@ $$
 \begin{equation}
 L_i^n(x_k)=\delta_{ki} = 
 \begin{cases}
-1, &  \text{if} k=i  \\
-0, &  \text{if} k\neq i
+1, &  \text{if}\, k=i  \\
+0, &  \text{if}\, k\neq i
 \end{cases}
 \end{equation}
 $$
