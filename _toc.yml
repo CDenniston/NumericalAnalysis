@@ -13,6 +13,7 @@ parts:
 - caption: Part 2 - Interpolation and Curve Fitting
   chapters:
     - file: class/InterpFit/InterpFit_summary
+    - file: class/InterpFit/LagrangeForm
 - caption: Part 3 - Energy & Momentum
   chapters:
   - file: class/week10/week10_summary
