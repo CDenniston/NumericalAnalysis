@@ -61,7 +61,7 @@
     <link rel="canonical" href="https://cdenniston.github.io/NumericalAnalysis/class/InterpFit/LagrangeForm.html" />
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
-    <link rel="next" title="Week 10 Summary" href="../week10/week10_summary.html" />
+    <link rel="next" title="Barycentric Lagrange Interpolation" href="BarycentricInterp.html" />
     <link rel="prev" title="Interpolation and Curve Fitting" href="InterpFit_summary.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="None">
@@ -162,6 +162,11 @@
  <li class="toctree-l1 current active">
   <a class="current reference internal" href="#">
    Lagrange Form of the Interpolation Polynomial
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="BarycentricInterp.html">
+   Barycentric Lagrange Interpolation
   </a>
  </li>
 </ul>
@@ -525,7 +530,7 @@ p_n(x_j) &amp;= \sum_{i=0}^n L_i^n(x_j) f(x_i) \\
  \end{align}
 \end{split}\]</div>
 <p>So <span class="math notranslate nohighlight">\(p_n(x)\)</span> is an interpolating polynomial of degree <span class="math notranslate nohighlight">\(\leq n\)</span> through the specifed points, as desired.</p>
-<p>Any important question to ask <strong>is</strong> whether <strong>our interpolating polynomial <span class="math notranslate nohighlight">\(p_n(x)\)</span> is unique</strong>.  If not, we would need to decide which one was “best” and perhaps this answer would depend on the circumstance.  Fortunately we can show that our interpolating polynomial <em>is</em> unique.</p>
+<p>Any important question to ask is whether <strong>our interpolating polynomial <span class="math notranslate nohighlight">\(p_n(x)\)</span> is unique</strong>.  If not, we would need to decide which one was “best” and perhaps this answer would depend on the circumstance.  Fortunately we can show that our interpolating polynomial <em>is</em> unique.</p>
 <p>How?  Suppose not, then there is another polynomial, which we will call <span class="math notranslate nohighlight">\(q_n(x)\)</span> of degree <span class="math notranslate nohighlight">\(\leq n\)</span> with <span class="math notranslate nohighlight">\(q_n(x_i)=f(x_i)\)</span> for all <span class="math notranslate nohighlight">\(i\)</span> and where for general <span class="math notranslate nohighlight">\(x\)</span> we have <span class="math notranslate nohighlight">\(p_n(x)\neq q_n(x)\)</span>.  Now consider</p>
 <div class="math notranslate nohighlight">
 \[d_n(x)=p_n(x)-q_n(x),\]</div>
@@ -535,7 +540,7 @@ p_n(x_j) &amp;= \sum_{i=0}^n L_i^n(x_j) f(x_i) \\
 <p>which means <span class="math notranslate nohighlight">\(d_n(x_i)\)</span> has <span class="math notranslate nohighlight">\(n+1\)</span> roots (or zeros).  However, the fundamental theorm of algebra tells us that a <span class="math notranslate nohighlight">\(n-\)</span>degree polynomial has at most <span class="math notranslate nohighlight">\(n\)</span> roots.  The only way to resolve this contradiction is if <span class="math notranslate nohighlight">\(d_n(x)\equiv 0\)</span> implying that <span class="math notranslate nohighlight">\(q_n(x)\equiv p_n(x)\)</span> so that the polynomial is unique.</p>
 <p>Note that while the polynomial is unique, we are free to rearrange it algebraically to construct a different form of the same polynomial. Why would you want to do this?</p>
 <ol class="simple">
-<li><p><span class="math notranslate nohighlight">\(L_j^n(x)\)</span> is a <span class="math notranslate nohighlight">\(n\)</span>’th degree polynomial and so requires <span class="math notranslate nohighlight">\(\mathcal{O}(n)\)</span> flops (we discussed this in conjunction with Horner’s algorithm in an earlier chapter).  We have <span class="math notranslate nohighlight">\(n+1\)</span> of these to compute so direct use of the Lagrange form of <span class="math notranslate nohighlight">\(p_n(x)\)</span> would require <span class="math notranslate nohighlight">\(\mathcal{O}(n^2)\)</span> flops.  This is inefficient for a polynomial that is still <span class="math notranslate nohighlight">\(n\)</span>’th degree.</p></li>
+<li><p><span class="math notranslate nohighlight">\(L_j^n(x)\)</span> is a <span class="math notranslate nohighlight">\(n\)</span>’th degree polynomial and so requires <span class="math notranslate nohighlight">\(\mathcal{O}(n)\)</span> flops (we discussed this in conjunction with Horner’s algorithm in an earlier chapter).  We have <span class="math notranslate nohighlight">\(n+1\)</span> of these to compute so direct use of the Lagrange form of <span class="math notranslate nohighlight">\(p_n(x)\)</span> would require <span class="math notranslate nohighlight">\(\mathcal{O}(n^2)\)</span> flops.  This is inefficient for a polynomial that is still of degree <span class="math notranslate nohighlight">\(n\)</span>.</p></li>
 <li><p>If we decide to change or add another node at <span class="math notranslate nohighlight">\(x_k\)</span> it would appear that all the Lagrange basis polynomials would have to be recalculated.</p></li>
 </ol>
 <p>It is for these reasons that Lagrange interpolating polynomials had limited practical (as opposed to theoretical) application for many years.  However, these problems can be easily fixed as we discuss next.</p>
@@ -573,10 +578,10 @@ p_n(x_j) &amp;= \sum_{i=0}^n L_i^n(x_j) f(x_i) \\
             <p class="prev-next-title">Interpolation and Curve Fitting</p>
         </div>
     </a>
-    <a class='right-next' id="next-link" href="../week10/week10_summary.html" title="next page">
+    <a class='right-next' id="next-link" href="BarycentricInterp.html" title="next page">
     <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">Week 10 Summary</p>
+        <p class="prev-next-title">Barycentric Lagrange Interpolation</p>
     </div>
     <i class="fas fa-angle-right"></i>
     </a>

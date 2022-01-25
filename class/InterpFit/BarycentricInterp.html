@@ -5,7 +5,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Truncation Error in Taylor’s series &#8212; Numerical Analysis</title>
+    <title>Barycentric Lagrange Interpolation &#8212; Numerical Analysis</title>
     
   <link href="../../_static/css/theme.css" rel="stylesheet">
   <link href="../../_static/css/index.ff1ffe594081f20da1ef19478df9384b.css" rel="stylesheet">
@@ -58,11 +58,11 @@
         const thebe_selector_output = ".output,.cell_output"
     </script>
     <script async="async" src="../../_static/sphinx-thebe.js"></script>
-    <link rel="canonical" href="https://cdenniston.github.io/NumericalAnalysis/class/ErrorsModule/TaylorExample.html" />
+    <link rel="canonical" href="https://cdenniston.github.io/NumericalAnalysis/class/InterpFit/BarycentricInterp.html" />
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
-    <link rel="next" title="Finite Precision" href="FinitePrecision.html" />
-    <link rel="prev" title="Sources of Errors in Scientific Computing" href="Error_sources.html" />
+    <link rel="next" title="Week 10 Summary" href="../week10/week10_summary.html" />
+    <link rel="prev" title="Lagrange Form of the Interpolation Polynomial" href="LagrangeForm.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="None">
     
@@ -111,39 +111,39 @@
   Part 1 - Errors in Scientific Computing
  </span>
 </p>
-<ul class="current nav bd-sidenav">
+<ul class="nav bd-sidenav">
  <li class="toctree-l1">
-  <a class="reference internal" href="Errors_summary.html">
+  <a class="reference internal" href="../ErrorsModule/Errors_summary.html">
    Numerical Analysis
   </a>
  </li>
  <li class="toctree-l1">
-  <a class="reference internal" href="Error_sources.html">
+  <a class="reference internal" href="../ErrorsModule/Error_sources.html">
    Sources of Errors in Scientific Computing
   </a>
  </li>
- <li class="toctree-l1 current active">
-  <a class="current reference internal" href="#">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../ErrorsModule/TaylorExample.html">
    Truncation Error in Taylor’s series
   </a>
  </li>
  <li class="toctree-l1">
-  <a class="reference internal" href="FinitePrecision.html">
+  <a class="reference internal" href="../ErrorsModule/FinitePrecision.html">
    Finite Precision
   </a>
  </li>
  <li class="toctree-l1">
-  <a class="reference internal" href="HornersAlgorithm.html">
+  <a class="reference internal" href="../ErrorsModule/HornersAlgorithm.html">
    Example: Evaluating polynomials
   </a>
  </li>
  <li class="toctree-l1">
-  <a class="reference internal" href="RoundoffAmplification.html">
+  <a class="reference internal" href="../ErrorsModule/RoundoffAmplification.html">
    Roundoff Error Amplification
   </a>
  </li>
  <li class="toctree-l1">
-  <a class="reference internal" href="BackwardForwardConditioning.html">
+  <a class="reference internal" href="../ErrorsModule/BackwardForwardConditioning.html">
    Forward and Backwards Errors
   </a>
  </li>
@@ -153,19 +153,19 @@
   Part 2 - Interpolation and Curve Fitting
  </span>
 </p>
-<ul class="nav bd-sidenav">
+<ul class="current nav bd-sidenav">
  <li class="toctree-l1">
-  <a class="reference internal" href="../InterpFit/InterpFit_summary.html">
+  <a class="reference internal" href="InterpFit_summary.html">
    Interpolation and Curve Fitting
   </a>
  </li>
  <li class="toctree-l1">
-  <a class="reference internal" href="../InterpFit/LagrangeForm.html">
+  <a class="reference internal" href="LagrangeForm.html">
    Lagrange Form of the Interpolation Polynomial
   </a>
  </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="../InterpFit/BarycentricInterp.html">
+ <li class="toctree-l1 current active">
+  <a class="current reference internal" href="#">
    Barycentric Lagrange Interpolation
   </a>
  </li>
@@ -449,7 +449,7 @@
         <!-- ipynb file if we had a myst markdown file -->
         
         <!-- Download raw file -->
-        <a class="dropdown-buttons" href="../../_sources/class/ErrorsModule/TaylorExample.ipynb"><button type="button"
+        <a class="dropdown-buttons" href="../../_sources/class/InterpFit/BarycentricInterp.ipynb"><button type="button"
                 class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
                 data-placement="left">.ipynb</button></a>
         <!-- Download PDF via print -->
@@ -474,7 +474,7 @@
         aria-label="Launch interactive content"><i class="fas fa-rocket"></i></button>
     <div class="dropdown-buttons">
         
-        <a class="binder-button" href="https://mybinder.org/v2/gh/firasm/jupyterbook_course_template/master?urlpath=lab/tree/class/ErrorsModule/TaylorExample.ipynb"><button type="button"
+        <a class="binder-button" href="https://mybinder.org/v2/gh/firasm/jupyterbook_course_template/master?urlpath=lab/tree/class/InterpFit/BarycentricInterp.ipynb"><button type="button"
                 class="btn btn-secondary topbarbtn" title="Launch Binder" data-toggle="tooltip"
                 data-placement="left"><img class="binder-button-logo"
                     src="../../_static/images/logo_binder.svg"
@@ -494,24 +494,6 @@
         <!-- Table of contents -->
         <div class="d-none d-md-block col-md-2 bd-toc show noprint">
             
-            <div class="tocsection onthispage pt-5 pb-3">
-                <i class="fas fa-list"></i> Contents
-            </div>
-            <nav id="bd-toc-nav" aria-label="Page">
-                <ul class="visible nav section-nav flex-column">
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#taylor-s-theorem">
-   Taylor’s Theorem
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#example">
-   Example
-  </a>
- </li>
-</ul>
-
-            </nav>
         </div>
     </div>
 </div>
@@ -519,91 +501,132 @@
         <div class="col-12 col-md-9 pl-md-3 pr-md-0">
             <!-- Table of contents that is only displayed when printing the page -->
             <div id="jb-print-docs-body" class="onlyprint">
-                <h1>Truncation Error in Taylor’s series</h1>
+                <h1>Barycentric Lagrange Interpolation</h1>
                 <!-- Table of contents -->
                 <div id="print-main-content">
                     <div id="jb-print-toc">
                         
-                        <div>
-                            <h2> Contents </h2>
-                        </div>
-                        <nav aria-label="Page">
-                            <ul class="visible nav section-nav flex-column">
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#taylor-s-theorem">
-   Taylor’s Theorem
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#example">
-   Example
-  </a>
- </li>
-</ul>
-
-                        </nav>
                     </div>
                 </div>
             </div>
             
               <div>
                 
-  <div class="section" id="truncation-error-in-taylor-s-series">
-<h1>Truncation Error in Taylor’s series<a class="headerlink" href="#truncation-error-in-taylor-s-series" title="Permalink to this headline">¶</a></h1>
-<p>Most algorithms in Numerical Analysis suffer from some form of truncation error.  Often this truncation error comes about from some series solution to the problem of interest that we <em>truncate</em> at some finite order in order to solve.  To illustrate the concept of a <em>truncation</em> error, let’s look at an example for Taylor’s series.  It is helpful to recall Taylor’s theorem from first year calculus:</p>
-<div class="section" id="taylor-s-theorem">
-<h2>Taylor’s Theorem<a class="headerlink" href="#taylor-s-theorem" title="Permalink to this headline">¶</a></h2>
-<p>Suppose we have a function <span class="math notranslate nohighlight">\(f\in C^n[a,b]\)</span>  (i.e. <span class="math notranslate nohighlight">\(f\)</span> is <span class="math notranslate nohighlight">\(n\)</span> times continuously differentiable), that <span class="math notranslate nohighlight">\(f^{(n+1)}\)</span> exists on <span class="math notranslate nohighlight">\([a,b]\)</span> and <span class="math notranslate nohighlight">\(x_0\in [a,b]\)</span>.  Then for <span class="math notranslate nohighlight">\(x\in [a,b]\)</span> we have</p>
+  <div class="section" id="barycentric-lagrange-interpolation">
+<h1>Barycentric Lagrange Interpolation<a class="headerlink" href="#barycentric-lagrange-interpolation" title="Permalink to this headline">¶</a></h1>
+<p>This rewriting of the Lagrange interpolation goes back at least seventy-five years but was popularized by <a class="reference external" href="https://epubs.siam.org/doi/pdf/10.1137/S0036144502417715">Berrut and Trefethen</a> in the early 21st century.  The idea here is basically to rewrite the Lagrange form to avoid the problems mentioned above.</p>
+<p>First define</p>
 <div class="math notranslate nohighlight">
-\[f(x)=f(x_0)+f'(x_0)(x-x_0)+\frac{f''(x_0)}{2}(x-x_0)^2+ ... + \frac{f^{(n)}(x_0)}{n!}(x-x_0)^n  + R_n(x,x_0),\]</div>
-<p>provided <span class="math notranslate nohighlight">\(R_n\rightarrow 0\)</span> as <span class="math notranslate nohighlight">\(n\rightarrow \infty\)</span>, where the <em>truncation error</em> (from truncating the series at the <span class="math notranslate nohighlight">\(n\)</span>’th term is</p>
+\[\mathcal{l}(x)\equiv \prod_{i=0}^n (x-x_i).\]</div>
+<p>Then note that</p>
 <div class="math notranslate nohighlight">
-\[R_n(x,x_0) = \frac{f^{(n+1)}(\xi)}{(n+1)!}(x-x_0)^{n+1},\]</div>
-<p>for some <span class="math notranslate nohighlight">\(\xi \in [x_0,x]\)</span>.</p>
-<p>Note that</p>
-<ul class="simple">
-<li><p><span class="math notranslate nohighlight">\(R_n\)</span> could be positive or negative so the absolute error, <span class="math notranslate nohighlight">\(|R_n|\)</span> is usually what one would quote for the error.</p></li>
-<li><p>we do not usually know what <span class="math notranslate nohighlight">\(\xi\)</span> is, other than it is in <span class="math notranslate nohighlight">\((x_0,x)\)</span>.  However, if we can guess <span class="math notranslate nohighlight">\(max|f^{(n+1)}(x)|\)</span> on <span class="math notranslate nohighlight">\([a,b]\)</span> then we can bound the absolute error.</p></li>
-</ul>
-</div>
-<div class="section" id="example">
-<h2>Example<a class="headerlink" href="#example" title="Permalink to this headline">¶</a></h2>
-<p>Let’s construct the Taylor series and bound the truncation error for the function <span class="math notranslate nohighlight">\(f(x)=1/(1+x)\)</span> about <span class="math notranslate nohighlight">\(x_0=0\)</span>.  First note that <span class="math notranslate nohighlight">\(f^{(n)}(x)=\frac{(-1)^n}{(1+x)^{n+1}}\)</span>.  So, using Taylor’s theorem, we see that</p>
+\[L_j^n(x) = \frac{\mathcal{l}(x)}{(x-x_j)} w_j,\]</div>
+<p>where the baricentric weight <span class="math notranslate nohighlight">\(w_j\)</span> is</p>
 <div class="math notranslate nohighlight">
-\[\frac{1}{1+x} = 1 - x + x^2 - x^3 + ... + (-1)^n x^n + R_n,\]</div>
-<p>and in this case the truncation error is</p>
+\[ w_j \equiv \prod_{i=0,i\neq j}^n (x_j-x_i).\]</div>
+<p>Our interpolating polynomial now becomes</p>
 <div class="math notranslate nohighlight">
-\[ R_n(x,0) = \frac{(-1)^{n+1}x^{n+1}}{(1+\xi)^{n+2}}.\]</div>
-<p>To bound the truncation (absolute) error, we need to consider a few points:</p>
-<ul class="simple">
-<li><p>We need an interval over which we are considering the Taylor series.  In this case the series only converges for <span class="math notranslate nohighlight">\(|x|&lt;1\)</span> so let’s assume <span class="math notranslate nohighlight">\(x \in [0,1)\)</span> (i.e. the <span class="math notranslate nohighlight">\(a\)</span> and <span class="math notranslate nohighlight">\(b\)</span> in Taylor’s theorem will be taken to be <span class="math notranslate nohighlight">\(a=0\)</span> and <span class="math notranslate nohighlight">\(b=1\)</span>).</p></li>
-<li><p>It is ok if the bound in <span class="math notranslate nohighlight">\(|R_n|\)</span> depends on <span class="math notranslate nohighlight">\(x\)</span> as we will certainly know what <span class="math notranslate nohighlight">\(x\)</span> is.  However, the only thing we know about <span class="math notranslate nohighlight">\(\xi\)</span> is that it must be in the interval <span class="math notranslate nohighlight">\([0,x)\)</span>.  So to bound the error, we first must bound the deriviative <span class="math notranslate nohighlight">\(|f^{(n+1)}(x)|=|\frac{(-1)^(n+1)}{(1+x)^{n+1}}|=\frac{1}{(1+x)^{n+1}}\)</span>.  To get an idea of how to do this, a plot is always a good place to start.</p></li>
-</ul>
+\[p_n(x) = =\sum_{i=0}^n L_i^n(x) f(x_i) =  \mathcal{l}(x)\sum_{i=0}^n \frac{w_i}{x-x_i} f(x_i).\]</div>
+<p>This is called the <em>first form of barycentric interpolation</em>.  Once we have computed the weights <span class="math notranslate nohighlight">\(w_j\)</span>, evaluation of <span class="math notranslate nohighlight">\(p_n(x)\)</span> now requires <span class="math notranslate nohighlight">\(\mathcal{O}(n)\)</span> flops thus removing the first objection to the Lagrange form of the interpolating polynomial.</p>
+<p>If we add a new node <span class="math notranslate nohighlight">\(x_{n+1}\)</span>, we can construct new weights <span class="math notranslate nohighlight">\(w_j\)</span> by dividing the old weights by <span class="math notranslate nohighlight">\((x_j-x_{n+1})\)</span> to get the new <span class="math notranslate nohighlight">\(w_j\)</span> (plus computing <span class="math notranslate nohighlight">\(w_{n+1}\)</span> using the original formula).  This effectively eliminates the second objection to the Lagrange form of the intepolating polynomial.</p>
+<p>There is another similification we can use before constructing an algorithm for interpolation.  Note that for the function <span class="math notranslate nohighlight">\(g(x)\equiv 1\)</span>,</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\begin{align}
+g(x) &amp;=  \mathcal{l}(x)\sum_{i=0}^n \frac{w_i}{x-x_i} g(x_i),\\
+ &amp;= \mathcal{l}(x)\sum_{i=0}^n \frac{w_i}{x-x_i}.
+\end{align}
+\end{split}\]</div>
+<p>As we shall see when we discuss interpolation errors, this formula is actually exact.  As a result,</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\begin{align}
+p_n(x) &amp;= \frac{p_n(x)}{1} = \frac{p_n(x)}{g(x)},\\
+ &amp;=\frac{\mathcal{l}(x)\sum_{i=0}^n \frac{w_i}{x-x_i} f(x_i)}{\mathcal{l}(x)\sum_{i=0}^n \frac{w_i}{x-x_i}},
+\end{align}
+\end{split}\]</div>
+<p>which simiplifies to the second, or <em>true form of barycentric interpolation</em></p>
+<div class="math notranslate nohighlight">
+\[p_n(x)=\frac{\sum_{i=0}^n \frac{w_i}{x-x_i} f(x_i)}{\sum_{i=0}^n \frac{w_i}{x-x_i}}.\]</div>
+<p>In this form, we avoid evaluating <span class="math notranslate nohighlight">\(\mathcal{l}(x)\)</span> entirely and the sum in the numerator and denominator can easily be constructed simultaneously.</p>
+<p>Note that there are two stages to implementation of barycentric Lagrange interpolation: i) computing the weights and ii) computing the interpolation at the desired points.  The first should be done <em>only once</em> whereas the second needs to be done at each point where the interpolation is computed.  A python code to do this is below</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">matplotlib</span> <span class="kn">import</span> <span class="n">pyplot</span> <span class="k">as</span> <span class="n">plt</span>
-<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
-<span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mf">0.05</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="mi">1</span><span class="o">/</span><span class="p">(</span><span class="mi">1</span><span class="o">+</span><span class="n">x</span><span class="p">))</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="mi">1</span><span class="o">/</span><span class="p">(</span><span class="mi">1</span><span class="o">+</span><span class="n">x</span><span class="p">)</span><span class="o">**</span><span class="mi">2</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="mi">1</span><span class="o">/</span><span class="p">(</span><span class="mi">1</span><span class="o">+</span><span class="n">x</span><span class="p">)</span><span class="o">**</span><span class="mi">3</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="mi">1</span><span class="o">/</span><span class="p">(</span><span class="mi">1</span><span class="o">+</span><span class="n">x</span><span class="p">)</span><span class="o">**</span><span class="mi">4</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="sa">r</span><span class="s1">&#39;$\xi$&#39;</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="sa">r</span><span class="s1">&#39;$1/(1+\xi)^{n+2}$&#39;</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">from</span> <span class="nn">matplotlib</span> <span class="kn">import</span> <span class="n">pyplot</span> <span class="k">as</span> <span class="n">plt</span>
+
+<span class="k">def</span> <span class="nf">baryweight</span><span class="p">(</span><span class="n">x</span><span class="p">):</span>
+    <span class="c1"># build the weights recursively by effectively adding new points one at a time</span>
+    <span class="n">w</span> <span class="o">=</span> <span class="p">[</span><span class="mf">1.</span><span class="p">]</span><span class="o">*</span><span class="nb">len</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="nb">len</span><span class="p">(</span><span class="n">x</span><span class="p">)):</span>
+        <span class="c1"># in iteration i we compute w[i] from scratch while</span>
+        <span class="c1"># including the contribution of x[i] to the other weights</span>
+        <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="n">i</span><span class="p">):</span>
+            <span class="n">w</span><span class="p">[</span><span class="n">j</span><span class="p">]</span><span class="o">=</span><span class="p">(</span><span class="n">x</span><span class="p">[</span><span class="n">j</span><span class="p">]</span><span class="o">-</span><span class="n">x</span><span class="p">[</span><span class="n">i</span><span class="p">])</span><span class="o">*</span><span class="n">w</span><span class="p">[</span><span class="n">j</span><span class="p">]</span>
+            <span class="n">w</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">=</span><span class="p">(</span><span class="n">x</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">-</span><span class="n">x</span><span class="p">[</span><span class="n">j</span><span class="p">])</span><span class="o">*</span><span class="n">w</span><span class="p">[</span><span class="n">i</span><span class="p">]</span>
+    <span class="c1"># do the divisions at the end to minimize the total number of divisions</span>
+    <span class="k">return</span> <span class="p">[</span><span class="mi">1</span><span class="o">/</span><span class="n">x</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">w</span><span class="p">]</span>
+
+<span class="k">def</span> <span class="nf">baryinterp</span><span class="p">(</span><span class="n">w</span><span class="p">,</span><span class="n">x</span><span class="p">,</span><span class="n">y</span><span class="p">,</span><span class="n">xp</span><span class="p">):</span>
+    <span class="c1"># Compute the barycentric interpolation at xp given the observed data in lists</span>
+    <span class="c1"># x and y and the precomputed weights in a list w</span>
+    <span class="n">numer</span><span class="o">=</span><span class="mf">0.</span>
+    <span class="n">denom</span><span class="o">=</span><span class="mf">0.</span>
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="nb">len</span><span class="p">(</span><span class="n">x</span><span class="p">)):</span>
+        <span class="n">xdiff</span><span class="o">=</span><span class="n">xp</span><span class="o">-</span><span class="n">x</span><span class="p">[</span><span class="n">i</span><span class="p">]</span>
+        <span class="c1"># We first check to ensure we are not actually evaluated at a given data point.</span>
+        <span class="c1"># (This would lead to division by zero which would cause problems).</span>
+        <span class="k">if</span> <span class="p">(</span><span class="n">xdiff</span> <span class="o">==</span> <span class="mi">0</span><span class="p">):</span>
+            <span class="k">return</span> <span class="n">y</span><span class="p">[</span><span class="n">i</span><span class="p">]</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">tmp</span><span class="o">=</span><span class="n">w</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">/</span><span class="n">xdiff</span>
+            <span class="n">numer</span> <span class="o">+=</span> <span class="n">tmp</span><span class="o">*</span><span class="n">y</span><span class="p">[</span><span class="n">i</span><span class="p">]</span>
+            <span class="n">denom</span> <span class="o">+=</span> <span class="n">tmp</span>
+    <span class="k">return</span> <span class="n">numer</span><span class="o">/</span><span class="n">denom</span>
+
+<span class="c1"># Main program showing functions defined above used to interpolate data taken from</span>
+<span class="c1"># a simple sine function</span>
+
+<span class="c1"># This creates a list of x values for our observed data</span>
+<span class="n">dx</span> <span class="o">=</span> <span class="mf">0.5</span>
+<span class="n">x_data</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mf">6.5</span><span class="o">+</span><span class="n">dx</span><span class="p">,</span> <span class="n">dx</span><span class="p">)</span>
+
+<span class="c1"># Compute the weights for the interpolating polynomial.  </span>
+<span class="n">weights</span><span class="o">=</span><span class="n">baryweight</span><span class="p">(</span><span class="n">x_data</span><span class="p">)</span>
+
+<span class="c1"># Create a list of y values for our observed data and plot</span>
+<span class="c1"># our observations</span>
+<span class="n">y_data</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="n">x_data</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x_data</span><span class="p">,</span> <span class="n">y_data</span><span class="p">,</span> <span class="s2">&quot;o&quot;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;data&quot;</span><span class="p">)</span>
+
+<span class="c1"># Now we want to fill in between our observed data points using</span>
+<span class="c1"># a barycentric Lagrange interpolation and plot the result</span>
+<span class="n">dx</span> <span class="o">=</span> <span class="mf">0.01</span>
+<span class="n">x_all</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mf">6.5</span><span class="o">+</span><span class="n">dx</span><span class="p">,</span><span class="n">dx</span><span class="p">)</span>
+<span class="n">y_all</span> <span class="o">=</span> <span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">*</span><span class="nb">len</span><span class="p">(</span><span class="n">x_all</span><span class="p">)</span>
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="nb">len</span><span class="p">(</span><span class="n">x_all</span><span class="p">)):</span>
+    <span class="n">y_all</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="n">baryinterp</span><span class="p">(</span><span class="n">weights</span><span class="p">,</span><span class="n">x_data</span><span class="p">,</span><span class="n">y_data</span><span class="p">,</span><span class="n">x_all</span><span class="p">[</span><span class="n">i</span><span class="p">])</span>
+    
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x_all</span><span class="p">,</span> <span class="n">y_all</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;barycentric interpolation&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../_images/TaylorExample_2_0.png" src="../../_images/TaylorExample_2_0.png" />
+<img alt="../../_images/BarycentricInterp_1_0.png" src="../../_images/BarycentricInterp_1_0.png" />
 </div>
 </div>
-<p>From the plot it is clear that <span class="math notranslate nohighlight">\(\frac{1}{(1+x)^{n+1}}\)</span> is a monotonically decreasing function on the interval <span class="math notranslate nohighlight">\([0,1]\)</span> and that its maximum
-is at its leftmost endpoint, <span class="math notranslate nohighlight">\(x=1\)</span> where it takes the value 1 independent of <span class="math notranslate nohighlight">\(n\)</span>.
-Plugging this into the bound on the absolute error gives</p>
-<div class="math notranslate nohighlight">
-\[ |R_n| \leq x^{n+1}.\]</div>
-</div>
+<p>There are a few things to note here:</p>
+<ul class="simple">
+<li><p>the weights depend only on the <span class="math notranslate nohighlight">\(x_i\)</span> and not on <span class="math notranslate nohighlight">\(f(x_i)\)</span>.  As such, the same weights could be used in the interpolation of any function whose values are known at the same set of <span class="math notranslate nohighlight">\(x_i\)</span>  (i.e. we can resuse the weights for other functions).</p></li>
+<li><p>the order of the nodes does not matter.  This means that if we want to add a new data point, it can just be appended to the end of the list, it does not need to be inserted in order.</p></li>
+<li><p>if you want to add a new data point, you could easily write another function (say “addpoint”) to update the weights.  It would essentially consist of the “extra” iteration of the loop in the above <code class="docutils literal notranslate"><span class="pre">baryweight</span></code> function, accounting for the fact that we have already done the <code class="docutils literal notranslate"><span class="pre">1/x</span></code> operation.  It should be clear that the update is <span class="math notranslate nohighlight">\(\mathcal{O}(n)\)</span> operation as only the inner loop is computed.</p></li>
+<li><p>you may have noticed that the <code class="docutils literal notranslate"><span class="pre">baryinterp</span></code> function dealt with the case where <span class="math notranslate nohighlight">\(x=x_i\)</span> as a special case to avoid division by zero.  You might be concerned about overflow in the situation where <span class="math notranslate nohighlight">\(x\)</span> is close to <span class="math notranslate nohighlight">\(x_i\)</span> but not exactly the same.  There are ways of dealing with this when it arises, but it turns out it is not a serious concern for most practical applications of interpolation.</p></li>
+<li><p>as with any algorithm, one should ask if this is numerically stable.  As we emphasized when we discussed errors in scientific computing, it is only reasonable to ask if the algorithm is stable when applied to a well-conditioned problem.  As we will discuss shortly, polynomial interpolation for large numbers of points is only stable if these points are chosen appropriately.  In this case, <a class="reference external" href="https://www.maths.manchester.ac.uk/~higham/narep/narep440.pdf">Higham</a> has shown that barycentric Lagrange interpolation is unconditionally stable (the first form is slightly better than the “true” form in this regards, but the difference for practical purposes is not usually significant).</p></li>
+<li><p>for some node spacings, it is possible to give an explicit formula for the barycentric weights <span class="math notranslate nohighlight">\(w_j\)</span>.  As these weights appear in the true form of the barycentric interpolation in both the numerator and denominator, any common factor in all the weights can be cancelled without affecting the result.</p></li>
+</ul>
+<p>There are also built in versions of <a class="reference external" href="https://docs.scipy.org/doc/scipy/reference/generated/scipy.interpolate.barycentric_interpolate.html#scipy.interpolate.barycentric_interpolate">barycentric interpolation in SciPy</a>. The SciPy version also has functions to add new nodes and new, or different, values of the function to be interpolated (making use of the previously computed weights in both cases)</p>
 </div>
 
     <script type="text/x-thebe-config">
@@ -619,7 +642,7 @@ Plugging this into the bound on the absolute error gives</p>
         },
         kernelOptions: {
             kernelName: "python3",
-            path: "./class/ErrorsModule"
+            path: "./class/InterpFit"
         },
         predefinedOutput: true
     }
@@ -631,17 +654,17 @@ Plugging this into the bound on the absolute error gives</p>
             
                 <!-- Previous / next buttons -->
 <div class='prev-next-area'> 
-    <a class='left-prev' id="prev-link" href="Error_sources.html" title="previous page">
+    <a class='left-prev' id="prev-link" href="LagrangeForm.html" title="previous page">
         <i class="fas fa-angle-left"></i>
         <div class="prev-next-info">
             <p class="prev-next-subtitle">previous</p>
-            <p class="prev-next-title">Sources of Errors in Scientific Computing</p>
+            <p class="prev-next-title">Lagrange Form of the Interpolation Polynomial</p>
         </div>
     </a>
-    <a class='right-next' id="next-link" href="FinitePrecision.html" title="next page">
+    <a class='right-next' id="next-link" href="../week10/week10_summary.html" title="next page">
     <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">Finite Precision</p>
+        <p class="prev-next-title">Week 10 Summary</p>
     </div>
     <i class="fas fa-angle-right"></i>
     </a>
