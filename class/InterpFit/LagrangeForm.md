@@ -46,7 +46,7 @@ $$
 
 So $p_n(x)$ is an interpolating polynomial of degree $\leq n$ through the specifed points, as desired.
 
-Any important question to ask **is** whether **our interpolating polynomial $p_n(x)$ is unique**.  If not, we would need to decide which one was "best" and perhaps this answer would depend on the circumstance.  Fortunately we can show that our interpolating polynomial *is* unique.
+Any important question to ask is whether **our interpolating polynomial $p_n(x)$ is unique**.  If not, we would need to decide which one was "best" and perhaps this answer would depend on the circumstance.  Fortunately we can show that our interpolating polynomial *is* unique.
 
 How?  Suppose not, then there is another polynomial, which we will call $q_n(x)$ of degree $\leq n$ with $q_n(x_i)=f(x_i)$ for all $i$ and where for general $x$ we have $p_n(x)\neq q_n(x)$.  Now consider  
 
@@ -60,7 +60,7 @@ which means $d_n(x_i)$ has $n+1$ roots (or zeros).  However, the fundamental the
 
 Note that while the polynomial is unique, we are free to rearrange it algebraically to construct a different form of the same polynomial. Why would you want to do this?
 
-1. $L_j^n(x)$ is a $n$'th degree polynomial and so requires $\mathcal{O}(n)$ flops (we discussed this in conjunction with Horner's algorithm in an earlier chapter).  We have $n+1$ of these to compute so direct use of the Lagrange form of $p_n(x)$ would require $\mathcal{O}(n^2)$ flops.  This is inefficient for a polynomial that is still $n$'th degree.
+1. $L_j^n(x)$ is a $n$'th degree polynomial and so requires $\mathcal{O}(n)$ flops (we discussed this in conjunction with Horner's algorithm in an earlier chapter).  We have $n+1$ of these to compute so direct use of the Lagrange form of $p_n(x)$ would require $\mathcal{O}(n^2)$ flops.  This is inefficient for a polynomial that is still of degree $n$.
 
 2. If we decide to change or add another node at $x_k$ it would appear that all the Lagrange basis polynomials would have to be recalculated.
 
