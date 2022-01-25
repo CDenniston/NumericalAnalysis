@@ -5,7 +5,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Lab &#8212; Numerical Analysis</title>
+    <title>Lagrange Form of the Interpolation Polynomial &#8212; Numerical Analysis</title>
     
   <link href="../../_static/css/theme.css" rel="stylesheet">
   <link href="../../_static/css/index.ff1ffe594081f20da1ef19478df9384b.css" rel="stylesheet">
@@ -49,6 +49,8 @@
     <script async="async" kind="dokieli" src="https://dokie.li/scripts/dokieli.js"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
     <script src="../../_static/sphinx-book-theme.d59cb220de22ca1c485ebbdc042f0030.js"></script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
     <script async="async" src="https://unpkg.com/thebe@0.5.1/lib/index.js"></script>
     <script>
         const thebe_selector = ".thebe,.cell"
@@ -56,11 +58,11 @@
         const thebe_selector_output = ".output,.cell_output"
     </script>
     <script async="async" src="../../_static/sphinx-thebe.js"></script>
-    <link rel="canonical" href="https://cdenniston.github.io/NumericalAnalysis/class/week11/lab.html" />
+    <link rel="canonical" href="https://cdenniston.github.io/NumericalAnalysis/class/InterpFit/LagrangeForm.html" />
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
-    <link rel="next" title="Learning Logs" href="learninglogs.html" />
-    <link rel="prev" title="Test" href="test.html" />
+    <link rel="next" title="Week 10 Summary" href="../week10/week10_summary.html" />
+    <link rel="prev" title="Interpolation and Curve Fitting" href="InterpFit_summary.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="None">
     
@@ -151,14 +153,14 @@
   Part 2 - Interpolation and Curve Fitting
  </span>
 </p>
-<ul class="nav bd-sidenav">
+<ul class="current nav bd-sidenav">
  <li class="toctree-l1">
-  <a class="reference internal" href="../InterpFit/InterpFit_summary.html">
+  <a class="reference internal" href="InterpFit_summary.html">
    Interpolation and Curve Fitting
   </a>
  </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="../InterpFit/LagrangeForm.html">
+ <li class="toctree-l1 current active">
+  <a class="current reference internal" href="#">
    Lagrange Form of the Interpolation Polynomial
   </a>
  </li>
@@ -168,7 +170,7 @@
   Part 3 - Energy &amp; Momentum
  </span>
 </p>
-<ul class="current nav bd-sidenav">
+<ul class="nav bd-sidenav">
  <li class="toctree-l1 has-children">
   <a class="reference internal" href="../week10/week10_summary.html">
    Week 10 - Chapter 9
@@ -216,48 +218,48 @@
    </li>
   </ul>
  </li>
- <li class="toctree-l1 current active has-children">
-  <a class="reference internal" href="week11_summary.html">
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../week11/week11_summary.html">
    Week 11 - Chapter 10
   </a>
-  <input checked="" class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/>
+  <input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/>
   <label for="toctree-checkbox-2">
    <i class="fas fa-chevron-down">
    </i>
   </label>
-  <ul class="current">
+  <ul>
    <li class="toctree-l2">
-    <a class="reference internal" href="readings.html">
+    <a class="reference internal" href="../week11/readings.html">
      Readings
     </a>
    </li>
    <li class="toctree-l2">
-    <a class="reference internal" href="videos.html">
+    <a class="reference internal" href="../week11/videos.html">
      Videos
     </a>
    </li>
    <li class="toctree-l2">
-    <a class="reference internal" href="homework.html">
+    <a class="reference internal" href="../week11/homework.html">
      Homework
     </a>
    </li>
    <li class="toctree-l2">
-    <a class="reference internal" href="lecture.html">
+    <a class="reference internal" href="../week11/lecture.html">
      Lecture
     </a>
    </li>
    <li class="toctree-l2">
-    <a class="reference internal" href="test.html">
+    <a class="reference internal" href="../week11/test.html">
      Test
     </a>
    </li>
-   <li class="toctree-l2 current active">
-    <a class="current reference internal" href="#">
+   <li class="toctree-l2">
+    <a class="reference internal" href="../week11/lab.html">
      Lab
     </a>
    </li>
    <li class="toctree-l2">
-    <a class="reference internal" href="learninglogs.html">
+    <a class="reference internal" href="../week11/learninglogs.html">
      Learning Logs
     </a>
    </li>
@@ -442,7 +444,7 @@
         <!-- ipynb file if we had a myst markdown file -->
         
         <!-- Download raw file -->
-        <a class="dropdown-buttons" href="../../_sources/class/week11/lab.md"><button type="button"
+        <a class="dropdown-buttons" href="../../_sources/class/InterpFit/LagrangeForm.md"><button type="button"
                 class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
                 data-placement="left">.md</button></a>
         <!-- Download PDF via print -->
@@ -474,7 +476,7 @@
         <div class="col-12 col-md-9 pl-md-3 pr-md-0">
             <!-- Table of contents that is only displayed when printing the page -->
             <div id="jb-print-docs-body" class="onlyprint">
-                <h1>Lab</h1>
+                <h1>Lagrange Form of the Interpolation Polynomial</h1>
                 <!-- Table of contents -->
                 <div id="print-main-content">
                     <div id="jb-print-toc">
@@ -485,22 +487,58 @@
             
               <div>
                 
-  <div class="tex2jax_ignore mathjax_ignore section" id="lab">
-<h1>Lab<a class="headerlink" href="#lab" title="Permalink to this headline">¶</a></h1>
-<div class="sphinx-bs container pb-4 docutils">
-<div class="row docutils">
-<div class="d-flex col-lg-6 col-md-6 col-sm-6 col-xs-12 p-2 docutils">
-<div class="card w-100 shadow docutils">
-<div class="card-body docutils">
-<p class="card-text">The lab information for this week is in the Physics 111 Lab canvas course…</p>
-</div>
-<div class="card-footer docutils">
-<p class="card-text"><a class="sphinx-bs btn text-wrap btn-outline-primary btn-block stretched-link text-dark reference external" href="https://canvas.ubc.ca/courses/66799"><span>Physics 111 Lab Canvas</span></a></p>
-</div>
-</div>
-</div>
-</div>
-</div>
+  <div class="section" id="lagrange-form-of-the-interpolation-polynomial">
+<h1>Lagrange Form of the Interpolation Polynomial<a class="headerlink" href="#lagrange-form-of-the-interpolation-polynomial" title="Permalink to this headline">¶</a></h1>
+<p>The <em>Lagrange form</em> of the interpolating polynomial was first formulated by Edward Waring in 1779 (Sadly misattribution of scientific results is probably closer to the norm than it should be.  Attempting to correct misattribution later can be next to impossible once a name has become firmly established).  For centuries the Lagrange form was used primarily as a theoretical tool to help prove mathematical results and build intuition as it has a straightforward analytic form.   Until fairly recently it was thought that changing the points <span class="math notranslate nohighlight">\(x_i\)</span> required recalculating the entire interpolant and that evaluating the interpolant was rather inefficient.  However, it is now known that a slight variant, namely barycentric Lagrange interpolation, solves these problems rather straightforwardly.</p>
+<p>To first step in constructing the Lagrange interpolating polynomial is to consider the basis polynomials:</p>
+<p>Given <span class="math notranslate nohighlight">\(x_0, x_1, ...,x_n\)</span> the <strong>Lagrange basis polynomials</strong> for these points are</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\begin{align}
+L_i^n(x)&amp;=\prod_{j=0,j\neq i}^n \frac{(x-x_j)}{(x_i-x_j)},\qquad\qquad i=0,...n\\
+&amp;= \frac{(x-x_0)(x-x_1)...(x-x_{i-1})(x-x_{i+1})...(x-x_n)}{(x_i-x_0)(x_i-x_1)...(x_i-x_{i-1})(x_i-x_{i+1})...(x_i-x_n)}.
+\end{align}
+\end{split}\]</div>
+<p>The key property of these polynomials is that when evaluated at one of our interpolation points,</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\begin{equation}
+L_i^n(x_k)=\delta_{ki} = 
+\begin{cases}
+1, &amp;  \text{if} k=i  \\
+0, &amp;  \text{if} k\neq i
+\end{cases}
+\end{equation}
+\end{split}\]</div>
+<p>If we have 4 points <span class="math notranslate nohighlight">\(n=3\)</span> and if the points are equally spaced the Lagrange basis polynomials look like the following:</p>
+<p><span class="xref myst">plot of <span class="math notranslate nohighlight">\(L_n^j(x)\)</span></span></p>
+<p>Examining <span class="math notranslate nohighlight">\(L_2^3(x)\)</span>, for example, we see it is indeed 0 at <span class="math notranslate nohighlight">\(x_0,\,x_1,\)</span> and <span class="math notranslate nohighlight">\(x_3\)</span> but is 1 at <span class="math notranslate nohighlight">\(x_2\)</span>.  Also note that all of these are cubic polynomials (degree 3 when we have 4 interpolation points).</p>
+<p>The <em>Lagrange form of the interpoloating polynomial</em> given data values <span class="math notranslate nohighlight">\((x_0,f(x_0)), (x_1,f(x_1)), (x_2,f(x_2)),..., (x_n,f(x_n))\)</span> is now</p>
+<div class="math notranslate nohighlight">
+\[p_n(x)=\sum_{i=0}^n L_i^n(x) f(x_i)\]</div>
+<p>Keep in mind that the <span class="math notranslate nohighlight">\(f(x_i)\)</span> is given (i.e. is a number) and so this is a sum over the Lagrange basis polynomials.  By construction</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}\begin{align}
+p_n(x_j) &amp;= \sum_{i=0}^n L_i^n(x_j) f(x_i) \\
+ &amp;= \delta_{ij} f(x_i) \\
+ &amp;= f(x_j).
+ \end{align}
+\end{split}\]</div>
+<p>So <span class="math notranslate nohighlight">\(p_n(x)\)</span> is an interpolating polynomial of degree <span class="math notranslate nohighlight">\(\leq n\)</span> through the specifed points, as desired.</p>
+<p>Any important question to ask <strong>is</strong> whether <strong>our interpolating polynomial <span class="math notranslate nohighlight">\(p_n(x)\)</span> is unique</strong>.  If not, we would need to decide which one was “best” and perhaps this answer would depend on the circumstance.  Fortunately we can show that our interpolating polynomial <em>is</em> unique.</p>
+<p>How?  Suppose not, then there is another polynomial, which we will call <span class="math notranslate nohighlight">\(q_n(x)\)</span> of degree <span class="math notranslate nohighlight">\(\leq n\)</span> with <span class="math notranslate nohighlight">\(q_n(x_i)=f(x_i)\)</span> for all <span class="math notranslate nohighlight">\(i\)</span> and where for general <span class="math notranslate nohighlight">\(x\)</span> we have <span class="math notranslate nohighlight">\(p_n(x)\neq q_n(x)\)</span>.  Now consider</p>
+<div class="math notranslate nohighlight">
+\[d_n(x)=p_n(x)-q_n(x),\]</div>
+<p>which is another polynomial of degree <span class="math notranslate nohighlight">\(\leq n\)</span>.  Now if both <span class="math notranslate nohighlight">\(p_n(x)\)</span> and <span class="math notranslate nohighlight">\(q_n(x)\)</span> are interpolating polynomials through our <span class="math notranslate nohighlight">\(n+1\)</span> points we must have</p>
+<div class="math notranslate nohighlight">
+\[d_n(x_i) = p_n(x_i) - q_n(x_i) = f(x_i)- f(x_i) = 0, \qquad\qquad i=0,1,...,n\]</div>
+<p>which means <span class="math notranslate nohighlight">\(d_n(x_i)\)</span> has <span class="math notranslate nohighlight">\(n+1\)</span> roots (or zeros).  However, the fundamental theorm of algebra tells us that a <span class="math notranslate nohighlight">\(n-\)</span>degree polynomial has at most <span class="math notranslate nohighlight">\(n\)</span> roots.  The only way to resolve this contradiction is if <span class="math notranslate nohighlight">\(d_n(x)\equiv 0\)</span> implying that <span class="math notranslate nohighlight">\(q_n(x)\equiv p_n(x)\)</span> so that the polynomial is unique.</p>
+<p>Note that while the polynomial is unique, we are free to rearrange it algebraically to construct a different form of the same polynomial. Why would you want to do this?</p>
+<ol class="simple">
+<li><p><span class="math notranslate nohighlight">\(L_j^n(x)\)</span> is a <span class="math notranslate nohighlight">\(n\)</span>’th degree polynomial and so requires <span class="math notranslate nohighlight">\(\mathcal{O}(n)\)</span> flops (we discussed this in conjunction with Horner’s algorithm in an earlier chapter).  We have <span class="math notranslate nohighlight">\(n+1\)</span> of these to compute so direct use of the Lagrange form of <span class="math notranslate nohighlight">\(p_n(x)\)</span> would require <span class="math notranslate nohighlight">\(\mathcal{O}(n^2)\)</span> flops.  This is inefficient for a polynomial that is still <span class="math notranslate nohighlight">\(n\)</span>’th degree.</p></li>
+<li><p>If we decide to change or add another node at <span class="math notranslate nohighlight">\(x_k\)</span> it would appear that all the Lagrange basis polynomials would have to be recalculated.</p></li>
+</ol>
+<p>It is for these reasons that Lagrange interpolating polynomials had limited practical (as opposed to theoretical) application for many years.  However, these problems can be easily fixed as we discuss next.</p>
 </div>
 
     <script type="text/x-thebe-config">
@@ -516,7 +554,7 @@
         },
         kernelOptions: {
             kernelName: "python3",
-            path: "./class/week11"
+            path: "./class/InterpFit"
         },
         predefinedOutput: true
     }
@@ -528,17 +566,17 @@
             
                 <!-- Previous / next buttons -->
 <div class='prev-next-area'> 
-    <a class='left-prev' id="prev-link" href="test.html" title="previous page">
+    <a class='left-prev' id="prev-link" href="InterpFit_summary.html" title="previous page">
         <i class="fas fa-angle-left"></i>
         <div class="prev-next-info">
             <p class="prev-next-subtitle">previous</p>
-            <p class="prev-next-title">Test</p>
+            <p class="prev-next-title">Interpolation and Curve Fitting</p>
         </div>
     </a>
-    <a class='right-next' id="next-link" href="learninglogs.html" title="next page">
+    <a class='right-next' id="next-link" href="../week10/week10_summary.html" title="next page">
     <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">Learning Logs</p>
+        <p class="prev-next-title">Week 10 Summary</p>
     </div>
     <i class="fas fa-angle-right"></i>
     </a>
