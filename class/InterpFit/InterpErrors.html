@@ -523,15 +523,15 @@
 <blockquote>
 <div><p>Theorem: Given <em>distinct</em> <span class="math notranslate nohighlight">\(x_0, x_1, ... , x_n\)</span> in an interval <span class="math notranslate nohighlight">\([a,b]\)</span>, and with <span class="math notranslate nohighlight">\(f(x)\in C^{n+1}[a,b]\)</span>,
 for any <span class="math notranslate nohighlight">\(x\in[a,b]\)</span>  there exists <span class="math notranslate nohighlight">\(\xi\in(a,b)\)</span> such that</p>
-<div class="math notranslate nohighlight" id="equation-eq-inter-err">
-<span class="eqno">(1)<a class="headerlink" href="#equation-eq-inter-err" title="Permalink to this equation">¶</a></span>\[\begin{equation} f(x)-p_n(x) = \frac{f^{n+1}(\xi)}{(n+1)!}\prod_{j=0}^n (x-x_j). \end{equation}\]</div>
+<p>$<span class="math notranslate nohighlight">\(\begin{equation} f(x)-p_n(x) = \frac{f^{n+1}(\xi)}{(n+1)!}\prod_{j=0}^n (x-x_j). \end{equation}\)</span>$ <code class="xref eq docutils literal notranslate"><span class="pre">inter_err</span></code></p>
 </div></blockquote>
-<p>Proof: Take some fixed <span class="math notranslate nohighlight">\(x\in[a,b]\)</span>.  If <span class="math notranslate nohighlight">\(x=x_k\)</span> for some <span class="math notranslate nohighlight">\(k\)</span> then the error formula <span class="xref std std-ref">eq:inter_err</span> gives zero (which is, indeed the true error as the interpolating polynomial agrees with the function at node points by definition).  If <span class="math notranslate nohighlight">\(x\neq x_k\)</span>, then let</p>
+<p>Proof: Take some fixed <span class="math notranslate nohighlight">\(x\in[a,b]\)</span>.  If <span class="math notranslate nohighlight">\(x=x_k\)</span> for some <span class="math notranslate nohighlight">\(k\)</span> then the error formula <span class="xref std std-ref">inter_err</span> gives zero (which is, indeed the true error as the interpolating polynomial agrees with the function at node points by definition).  If <span class="math notranslate nohighlight">\(x\neq x_k\)</span>, then let’s define an auxiliary function</p>
 <div class="math notranslate nohighlight">
 \[g(t)=f(t)-p_n(t) - \left[ f(x)-p_n(x) \right] \frac{(t-x_0)(t-x_1)...(t-x_n)}{(x-x_0)(x-x_1)...(x-x_n)}\]</div>
+<p>Now note that <span class="math notranslate nohighlight">\(g(t)=0\)</span> for <span class="math notranslate nohighlight">\(t=x_k\)</span> (for any <span class="math notranslate nohighlight">\(k\)</span>) because the numerator in the last term will contain the factor <span class="math notranslate nohighlight">\((t-x_k)\)</span> which is zero at <span class="math notranslate nohighlight">\(t=x_k\)</span> and the first two terms cancel at <span class="math notranslate nohighlight">\(t=x_k\)</span> as <span class="math notranslate nohighlight">\(f(x_k)=p_n(x_k)\)</span> by definition of the interpolating polynomial.  Also note that <span class="math notranslate nohighlight">\(g(t)=0\)</span> for <span class="math notranslate nohighlight">\(t=x\)</span> as well as the fraction last term is one and the remaining terms cancel for <span class="math notranslate nohighlight">\(t=x\)</span>.  As a result, we see that <span class="math notranslate nohighlight">\(g(t)\)</span> has <span class="math notranslate nohighlight">\(n+2\)</span> zeros (at <span class="math notranslate nohighlight">\(x\)</span> and at <span class="math notranslate nohighlight">\(x_0, x_1,...,x_n\)</span>).</p>
 <p>For numbered equations, one needs to use the same method:</p>
 <div class="math notranslate nohighlight" id="equation-my-equation">
-<span class="eqno">(2)<a class="headerlink" href="#equation-my-equation" title="Permalink to this equation">¶</a></span>\[\int_a^b f(x) = \frac{1}{2} \]</div>
+<span class="eqno">(1)<a class="headerlink" href="#equation-my-equation" title="Permalink to this equation">¶</a></span>\[\int_a^b f(x) = \frac{1}{2} \]</div>
 <p>Now equation <span class="xref std std-ref">my_equation</span></p>
 </div>
 
