@@ -526,7 +526,7 @@ for any <span class="math notranslate nohighlight">\(x\in[a,b]\)</span>  there e
 <div class="math notranslate nohighlight" id="equation-erroreq">
 <span class="eqno">(1)<a class="headerlink" href="#equation-erroreq" title="Permalink to this equation">¶</a></span>\[\begin{equation} f(x)-p_n(x) = \frac{f^{n+1}(\xi)}{(n+1)!}\prod_{j=0}^n (x-x_j). \end{equation}\]</div>
 </div></blockquote>
-<p>Proof: Take some fixed <span class="math notranslate nohighlight">\(x\in[a,b]\)</span>.  If <span class="math notranslate nohighlight">\(x=x_k\)</span> for some <span class="math notranslate nohighlight">\(k\)</span> then the error formula gives zero (which is, indeed the true error as the interpolating polynomial agrees with the function at node points by definition).  If <span class="math notranslate nohighlight">\(x\neq x_k\)</span>, then let</p>
+<p>Proof: Take some fixed <span class="math notranslate nohighlight">\(x\in[a,b]\)</span>.  If <span class="math notranslate nohighlight">\(x=x_k\)</span> for some <span class="math notranslate nohighlight">\(k\)</span> then the error formula <span class="xref std std-ref">eq:inter</span> gives zero (which is, indeed the true error as the interpolating polynomial agrees with the function at node points by definition).  If <span class="math notranslate nohighlight">\(x\neq x_k\)</span>, then let</p>
 <div class="math notranslate nohighlight">
 \[g(t)=f(t)-p_n(t) - \left[ f(x)-p_n(x) \right] \frac{(t-x_0)(t-x_1)...(t-x_n)}{(x-x_0)(x-x_1)...(x-x_n)}\]</div>
 </div>
