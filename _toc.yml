@@ -15,7 +15,7 @@ parts:
     - file: class/InterpFit/InterpFit_summary
     - file: class/InterpFit/LagrangeForm
     - file: class/InterpFit/BarycentricInterp
-    - file: class/Interpfit/InterpErrors
+    - file: class/InterpFit/InterpErrors
 - caption: Part 3 - Energy & Momentum
   chapters:
   - file: class/week10/week10_summary
