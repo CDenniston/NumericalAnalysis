@@ -5,7 +5,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Barycentric Lagrange Interpolation &#8212; Numerical Analysis</title>
+    <title>Chebyshev Polynomials &#8212; Numerical Analysis</title>
     
   <link href="../../_static/css/theme.css" rel="stylesheet">
   <link href="../../_static/css/index.ff1ffe594081f20da1ef19478df9384b.css" rel="stylesheet">
@@ -58,11 +58,11 @@
         const thebe_selector_output = ".output,.cell_output"
     </script>
     <script async="async" src="../../_static/sphinx-thebe.js"></script>
-    <link rel="canonical" href="https://cdenniston.github.io/NumericalAnalysis/class/InterpFit/BarycentricInterp.html" />
+    <link rel="canonical" href="https://cdenniston.github.io/NumericalAnalysis/class/InterpFit/Chebyshev.html" />
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
-    <link rel="next" title="Interpolation Errors" href="InterpErrors.html" />
-    <link rel="prev" title="Lagrange Form of the Interpolation Polynomial" href="LagrangeForm.html" />
+    <link rel="next" title="Week 10 Summary" href="../week10/week10_summary.html" />
+    <link rel="prev" title="Interpolation Errors" href="InterpErrors.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="None">
     
@@ -164,8 +164,8 @@
    Lagrange Form of the Interpolation Polynomial
   </a>
  </li>
- <li class="toctree-l1 current active">
-  <a class="current reference internal" href="#">
+ <li class="toctree-l1">
+  <a class="reference internal" href="BarycentricInterp.html">
    Barycentric Lagrange Interpolation
   </a>
  </li>
@@ -174,8 +174,8 @@
    Interpolation Errors
   </a>
  </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="Chebyshev.html">
+ <li class="toctree-l1 current active">
+  <a class="current reference internal" href="#">
    Chebyshev Polynomials
   </a>
  </li>
@@ -459,7 +459,7 @@
         <!-- ipynb file if we had a myst markdown file -->
         
         <!-- Download raw file -->
-        <a class="dropdown-buttons" href="../../_sources/class/InterpFit/BarycentricInterp.ipynb"><button type="button"
+        <a class="dropdown-buttons" href="../../_sources/class/InterpFit/Chebyshev.ipynb"><button type="button"
                 class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
                 data-placement="left">.ipynb</button></a>
         <!-- Download PDF via print -->
@@ -484,7 +484,7 @@
         aria-label="Launch interactive content"><i class="fas fa-rocket"></i></button>
     <div class="dropdown-buttons">
         
-        <a class="binder-button" href="https://mybinder.org/v2/gh/firasm/jupyterbook_course_template/master?urlpath=lab/tree/class/InterpFit/BarycentricInterp.ipynb"><button type="button"
+        <a class="binder-button" href="https://mybinder.org/v2/gh/firasm/jupyterbook_course_template/master?urlpath=lab/tree/class/InterpFit/Chebyshev.ipynb"><button type="button"
                 class="btn btn-secondary topbarbtn" title="Launch Binder" data-toggle="tooltip"
                 data-placement="left"><img class="binder-button-logo"
                     src="../../_static/images/logo_binder.svg"
@@ -511,7 +511,7 @@
         <div class="col-12 col-md-9 pl-md-3 pr-md-0">
             <!-- Table of contents that is only displayed when printing the page -->
             <div id="jb-print-docs-body" class="onlyprint">
-                <h1>Barycentric Lagrange Interpolation</h1>
+                <h1>Chebyshev Polynomials</h1>
                 <!-- Table of contents -->
                 <div id="print-main-content">
                     <div id="jb-print-toc">
@@ -522,121 +522,133 @@
             
               <div>
                 
-  <div class="section" id="barycentric-lagrange-interpolation">
-<h1>Barycentric Lagrange Interpolation<a class="headerlink" href="#barycentric-lagrange-interpolation" title="Permalink to this headline">¶</a></h1>
-<p>This rewriting of the Lagrange interpolation goes back at least seventy-five years but was popularized by <a class="reference external" href="https://epubs.siam.org/doi/pdf/10.1137/S0036144502417715">Berrut and Trefethen</a> in the early 21st century.  The idea here is basically to rewrite the Lagrange form to avoid the problems mentioned above.</p>
-<p>First define</p>
+  <div class="section" id="chebyshev-polynomials">
+<h1>Chebyshev Polynomials<a class="headerlink" href="#chebyshev-polynomials" title="Permalink to this headline">¶</a></h1>
+<p>In the last section, we found that a set of nodes with points more densely spaced at the edges of the interval seemed to work much better for polynomial interpolation than equally spaced points.  It turns out, the points we choose were roots of a Chebyshev polynomial.  Chebyshev polynomials are a set of orthogonal polynomials on the interval <span class="math notranslate nohighlight">\([-1,1]\)</span> with respect to the weight function <span class="math notranslate nohighlight">\(1/\sqrt{1-x^2}\)</span>.  They can be defined via trignometric functions as</p>
+<div class="math notranslate nohighlight" id="equation-chebdef">
+<span class="eqno">(2)<a class="headerlink" href="#equation-chebdef" title="Permalink to this equation">¶</a></span>\[ T_k(x)=\cos(k \arccos x).\]</div>
+<p>Note that we will restrict <span class="math notranslate nohighlight">\(x\)</span> to be in <span class="math notranslate nohighlight">\([-1,1]\)</span> here so <span class="math notranslate nohighlight">\(\arccos x\)</span> remains well-defined.  It should be clear from the definition in terms of the cosine function that <span class="math notranslate nohighlight">\(T_k(x)\)</span> satisfies</p>
+<blockquote>
+<div><div class="math notranslate nohighlight" id="equation-prop1">
+<span class="eqno">(3)<a class="headerlink" href="#equation-prop1" title="Permalink to this equation">¶</a></span>\[\begin{equation} -1 \geq T_k(x) \geq 1 \quad \text{for}\quad -1\geq x \geq 1\end{equation}.\]</div>
+</div></blockquote>
+<p>and</p>
+<blockquote>
+<div><p><span class="math notranslate nohighlight">\(T_k(x)\)</span> has roots at <span class="math notranslate nohighlight">\(k \arccos x = (odd integer) \frac{\pi}{2}\)</span> or</p>
+<div class="math notranslate nohighlight" id="equation-prop2">
+<span class="eqno">(4)<a class="headerlink" href="#equation-prop2" title="Permalink to this equation">¶</a></span>\[\begin{equation} x_j=\cos\left( \frac{(2j+1)\pi}{2k} \right),\qquad j=0,...,k-1 \end{equation},\]</div>
+</div></blockquote>
+<p>and</p>
+<blockquote>
+<div><p><span class="math notranslate nohighlight">\(T_k(x)\)</span> oscillates between <span class="math notranslate nohighlight">\(-1\)</span> and <span class="math notranslate nohighlight">\(1\)</span> a total of <span class="math notranslate nohighlight">\(k+1\)</span> times, hitting these extremes at <span class="math notranslate nohighlight">\(x=\cos 0, \cos(\pi/k), ...,\cos((k-1)\pi/k)\)</span> (prop3)</p>
+</div></blockquote>
+<p>Note that these zeros correspond to the projection onto <span class="math notranslate nohighlight">\(x\)</span> of points spaced at equally spaced angles on the unit circle.  What is perhaps less clear is that Eq.(<a class="reference internal" href="#equation-chebdef">(2)</a>) corresponds to a polynomial at all.
+However, for <span class="math notranslate nohighlight">\(k=0\)</span> and <span class="math notranslate nohighlight">\(1\)</span> it is easy to see that</p>
 <div class="math notranslate nohighlight">
-\[\mathcal{l}(x)\equiv \prod_{i=0}^n (x-x_i).\]</div>
-<p>Then note that</p>
-<div class="math notranslate nohighlight">
-\[L_j^n(x) = \frac{\mathcal{l}(x)}{(x-x_j)} w_j,\]</div>
-<p>where the baricentric weight <span class="math notranslate nohighlight">\(w_j\)</span> is</p>
-<div class="math notranslate nohighlight">
-\[ w_j \equiv \prod_{i=0,i\neq j}^n (x_j-x_i).\]</div>
-<p>Our interpolating polynomial now becomes</p>
-<div class="math notranslate nohighlight">
-\[p_n(x) = =\sum_{i=0}^n L_i^n(x) f(x_i) =  \mathcal{l}(x)\sum_{i=0}^n \frac{w_i}{x-x_i} f(x_i).\]</div>
-<p>This is called the <em>first form of barycentric interpolation</em>.  Once we have computed the weights <span class="math notranslate nohighlight">\(w_j\)</span>, evaluation of <span class="math notranslate nohighlight">\(p_n(x)\)</span> now requires <span class="math notranslate nohighlight">\(\mathcal{O}(n)\)</span> flops thus removing the first objection to the Lagrange form of the interpolating polynomial.</p>
-<p>If we add a new node <span class="math notranslate nohighlight">\(x_{n+1}\)</span>, we can construct new weights <span class="math notranslate nohighlight">\(w_j\)</span> by dividing the old weights by <span class="math notranslate nohighlight">\((x_j-x_{n+1})\)</span> to get the new <span class="math notranslate nohighlight">\(w_j\)</span> (plus computing <span class="math notranslate nohighlight">\(w_{n+1}\)</span> using the original formula).  This effectively eliminates the second objection to the Lagrange form of the intepolating polynomial.</p>
-<p>There is another similification we can use before constructing an algorithm for interpolation.  Note that for the function <span class="math notranslate nohighlight">\(g(x)\equiv 1\)</span>,</p>
-<div class="math notranslate nohighlight">
-\[\begin{split}
-\begin{align}
-g(x) &amp;=  \mathcal{l}(x)\sum_{i=0}^n \frac{w_i}{x-x_i} g(x_i),\\
- &amp;= \mathcal{l}(x)\sum_{i=0}^n \frac{w_i}{x-x_i}.
+\[\begin{split}\begin{align}
+T_0(x)&amp;=\cos(0 \arccos x) = 1,\\
+T_1(x)&amp;=\cos(1 \arccos x) = x.
 \end{align}
 \end{split}\]</div>
-<p>As we shall see when we discuss interpolation errors, this formula is actually exact.  As a result,</p>
+<p>To see that we get a polynomial for higher <span class="math notranslate nohighlight">\(k\)</span> it is helpful to derive the recursion relation for the Chebyshev polynomials.  If we set <span class="math notranslate nohighlight">\(y=\arccos x\)</span> we have</p>
 <div class="math notranslate nohighlight">
-\[\begin{split}
-\begin{align}
-p_n(x) &amp;= \frac{p_n(x)}{1} = \frac{p_n(x)}{g(x)},\\
- &amp;=\frac{\mathcal{l}(x)\sum_{i=0}^n \frac{w_i}{x-x_i} f(x_i)}{\mathcal{l}(x)\sum_{i=0}^n \frac{w_i}{x-x_i}},
-\end{align}
-\end{split}\]</div>
-<p>which simiplifies to the second, or <em>true form of barycentric interpolation</em></p>
+\[\begin{split}\begin{align}
+T_{k+1}(x)&amp;=\cos\left( (k+1)y \right)= \cos(ky)\cos(y)-\sin(ky)\sin(y),\\
+T_{k-1}(x)&amp;=\cos\left( (k-1)y \right)= \cos(ky)\cos(y)+\sin(ky)\sin(y),
+\end{align}\end{split}\]</div>
+<p>where we have used the trig-identies for the sum/difference of two angles.  Adding these equations gives</p>
 <div class="math notranslate nohighlight">
-\[p_n(x)=\frac{\sum_{i=0}^n \frac{w_i}{x-x_i} f(x_i)}{\sum_{i=0}^n \frac{w_i}{x-x_i}}.\]</div>
-<p>In this form, we avoid evaluating <span class="math notranslate nohighlight">\(\mathcal{l}(x)\)</span> entirely and the sum in the numerator and denominator can easily be constructed simultaneously.</p>
-<p>Note that there are two stages to implementation of barycentric Lagrange interpolation: i) computing the weights and ii) computing the interpolation at the desired points.  The first should be done <em>only once</em> whereas the second needs to be done at each point where the interpolation is computed.  A python code to do this is below</p>
+\[T_{k+1}(x)+T_{k-1}(x)=2\cos(ky)\cos(y)=2T_k(x)T_1(x)=2 x\, T_k(x),\]</div>
+<p>making use of our previous expression that <span class="math notranslate nohighlight">\(T_1(x)=x\)</span>.  This can then be easily rearranged to give the recursion relation</p>
+<div class="math notranslate nohighlight" id="equation-chebrecursion">
+<span class="eqno">(5)<a class="headerlink" href="#equation-chebrecursion" title="Permalink to this equation">¶</a></span>\[T_{k+1}(x)=2 x\, T_k(x) - T_{k-1}(x).\]</div>
+<p>As implied by the name, we can use this to recursively derive higher order polynomials given the two lower order ones.  Starting with the known <span class="math notranslate nohighlight">\(T_0(x)\)</span> and <span class="math notranslate nohighlight">\(T_1(x)\)</span> given above, this gives the next few polynomials as</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}\begin{align}
+T_2(x)&amp;= 2x^2-1,\\
+T_3(x)&amp;= 4x^3-3x,\\
+T_4(x)&amp;= 8x^4-8x^2+1.
+\end{align}\end{split}\]</div>
+<p>From the pattern of these first few polynomials, and the multiplication by <span class="math notranslate nohighlight">\(2\)</span> in the recursion it should also be clear that the leading coefficient (coefficient of the highest power of <span class="math notranslate nohighlight">\(x\)</span>) for <span class="math notranslate nohighlight">\(T_k(x)\)</span> is <span class="math notranslate nohighlight">\(2^{k-1}\)</span>.  This, and the fact that we know the roots (in <a class="reference internal" href="#equation-prop2">(4)</a>) implies that</p>
+<div class="math notranslate nohighlight" id="equation-tnplus1">
+<span class="eqno">(6)<a class="headerlink" href="#equation-tnplus1" title="Permalink to this equation">¶</a></span>\[ \frac{T_{n+1}(x)}{2^n}=(x-x_0)(x-x_1)...(x-x_n)=\prod_{j=0}^n (x-x_j),\]</div>
+<p>where the <span class="math notranslate nohighlight">\(x_j\)</span> are the roots of <span class="math notranslate nohighlight">\(T_{n+1}(x)\)</span> from Equation <a class="reference internal" href="#equation-prop2">(4)</a>.</p>
+<p>This now brings us back to the Error formula for polynomial interpolation that we derived in the previous section:</p>
+<div class="math notranslate nohighlight">
+\[\begin{equation} f(x)-p_n(x) = \frac{f^{n+1}(\xi)}{(n+1)!}\prod_{j=0}^n (x-x_j). \end{equation}\]</div>
+<p><em>If</em> we select our interpolation nodes as the roots of <span class="math notranslate nohighlight">\(T_{n+1}(x)\)</span>, namely</p>
+<div class="math notranslate nohighlight">
+\[ x_i=\cos\left( \frac{(2i+1)\pi}{2n+2} \right), \qquad\qquad i=0, 1, ..., n. \]</div>
+<p>then we see that we can substitute <a class="reference internal" href="#equation-tnplus1">(6)</a> into the error formula to get</p>
+<div class="math notranslate nohighlight">
+\[\begin{equation} f(x)-p_n(x) = \frac{f^{n+1}(\xi)}{(n+1)!}\frac{T_{n+1}}{2^n},\end{equation}\]</div>
+<p>so that</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}\begin{align} |f(x)-p_n(x)| &amp;= \left|\frac{f^{n+1}(\xi)}{(n+1)!}\frac{T_{n+1}}{2^n}\right|,\\ &amp;\leq \frac{|f^{n+1}(\xi)|}{(n+1)!2^n}.\end{align} \end{split}\]</div>
+<p>In fact, we can also show that <em>this is the best</em> we can do.</p>
+<p>Again, we show this by first assuming the contrary and then showing that this leads to a contradiction.  In order for this to be the best choice, we must have <span class="math notranslate nohighlight">\(T_{n+1}(x)/2^n\)</span> to be the monic polynomial (a polynomial with leading coefficient 1) with the smallest absolute maximum.  Suppose this is nto the case.  Then there must be another monic polynomial, say <span class="math notranslate nohighlight">\(Q_{n+1}(x)\)</span> of degree <span class="math notranslate nohighlight">\(n\)</span> with an even smaller absolute max on <span class="math notranslate nohighlight">\([-1,1]\)</span>.  i.e.</p>
+<div class="math notranslate nohighlight">
+\[ \begin{align}\begin{aligned} |Q_{n+1}(x)| &lt; \frac{1}{2^n}$$ for $x\in [-1,1]$.\\Since $T_{n+1}(x)$ alternates between $-1$ and $1$ a total of $n+2$ times (as noted in {eq}`(prop3)`), at these $n+2$ points the polynomial  \\$$Q_{n+1}(x)-\frac{T_{n+1}(x)}{2^n}\end{aligned}\end{align} \]</div>
+<p>is alternatively positive and negative (because <span class="math notranslate nohighlight">\(Q_{n+1}\)</span> is always less than <span class="math notranslate nohighlight">\(1/2^n\)</span>) at these extreme points for <span class="math notranslate nohighlight">\(T_{n+1}(x)\)</span>.  The intermediate value theorem then implies that <span class="math notranslate nohighlight">\(Q_{n+1}-\frac{T_{n+1}}{2^n}\)</span> must cross zero at least <span class="math notranslate nohighlight">\(n+1\)</span> times so it has <span class="math notranslate nohighlight">\(n+1\)</span> roots.  This is a contradition as both <span class="math notranslate nohighlight">\(Q_{n+1}\)</span> and <span class="math notranslate nohighlight">\(\frac{T_{n+1}}{2^n}(x)\)</span> are monic so the leading term cancels in subtraction and therefore <span class="math notranslate nohighlight">\(Q_{n+1}-\frac{T_{n+1}}{2^n}\)</span> has degree less than or equal to <span class="math notranslate nohighlight">\(n\)</span> and so has at most <span class="math notranslate nohighlight">\(n\)</span> zeros.</p>
+<p>So, in summary,</p>
+<ul class="simple">
+<li><p>If you want to use polynomial interpolation to approximate a function on <span class="math notranslate nohighlight">\([-1,1]\)</span>, select Chebyshev points as your interpolation nodes.</p></li>
+<li><p>When you do this, you can also bound the error if you can also bound <span class="math notranslate nohighlight">\(|f^{n+1}(\xi)|\)</span>.</p></li>
+</ul>
+<p>Chebyshev points are in <span class="math notranslate nohighlight">\([-1,1]\)</span> but you should keep in mind that any interval <span class="math notranslate nohighlight">\(x \in [a,b]\)</span> can be easily mapped into <span class="math notranslate nohighlight">\(y\in [-1,1]\)</span> via a linear transformation</p>
+<div class="math notranslate nohighlight">
+\[ x = \frac{b-a}{2}y+\frac{b+a}{2}. \]</div>
+<p>Constructing the polynomial interpolation for <span class="math notranslate nohighlight">\(y\)</span> can then be done using Chebyshev points.</p>
+<p>We illustrate these points with an example below.</p>
+<p><strong>Example</strong> Let’s construct a fourth order polynomial intepolation (<span class="math notranslate nohighlight">\(n=4\)</span>) for <span class="math notranslate nohighlight">\(f(x)=e^{-x^2}\)</span> on the interval <span class="math notranslate nohighlight">\([0,1]\)</span>.</p>
+<p>We first need to map this interval onto <span class="math notranslate nohighlight">\([-1,1]\)</span> using the change of variables</p>
+<div class="math notranslate nohighlight">
+\[ x = \frac{1}{2}(y+1).\]</div>
+<p>We then select our Chebyshev points as</p>
+<div class="math notranslate nohighlight">
+\[y_0 = \cos\frac{\pi}{10},\,y_1=\cos \frac{3\pi}{10}\,y_1=\cos \frac{5\pi}{10}\,y_1=\cos \frac{7\pi}{10}\,y_1=\cos \frac{9\pi}{10}.\]</div>
+<p>and construct <span class="math notranslate nohighlight">\(p_4(y)\)</span> for <span class="math notranslate nohighlight">\(f(y)=e^{-(y+1)^2/4}\)</span> using the standard barycentric Lagrange interpolation routine.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
-<span class="kn">from</span> <span class="nn">matplotlib</span> <span class="kn">import</span> <span class="n">pyplot</span> <span class="k">as</span> <span class="n">plt</span>
-
-<span class="k">def</span> <span class="nf">baryweight</span><span class="p">(</span><span class="n">x</span><span class="p">):</span>
-    <span class="c1"># build the weights recursively by effectively adding new points one at a time</span>
-    <span class="n">w</span> <span class="o">=</span> <span class="p">[</span><span class="mf">1.</span><span class="p">]</span><span class="o">*</span><span class="nb">len</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
-    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="nb">len</span><span class="p">(</span><span class="n">x</span><span class="p">)):</span>
-        <span class="c1"># in iteration i we compute w[i] from scratch while</span>
-        <span class="c1"># including the contribution of x[i] to the other weights</span>
-        <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="n">i</span><span class="p">):</span>
-            <span class="n">w</span><span class="p">[</span><span class="n">j</span><span class="p">]</span><span class="o">=</span><span class="p">(</span><span class="n">x</span><span class="p">[</span><span class="n">j</span><span class="p">]</span><span class="o">-</span><span class="n">x</span><span class="p">[</span><span class="n">i</span><span class="p">])</span><span class="o">*</span><span class="n">w</span><span class="p">[</span><span class="n">j</span><span class="p">]</span>
-            <span class="n">w</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">=</span><span class="p">(</span><span class="n">x</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">-</span><span class="n">x</span><span class="p">[</span><span class="n">j</span><span class="p">])</span><span class="o">*</span><span class="n">w</span><span class="p">[</span><span class="n">i</span><span class="p">]</span>
-    <span class="c1"># do the divisions at the end to minimize the total number of divisions</span>
-    <span class="k">return</span> <span class="p">[</span><span class="mi">1</span><span class="o">/</span><span class="n">x</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">w</span><span class="p">]</span>
-
-<span class="k">def</span> <span class="nf">baryinterp</span><span class="p">(</span><span class="n">w</span><span class="p">,</span><span class="n">x</span><span class="p">,</span><span class="n">y</span><span class="p">,</span><span class="n">xp</span><span class="p">):</span>
-    <span class="c1"># Compute the barycentric interpolation at xp given the observed data in lists</span>
-    <span class="c1"># x and y and the precomputed weights in a list w</span>
-    <span class="n">numer</span><span class="o">=</span><span class="mf">0.</span>
-    <span class="n">denom</span><span class="o">=</span><span class="mf">0.</span>
-    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="nb">len</span><span class="p">(</span><span class="n">x</span><span class="p">)):</span>
-        <span class="n">xdiff</span><span class="o">=</span><span class="n">xp</span><span class="o">-</span><span class="n">x</span><span class="p">[</span><span class="n">i</span><span class="p">]</span>
-        <span class="c1"># We first check to ensure we are not actually evaluated at a given data point.</span>
-        <span class="c1"># (This would lead to division by zero which would cause problems).</span>
-        <span class="k">if</span> <span class="p">(</span><span class="n">xdiff</span> <span class="o">==</span> <span class="mi">0</span><span class="p">):</span>
-            <span class="k">return</span> <span class="n">y</span><span class="p">[</span><span class="n">i</span><span class="p">]</span>
-        <span class="k">else</span><span class="p">:</span>
-            <span class="n">tmp</span><span class="o">=</span><span class="n">w</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">/</span><span class="n">xdiff</span>
-            <span class="n">numer</span> <span class="o">+=</span> <span class="n">tmp</span><span class="o">*</span><span class="n">y</span><span class="p">[</span><span class="n">i</span><span class="p">]</span>
-            <span class="n">denom</span> <span class="o">+=</span> <span class="n">tmp</span>
-    <span class="k">return</span> <span class="n">numer</span><span class="o">/</span><span class="n">denom</span>
-
-<span class="c1"># Main program showing functions defined above used to interpolate data taken from</span>
-<span class="c1"># a simple sine function</span>
-
-<span class="c1"># This creates a list of x values for our observed data</span>
-<span class="n">dx</span> <span class="o">=</span> <span class="mf">0.5</span>
-<span class="n">x_data</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mf">6.5</span><span class="o">+</span><span class="n">dx</span><span class="p">,</span> <span class="n">dx</span><span class="p">)</span>
-
-<span class="c1"># Compute the weights for the interpolating polynomial.  </span>
-<span class="n">weights</span><span class="o">=</span><span class="n">baryweight</span><span class="p">(</span><span class="n">x_data</span><span class="p">)</span>
-
-<span class="c1"># Create a list of y values for our observed data and plot</span>
-<span class="c1"># our observations</span>
-<span class="n">y_data</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="n">x_data</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x_data</span><span class="p">,</span> <span class="n">y_data</span><span class="p">,</span> <span class="s2">&quot;o&quot;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;data&quot;</span><span class="p">)</span>
-
-<span class="c1"># Now we want to fill in between our observed data points using</span>
-<span class="c1"># a barycentric Lagrange interpolation and plot the result</span>
-<span class="n">dx</span> <span class="o">=</span> <span class="mf">0.01</span>
-<span class="n">x_all</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mf">6.5</span><span class="o">+</span><span class="n">dx</span><span class="p">,</span><span class="n">dx</span><span class="p">)</span>
-<span class="n">y_all</span> <span class="o">=</span> <span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">*</span><span class="nb">len</span><span class="p">(</span><span class="n">x_all</span><span class="p">)</span>
-<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="nb">len</span><span class="p">(</span><span class="n">x_all</span><span class="p">)):</span>
-    <span class="n">y_all</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="n">baryinterp</span><span class="p">(</span><span class="n">weights</span><span class="p">,</span><span class="n">x_data</span><span class="p">,</span><span class="n">y_data</span><span class="p">,</span><span class="n">x_all</span><span class="p">[</span><span class="n">i</span><span class="p">])</span>
-    
-<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x_all</span><span class="p">,</span> <span class="n">y_all</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;barycentric interpolation&quot;</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">math</span>
+<span class="kn">from</span> <span class="nn">scipy.interpolate</span> <span class="kn">import</span> <span class="n">barycentric_interpolate</span>
+<span class="n">n</span> <span class="o">=</span> <span class="mi">5</span>
+<span class="n">x_observed</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">cos</span><span class="p">((</span><span class="mf">2.</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="n">n</span><span class="o">+</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">)</span><span class="o">+</span><span class="mf">1.</span><span class="p">)</span><span class="o">*</span><span class="n">math</span><span class="o">.</span><span class="n">pi</span><span class="o">/</span><span class="p">(</span><span class="mf">2.</span><span class="o">*</span><span class="n">n</span><span class="o">+</span><span class="mi">2</span><span class="p">))</span>
+<span class="n">y_observed</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="o">-</span><span class="p">(</span><span class="n">x_observed</span><span class="o">+</span><span class="mf">1.</span><span class="p">)</span><span class="o">**</span><span class="mi">2</span><span class="o">/</span><span class="mi">4</span><span class="p">)</span>
+<span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="nb">min</span><span class="p">(</span><span class="n">x_observed</span><span class="p">),</span> <span class="nb">max</span><span class="p">(</span><span class="n">x_observed</span><span class="p">),</span> <span class="n">num</span><span class="o">=</span><span class="mi">100</span><span class="p">)</span>
+<span class="n">y</span> <span class="o">=</span> <span class="n">barycentric_interpolate</span><span class="p">(</span><span class="n">x_observed</span><span class="p">,</span> <span class="n">y_observed</span><span class="p">,</span> <span class="n">x</span><span class="p">)</span>
+<span class="n">y_actual</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="o">-</span><span class="p">(</span><span class="n">x</span><span class="o">+</span><span class="mf">1.</span><span class="p">)</span><span class="o">**</span><span class="mi">2</span><span class="o">/</span><span class="mi">4</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">((</span><span class="n">x_observed</span><span class="o">+</span><span class="mi">1</span><span class="p">)</span><span class="o">/</span><span class="mi">2</span><span class="p">,</span> <span class="n">y_observed</span><span class="p">,</span> <span class="s2">&quot;o&quot;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;observation&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">((</span><span class="n">x</span><span class="o">+</span><span class="mi">1</span><span class="p">)</span><span class="o">/</span><span class="mi">2</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;5-node interpolation&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">((</span><span class="n">x</span><span class="o">+</span><span class="mi">1</span><span class="p">)</span><span class="o">/</span><span class="mi">2</span><span class="p">,</span> <span class="n">y_actual</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;f(x)&quot;</span><span class="p">,</span><span class="n">linestyle</span><span class="o">=</span><span class="s1">&#39;dashed&#39;</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../_images/BarycentricInterp_1_0.png" src="../../_images/BarycentricInterp_1_0.png" />
+<img alt="../../_images/Chebyshev_1_0.png" src="../../_images/Chebyshev_1_0.png" />
 </div>
 </div>
-<p>There are a few things to note here:</p>
-<ul class="simple">
-<li><p>the weights depend only on the <span class="math notranslate nohighlight">\(x_i\)</span> and not on <span class="math notranslate nohighlight">\(f(x_i)\)</span>.  As such, the same weights could be used in the interpolation of any function whose values are known at the same set of <span class="math notranslate nohighlight">\(x_i\)</span>  (i.e. we can resuse the weights for other functions).</p></li>
-<li><p>the order of the nodes does not matter.  This means that if we want to add a new data point, it can just be appended to the end of the list, it does not need to be inserted in order.</p></li>
-<li><p>if you want to add a new data point, you could easily write another function (say “addpoint”) to update the weights.  It would essentially consist of the “extra” iteration of the loop in the above <code class="docutils literal notranslate"><span class="pre">baryweight</span></code> function, accounting for the fact that we have already done the <code class="docutils literal notranslate"><span class="pre">1/x</span></code> operation.  It should be clear that the update is <span class="math notranslate nohighlight">\(\mathcal{O}(n)\)</span> operation as only the inner loop is computed.</p></li>
-<li><p>you may have noticed that the <code class="docutils literal notranslate"><span class="pre">baryinterp</span></code> function dealt with the case where <span class="math notranslate nohighlight">\(x=x_i\)</span> as a special case to avoid division by zero.  You might be concerned about overflow in the situation where <span class="math notranslate nohighlight">\(x\)</span> is close to <span class="math notranslate nohighlight">\(x_i\)</span> but not exactly the same.  There are ways of dealing with this when it arises, but it turns out it is not a serious concern for most practical applications of interpolation.</p></li>
-<li><p>as with any algorithm, one should ask if this is numerically stable.  As we emphasized when we discussed errors in scientific computing, it is only reasonable to ask if the algorithm is stable when applied to a well-conditioned problem.  As we will discuss shortly, polynomial interpolation for large numbers of points is only stable if these points are chosen appropriately.  In this case, <a class="reference external" href="https://www.maths.manchester.ac.uk/~higham/narep/narep440.pdf">Higham</a> has shown that barycentric Lagrange interpolation is unconditionally stable (the first form is slightly better than the “true” form in this regards, but the difference for practical purposes is not usually significant).</p></li>
-<li><p>for some node spacings, it is possible to give an explicit formula for the barycentric weights <span class="math notranslate nohighlight">\(w_j\)</span>.  As these weights appear in the true form of the barycentric interpolation in both the numerator and denominator, any common factor in all the weights can be cancelled without affecting the result.</p></li>
-</ul>
-<p>There are also built in versions of <a class="reference external" href="https://docs.scipy.org/doc/scipy/reference/generated/scipy.interpolate.barycentric_interpolate.html#scipy.interpolate.barycentric_interpolate">barycentric interpolation in SciPy</a>. The SciPy version also has functions to add new nodes and new, or different, values of the function to be interpolated (making use of the previously computed weights in both cases).</p>
+<p>We can also construct an error bound.  The fifth derivative with respect to <span class="math notranslate nohighlight">\(x\)</span> is <span class="math notranslate nohighlight">\(d^5 f(x)/dx^5=(-120x+160x^3-32x^5)e^{-x^2}\)</span>.  A quick plot (not shown, you can do this yourself) of this on the interval <span class="math notranslate nohighlight">\([0,1]\)</span> easily shows that <span class="math notranslate nohighlight">\(|d^5 f(x)/dx^5| &lt; 33\)</span>.  As we are doing the interpolation along the transformed variable <span class="math notranslate nohighlight">\(y\)</span> rather than <span class="math notranslate nohighlight">\(x\)</span>, to use the error formula we actually need <span class="math notranslate nohighlight">\(df(y)/dy = df(x)/dx dx/dy = 1/2 df/dx\)</span>.  Putting this all together gives</p>
+<div class="math notranslate nohighlight">
+\[|f(y)-p_n(y)| \leq \frac{|f^{n+1}(\xi)|}{(n+1)!2^n} \leq \frac{33/2^5}{5!2^4} = 5\times 10^{-5}.\]</div>
+<p>In this case we can also work out the actual error:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">((</span><span class="n">x</span><span class="o">+</span><span class="mi">1</span><span class="p">)</span><span class="o">/</span><span class="mi">2</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">abs</span><span class="p">(</span><span class="n">y</span><span class="o">-</span><span class="n">y_actual</span><span class="p">),</span><span class="n">label</span><span class="o">=</span><span class="s2">&quot;Actual Error&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../../_images/Chebyshev_3_0.png" src="../../_images/Chebyshev_3_0.png" />
+</div>
+</div>
+<p>The largest actual error is about 1/2 our error bound so the bound slightly overestimates the error (but that is generally what you expect for a <em>bound</em>).</p>
 </div>
 
     <script type="text/x-thebe-config">
@@ -664,17 +676,17 @@ p_n(x) &amp;= \frac{p_n(x)}{1} = \frac{p_n(x)}{g(x)},\\
             
                 <!-- Previous / next buttons -->
 <div class='prev-next-area'> 
-    <a class='left-prev' id="prev-link" href="LagrangeForm.html" title="previous page">
+    <a class='left-prev' id="prev-link" href="InterpErrors.html" title="previous page">
         <i class="fas fa-angle-left"></i>
         <div class="prev-next-info">
             <p class="prev-next-subtitle">previous</p>
-            <p class="prev-next-title">Lagrange Form of the Interpolation Polynomial</p>
+            <p class="prev-next-title">Interpolation Errors</p>
         </div>
     </a>
-    <a class='right-next' id="next-link" href="InterpErrors.html" title="next page">
+    <a class='right-next' id="next-link" href="../week10/week10_summary.html" title="next page">
     <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">Interpolation Errors</p>
+        <p class="prev-next-title">Week 10 Summary</p>
     </div>
     <i class="fas fa-angle-right"></i>
     </a>
