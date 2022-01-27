@@ -49,8 +49,8 @@
     <script async="async" kind="dokieli" src="https://dokie.li/scripts/dokieli.js"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
     <script src="../../_static/sphinx-book-theme.d59cb220de22ca1c485ebbdc042f0030.js"></script>
-    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <script async="async" src="https://unpkg.com/thebe@0.5.1/lib/index.js"></script>
     <script>
         const thebe_selector = ".thebe,.cell"
@@ -614,18 +614,7 @@ for any <span class="math notranslate nohighlight">\(x\in[a,b]\)</span>  there e
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
-<span class="ne">ModuleNotFoundError</span><span class="g g-Whitespace">                       </span>Traceback (most recent call last)
-<span class="n">Input</span> <span class="n">In</span> <span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
-<span class="g g-Whitespace">      </span><span class="mi">1</span> <span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
-<span class="g g-Whitespace">      </span><span class="mi">2</span> <span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
-<span class="ne">----&gt; </span><span class="mi">3</span> <span class="kn">from</span> <span class="nn">scipy.interpolate</span> <span class="kn">import</span> <span class="n">barycentric_interpolate</span>
-<span class="g g-Whitespace">      </span><span class="mi">4</span> <span class="n">x_observed</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="o">-</span><span class="mf">1.0</span><span class="p">,</span> <span class="mf">1.0</span><span class="p">,</span> <span class="mi">11</span><span class="p">)</span>
-<span class="g g-Whitespace">      </span><span class="mi">5</span> <span class="n">y_observed</span> <span class="o">=</span> <span class="mi">1</span><span class="o">/</span><span class="p">(</span><span class="mi">1</span><span class="o">+</span><span class="mf">10.</span><span class="o">*</span><span class="n">x_observed</span><span class="o">**</span><span class="mi">2</span><span class="p">)</span>
-
-<span class="ne">ModuleNotFoundError</span>: No module named &#39;scipy&#39;
-</pre></div>
-</div>
+<img alt="../../_images/InterpErrors_3_0.png" src="../../_images/InterpErrors_3_0.png" />
 </div>
 </div>
 <p>It would appear that our interpolating function does a <em>terrible</em> job of approximating <span class="math notranslate nohighlight">\(f(x)\)</span>, <em>especially</em> near the ends of the interval.  Unfortunately, this is a rather typical result and is referred to as the <strong>Runge phenomena</strong>, named after <a class="reference external" href="https://en.wikipedia.org/wiki/Carl_Runge">Carl Runge</a> who noticed the effect in 1901.  The understand the origin of this effect we examine the error formula <a class="reference internal" href="#equation-inter-err">(1)</a> .  From Equation <a class="reference internal" href="#equation-inter-err">(1)</a> it is clear that possible sources are</p>
