@@ -499,6 +499,24 @@
         <!-- Table of contents -->
         <div class="d-none d-md-block col-md-2 bd-toc show noprint">
             
+            <div class="tocsection onthispage pt-5 pb-3">
+                <i class="fas fa-list"></i> Contents
+            </div>
+            <nav id="bd-toc-nav" aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#">
+   Interpolation Errors
+  </a>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#runge-phenomena">
+   Runge Phenomena
+  </a>
+ </li>
+</ul>
+
+            </nav>
         </div>
     </div>
 </div>
@@ -511,6 +529,24 @@
                 <div id="print-main-content">
                     <div id="jb-print-toc">
                         
+                        <div>
+                            <h2> Contents </h2>
+                        </div>
+                        <nav aria-label="Page">
+                            <ul class="visible nav section-nav flex-column">
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#">
+   Interpolation Errors
+  </a>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#runge-phenomena">
+   Runge Phenomena
+  </a>
+ </li>
+</ul>
+
+                        </nav>
                     </div>
                 </div>
             </div>
@@ -539,7 +575,7 @@ for any <span class="math notranslate nohighlight">\(x\in[a,b]\)</span>  there e
 <svg version="1.1" width="24" height="24" class="octicon octicon-chevron-up" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M18.78 15.28a.75.75 0 000-1.06l-6.25-6.25a.75.75 0 00-1.06 0l-6.25 6.25a.75.75 0 101.06 1.06L12 9.56l5.72 5.72a.75.75 0 001.06 0z"></path></svg></div>
 </summary><div class="summary-content card-body docutils">
 <p class="card-text">If <span class="math notranslate nohighlight">\(r(x)\)</span> is a continuously differentiable function with <span class="math notranslate nohighlight">\(r(c)=r(d)=0\)</span> then <span class="math notranslate nohighlight">\(r'(\xi)=0\)</span> for some <span class="math notranslate nohighlight">\(\xi \in (c,d)\)</span>.  This is usually proved in first year calculus textbooks but is fairly obvious when you plot any reasonably behaved function that is zero at two points <span class="math notranslate nohighlight">\(c\)</span> and <span class="math notranslate nohighlight">\(d\)</span> which will have to look something like one of the below:</p>
-<a class="reference internal image-reference" href="../../_images/rolle.svg"><img alt="../../_images/rolle.svg" src="../../_images/rolle.svg" width="400" /></a>
+<a class="reference internal image-reference" href="../../_images/rolle.svg"><img alt="../../_images/rolle.svg" src="../../_images/rolle.svg" width="600" /></a>
 </div>
 </details><p>Rolle’s theorem implies that there must be a zero of <span class="math notranslate nohighlight">\(g'(t)\)</span> between each of the zeros of <span class="math notranslate nohighlight">\(g(t)\)</span> and hence <span class="math notranslate nohighlight">\(g'(t)\)</span> must have <span class="math notranslate nohighlight">\((n+1)\)</span> zeros in <span class="math notranslate nohighlight">\((a,b)\)</span>.  Following similar reasoning, <span class="math notranslate nohighlight">\(g''(t)\)</span> has <span class="math notranslate nohighlight">\(n\)</span> zeros.  Doing this recursively, we conclude that <span class="math notranslate nohighlight">\(g^{(n+1)}(t)\)</span> has one zero in <span class="math notranslate nohighlight">\((a,b)\)</span> whose position we label as <span class="math notranslate nohighlight">\(t=\xi\)</span>.  while lower derivatives might be messy, it should not be too hard to convince yourself that the <span class="math notranslate nohighlight">\((n+1)\)</span>st derivative must have the fairly simple form</p>
 <div class="math notranslate nohighlight">
@@ -547,9 +583,136 @@ for any <span class="math notranslate nohighlight">\(x\in[a,b]\)</span>  there e
 <p>where we have used the fact that <span class="math notranslate nohighlight">\(p_n(t)\)</span> is a <span class="math notranslate nohighlight">\(n\)</span>th degree polynomial so that its <span class="math notranslate nohighlight">\((n+1)\)</span>st derivative must be zero.  Now we have</p>
 <div class="math notranslate nohighlight">
 \[g^{(n+1)}(\xi)=0=f^{(n+1)}(\xi) - \left[ f(x)-p_n(x) \right] \frac{(n+1)!}{(x-x_0)(x-x_1)...(x-x_n)}.\]</div>
-<p>Rearranging this expression gives us the error  formula <a class="reference internal" href="#equation-inter-err">(1)</a>.</p>
+<p>Rearranging this expression gives us the error  formula <a class="reference internal" href="#equation-inter-err">(1)</a>.  <span class="math notranslate nohighlight">\(\blacksquare\)</span></p>
+<p>There are a few things to note about the error formula,</p>
+<ul class="simple">
+<li><p>It’s form is remarkably similar to the remainder term (error) for .  This should not be surprising as it should be clear that the interpolating polynomial should have the Taylor series as its limit if you gradually reduce the spacing between the nodes until they coincide.</p></li>
+<li><p>As with Taylor’s remainder, it is not likely that we will know <span class="math notranslate nohighlight">\(f^{n+1}(\xi)\)</span> given that we are using a polynomial approximation to evaluate <span class="math notranslate nohighlight">\(f(x)\)</span>.  However, it might still be possible to bound <span class="math notranslate nohighlight">\(f^{n+1}(x)\)</span> and hence the error.</p></li>
+<li><p>The error formula for the interpolating polynomial does not depend on the form of the polynomail that we use.  This should be clear from the fact that we already showed that the polynomial itself is unique and we did not use the form of <span class="math notranslate nohighlight">\(p_n(x)\)</span> in order to find the error.</p></li>
+<li><p>Unlike the error in Taylor’s theorem, the error formula is a considerably more complicated polynomial.  It is not obvious this error polynomial is well behaved.  In fact, it often is <em>not</em> which we will discuss next.</p></li>
+</ul>
+</div>
+<div class="section" id="runge-phenomena">
+<h1>Runge Phenomena<a class="headerlink" href="#runge-phenomena" title="Permalink to this headline">¶</a></h1>
+<p>Suppose, for example, we wish to interpolate the function <span class="math notranslate nohighlight">\(f(x)=1/(1+10x^2)\)</span> on the interval <span class="math notranslate nohighlight">\([-1,1]\)</span> using polynomial interpolation.  Further, we will assume we have sampled <span class="math notranslate nohighlight">\(11\)</span> points of this function (so <span class="math notranslate nohighlight">\(n=10\)</span>) evenly spaced over the interval.  Let’s use the SciPy interpolation function to do this as illustrated below:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">from</span> <span class="nn">scipy.interpolate</span> <span class="kn">import</span> <span class="n">barycentric_interpolate</span>
+<span class="n">x_observed</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="o">-</span><span class="mf">1.0</span><span class="p">,</span> <span class="mf">1.0</span><span class="p">,</span> <span class="mi">11</span><span class="p">)</span>
+<span class="n">y_observed</span> <span class="o">=</span> <span class="mi">1</span><span class="o">/</span><span class="p">(</span><span class="mi">1</span><span class="o">+</span><span class="mf">10.</span><span class="o">*</span><span class="n">x_observed</span><span class="o">**</span><span class="mi">2</span><span class="p">)</span>
+<span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="nb">min</span><span class="p">(</span><span class="n">x_observed</span><span class="p">),</span> <span class="nb">max</span><span class="p">(</span><span class="n">x_observed</span><span class="p">),</span> <span class="n">num</span><span class="o">=</span><span class="mi">100</span><span class="p">)</span>
+<span class="n">y</span> <span class="o">=</span> <span class="n">barycentric_interpolate</span><span class="p">(</span><span class="n">x_observed</span><span class="p">,</span> <span class="n">y_observed</span><span class="p">,</span> <span class="n">x</span><span class="p">)</span>
+<span class="n">y_actual</span> <span class="o">=</span> <span class="mi">1</span><span class="o">/</span><span class="p">(</span><span class="mi">1</span><span class="o">+</span><span class="mf">10.</span><span class="o">*</span><span class="n">x</span><span class="o">**</span><span class="mi">2</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x_observed</span><span class="p">,</span> <span class="n">y_observed</span><span class="p">,</span> <span class="s2">&quot;o&quot;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;observation&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;10-node interpolation&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y_actual</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;f(x)&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">ModuleNotFoundError</span><span class="g g-Whitespace">                       </span>Traceback (most recent call last)
+<span class="n">Input</span> <span class="n">In</span> <span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
+<span class="g g-Whitespace">      </span><span class="mi">1</span> <span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<span class="g g-Whitespace">      </span><span class="mi">2</span> <span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="ne">----&gt; </span><span class="mi">3</span> <span class="kn">from</span> <span class="nn">scipy.interpolate</span> <span class="kn">import</span> <span class="n">barycentric_interpolate</span>
+<span class="g g-Whitespace">      </span><span class="mi">4</span> <span class="n">x_observed</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="o">-</span><span class="mf">1.0</span><span class="p">,</span> <span class="mf">1.0</span><span class="p">,</span> <span class="mi">11</span><span class="p">)</span>
+<span class="g g-Whitespace">      </span><span class="mi">5</span> <span class="n">y_observed</span> <span class="o">=</span> <span class="mi">1</span><span class="o">/</span><span class="p">(</span><span class="mi">1</span><span class="o">+</span><span class="mf">10.</span><span class="o">*</span><span class="n">x_observed</span><span class="o">**</span><span class="mi">2</span><span class="p">)</span>
+
+<span class="ne">ModuleNotFoundError</span>: No module named &#39;scipy&#39;
+</pre></div>
+</div>
+</div>
+</div>
+<p>It would appear that our interpolating function does a <em>terrible</em> job of approximating <span class="math notranslate nohighlight">\(f(x)\)</span>, <em>especially</em> near the ends of the interval.  Unfortunately, this is a rather typical result and is referred to as the <strong>Runge phenomena</strong>, named after <a class="reference external" href="https://en.wikipedia.org/wiki/Carl_Runge">Carl Runge</a> who noticed the effect in 1901.  The understand the origin of this effect we examine the error formula <a class="reference internal" href="#equation-inter-err">(1)</a> .  From Equation <a class="reference internal" href="#equation-inter-err">(1)</a> it is clear that possible sources are</p>
+<ul class="simple">
+<li><p><span class="math notranslate nohighlight">\(f^{n+1}(\xi)\)</span> and keeping in mind that <span class="math notranslate nohighlight">\(\xi\)</span> may be different for different <span class="math notranslate nohighlight">\(x\)</span>.</p></li>
+<li><p>The polynomial <span class="math notranslate nohighlight">\(E_n(x)=\prod_{j=0}^n (x-x_j)\)</span>.</p></li>
+</ul>
+<p>In this case, <span class="math notranslate nohighlight">\(f^{n+1}(x)\)</span> is large, switchs sign on <span class="math notranslate nohighlight">\(x \rightarrow -x\)</span>, but decreases in magnitude as we approach the edges of the interval <span class="math notranslate nohighlight">\([-1,1]\)</span>.  i.e. it does not oscillate like we see in the plot.  However, a plot of <span class="math notranslate nohighlight">\(E_n(x)\)</span> shows a match for the oscillating pattern of errors seen:</p>
+<a class="reference internal image-reference" href="../../_images/Enx.svg"><img alt="../../_images/Enx.svg" src="../../_images/Enx.svg" width="400" /></a>
+<p>It is a reasonable question to ask if there is anything we can do about this?  Your first thought might be to increase the density of the points (i.e. add more nodes) however this actually makes the situtation worse:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">from</span> <span class="nn">scipy.interpolate</span> <span class="kn">import</span> <span class="n">barycentric_interpolate</span>
+<span class="n">x_observed</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="o">-</span><span class="mf">1.0</span><span class="p">,</span> <span class="mf">1.0</span><span class="p">,</span> <span class="mi">21</span><span class="p">)</span>
+<span class="n">y_observed</span> <span class="o">=</span> <span class="mi">1</span><span class="o">/</span><span class="p">(</span><span class="mi">1</span><span class="o">+</span><span class="mf">10.</span><span class="o">*</span><span class="n">x_observed</span><span class="o">**</span><span class="mi">2</span><span class="p">)</span>
+<span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="nb">min</span><span class="p">(</span><span class="n">x_observed</span><span class="p">),</span> <span class="nb">max</span><span class="p">(</span><span class="n">x_observed</span><span class="p">),</span> <span class="n">num</span><span class="o">=</span><span class="mi">100</span><span class="p">)</span>
+<span class="n">y</span> <span class="o">=</span> <span class="n">barycentric_interpolate</span><span class="p">(</span><span class="n">x_observed</span><span class="p">,</span> <span class="n">y_observed</span><span class="p">,</span> <span class="n">x</span><span class="p">)</span>
+<span class="n">y_actual</span> <span class="o">=</span> <span class="mi">1</span><span class="o">/</span><span class="p">(</span><span class="mi">1</span><span class="o">+</span><span class="mf">10.</span><span class="o">*</span><span class="n">x</span><span class="o">**</span><span class="mi">2</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x_observed</span><span class="p">,</span> <span class="n">y_observed</span><span class="p">,</span> <span class="s2">&quot;o&quot;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;observation&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;21 node interpolation&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y_actual</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;f(x)&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../../_images/InterpErrors_5_0.png" src="../../_images/InterpErrors_5_0.png" />
+</div>
+</div>
+<p>Doubling the number of points has increased the (maximum) error at the edges of the interval by about a factor of eight.  The conclusion you should come to here is that <strong>high order polynomial interpolation with equally spaced points is poorly conditioned.</strong></p>
+<p>However, the <em>equally spaced points</em> are actually the culprit here as can be seen by considering a different set of nodes:</p>
 <div class="math notranslate nohighlight">
-\[\blacksquare\]</div>
+\[ x_i=\cos\left( \frac{(2i+1)\pi}{2n+2} \right), \qquad\qquad i=0, 1, ..., n. \]</div>
+<p>Changing our code to use these points gives for <span class="math notranslate nohighlight">\(n=10\)</span></p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">math</span>
+<span class="kn">from</span> <span class="nn">scipy.interpolate</span> <span class="kn">import</span> <span class="n">barycentric_interpolate</span>
+<span class="n">n</span> <span class="o">=</span> <span class="mi">10</span>
+<span class="n">x_observed</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">cos</span><span class="p">((</span><span class="mf">2.</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="n">n</span><span class="o">+</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">)</span><span class="o">+</span><span class="mf">1.</span><span class="p">)</span><span class="o">*</span><span class="n">math</span><span class="o">.</span><span class="n">pi</span><span class="o">/</span><span class="p">(</span><span class="mf">2.</span><span class="o">*</span><span class="n">n</span><span class="o">+</span><span class="mi">2</span><span class="p">))</span>
+<span class="n">y_observed</span> <span class="o">=</span> <span class="mf">1.</span><span class="o">/</span><span class="p">(</span><span class="mf">1.</span><span class="o">+</span><span class="mf">10.</span><span class="o">*</span><span class="n">x_observed</span><span class="o">**</span><span class="mi">2</span><span class="p">)</span>
+<span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="nb">min</span><span class="p">(</span><span class="n">x_observed</span><span class="p">),</span> <span class="nb">max</span><span class="p">(</span><span class="n">x_observed</span><span class="p">),</span> <span class="n">num</span><span class="o">=</span><span class="mi">100</span><span class="p">)</span>
+<span class="n">y</span> <span class="o">=</span> <span class="n">barycentric_interpolate</span><span class="p">(</span><span class="n">x_observed</span><span class="p">,</span> <span class="n">y_observed</span><span class="p">,</span> <span class="n">x</span><span class="p">)</span>
+<span class="n">y_actual</span> <span class="o">=</span> <span class="mi">1</span><span class="o">/</span><span class="p">(</span><span class="mi">1</span><span class="o">+</span><span class="mf">10.</span><span class="o">*</span><span class="n">x</span><span class="o">**</span><span class="mi">2</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x_observed</span><span class="p">,</span> <span class="n">y_observed</span><span class="p">,</span> <span class="s2">&quot;o&quot;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;observation&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;10-node interpolation&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y_actual</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;f(x)&quot;</span><span class="p">,</span><span class="n">linestyle</span><span class="o">=</span><span class="s1">&#39;dashed&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../../_images/InterpErrors_7_0.png" src="../../_images/InterpErrors_7_0.png" />
+</div>
+</div>
+<p>While the result here is not outstanding in that there are clearly visible errors, these errors are now fairly uniform over the whole interval and no longer concentrated at the edges.  If we now again double the number of points we get:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">math</span>
+<span class="kn">from</span> <span class="nn">scipy.interpolate</span> <span class="kn">import</span> <span class="n">barycentric_interpolate</span>
+<span class="n">n</span> <span class="o">=</span> <span class="mi">20</span>
+<span class="n">x_observed</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">cos</span><span class="p">((</span><span class="mf">2.</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="n">n</span><span class="o">+</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">)</span><span class="o">+</span><span class="mf">1.</span><span class="p">)</span><span class="o">*</span><span class="n">math</span><span class="o">.</span><span class="n">pi</span><span class="o">/</span><span class="p">(</span><span class="mf">2.</span><span class="o">*</span><span class="n">n</span><span class="o">+</span><span class="mi">2</span><span class="p">))</span>
+<span class="n">y_observed</span> <span class="o">=</span> <span class="mf">1.</span><span class="o">/</span><span class="p">(</span><span class="mf">1.</span><span class="o">+</span><span class="mf">10.</span><span class="o">*</span><span class="n">x_observed</span><span class="o">**</span><span class="mi">2</span><span class="p">)</span>
+<span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="nb">min</span><span class="p">(</span><span class="n">x_observed</span><span class="p">),</span> <span class="nb">max</span><span class="p">(</span><span class="n">x_observed</span><span class="p">),</span> <span class="n">num</span><span class="o">=</span><span class="mi">100</span><span class="p">)</span>
+<span class="n">y</span> <span class="o">=</span> <span class="n">barycentric_interpolate</span><span class="p">(</span><span class="n">x_observed</span><span class="p">,</span> <span class="n">y_observed</span><span class="p">,</span> <span class="n">x</span><span class="p">)</span>
+<span class="n">y_actual</span> <span class="o">=</span> <span class="mi">1</span><span class="o">/</span><span class="p">(</span><span class="mi">1</span><span class="o">+</span><span class="mf">10.</span><span class="o">*</span><span class="n">x</span><span class="o">**</span><span class="mi">2</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x_observed</span><span class="p">,</span> <span class="n">y_observed</span><span class="p">,</span> <span class="s2">&quot;o&quot;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;observation&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;20-node interpolation&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y_actual</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;f(x)&quot;</span><span class="p">,</span><span class="n">linestyle</span><span class="o">=</span><span class="s1">&#39;dashed&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../../_images/InterpErrors_9_0.png" src="../../_images/InterpErrors_9_0.png" />
+</div>
+</div>
+<p>In dramatic contrast to what happened with equally spaced points, increasing the number of nodes now has resulted in the interpolating polynomial being nearly indistiguishable form the underlying function <span class="math notranslate nohighlight">\(f(x)\)</span>.  Why this particular choice of nodes is better is the subject of the next section.</p>
 </div>
 
     <script type="text/x-thebe-config">
