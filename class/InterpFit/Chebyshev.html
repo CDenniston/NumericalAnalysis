@@ -540,8 +540,9 @@
 </div></blockquote>
 <p>and</p>
 <blockquote>
-<div><p><span class="math notranslate nohighlight">\(T_k(x)\)</span> oscillates between <span class="math notranslate nohighlight">\(-1\)</span> and <span class="math notranslate nohighlight">\(1\)</span> a total of <span class="math notranslate nohighlight">\(k+1\)</span> times, hitting these extremes at<br />
-$<span class="math notranslate nohighlight">\(x=\cos 0, \cos(\pi/k), ...,\cos((k-1)\pi/k)\)</span>$ (prop3)</p>
+<div><p><span class="math notranslate nohighlight">\(T_k(x)\)</span> oscillates between <span class="math notranslate nohighlight">\(-1\)</span> and <span class="math notranslate nohighlight">\(1\)</span> a total of <span class="math notranslate nohighlight">\(k+1\)</span> times, hitting these extremes at</p>
+<div class="math notranslate nohighlight" id="equation-prop3">
+<span class="eqno">(5)<a class="headerlink" href="#equation-prop3" title="Permalink to this equation">¶</a></span>\[x=\cos 0, \cos(\pi/k), ...,\cos((k-1)\pi/k)\]</div>
 </div></blockquote>
 <p>Note that these zeros correspond to the projection onto <span class="math notranslate nohighlight">\(x\)</span> of points spaced at equally spaced angles on the unit circle.  What is perhaps less clear is that Eq.<a class="reference internal" href="#equation-chebdef">(2)</a> corresponds to a polynomial at all.
 However, for <span class="math notranslate nohighlight">\(k=0\)</span> and <span class="math notranslate nohighlight">\(1\)</span> it is easy to see that</p>
@@ -562,7 +563,7 @@ T_{k-1}(x)&amp;=\cos\left( (k-1)y \right)= \cos(ky)\cos(y)+\sin(ky)\sin(y),
 \[T_{k+1}(x)+T_{k-1}(x)=2\cos(ky)\cos(y)=2T_k(x)T_1(x)=2 x\, T_k(x),\]</div>
 <p>making use of our previous expression that <span class="math notranslate nohighlight">\(T_1(x)=x\)</span>.  This can then be easily rearranged to give the recursion relation</p>
 <div class="math notranslate nohighlight" id="equation-chebrecursion">
-<span class="eqno">(5)<a class="headerlink" href="#equation-chebrecursion" title="Permalink to this equation">¶</a></span>\[T_{k+1}(x)=2 x\, T_k(x) - T_{k-1}(x).\]</div>
+<span class="eqno">(6)<a class="headerlink" href="#equation-chebrecursion" title="Permalink to this equation">¶</a></span>\[T_{k+1}(x)=2 x\, T_k(x) - T_{k-1}(x).\]</div>
 <p>As implied by the name, we can use this to recursively derive higher order polynomials given the two lower order ones.  Starting with the known <span class="math notranslate nohighlight">\(T_0(x)\)</span> and <span class="math notranslate nohighlight">\(T_1(x)\)</span> given above, this gives the next few polynomials as</p>
 <div class="math notranslate nohighlight">
 \[\begin{split}\begin{align}
@@ -572,7 +573,7 @@ T_4(x)&amp;= 8x^4-8x^2+1.
 \end{align}\end{split}\]</div>
 <p>From the pattern of these first few polynomials, and the multiplication by <span class="math notranslate nohighlight">\(2\)</span> in the recursion it should also be clear that the leading coefficient (coefficient of the highest power of <span class="math notranslate nohighlight">\(x\)</span>) for <span class="math notranslate nohighlight">\(T_k(x)\)</span> is <span class="math notranslate nohighlight">\(2^{k-1}\)</span>.  This, and the fact that we know the roots (in <a class="reference internal" href="#equation-prop2">(4)</a>) implies that</p>
 <div class="math notranslate nohighlight" id="equation-tnplus1">
-<span class="eqno">(6)<a class="headerlink" href="#equation-tnplus1" title="Permalink to this equation">¶</a></span>\[ \frac{T_{n+1}(x)}{2^n}=(x-x_0)(x-x_1)...(x-x_n)=\prod_{j=0}^n (x-x_j),\]</div>
+<span class="eqno">(7)<a class="headerlink" href="#equation-tnplus1" title="Permalink to this equation">¶</a></span>\[ \frac{T_{n+1}(x)}{2^n}=(x-x_0)(x-x_1)...(x-x_n)=\prod_{j=0}^n (x-x_j),\]</div>
 <p>where the <span class="math notranslate nohighlight">\(x_j\)</span> are the roots of <span class="math notranslate nohighlight">\(T_{n+1}(x)\)</span> from Equation <a class="reference internal" href="#equation-prop2">(4)</a>.</p>
 <p>This now brings us back to the Error formula for polynomial interpolation that we derived in the previous section:</p>
 <div class="math notranslate nohighlight">
@@ -580,7 +581,7 @@ T_4(x)&amp;= 8x^4-8x^2+1.
 <p><em>If</em> we select our interpolation nodes as the roots of <span class="math notranslate nohighlight">\(T_{n+1}(x)\)</span>, namely</p>
 <div class="math notranslate nohighlight">
 \[ x_i=\cos\left( \frac{(2i+1)\pi}{2n+2} \right), \qquad\qquad i=0, 1, ..., n. \]</div>
-<p>then we see that we can substitute <a class="reference internal" href="#equation-tnplus1">(6)</a> into the error formula to get</p>
+<p>then we see that we can substitute <a class="reference internal" href="#equation-tnplus1">(7)</a> into the error formula to get</p>
 <div class="math notranslate nohighlight">
 \[\begin{equation} f(x)-p_n(x) = \frac{f^{n+1}(\xi)}{(n+1)!}\frac{T_{n+1}}{2^n},\end{equation}\]</div>
 <p>so that</p>
@@ -639,7 +640,10 @@ T_4(x)&amp;= 8x^4-8x^2+1.
 </div>
 <p>We can also construct an error bound.  The fifth derivative with respect to <span class="math notranslate nohighlight">\(x\)</span> is <span class="math notranslate nohighlight">\(d^5 f(x)/dx^5=(-120x+160x^3-32x^5)e^{-x^2}\)</span>.  A quick plot (not shown, you can do this yourself) of this on the interval <span class="math notranslate nohighlight">\([0,1]\)</span> easily shows that <span class="math notranslate nohighlight">\(|d^5 f(x)/dx^5| &lt; 33\)</span>.  As we are doing the interpolation along the transformed variable <span class="math notranslate nohighlight">\(y\)</span> rather than <span class="math notranslate nohighlight">\(x\)</span>, to use the error formula we actually also need</p>
 <div class="math notranslate nohighlight">
-\[ \begin{align}\begin{aligned}\frac{df}{dy} = \frac{df}{dx} \frac{dx}{dy} = \frac{1}{2} \frac{df}{dx}$$.  \\Putting this all together gives  \\$$|f(y)-p_n(y)| \leq \frac{|f^{n+1}(\xi)|}{(n+1)!2^n} \leq \frac{33/2^5}{5!2^4} = 5\times 10^{-5}.\end{aligned}\end{align} \]</div>
+\[\frac{df}{dy} = \frac{df}{dx} \frac{dx}{dy} = \frac{1}{2} \frac{df}{dx}.\]</div>
+<p>Putting this all together gives</p>
+<div class="math notranslate nohighlight">
+\[|f(y)-p_n(y)| \leq \frac{|f^{n+1}(\xi)|}{(n+1)!2^n} \leq \frac{33/2^5}{5!2^4} = 5\times 10^{-5}.\]</div>
 <p>In this case we can also work out the actual error:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
