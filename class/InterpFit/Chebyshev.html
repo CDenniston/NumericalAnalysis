@@ -540,9 +540,10 @@
 </div></blockquote>
 <p>and</p>
 <blockquote>
-<div><p><span class="math notranslate nohighlight">\(T_k(x)\)</span> oscillates between <span class="math notranslate nohighlight">\(-1\)</span> and <span class="math notranslate nohighlight">\(1\)</span> a total of <span class="math notranslate nohighlight">\(k+1\)</span> times, hitting these extremes at <span class="math notranslate nohighlight">\(x=\cos 0, \cos(\pi/k), ...,\cos((k-1)\pi/k)\)</span> (prop3)</p>
+<div><p><span class="math notranslate nohighlight">\(T_k(x)\)</span> oscillates between <span class="math notranslate nohighlight">\(-1\)</span> and <span class="math notranslate nohighlight">\(1\)</span> a total of <span class="math notranslate nohighlight">\(k+1\)</span> times, hitting these extremes at<br />
+$<span class="math notranslate nohighlight">\(x=\cos 0, \cos(\pi/k), ...,\cos((k-1)\pi/k)\)</span>$ (prop3)</p>
 </div></blockquote>
-<p>Note that these zeros correspond to the projection onto <span class="math notranslate nohighlight">\(x\)</span> of points spaced at equally spaced angles on the unit circle.  What is perhaps less clear is that Eq.(<a class="reference internal" href="#equation-chebdef">(2)</a>) corresponds to a polynomial at all.
+<p>Note that these zeros correspond to the projection onto <span class="math notranslate nohighlight">\(x\)</span> of points spaced at equally spaced angles on the unit circle.  What is perhaps less clear is that Eq.<a class="reference internal" href="#equation-chebdef">(2)</a> corresponds to a polynomial at all.
 However, for <span class="math notranslate nohighlight">\(k=0\)</span> and <span class="math notranslate nohighlight">\(1\)</span> it is easy to see that</p>
 <div class="math notranslate nohighlight">
 \[\begin{split}\begin{align}
@@ -588,7 +589,11 @@ T_4(x)&amp;= 8x^4-8x^2+1.
 <p>In fact, we can also show that <em>this is the best</em> we can do.</p>
 <p>Again, we show this by first assuming the contrary and then showing that this leads to a contradiction.  In order for this to be the best choice, we must have <span class="math notranslate nohighlight">\(T_{n+1}(x)/2^n\)</span> to be the monic polynomial (a polynomial with leading coefficient 1) with the smallest absolute maximum.  Suppose this is nto the case.  Then there must be another monic polynomial, say <span class="math notranslate nohighlight">\(Q_{n+1}(x)\)</span> of degree <span class="math notranslate nohighlight">\(n\)</span> with an even smaller absolute max on <span class="math notranslate nohighlight">\([-1,1]\)</span>.  i.e.</p>
 <div class="math notranslate nohighlight">
-\[ \begin{align}\begin{aligned} |Q_{n+1}(x)| &lt; \frac{1}{2^n}$$ for $x\in [-1,1]$.\\Since $T_{n+1}(x)$ alternates between $-1$ and $1$ a total of $n+2$ times (as noted in {eq}`(prop3)`), at these $n+2$ points the polynomial  \\$$Q_{n+1}(x)-\frac{T_{n+1}(x)}{2^n}\end{aligned}\end{align} \]</div>
+\[ |Q_{n+1}(x)| &lt; \frac{1}{2^n}\]</div>
+<p>for <span class="math notranslate nohighlight">\(x\in [-1,1]\)</span>.</p>
+<p>Since <span class="math notranslate nohighlight">\(T_{n+1}(x)\)</span> alternates between <span class="math notranslate nohighlight">\(-1\)</span> and <span class="math notranslate nohighlight">\(1\)</span> a total of <span class="math notranslate nohighlight">\(n+2\)</span> times (as noted in <code class="xref eq docutils literal notranslate"><span class="pre">(prop3)</span></code>), at these <span class="math notranslate nohighlight">\(n+2\)</span> points the polynomial</p>
+<div class="math notranslate nohighlight">
+\[Q_{n+1}(x)-\frac{T_{n+1}(x)}{2^n}\]</div>
 <p>is alternatively positive and negative (because <span class="math notranslate nohighlight">\(Q_{n+1}\)</span> is always less than <span class="math notranslate nohighlight">\(1/2^n\)</span>) at these extreme points for <span class="math notranslate nohighlight">\(T_{n+1}(x)\)</span>.  The intermediate value theorem then implies that <span class="math notranslate nohighlight">\(Q_{n+1}-\frac{T_{n+1}}{2^n}\)</span> must cross zero at least <span class="math notranslate nohighlight">\(n+1\)</span> times so it has <span class="math notranslate nohighlight">\(n+1\)</span> roots.  This is a contradition as both <span class="math notranslate nohighlight">\(Q_{n+1}\)</span> and <span class="math notranslate nohighlight">\(\frac{T_{n+1}}{2^n}(x)\)</span> are monic so the leading term cancels in subtraction and therefore <span class="math notranslate nohighlight">\(Q_{n+1}-\frac{T_{n+1}}{2^n}\)</span> has degree less than or equal to <span class="math notranslate nohighlight">\(n\)</span> and so has at most <span class="math notranslate nohighlight">\(n\)</span> zeros.</p>
 <p>So, in summary,</p>
 <ul class="simple">
@@ -632,9 +637,9 @@ T_4(x)&amp;= 8x^4-8x^2+1.
 <img alt="../../_images/Chebyshev_1_0.png" src="../../_images/Chebyshev_1_0.png" />
 </div>
 </div>
-<p>We can also construct an error bound.  The fifth derivative with respect to <span class="math notranslate nohighlight">\(x\)</span> is <span class="math notranslate nohighlight">\(d^5 f(x)/dx^5=(-120x+160x^3-32x^5)e^{-x^2}\)</span>.  A quick plot (not shown, you can do this yourself) of this on the interval <span class="math notranslate nohighlight">\([0,1]\)</span> easily shows that <span class="math notranslate nohighlight">\(|d^5 f(x)/dx^5| &lt; 33\)</span>.  As we are doing the interpolation along the transformed variable <span class="math notranslate nohighlight">\(y\)</span> rather than <span class="math notranslate nohighlight">\(x\)</span>, to use the error formula we actually need <span class="math notranslate nohighlight">\(df(y)/dy = df(x)/dx dx/dy = 1/2 df/dx\)</span>.  Putting this all together gives</p>
+<p>We can also construct an error bound.  The fifth derivative with respect to <span class="math notranslate nohighlight">\(x\)</span> is <span class="math notranslate nohighlight">\(d^5 f(x)/dx^5=(-120x+160x^3-32x^5)e^{-x^2}\)</span>.  A quick plot (not shown, you can do this yourself) of this on the interval <span class="math notranslate nohighlight">\([0,1]\)</span> easily shows that <span class="math notranslate nohighlight">\(|d^5 f(x)/dx^5| &lt; 33\)</span>.  As we are doing the interpolation along the transformed variable <span class="math notranslate nohighlight">\(y\)</span> rather than <span class="math notranslate nohighlight">\(x\)</span>, to use the error formula we actually also need</p>
 <div class="math notranslate nohighlight">
-\[|f(y)-p_n(y)| \leq \frac{|f^{n+1}(\xi)|}{(n+1)!2^n} \leq \frac{33/2^5}{5!2^4} = 5\times 10^{-5}.\]</div>
+\[ \begin{align}\begin{aligned}\frac{df}{dy} = \frac{df}{dx} \frac{dx}{dy} = \frac{1}{2} \frac{df}{dx}$$.  \\Putting this all together gives  \\$$|f(y)-p_n(y)| \leq \frac{|f^{n+1}(\xi)|}{(n+1)!2^n} \leq \frac{33/2^5}{5!2^4} = 5\times 10^{-5}.\end{aligned}\end{align} \]</div>
 <p>In this case we can also work out the actual error:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
