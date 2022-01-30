@@ -17,6 +17,7 @@ parts:
     - file: class/InterpFit/BarycentricInterp
     - file: class/InterpFit/InterpErrors
     - file: class/InterpFit/Chebyshev
+    - file: class/InterpFit/Splines
 - caption: Part 3 - Energy & Momentum
   chapters:
   - file: class/week10/week10_summary
