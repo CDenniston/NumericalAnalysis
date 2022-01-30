@@ -61,7 +61,7 @@
     <link rel="canonical" href="https://cdenniston.github.io/NumericalAnalysis/class/InterpFit/Chebyshev.html" />
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
-    <link rel="next" title="Week 10 Summary" href="../week10/week10_summary.html" />
+    <link rel="next" title="Splines" href="Splines.html" />
     <link rel="prev" title="Interpolation Errors" href="InterpErrors.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="None">
@@ -177,6 +177,11 @@
  <li class="toctree-l1 current active">
   <a class="current reference internal" href="#">
    Chebyshev Polynomials
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="Splines.html">
+   Splines
   </a>
  </li>
 </ul>
@@ -459,9 +464,9 @@
         <!-- ipynb file if we had a myst markdown file -->
         
         <!-- Download raw file -->
-        <a class="dropdown-buttons" href="../../_sources/class/InterpFit/Chebyshev.ipynb"><button type="button"
+        <a class="dropdown-buttons" href="../../_sources/class/InterpFit/Chebyshev.md"><button type="button"
                 class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
-                data-placement="left">.ipynb</button></a>
+                data-placement="left">.md</button></a>
         <!-- Download PDF via print -->
         <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
                 onclick="printPdf(this)" data-toggle="tooltip" data-placement="left">.pdf</button>
@@ -478,26 +483,6 @@
             class="fas fa-expand"></i></button></a>
 
             <!-- Launch buttons -->
-
-<div class="dropdown-buttons-trigger">
-    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
-        aria-label="Launch interactive content"><i class="fas fa-rocket"></i></button>
-    <div class="dropdown-buttons">
-        
-        <a class="binder-button" href="https://mybinder.org/v2/gh/firasm/jupyterbook_course_template/master?urlpath=lab/tree/class/InterpFit/Chebyshev.ipynb"><button type="button"
-                class="btn btn-secondary topbarbtn" title="Launch Binder" data-toggle="tooltip"
-                data-placement="left"><img class="binder-button-logo"
-                    src="../../_static/images/logo_binder.svg"
-                    alt="Interact on binder">Binder</button></a>
-        
-        
-        
-        <button type="button" class="btn btn-secondary topbarbtn"
-            onclick="initThebeSBT()" title="Launch Thebe" data-toggle="tooltip" data-placement="left"><i
-                class="fas fa-play"></i><span style="margin-left: .4em;">Live Code</span></button>
-        
-    </div>
-</div>
 
         </div>
 
@@ -540,11 +525,9 @@
 </div></blockquote>
 <p>and</p>
 <blockquote>
-<div><p><span class="math notranslate nohighlight">\(T_k(x)\)</span> oscillates between <span class="math notranslate nohighlight">\(-1\)</span> and <span class="math notranslate nohighlight">\(1\)</span> a total of <span class="math notranslate nohighlight">\(k+1\)</span> times, hitting these extremes at</p>
-<div class="math notranslate nohighlight" id="equation-prop3">
-<span class="eqno">(5)<a class="headerlink" href="#equation-prop3" title="Permalink to this equation">¶</a></span>\[x=\cos 0, \cos(\pi/k), ...,\cos((k-1)\pi/k)\]</div>
+<div><p><span class="math notranslate nohighlight">\(T_k(x)\)</span> oscillates between <span class="math notranslate nohighlight">\(-1\)</span> and <span class="math notranslate nohighlight">\(1\)</span> a total of <span class="math notranslate nohighlight">\(k+1\)</span> times, hitting these extremes at <span class="math notranslate nohighlight">\(x=\cos 0, \cos(\pi/k), ...,\cos((k-1)\pi/k)\)</span> (prop3)</p>
 </div></blockquote>
-<p>Note that these zeros correspond to the projection onto <span class="math notranslate nohighlight">\(x\)</span> of points spaced at equally spaced angles on the unit circle.  What is perhaps less clear is that Eq.<a class="reference internal" href="#equation-chebdef">(2)</a> corresponds to a polynomial at all.
+<p>Note that these zeros correspond to the projection onto <span class="math notranslate nohighlight">\(x\)</span> of points spaced at equally spaced angles on the unit circle.  What is perhaps less clear is that Eq.(<a class="reference internal" href="#equation-chebdef">(2)</a>) corresponds to a polynomial at all.
 However, for <span class="math notranslate nohighlight">\(k=0\)</span> and <span class="math notranslate nohighlight">\(1\)</span> it is easy to see that</p>
 <div class="math notranslate nohighlight">
 \[\begin{split}\begin{align}
@@ -555,16 +538,16 @@ T_1(x)&amp;=\cos(1 \arccos x) = x.
 <p>To see that we get a polynomial for higher <span class="math notranslate nohighlight">\(k\)</span> it is helpful to derive the recursion relation for the Chebyshev polynomials.  If we set <span class="math notranslate nohighlight">\(y=\arccos x\)</span> we have</p>
 <div class="math notranslate nohighlight">
 \[\begin{split}\begin{align}
-T_{k+1}(x)&amp;=\cos\left( (k+1)y \right)= \cos(ky)\cos(y)-\sin(ky)\sin(y),\\
-T_{k-1}(x)&amp;=\cos\left( (k-1)y \right)= \cos(ky)\cos(y)+\sin(ky)\sin(y),
+T_{k+1}(x)&amp;=\cos\left( (k+1)y \right)&amp;= \cos(ky)\cos(y)-\sin(ky)\sin(y),\\
+T_{k-1}(x)&amp;=\cos\left( (k-1)y \right)&amp;= \cos(ky)\cos(y)+\sin(ky)\sin(y),
 \end{align}\end{split}\]</div>
 <p>where we have used the trig-identies for the sum/difference of two angles.  Adding these equations gives</p>
 <div class="math notranslate nohighlight">
 \[T_{k+1}(x)+T_{k-1}(x)=2\cos(ky)\cos(y)=2T_k(x)T_1(x)=2 x\, T_k(x),\]</div>
 <p>making use of our previous expression that <span class="math notranslate nohighlight">\(T_1(x)=x\)</span>.  This can then be easily rearranged to give the recursion relation</p>
 <div class="math notranslate nohighlight" id="equation-chebrecursion">
-<span class="eqno">(6)<a class="headerlink" href="#equation-chebrecursion" title="Permalink to this equation">¶</a></span>\[T_{k+1}(x)=2 x\, T_k(x) - T_{k-1}(x).\]</div>
-<p>As implied by the name, we can use this to recursively derive higher order polynomials given the two lower order ones.  Starting with the known <span class="math notranslate nohighlight">\(T_0(x)\)</span> and <span class="math notranslate nohighlight">\(T_1(x)\)</span> given above, this gives the next few polynomials as</p>
+<span class="eqno">(5)<a class="headerlink" href="#equation-chebrecursion" title="Permalink to this equation">¶</a></span>\[T_{k+1}(x)=2 x\, T_k(x) - T_{k-1}(x).\]</div>
+<p>As implied by the name, we can use this to recursively derive higher order polynomials given the two lower order ones.  Starting with the known <span class="math notranslate nohighlight">\(T_0(x)\)</span> and <span class="math notranslate nohighlight">\(T_1(x)\)</span> given above this gives the next few polynomials as</p>
 <div class="math notranslate nohighlight">
 \[\begin{split}\begin{align}
 T_2(x)&amp;= 2x^2-1,\\
@@ -573,7 +556,7 @@ T_4(x)&amp;= 8x^4-8x^2+1.
 \end{align}\end{split}\]</div>
 <p>From the pattern of these first few polynomials, and the multiplication by <span class="math notranslate nohighlight">\(2\)</span> in the recursion it should also be clear that the leading coefficient (coefficient of the highest power of <span class="math notranslate nohighlight">\(x\)</span>) for <span class="math notranslate nohighlight">\(T_k(x)\)</span> is <span class="math notranslate nohighlight">\(2^{k-1}\)</span>.  This, and the fact that we know the roots (in <a class="reference internal" href="#equation-prop2">(4)</a>) implies that</p>
 <div class="math notranslate nohighlight" id="equation-tnplus1">
-<span class="eqno">(7)<a class="headerlink" href="#equation-tnplus1" title="Permalink to this equation">¶</a></span>\[ \frac{T_{n+1}(x)}{2^n}=(x-x_0)(x-x_1)...(x-x_n)=\prod_{j=0}^n (x-x_j),\]</div>
+<span class="eqno">(6)<a class="headerlink" href="#equation-tnplus1" title="Permalink to this equation">¶</a></span>\[ \frac{T_{n+1}(x)}{2^n}=(x-x_0)(x-x_1)...(x-x_n)=\prod_{j=0}^n (x-x_j),\]</div>
 <p>where the <span class="math notranslate nohighlight">\(x_j\)</span> are the roots of <span class="math notranslate nohighlight">\(T_{n+1}(x)\)</span> from Equation <a class="reference internal" href="#equation-prop2">(4)</a>.</p>
 <p>This now brings us back to the Error formula for polynomial interpolation that we derived in the previous section:</p>
 <div class="math notranslate nohighlight">
@@ -581,20 +564,16 @@ T_4(x)&amp;= 8x^4-8x^2+1.
 <p><em>If</em> we select our interpolation nodes as the roots of <span class="math notranslate nohighlight">\(T_{n+1}(x)\)</span>, namely</p>
 <div class="math notranslate nohighlight">
 \[ x_i=\cos\left( \frac{(2i+1)\pi}{2n+2} \right), \qquad\qquad i=0, 1, ..., n. \]</div>
-<p>then we see that we can substitute <a class="reference internal" href="#equation-tnplus1">(7)</a> into the error formula to get</p>
+<p>then we see that we can substitute <a class="reference internal" href="#equation-tnplus1">(6)</a> into the error formula to get</p>
 <div class="math notranslate nohighlight">
 \[\begin{equation} f(x)-p_n(x) = \frac{f^{n+1}(\xi)}{(n+1)!}\frac{T_{n+1}}{2^n},\end{equation}\]</div>
 <p>so that</p>
 <div class="math notranslate nohighlight">
 \[\begin{split}\begin{align} |f(x)-p_n(x)| &amp;= \left|\frac{f^{n+1}(\xi)}{(n+1)!}\frac{T_{n+1}}{2^n}\right|,\\ &amp;\leq \frac{|f^{n+1}(\xi)|}{(n+1)!2^n}.\end{align} \end{split}\]</div>
-<p>In fact, we can also show that <em>this is the best</em> we can do.</p>
+<p>In fact, we can also show that <em>this is the best</em> we can do*.</p>
 <p>Again, we show this by first assuming the contrary and then showing that this leads to a contradiction.  In order for this to be the best choice, we must have <span class="math notranslate nohighlight">\(T_{n+1}(x)/2^n\)</span> to be the monic polynomial (a polynomial with leading coefficient 1) with the smallest absolute maximum.  Suppose this is nto the case.  Then there must be another monic polynomial, say <span class="math notranslate nohighlight">\(Q_{n+1}(x)\)</span> of degree <span class="math notranslate nohighlight">\(n\)</span> with an even smaller absolute max on <span class="math notranslate nohighlight">\([-1,1]\)</span>.  i.e.</p>
 <div class="math notranslate nohighlight">
-\[ |Q_{n+1}(x)| &lt; \frac{1}{2^n}\]</div>
-<p>for <span class="math notranslate nohighlight">\(x\in [-1,1]\)</span>.</p>
-<p>Since <span class="math notranslate nohighlight">\(T_{n+1}(x)\)</span> alternates between <span class="math notranslate nohighlight">\(-1\)</span> and <span class="math notranslate nohighlight">\(1\)</span> a total of <span class="math notranslate nohighlight">\(n+2\)</span> times (as noted in <code class="xref eq docutils literal notranslate"><span class="pre">(prop3)</span></code>), at these <span class="math notranslate nohighlight">\(n+2\)</span> points the polynomial</p>
-<div class="math notranslate nohighlight">
-\[Q_{n+1}(x)-\frac{T_{n+1}(x)}{2^n}\]</div>
+\[ \begin{align}\begin{aligned} |Q_{n+1}(x)| &lt; \frac{1}{2^n}$$ for $x\in [-1,1]$.\\Since $T_{n+1}(x)$ alternates between $-1$ and $1$ a total of $n+2$ times (as noted in {eq}`(prop3)`), at these $n+2$ points the polynomial  \\$$Q_{n+1}(x)-\frac{T_{n+1}(x)}{2^n}\end{aligned}\end{align} \]</div>
 <p>is alternatively positive and negative (because <span class="math notranslate nohighlight">\(Q_{n+1}\)</span> is always less than <span class="math notranslate nohighlight">\(1/2^n\)</span>) at these extreme points for <span class="math notranslate nohighlight">\(T_{n+1}(x)\)</span>.  The intermediate value theorem then implies that <span class="math notranslate nohighlight">\(Q_{n+1}-\frac{T_{n+1}}{2^n}\)</span> must cross zero at least <span class="math notranslate nohighlight">\(n+1\)</span> times so it has <span class="math notranslate nohighlight">\(n+1\)</span> roots.  This is a contradition as both <span class="math notranslate nohighlight">\(Q_{n+1}\)</span> and <span class="math notranslate nohighlight">\(\frac{T_{n+1}}{2^n}(x)\)</span> are monic so the leading term cancels in subtraction and therefore <span class="math notranslate nohighlight">\(Q_{n+1}-\frac{T_{n+1}}{2^n}\)</span> has degree less than or equal to <span class="math notranslate nohighlight">\(n\)</span> and so has at most <span class="math notranslate nohighlight">\(n\)</span> zeros.</p>
 <p>So, in summary,</p>
 <ul class="simple">
@@ -612,52 +591,8 @@ T_4(x)&amp;= 8x^4-8x^2+1.
 \[ x = \frac{1}{2}(y+1).\]</div>
 <p>We then select our Chebyshev points as</p>
 <div class="math notranslate nohighlight">
-\[y_0 = \cos\frac{\pi}{10},\,y_1=\cos \frac{3\pi}{10}\,y_1=\cos \frac{5\pi}{10}\,y_1=\cos \frac{7\pi}{10}\,y_1=\cos \frac{9\pi}{10}.\]</div>
-<p>and construct <span class="math notranslate nohighlight">\(p_4(y)\)</span> for <span class="math notranslate nohighlight">\(f(y)=e^{-(y+1)^2/4}\)</span> using the standard barycentric Lagrange interpolation routine.</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
-<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
-<span class="kn">import</span> <span class="nn">math</span>
-<span class="kn">from</span> <span class="nn">scipy.interpolate</span> <span class="kn">import</span> <span class="n">barycentric_interpolate</span>
-<span class="n">n</span> <span class="o">=</span> <span class="mi">5</span>
-<span class="n">x_observed</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">cos</span><span class="p">((</span><span class="mf">2.</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="n">n</span><span class="o">+</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">)</span><span class="o">+</span><span class="mf">1.</span><span class="p">)</span><span class="o">*</span><span class="n">math</span><span class="o">.</span><span class="n">pi</span><span class="o">/</span><span class="p">(</span><span class="mf">2.</span><span class="o">*</span><span class="n">n</span><span class="o">+</span><span class="mi">2</span><span class="p">))</span>
-<span class="n">y_observed</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="o">-</span><span class="p">(</span><span class="n">x_observed</span><span class="o">+</span><span class="mf">1.</span><span class="p">)</span><span class="o">**</span><span class="mi">2</span><span class="o">/</span><span class="mi">4</span><span class="p">)</span>
-<span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="nb">min</span><span class="p">(</span><span class="n">x_observed</span><span class="p">),</span> <span class="nb">max</span><span class="p">(</span><span class="n">x_observed</span><span class="p">),</span> <span class="n">num</span><span class="o">=</span><span class="mi">100</span><span class="p">)</span>
-<span class="n">y</span> <span class="o">=</span> <span class="n">barycentric_interpolate</span><span class="p">(</span><span class="n">x_observed</span><span class="p">,</span> <span class="n">y_observed</span><span class="p">,</span> <span class="n">x</span><span class="p">)</span>
-<span class="n">y_actual</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="o">-</span><span class="p">(</span><span class="n">x</span><span class="o">+</span><span class="mf">1.</span><span class="p">)</span><span class="o">**</span><span class="mi">2</span><span class="o">/</span><span class="mi">4</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">((</span><span class="n">x_observed</span><span class="o">+</span><span class="mi">1</span><span class="p">)</span><span class="o">/</span><span class="mi">2</span><span class="p">,</span> <span class="n">y_observed</span><span class="p">,</span> <span class="s2">&quot;o&quot;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;observation&quot;</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">((</span><span class="n">x</span><span class="o">+</span><span class="mi">1</span><span class="p">)</span><span class="o">/</span><span class="mi">2</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;5-node interpolation&quot;</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">((</span><span class="n">x</span><span class="o">+</span><span class="mi">1</span><span class="p">)</span><span class="o">/</span><span class="mi">2</span><span class="p">,</span> <span class="n">y_actual</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;f(x)&quot;</span><span class="p">,</span><span class="n">linestyle</span><span class="o">=</span><span class="s1">&#39;dashed&#39;</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<img alt="../../_images/Chebyshev_1_0.png" src="../../_images/Chebyshev_1_0.png" />
-</div>
-</div>
-<p>We can also construct an error bound.  The fifth derivative with respect to <span class="math notranslate nohighlight">\(x\)</span> is <span class="math notranslate nohighlight">\(d^5 f(x)/dx^5=(-120x+160x^3-32x^5)e^{-x^2}\)</span>.  A quick plot (not shown, you can do this yourself) of this on the interval <span class="math notranslate nohighlight">\([0,1]\)</span> easily shows that <span class="math notranslate nohighlight">\(|d^5 f(x)/dx^5| &lt; 33\)</span>.  As we are doing the interpolation along the transformed variable <span class="math notranslate nohighlight">\(y\)</span> rather than <span class="math notranslate nohighlight">\(x\)</span>, to use the error formula we actually also need</p>
-<div class="math notranslate nohighlight">
-\[\frac{df}{dy} = \frac{df}{dx} \frac{dx}{dy} = \frac{1}{2} \frac{df}{dx}.\]</div>
-<p>Putting this all together gives</p>
-<div class="math notranslate nohighlight">
-\[|f(y)-p_n(y)| \leq \frac{|f^{n+1}(\xi)|}{(n+1)!2^n} \leq \frac{33/2^5}{5!2^4} = 5\times 10^{-5}.\]</div>
-<p>In this case we can also work out the actual error:</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">((</span><span class="n">x</span><span class="o">+</span><span class="mi">1</span><span class="p">)</span><span class="o">/</span><span class="mi">2</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">abs</span><span class="p">(</span><span class="n">y</span><span class="o">-</span><span class="n">y_actual</span><span class="p">),</span><span class="n">label</span><span class="o">=</span><span class="s2">&quot;Actual Error&quot;</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<img alt="../../_images/Chebyshev_3_0.png" src="../../_images/Chebyshev_3_0.png" />
-</div>
-</div>
-<p>The largest actual error is about 1/2 our error bound so the bound slightly overestimates the error (but that is generally what you expect for a <em>bound</em>).</p>
+\[y_0 = \cos\frac{\pi}{10},\,y_1=\cos \frac{3\pi}{10}\,y_2=\cos \frac{5\pi}{10}\,y_3=\cos \frac{7\pi}{10}\,y_4=\cos \frac{9\pi}{10}.\]</div>
+<p>and construct <span class="math notranslate nohighlight">\(p_4(y)\)</span> for <span class="math notranslate nohighlight">\(f(y)=e^{(y+1)^2/4\)</span> using the standard barycentric Lagrange interpolation routine.</p>
 </div>
 
     <script type="text/x-thebe-config">
@@ -692,10 +627,10 @@ T_4(x)&amp;= 8x^4-8x^2+1.
             <p class="prev-next-title">Interpolation Errors</p>
         </div>
     </a>
-    <a class='right-next' id="next-link" href="../week10/week10_summary.html" title="next page">
+    <a class='right-next' id="next-link" href="Splines.html" title="next page">
     <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">Week 10 Summary</p>
+        <p class="prev-next-title">Splines</p>
     </div>
     <i class="fas fa-angle-right"></i>
     </a>
