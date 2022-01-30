@@ -681,6 +681,7 @@ c_{j+1} &amp;= S_{j+1}''(x_{j+1}) = S_j''(x_{j+1}) = 2 c_j + 6d_j(x_{j+1}-x_j)\\
 <p>and using a boundary condition for <span class="math notranslate nohighlight">\(j=0\)</span>.  We can rewrite these equation and the boundary contions into a matrix equation as</p>
 <div class="math notranslate nohighlight" id="equation-cjsolution">
 <span class="eqno">(14)<a class="headerlink" href="#equation-cjsolution" title="Permalink to this equation">¶</a></span>\[\begin{split}
+\begin{align}
   \left[ {\begin{array}{cccccc}
     1 &amp; 0 &amp; 0 &amp; 0 &amp; \cdots &amp; 0\\
     h_0 &amp; 2(h_0+h_1) &amp; h_1 &amp; 0 &amp;\cdots &amp; 0\\
@@ -696,7 +697,8 @@ c_{j+1} &amp;= S_{j+1}''(x_{j+1}) = S_j''(x_{j+1}) = 2 c_j + 6d_j(x_{j+1}-x_j)\\
   \vdots \\
   c_{n-2} \\
   c_{n-1} \\
-  \end{array}} \right] =
+  \end{array}} \right] =\\
+  \qquad\qquad\qquad
   \left[ {\begin{array}{c}
   0 \\
   \frac{3}{h_1}(a_2-a_1)-\frac{3}{h_0}(a_1-a_0)\\
@@ -705,6 +707,7 @@ c_{j+1} &amp;= S_{j+1}''(x_{j+1}) = S_j''(x_{j+1}) = 2 c_j + 6d_j(x_{j+1}-x_j)\\
   \frac{3}{h_{n-2}}(a_{n-1}-a_{n-2})-\frac{3}{h_{n-3}}(a_{n-2}-a_{n-3})\\
   \frac{3}{h_{n-1}}(f(x_n)-a_{n-1})-\frac{3}{h_{n-2}}(a_{n-1}-a_{n-2})\\
   \end{array}} \right]
+\end{align}
 \end{split}\]</div>
 <p>for the <em>natural</em> cubic spline (the first equation is the boundary condition that sets <span class="math notranslate nohighlight">\(c_0=0\)</span> and the last equation uses the “dummy” polynomial extension of the equations where <span class="math notranslate nohighlight">\(c_n=0\)</span>). This is a diagonally dominant tridiagonal system which means that solving this system via Gaussian elimination/LU factorization without pivoting will provide a unique solution and will be numerically stable.  In addition, this can be solved in <span class="math notranslate nohighlight">\(\mathcal{O}(n)\)</span> flops using the <a class="reference external" href="https://en.wikipedia.org/wiki/Tridiagonal_matrix_algorithm">Thomas algorithm</a> discussed in the chapter on linear systems.</p>
 <p>So to construct our interpolatory spline <span class="math notranslate nohighlight">\(S(x)\)</span> (or, in other words to construct the set <span class="math notranslate nohighlight">\(\{ S_j(x) \}_{j=0}^{n-1}\)</span>) we</p>
