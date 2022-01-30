@@ -5,7 +5,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Interpolation and Curve Fitting &#8212; Numerical Analysis</title>
+    <title>Interpolation &#8212; Numerical Analysis</title>
     
   <link href="../../_static/css/theme.css" rel="stylesheet">
   <link href="../../_static/css/index.ff1ffe594081f20da1ef19478df9384b.css" rel="stylesheet">
@@ -156,7 +156,7 @@
 <ul class="current nav bd-sidenav">
  <li class="toctree-l1 current active">
   <a class="current reference internal" href="#">
-   Interpolation and Curve Fitting
+   Interpolation
   </a>
  </li>
  <li class="toctree-l1">
@@ -176,7 +176,7 @@
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="Chebyshev.html">
-   Chebyshev Polynomials
+   Chebyshev Polynomial Interpolation
   </a>
  </li>
  <li class="toctree-l1">
@@ -509,7 +509,7 @@
         <div class="col-12 col-md-9 pl-md-3 pr-md-0">
             <!-- Table of contents that is only displayed when printing the page -->
             <div id="jb-print-docs-body" class="onlyprint">
-                <h1>Interpolation and Curve Fitting</h1>
+                <h1>Interpolation</h1>
                 <!-- Table of contents -->
                 <div id="print-main-content">
                     <div id="jb-print-toc">
@@ -533,9 +533,9 @@
             
               <div>
                 
-  <div class="tex2jax_ignore mathjax_ignore section" id="interpolation-and-curve-fitting">
-<span id="page-topic1"></span><h1>Interpolation and Curve Fitting<a class="headerlink" href="#interpolation-and-curve-fitting" title="Permalink to this headline">¶</a></h1>
-<p>Interpolation and curve fitting can be used to solve two types of problems.  In the first we are given a discrete set of data points (perhaps from an experiment or other measurement) and we want to know what would result if a measurement was done at some intermediate point.  This is illustrated below:</p>
+  <div class="tex2jax_ignore mathjax_ignore section" id="interpolation">
+<span id="page-topic1"></span><h1>Interpolation<a class="headerlink" href="#interpolation" title="Permalink to this headline">¶</a></h1>
+<p>Interpolation can be used to solve two types of problems.  In the first we are given a discrete set of data points (perhaps from an experiment or other measurement) and we want to know what would result if a measurement was done at some intermediate point.  This is illustrated below:</p>
 <p><img alt="interpolation problem A" src="../../_images/InterpProbA.svg" /></p>
 <p>The assumption here is that there exists some reasonably well-behaved underlying function that our measurements are effectively evaluating at the discrete set of points.  The need for interpolation is so fundamental that solutions to this problem date to antiquity and it is thought it was routinely done by the ancient Greeks and Persians.  It was described in the early Chinese mathematical text <em>The Nine Chapters on the Mathematical Art</em> and in the <em>Almagest</em> by Ptolemy in the 2nd century AD.</p>
 <p>There is, however, a second problem where we may know the underlying function quite well and be able to evaluate it relatively easily at any point.  However, even in that case it may be useful to replace this function with an interpolating function.  One example where this is often done is when we have a function <span class="math notranslate nohighlight">\(f(x)\)</span> that we know analytically but that does not have an analytic form for its antiderivative.  If we can replace this function, say by its Taylor series about a suitable point, then it is fairly straightforward to analytically integrate the Taylor series (as it is a polynomial).  This process is call analytic substitition.  In order for this to be useful, the interpolating function needs to be “close” to the original <span class="math notranslate nohighlight">\(f(x)\)</span> as illustrated below:</p>

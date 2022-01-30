@@ -1,8 +1,8 @@
 (page_topic1)=
-Interpolation and Curve Fitting
+Interpolation
 =======================
 
-Interpolation and curve fitting can be used to solve two types of problems.  In the first we are given a discrete set of data points (perhaps from an experiment or other measurement) and we want to know what would result if a measurement was done at some intermediate point.  This is illustrated below:  
+Interpolation can be used to solve two types of problems.  In the first we are given a discrete set of data points (perhaps from an experiment or other measurement) and we want to know what would result if a measurement was done at some intermediate point.  This is illustrated below:  
 
 ![interpolation problem A](./img/InterpProbA.svg)  
 

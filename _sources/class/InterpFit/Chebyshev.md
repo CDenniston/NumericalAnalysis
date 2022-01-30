@@ -1,4 +1,4 @@
-## Chebyshev Polynomials
+## Chebyshev Polynomial Interpolation
 
 In the last section, we found that a set of nodes with points more densely spaced at the edges of the interval seemed to work much better for polynomial interpolation than equally spaced points.  It turns out, the points we choose were roots of a Chebyshev polynomial.  Chebyshev polynomials are a set of orthogonal polynomials on the interval $[-1,1]$ with respect to the weight function $1/\sqrt{1-x^2}$.  They can be defined via trignometric functions as
 

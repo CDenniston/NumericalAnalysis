@@ -5,7 +5,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Chebyshev Polynomials &#8212; Numerical Analysis</title>
+    <title>Chebyshev Polynomial Interpolation &#8212; Numerical Analysis</title>
     
   <link href="../../_static/css/theme.css" rel="stylesheet">
   <link href="../../_static/css/index.ff1ffe594081f20da1ef19478df9384b.css" rel="stylesheet">
@@ -156,7 +156,7 @@
 <ul class="current nav bd-sidenav">
  <li class="toctree-l1">
   <a class="reference internal" href="InterpFit_summary.html">
-   Interpolation and Curve Fitting
+   Interpolation
   </a>
  </li>
  <li class="toctree-l1">
@@ -176,7 +176,7 @@
  </li>
  <li class="toctree-l1 current active">
   <a class="current reference internal" href="#">
-   Chebyshev Polynomials
+   Chebyshev Polynomial Interpolation
   </a>
  </li>
  <li class="toctree-l1">
@@ -496,7 +496,7 @@
         <div class="col-12 col-md-9 pl-md-3 pr-md-0">
             <!-- Table of contents that is only displayed when printing the page -->
             <div id="jb-print-docs-body" class="onlyprint">
-                <h1>Chebyshev Polynomials</h1>
+                <h1>Chebyshev Polynomial Interpolation</h1>
                 <!-- Table of contents -->
                 <div id="print-main-content">
                     <div id="jb-print-toc">
@@ -507,8 +507,8 @@
             
               <div>
                 
-  <div class="section" id="chebyshev-polynomials">
-<h1>Chebyshev Polynomials<a class="headerlink" href="#chebyshev-polynomials" title="Permalink to this headline">¶</a></h1>
+  <div class="section" id="chebyshev-polynomial-interpolation">
+<h1>Chebyshev Polynomial Interpolation<a class="headerlink" href="#chebyshev-polynomial-interpolation" title="Permalink to this headline">¶</a></h1>
 <p>In the last section, we found that a set of nodes with points more densely spaced at the edges of the interval seemed to work much better for polynomial interpolation than equally spaced points.  It turns out, the points we choose were roots of a Chebyshev polynomial.  Chebyshev polynomials are a set of orthogonal polynomials on the interval <span class="math notranslate nohighlight">\([-1,1]\)</span> with respect to the weight function <span class="math notranslate nohighlight">\(1/\sqrt{1-x^2}\)</span>.  They can be defined via trignometric functions as</p>
 <div class="math notranslate nohighlight" id="equation-chebdef">
 <span class="eqno">(2)<a class="headerlink" href="#equation-chebdef" title="Permalink to this equation">¶</a></span>\[ T_k(x)=\cos(k \arccos x).\]</div>
