@@ -87,7 +87,7 @@ Again, we show this by first assuming the contrary and then showing that this le
 
 $$ |Q_{n+1}(x)| < \frac{1}{2^n}\quad \text{for}\quad x\in [-1,1].$$
 
-Since $T_{n+1}(x)$ alternates between $-1$ and $1$ a total of $n+2$ times (as noted in {eq}`(prop3)`), at these $n+2$ points the polynomial  
+Since $T_{n+1}(x)$ alternates between $-1$ and $1$ a total of $n+2$ times (as noted in {eq}`prop3`), at these $n+2$ points the polynomial  
 
 $$Q_{n+1}(x)-\frac{T_{n+1}(x)}{2^n}$$
 
