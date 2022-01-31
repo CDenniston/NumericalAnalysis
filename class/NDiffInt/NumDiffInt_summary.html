@@ -381,15 +381,15 @@
 \[ f'(x) = p'(x) + \epsilon'(x),\qquad f''(x) = p''(x) + \epsilon''(x)\]</div>
 <p>Our estimate for the derivative <span class="math notranslate nohighlight">\(f'(x) \approx p'(x)\)</span> and <span class="math notranslate nohighlight">\(\epsilon'(x)\)</span> is the error in this estimate.  Similarly <span class="math notranslate nohighlight">\(f''(x) \approx p''(x)\)</span> and <span class="math notranslate nohighlight">\(\epsilon''(x)\)</span> is the error in that estimate.</p>
 <p>In the Lagrange form for the interpolating polynomial, writen in <a class="reference internal" href="../InterpFit/BarycentricInterp.html"><span class="doc std std-doc">barycentric form</span></a></p>
+<div class="math notranslate nohighlight" id="equation-pnformula">
+<span class="eqno">(16)<a class="headerlink" href="#equation-pnformula" title="Permalink to this equation">¶</a></span>\[ p_n(x) = \sum_{i=0}^n L_i(x)$ f(x_i) = \frac{\sum_{i=0}^n \frac{w_i}{x-x_i} f(x_i)}{\sum_{i=0}^n \frac{w_i}{x-x_i}}. \]</div>
+<p>To simplify the notation, we have dropped the <span class="math notranslate nohighlight">\(n\)</span> from <span class="math notranslate nohighlight">\(L_i^n(x)\)</span> as the appropriate <span class="math notranslate nohighlight">\(n\)</span> should be clear from most contexts.  We can see that {eq}`pnformula that</p>
 <div class="math notranslate nohighlight">
-\[ p_n(x) = \sum_{i=0}^n L_i^n(x) f(x_i) = \frac{\sum_{i=0}^n \frac{w_i}{x-x_i} f(x_i)}{\sum_{i=0}^n \frac{w_i}{x-x_i}}. \]</div>
-<p>from which we can see that</p>
-<div class="math notranslate nohighlight">
-\[ p_n'(x) =  \sum_{i=0}^n {L_i^n}`(x) f(x_i), \qquad p_n''(x) =  \sum_{i=0}^n {L_i^n}''(x) f(x_i)\]</div>
+\[ p_n'(x) =  \sum_{i=0}^n L_i'(x) f(x_i), \qquad p_n''(x) =  \sum_{i=0}^n L_i''(x) f(x_i)\]</div>
 <p>and</p>
 <div class="math notranslate nohighlight">
 \[ L_i^n(x) =  \frac{\frac{w_i}{x-x_i}}{\sum_{i=0}^n \frac{w_i}{x-x_i}}.\]</div>
-<p>So to work out the derivative estimates we need to compute <span class="math notranslate nohighlight">\({L_i^n}'(x)\)</span> and <span class="math notranslate nohighlight">\({L_i^n}''(x)\)</span> for all <span class="math notranslate nohighlight">\(i\)</span>.</p>
+<p>So to work out the derivative estimates we need to compute <span class="math notranslate nohighlight">\(L_i'(x)\)</span> and <span class="math notranslate nohighlight">\(L_i''(x)\)</span> for all <span class="math notranslate nohighlight">\(i\)</span> (note that these still depend on <span class="math notranslate nohighlight">\(n\)</span> but <span class="math notranslate nohighlight">\(n\)</span> is the same for all in a given application).</p>
 </div>
 
     <script type="text/x-thebe-config">

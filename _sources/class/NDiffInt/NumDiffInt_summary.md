@@ -14,14 +14,14 @@ Our estimate for the derivative $f'(x) \approx p'(x)$ and $\epsilon'(x)$ is the 
 
 In the Lagrange form for the interpolating polynomial, writen in [barycentric form](../InterpFit/BarycentricInterp)  
 
-$$ p_n(x) = \sum_{i=0}^n L_i^n(x) f(x_i) = \frac{\sum_{i=0}^n \frac{w_i}{x-x_i} f(x_i)}{\sum_{i=0}^n \frac{w_i}{x-x_i}}. $$
+$$ p_n(x) = \sum_{i=0}^n L_i(x)$ f(x_i) = \frac{\sum_{i=0}^n \frac{w_i}{x-x_i} f(x_i)}{\sum_{i=0}^n \frac{w_i}{x-x_i}}. $$ (pnformula)
 
-from which we can see that
+To simplify the notation, we have dropped the $n$ from $L_i^n(x)$ as the appropriate $n$ should be clear from most contexts.  We can see that {eq}`pnformula that 
 
-$$ p_n'(x) =  \sum_{i=0}^n {L_i^n}`(x) f(x_i), \qquad p_n''(x) =  \sum_{i=0}^n {L_i^n}''(x) f(x_i)$$
+$$ p_n'(x) =  \sum_{i=0}^n L_i'(x) f(x_i), \qquad p_n''(x) =  \sum_{i=0}^n L_i''(x) f(x_i)$$
 
 and
 
 $$ L_i^n(x) =  \frac{\frac{w_i}{x-x_i}}{\sum_{i=0}^n \frac{w_i}{x-x_i}}.$$
 
-So to work out the derivative estimates we need to compute ${L_i^n}'(x)$ and ${L_i^n}''(x)$ for all $i$.  
+So to work out the derivative estimates we need to compute $L_i'(x)$ and $L_i''(x)$ for all $i$ (note that these still depend on $n$ but $n$ is the same for all in a given application).  
