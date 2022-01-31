@@ -5,7 +5,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Chebyshev Polynomial Interpolation &#8212; Numerical Analysis</title>
+    <title>Chebyshev Interpolation &#8212; Numerical Analysis</title>
     
   <link href="../../_static/css/theme.css" rel="stylesheet">
   <link href="../../_static/css/index.ff1ffe594081f20da1ef19478df9384b.css" rel="stylesheet">
@@ -176,7 +176,7 @@
  </li>
  <li class="toctree-l1 current active">
   <a class="current reference internal" href="#">
-   Chebyshev Polynomial Interpolation
+   Chebyshev Interpolation
   </a>
  </li>
  <li class="toctree-l1">
@@ -496,7 +496,7 @@
         <div class="col-12 col-md-9 pl-md-3 pr-md-0">
             <!-- Table of contents that is only displayed when printing the page -->
             <div id="jb-print-docs-body" class="onlyprint">
-                <h1>Chebyshev Polynomial Interpolation</h1>
+                <h1>Chebyshev Interpolation</h1>
                 <!-- Table of contents -->
                 <div id="print-main-content">
                     <div id="jb-print-toc">
@@ -507,8 +507,8 @@
             
               <div>
                 
-  <div class="section" id="chebyshev-polynomial-interpolation">
-<h1>Chebyshev Polynomial Interpolation<a class="headerlink" href="#chebyshev-polynomial-interpolation" title="Permalink to this headline">¶</a></h1>
+  <div class="section" id="chebyshev-interpolation">
+<h1>Chebyshev Interpolation<a class="headerlink" href="#chebyshev-interpolation" title="Permalink to this headline">¶</a></h1>
 <p>In the last section, we found that a set of nodes with points more densely spaced at the edges of the interval seemed to work much better for polynomial interpolation than equally spaced points.  It turns out, the points we choose were roots of a Chebyshev polynomial.  Chebyshev polynomials are a set of orthogonal polynomials on the interval <span class="math notranslate nohighlight">\([-1,1]\)</span> with respect to the weight function <span class="math notranslate nohighlight">\(1/\sqrt{1-x^2}\)</span>.  They can be defined via trignometric functions as</p>
 <div class="math notranslate nohighlight" id="equation-chebdef">
 <span class="eqno">(2)<a class="headerlink" href="#equation-chebdef" title="Permalink to this equation">¶</a></span>\[ T_k(x)=\cos(k \arccos x).\]</div>
@@ -573,7 +573,10 @@ T_4(x)&amp;= 8x^4-8x^2+1.
 <p>In fact, we can also show that <em>this is the best</em> we can do*.</p>
 <p>Again, we show this by first assuming the contrary and then showing that this leads to a contradiction.  In order for this to be the best choice, we must have <span class="math notranslate nohighlight">\(T_{n+1}(x)/2^n\)</span> to be the monic polynomial (a polynomial with leading coefficient 1) with the smallest absolute maximum.  Suppose this is nto the case.  Then there must be another monic polynomial, say <span class="math notranslate nohighlight">\(Q_{n+1}(x)\)</span> of degree <span class="math notranslate nohighlight">\(n\)</span> with an even smaller absolute max on <span class="math notranslate nohighlight">\([-1,1]\)</span>.  i.e.</p>
 <div class="math notranslate nohighlight">
-\[ \begin{align}\begin{aligned} |Q_{n+1}(x)| &lt; \frac{1}{2^n}$$ for $x\in [-1,1]$.\\Since $T_{n+1}(x)$ alternates between $-1$ and $1$ a total of $n+2$ times (as noted in {eq}`(prop3)`), at these $n+2$ points the polynomial  \\$$Q_{n+1}(x)-\frac{T_{n+1}(x)}{2^n}\end{aligned}\end{align} \]</div>
+\[ |Q_{n+1}(x)| &lt; \frac{1}{2^n}\quad \text{for}\quad x\in [-1,1].\]</div>
+<p>Since <span class="math notranslate nohighlight">\(T_{n+1}(x)\)</span> alternates between <span class="math notranslate nohighlight">\(-1\)</span> and <span class="math notranslate nohighlight">\(1\)</span> a total of <span class="math notranslate nohighlight">\(n+2\)</span> times (as noted in <code class="xref eq docutils literal notranslate"><span class="pre">(prop3)</span></code>), at these <span class="math notranslate nohighlight">\(n+2\)</span> points the polynomial</p>
+<div class="math notranslate nohighlight">
+\[Q_{n+1}(x)-\frac{T_{n+1}(x)}{2^n}\]</div>
 <p>is alternatively positive and negative (because <span class="math notranslate nohighlight">\(Q_{n+1}\)</span> is always less than <span class="math notranslate nohighlight">\(1/2^n\)</span>) at these extreme points for <span class="math notranslate nohighlight">\(T_{n+1}(x)\)</span>.  The intermediate value theorem then implies that <span class="math notranslate nohighlight">\(Q_{n+1}-\frac{T_{n+1}}{2^n}\)</span> must cross zero at least <span class="math notranslate nohighlight">\(n+1\)</span> times so it has <span class="math notranslate nohighlight">\(n+1\)</span> roots.  This is a contradition as both <span class="math notranslate nohighlight">\(Q_{n+1}\)</span> and <span class="math notranslate nohighlight">\(\frac{T_{n+1}}{2^n}(x)\)</span> are monic so the leading term cancels in subtraction and therefore <span class="math notranslate nohighlight">\(Q_{n+1}-\frac{T_{n+1}}{2^n}\)</span> has degree less than or equal to <span class="math notranslate nohighlight">\(n\)</span> and so has at most <span class="math notranslate nohighlight">\(n\)</span> zeros.</p>
 <p>So, in summary,</p>
 <ul class="simple">
