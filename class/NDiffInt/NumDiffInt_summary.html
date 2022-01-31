@@ -382,14 +382,47 @@
 <p>Our estimate for the derivative <span class="math notranslate nohighlight">\(f'(x) \approx p'(x)\)</span> and <span class="math notranslate nohighlight">\(\epsilon'(x)\)</span> is the error in this estimate.  Similarly <span class="math notranslate nohighlight">\(f''(x) \approx p''(x)\)</span> and <span class="math notranslate nohighlight">\(\epsilon''(x)\)</span> is the error in that estimate.</p>
 <p>In the Lagrange form for the interpolating polynomial, writen in <a class="reference internal" href="../InterpFit/BarycentricInterp.html"><span class="doc std std-doc">barycentric form</span></a></p>
 <div class="math notranslate nohighlight" id="equation-pnformula">
-<span class="eqno">(16)<a class="headerlink" href="#equation-pnformula" title="Permalink to this equation">¶</a></span>\[ p_n(x) = \sum_{i=0}^n L_i(x)$ f(x_i) = \frac{\sum_{i=0}^n \frac{w_i}{x-x_i} f(x_i)}{\sum_{i=0}^n \frac{w_i}{x-x_i}}. \]</div>
-<p>To simplify the notation, we have dropped the <span class="math notranslate nohighlight">\(n\)</span> from <span class="math notranslate nohighlight">\(L_i^n(x)\)</span> as the appropriate <span class="math notranslate nohighlight">\(n\)</span> should be clear from most contexts.  We can see that {eq}`pnformula that</p>
+<span class="eqno">(16)<a class="headerlink" href="#equation-pnformula" title="Permalink to this equation">¶</a></span>\[ p_n(x) = \sum_{i=0}^n L_i(x) f(x_i) = \frac{\sum_{i=0}^n \frac{w_i}{x-x_i} f(x_i)}{\sum_{i=0}^n \frac{w_i}{x-x_i}}. \]</div>
+<p>To simplify the notation, we have dropped the <span class="math notranslate nohighlight">\(n\)</span> from <span class="math notranslate nohighlight">\(L_i^n(x)\)</span> as the appropriate <span class="math notranslate nohighlight">\(n\)</span> should be clear from most contexts.  We can see from <a class="reference internal" href="#equation-pnformula">(16)</a> that</p>
 <div class="math notranslate nohighlight">
 \[ p_n'(x) =  \sum_{i=0}^n L_i'(x) f(x_i), \qquad p_n''(x) =  \sum_{i=0}^n L_i''(x) f(x_i)\]</div>
 <p>and</p>
+<div class="math notranslate nohighlight" id="equation-lieqn">
+<span class="eqno">(17)<a class="headerlink" href="#equation-lieqn" title="Permalink to this equation">¶</a></span>\[ L_i(x) =  \frac{\frac{w_i}{x-x_i}}{\sum_{i=0}^n \frac{w_i}{x-x_i}}.\]</div>
+<p>So to work out the derivative estimates we need to compute <span class="math notranslate nohighlight">\(L_i'(x)\)</span> and <span class="math notranslate nohighlight">\(L_i''(x)\)</span> for all <span class="math notranslate nohighlight">\(i\)</span> (note that these still depend on <span class="math notranslate nohighlight">\(n\)</span>, but <span class="math notranslate nohighlight">\(n\)</span> is the same for all <span class="math notranslate nohighlight">\(L_i\)</span> in a given application).</p>
+<p>In almost all cases, we are looking for the derivative at a node point, say <span class="math notranslate nohighlight">\(x_j\)</span>.  To ensure various terms remain differentiable, it is helpful to multiply both sides by <span class="math notranslate nohighlight">\(x-x_j\)</span> and rearrange Eq. (Lieqn) to get</p>
+<div class="math notranslate nohighlight" id="equation-lisetup">
+<span class="eqno">(18)<a class="headerlink" href="#equation-lisetup" title="Permalink to this equation">¶</a></span>\[ L_i(x)\sum_{i=0}^n w_i \frac{x-x_j}{x-x_i} = w_i\frac{x-x_j}{x-x_i},  \]</div>
+<p>where both sides are now differentiable at <span class="math notranslate nohighlight">\(x_j\)</span>.  Defining</p>
 <div class="math notranslate nohighlight">
-\[ L_i^n(x) =  \frac{\frac{w_i}{x-x_i}}{\sum_{i=0}^n \frac{w_i}{x-x_i}}.\]</div>
-<p>So to work out the derivative estimates we need to compute <span class="math notranslate nohighlight">\(L_i'(x)\)</span> and <span class="math notranslate nohighlight">\(L_i''(x)\)</span> for all <span class="math notranslate nohighlight">\(i\)</span> (note that these still depend on <span class="math notranslate nohighlight">\(n\)</span> but <span class="math notranslate nohighlight">\(n\)</span> is the same for all in a given application).</p>
+\[q_i(x)\equiv \sum_{i=0}^n w_i \frac{x-x_j}{x-x_i},\]</div>
+<p>we can rewrite <a class="reference internal" href="#equation-lisetup">(18)</a> as</p>
+<div class="math notranslate nohighlight">
+\[ L_i(x)q_i(x) = w_i\frac{x-x_j}{x-x_i},  \]</div>
+<p>then take the first and second derivative to get</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\begin{align}
+L_i'(x)q_i(x)+L_i(x)q_i'(x)&amp;=w_i \left[\frac{1}{x-x_i}-\frac{x-x_j}{(x-x_i)^2}\right],\\
+L_i''(x)q_i(x)+2L_i'(x)q_i'(x)+L_i(x)q_i''(x) &amp;= w_i \left[-2\frac{1}{(x-x_i)^2}+2\frac{x-x_j}{(x-x_i)^3}\right].
+\end{align}
+\end{split}\]</div>
+<p>From the definition of <span class="math notranslate nohighlight">\(q_i(x)\)</span> one can also work out</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\begin{align}
+q_i'(x) &amp;=  \sum_{i\neq j}^n w_i \frac{1}{x-x_i}-\sum_{i\neq j}^n w_i \frac{x-x_j}{(x-x_i)^2},\\
+q_i''(x) &amp;= -2\sum_{i\neq j}^n w_i \frac{1}{(x-x_i)^2} + 2\sum_{i\neq j}^n w_i \frac{x-x_j}{(x-x_i)^3}.
+\end{align}
+\end{split}\]</div>
+<p>Evaluating these at <span class="math notranslate nohighlight">\(x=x_j\)</span> we see that</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\begin{align}
+q_i'(x_j) = \sum_{i\neq j}^n w_i \frac{1}{x_j-x_i},\\
+q_i''(x_j) &amp;= -2\sum_{i\neq j}^n w_i \frac{1}{(x_j-x_i)^2}.
+\end{align}
+\end{split}\]</div>
 </div>
 
     <script type="text/x-thebe-config">
