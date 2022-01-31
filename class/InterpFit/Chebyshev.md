@@ -1,4 +1,4 @@
-## Chebyshev Polynomial Interpolation
+## Chebyshev Interpolation
 
 In the last section, we found that a set of nodes with points more densely spaced at the edges of the interval seemed to work much better for polynomial interpolation than equally spaced points.  It turns out, the points we choose were roots of a Chebyshev polynomial.  Chebyshev polynomials are a set of orthogonal polynomials on the interval $[-1,1]$ with respect to the weight function $1/\sqrt{1-x^2}$.  They can be defined via trignometric functions as
 
@@ -81,9 +81,9 @@ $$\begin{align} |f(x)-p_n(x)| &= \left|\frac{f^{n+1}(\xi)}{(n+1)!}\frac{T_{n+1}}
 
 In fact, we can also show that *this is the best* we can do*.
 
-Again, we show this by first assuming the contrary and then showing that this leads to a contradiction.  In order for this to be the best choice, we must have $T_{n+1}(x)/2^n$ to be the monic polynomial (a polynomial with leading coefficient 1) with the smallest absolute maximum.  Suppose this is nto the case.  Then there must be another monic polynomial, say $Q_{n+1}(x)$ of degree $n$ with an even smaller absolute max on $[-1,1]$.  i.e.
+Again, we show this by first assuming the contrary and then showing that this leads to a contradiction.  In order for this to be the best choice, we must have $T_{n+1}(x)/2^n$ to be the monic polynomial (a polynomial with leading coefficient 1) with the smallest absolute maximum.  Suppose this is nto the case.  Then there must be another monic polynomial, say $Q_{n+1}(x)$ of degree $n$ with an even smaller absolute max on $[-1,1]$.  i.e.  
 
-$$ |Q_{n+1}(x)| < \frac{1}{2^n}$$ for $x\in [-1,1]$.
+$$ |Q_{n+1}(x)| < \frac{1}{2^n}\quad \text{for}\quad x\in [-1,1].$$
 
 Since $T_{n+1}(x)$ alternates between $-1$ and $1$ a total of $n+2$ times (as noted in {eq}`(prop3)`), at these $n+2$ points the polynomial  
 
