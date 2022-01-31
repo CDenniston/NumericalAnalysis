@@ -373,7 +373,7 @@
                 
   <div class="tex2jax_ignore mathjax_ignore section" id="numerical-differentiation">
 <span id="page-topic1"></span><h1>Numerical Differentiation<a class="headerlink" href="#numerical-differentiation" title="Permalink to this headline">¶</a></h1>
-<p>Suppose we can either evaluate <span class="math notranslate nohighlight">\(f(x)\)</span> for any <span class="math notranslate nohighlight">\(x\)</span>, or are provided with <span class="math notranslate nohighlight">\(f(x)\)</span> as some set of points <span class="math notranslate nohighlight">\(\{x_i}_{i=0}^n\)</span>, but do not know <span class="math notranslate nohighlight">\(f'(x)\)</span>.  How do we compute an estimate of <span class="math notranslate nohighlight">\(f'(x)\)</span>, or <span class="math notranslate nohighlight">\(f''(x)\)</span>(or higher derivatives, though we will restrict ourselves to the first two derivatives here)?  As always, it is useful to make use of something we already know how to do, namely interpolation.  We replace <span class="math notranslate nohighlight">\(f(x)\)</span> with its interpolatory function (Lagrange or splines) and take the derivative of that.  i.e.</p>
+<p>Suppose we can either evaluate <span class="math notranslate nohighlight">\(f(x)\)</span> for any <span class="math notranslate nohighlight">\(x\)</span>, or are provided with <span class="math notranslate nohighlight">\(f(x)\)</span> as some set of points <span class="math notranslate nohighlight">\(\{x_i\}_{i=0}^n\)</span>, but do not know <span class="math notranslate nohighlight">\(f'(x)\)</span>.  How do we compute an estimate of <span class="math notranslate nohighlight">\(f'(x)\)</span>, or <span class="math notranslate nohighlight">\(f''(x)\)</span>(or higher derivatives, though we will restrict ourselves to the first two derivatives here)?  As always, it is useful to make use of something we already know how to do, namely interpolation.  We replace <span class="math notranslate nohighlight">\(f(x)\)</span> with its interpolatory function (Lagrange or splines) and take the derivative of that.  i.e.</p>
 <div class="math notranslate nohighlight">
 \[ f(x) = p(x) + \epsilon(x), \]</div>
 <p>where <span class="math notranslate nohighlight">\(p(x)\)</span> is our interpolation and <span class="math notranslate nohighlight">\(\epsilon(x)\)</span> is the error in the interpolation.  Taking the derivative gives</p>
@@ -385,11 +385,11 @@
 \[ p_n(x) = \sum_{i=0}^n L_i^n(x) f(x_i) = \frac{\sum_{i=0}^n \frac{w_i}{x-x_i} f(x_i)}{\sum_{i=0}^n \frac{w_i}{x-x_i}}. \]</div>
 <p>from which we can see that</p>
 <div class="math notranslate nohighlight">
-\[ p_n'(x) =  \sum_{i=0}^n L_i'^n(x) f(x_i), \qquad p_n''(x) =  \sum_{i=0}^n L_i''^n(x) f(x_i)\]</div>
+\[ p_n'(x) =  \sum_{i=0}^n {L_i^n}`(x) f(x_i), \qquad p_n''(x) =  \sum_{i=0}^n {L_i^n}''(x) f(x_i)\]</div>
 <p>and</p>
 <div class="math notranslate nohighlight">
 \[ L_i^n(x) =  \frac{\frac{w_i}{x-x_i}}{\sum_{i=0}^n \frac{w_i}{x-x_i}}.\]</div>
-<p>So to work out the derivative estimates we need to compute <span class="math notranslate nohighlight">\(L_i^n'(x)\)</span> and <span class="math notranslate nohighlight">\(L_i^n''(x)\)</span> for all <span class="math notranslate nohighlight">\(i\)</span>.</p>
+<p>So to work out the derivative estimates we need to compute <span class="math notranslate nohighlight">\({L_i^n}'(x)\)</span> and <span class="math notranslate nohighlight">\({L_i^n}''(x)\)</span> for all <span class="math notranslate nohighlight">\(i\)</span>.</p>
 </div>
 
     <script type="text/x-thebe-config">
