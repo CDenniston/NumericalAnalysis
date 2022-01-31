@@ -18,38 +18,9 @@ parts:
     - file: class/InterpFit/InterpErrors
     - file: class/InterpFit/Chebyshev
     - file: class/InterpFit/Splines
-- caption: Part 3 - Energy & Momentum
+- caption: Part 3 - Numerical Differentiation & Integration
   chapters:
-  - file: class/week10/week10_summary
-    title: Week 10 - Chapter 9
-    sections:
-      - file: class/week10/readings
-      - file: class/week10/videos
-      - file: class/week10/homework
-      - file: class/week10/lecture
-      - file: class/week10/test
-      - file: class/week10/lab
-      - file: class/week10/learninglogs
-  - file: class/week11/week11_summary
-    title: Week 11 - Chapter 10
-    sections:
-      - file: class/week11/readings
-      - file: class/week11/videos
-      - file: class/week11/homework
-      - file: class/week11/lecture
-      - file: class/week11/test
-      - file: class/week11/lab
-      - file: class/week11/learninglogs
-  - file: class/week12/week12_summary
-    title: Week 12 - Chapter 11
-    sections:
-      - file: class/week12/readings
-      - file: class/week12/videos
-      - file: class/week12/homework
-      - file: class/week12/lecture
-      - file: class/week12/test
-      - file: class/week12/lab
-      - file: class/week12/learninglogs
+  - file: class/NDiffInt/NumDiffInt_summary
 - caption: Mikko Extras
   chapters:
   - file: extras/coding-notes-general
