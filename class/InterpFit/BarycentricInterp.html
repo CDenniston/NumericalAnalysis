@@ -541,7 +541,7 @@
 \[ w_j \equiv \prod_{i=0,i\neq j}^n (x_j-x_i).\]</div>
 <p>Our interpolating polynomial now becomes</p>
 <div class="math notranslate nohighlight">
-\[p_n(x) = =\sum_{i=0}^n L_i^n(x) f(x_i) =  \mathcal{l}(x)\sum_{i=0}^n \frac{w_i}{x-x_i} f(x_i).\]</div>
+\[p_n(x) = \sum_{i=0}^n L_i^n(x) f(x_i) =  \mathcal{l}(x)\sum_{i=0}^n \frac{w_i}{x-x_i} f(x_i).\]</div>
 <p>This is called the <em>first form of barycentric interpolation</em>.  Once we have computed the weights <span class="math notranslate nohighlight">\(w_j\)</span>, evaluation of <span class="math notranslate nohighlight">\(p_n(x)\)</span> now requires <span class="math notranslate nohighlight">\(\mathcal{O}(n)\)</span> flops thus removing the first objection to the Lagrange form of the interpolating polynomial.</p>
 <p>If we add a new node <span class="math notranslate nohighlight">\(x_{n+1}\)</span>, we can construct new weights <span class="math notranslate nohighlight">\(w_j\)</span> by dividing the old weights by <span class="math notranslate nohighlight">\((x_j-x_{n+1})\)</span> to get the new <span class="math notranslate nohighlight">\(w_j\)</span> (plus computing <span class="math notranslate nohighlight">\(w_{n+1}\)</span> using the original formula).  This effectively eliminates the second objection to the Lagrange form of the intepolating polynomial.</p>
 <p>There is another similification we can use before constructing an algorithm for interpolation.  Note that for the function <span class="math notranslate nohighlight">\(g(x)\equiv 1\)</span>,</p>
