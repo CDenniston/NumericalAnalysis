@@ -5,7 +5,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Test &#8212; Numerical Analysis</title>
+    <title>Numerical Differentiation &#8212; Numerical Analysis</title>
     
   <link href="../../_static/css/theme.css" rel="stylesheet">
   <link href="../../_static/css/index.ff1ffe594081f20da1ef19478df9384b.css" rel="stylesheet">
@@ -49,6 +49,8 @@
     <script async="async" kind="dokieli" src="https://dokie.li/scripts/dokieli.js"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
     <script src="../../_static/sphinx-book-theme.d59cb220de22ca1c485ebbdc042f0030.js"></script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <script async="async" src="https://unpkg.com/thebe@0.5.1/lib/index.js"></script>
     <script>
         const thebe_selector = ".thebe,.cell"
@@ -56,11 +58,11 @@
         const thebe_selector_output = ".output,.cell_output"
     </script>
     <script async="async" src="../../_static/sphinx-thebe.js"></script>
-    <link rel="canonical" href="https://cdenniston.github.io/NumericalAnalysis/class/week11/test.html" />
+    <link rel="canonical" href="https://cdenniston.github.io/NumericalAnalysis/class/NDiffInt/NumDiffInt_summary.html" />
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
-    <link rel="next" title="Lab" href="lab.html" />
-    <link rel="prev" title="Lecture" href="lecture.html" />
+    <link rel="next" title="On computation and codes" href="../../extras/coding-notes-general.html" />
+    <link rel="prev" title="Splines" href="../InterpFit/Splines.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="None">
     
@@ -185,150 +187,14 @@
 </ul>
 <p aria-level="2" class="caption" role="heading">
  <span class="caption-text">
-  Part 3 - Energy &amp; Momentum
+  Part 3 - Numerical Differentiation &amp; Integration
  </span>
 </p>
 <ul class="current nav bd-sidenav">
- <li class="toctree-l1 has-children">
-  <a class="reference internal" href="../week10/week10_summary.html">
-   Week 10 - Chapter 9
+ <li class="toctree-l1 current active">
+  <a class="current reference internal" href="#">
+   Numerical Differentiation
   </a>
-  <input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/>
-  <label for="toctree-checkbox-1">
-   <i class="fas fa-chevron-down">
-   </i>
-  </label>
-  <ul>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../week10/readings.html">
-     Readings
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../week10/videos.html">
-     Videos
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../week10/homework.html">
-     Homework
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../week10/lecture.html">
-     Lecture
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../week10/test.html">
-     Test
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../week10/lab.html">
-     Lab
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../week10/learninglogs.html">
-     Learning Logs
-    </a>
-   </li>
-  </ul>
- </li>
- <li class="toctree-l1 current active has-children">
-  <a class="reference internal" href="week11_summary.html">
-   Week 11 - Chapter 10
-  </a>
-  <input checked="" class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/>
-  <label for="toctree-checkbox-2">
-   <i class="fas fa-chevron-down">
-   </i>
-  </label>
-  <ul class="current">
-   <li class="toctree-l2">
-    <a class="reference internal" href="readings.html">
-     Readings
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="videos.html">
-     Videos
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="homework.html">
-     Homework
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="lecture.html">
-     Lecture
-    </a>
-   </li>
-   <li class="toctree-l2 current active">
-    <a class="current reference internal" href="#">
-     Test
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="lab.html">
-     Lab
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="learninglogs.html">
-     Learning Logs
-    </a>
-   </li>
-  </ul>
- </li>
- <li class="toctree-l1 has-children">
-  <a class="reference internal" href="../week12/week12_summary.html">
-   Week 12 - Chapter 11
-  </a>
-  <input class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/>
-  <label for="toctree-checkbox-3">
-   <i class="fas fa-chevron-down">
-   </i>
-  </label>
-  <ul>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../week12/readings.html">
-     Readings
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../week12/videos.html">
-     Videos
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../week12/homework.html">
-     Homework
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../week12/lecture.html">
-     Lecture
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../week12/test.html">
-     Test
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../week12/lab.html">
-     Lab
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../week12/learninglogs.html">
-     Learning Logs
-    </a>
-   </li>
-  </ul>
  </li>
 </ul>
 <p aria-level="2" class="caption" role="heading">
@@ -341,8 +207,8 @@
   <a class="reference internal" href="../../extras/coding-notes-general.html">
    Python &amp; programming
   </a>
-  <input class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" type="checkbox"/>
-  <label for="toctree-checkbox-4">
+  <input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/>
+  <label for="toctree-checkbox-1">
    <i class="fas fa-chevron-down">
    </i>
   </label>
@@ -363,8 +229,8 @@
   <a class="reference internal" href="../../extras/Linux-basics.html">
    Linux Intro
   </a>
-  <input class="toctree-checkbox" id="toctree-checkbox-5" name="toctree-checkbox-5" type="checkbox"/>
-  <label for="toctree-checkbox-5">
+  <input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/>
+  <label for="toctree-checkbox-2">
    <i class="fas fa-chevron-down">
    </i>
   </label>
@@ -385,8 +251,8 @@
   <a class="reference internal" href="../../extras/editing-ascii.html">
    Other software
   </a>
-  <input class="toctree-checkbox" id="toctree-checkbox-6" name="toctree-checkbox-6" type="checkbox"/>
-  <label for="toctree-checkbox-6">
+  <input class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/>
+  <label for="toctree-checkbox-3">
    <i class="fas fa-chevron-down">
    </i>
   </label>
@@ -462,7 +328,7 @@
         <!-- ipynb file if we had a myst markdown file -->
         
         <!-- Download raw file -->
-        <a class="dropdown-buttons" href="../../_sources/class/week11/test.md"><button type="button"
+        <a class="dropdown-buttons" href="../../_sources/class/NDiffInt/NumDiffInt_summary.md"><button type="button"
                 class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
                 data-placement="left">.md</button></a>
         <!-- Download PDF via print -->
@@ -494,7 +360,7 @@
         <div class="col-12 col-md-9 pl-md-3 pr-md-0">
             <!-- Table of contents that is only displayed when printing the page -->
             <div id="jb-print-docs-body" class="onlyprint">
-                <h1>Test</h1>
+                <h1>Numerical Differentiation</h1>
                 <!-- Table of contents -->
                 <div id="print-main-content">
                     <div id="jb-print-toc">
@@ -505,22 +371,25 @@
             
               <div>
                 
-  <div class="tex2jax_ignore mathjax_ignore section" id="test">
-<h1>Test<a class="headerlink" href="#test" title="Permalink to this headline">¶</a></h1>
-<div class="sphinx-bs container pb-4 docutils">
-<div class="row docutils">
-<div class="d-flex col-lg-6 col-md-6 col-sm-6 col-xs-12 p-2 docutils">
-<div class="card w-100 shadow docutils">
-<div class="card-body docutils">
-<p class="card-text">This week is a Bonus Test, and it will mostly be on the contents of Chapter 8 and 9.</p>
-</div>
-<div class="card-footer docutils">
-<p class="card-text"><a class="sphinx-bs btn text-wrap btn-outline-success btn-block stretched-link text-dark reference external" href="https://canvas.ubc.ca"><span>Canvas</span></a></p>
-</div>
-</div>
-</div>
-</div>
-</div>
+  <div class="tex2jax_ignore mathjax_ignore section" id="numerical-differentiation">
+<span id="page-topic1"></span><h1>Numerical Differentiation<a class="headerlink" href="#numerical-differentiation" title="Permalink to this headline">¶</a></h1>
+<p>Suppose we can either evaluate <span class="math notranslate nohighlight">\(f(x)\)</span> for any <span class="math notranslate nohighlight">\(x\)</span>, or are provided with <span class="math notranslate nohighlight">\(f(x)\)</span> as some set of points <span class="math notranslate nohighlight">\(\{x_i}_{i=0}^n\)</span>, but do not know <span class="math notranslate nohighlight">\(f'(x)\)</span>.  How do we compute an estimate of <span class="math notranslate nohighlight">\(f'(x)\)</span>, or <span class="math notranslate nohighlight">\(f''(x)\)</span>(or higher derivatives, though we will restrict ourselves to the first two derivatives here)?  As always, it is useful to make use of something we already know how to do, namely interpolation.  We replace <span class="math notranslate nohighlight">\(f(x)\)</span> with its interpolatory function (Lagrange or splines) and take the derivative of that.  i.e.</p>
+<div class="math notranslate nohighlight">
+\[ f(x) = p(x) + \epsilon(x), \]</div>
+<p>where <span class="math notranslate nohighlight">\(p(x)\)</span> is our interpolation and <span class="math notranslate nohighlight">\(\epsilon(x)\)</span> is the error in the interpolation.  Taking the derivative gives</p>
+<div class="math notranslate nohighlight">
+\[ f'(x) = p'(x) + \epsilon'(x),\qquad f''(x) = p''(x) + \epsilon''(x)\]</div>
+<p>Our estimate for the derivative <span class="math notranslate nohighlight">\(f'(x) \approx p'(x)\)</span> and <span class="math notranslate nohighlight">\(\epsilon'(x)\)</span> is the error in this estimate.  Similarly <span class="math notranslate nohighlight">\(f''(x) \approx p''(x)\)</span> and <span class="math notranslate nohighlight">\(\epsilon''(x)\)</span> is the error in that estimate.</p>
+<p>In the Lagrange form for the interpolating polynomial, writen in <a class="reference internal" href="../InterpFit/BarycentricInterp.html"><span class="doc std std-doc">barycentric form</span></a></p>
+<div class="math notranslate nohighlight">
+\[ p_n(x) = \sum_{i=0}^n L_i^n(x) f(x_i) = \frac{\sum_{i=0}^n \frac{w_i}{x-x_i} f(x_i)}{\sum_{i=0}^n \frac{w_i}{x-x_i}}. \]</div>
+<p>from which we can see that</p>
+<div class="math notranslate nohighlight">
+\[ p_n'(x) =  \sum_{i=0}^n L_i'^n(x) f(x_i), \qquad p_n''(x) =  \sum_{i=0}^n L_i''^n(x) f(x_i)\]</div>
+<p>and</p>
+<div class="math notranslate nohighlight">
+\[ L_i^n(x) =  \frac{\frac{w_i}{x-x_i}}{\sum_{i=0}^n \frac{w_i}{x-x_i}}.\]</div>
+<p>So to work out the derivative estimates we need to compute <span class="math notranslate nohighlight">\(L_i^n'(x)\)</span> and <span class="math notranslate nohighlight">\(L_i^n''(x)\)</span> for all <span class="math notranslate nohighlight">\(i\)</span>.</p>
 </div>
 
     <script type="text/x-thebe-config">
@@ -536,7 +405,7 @@
         },
         kernelOptions: {
             kernelName: "python3",
-            path: "./class/week11"
+            path: "./class/NDiffInt"
         },
         predefinedOutput: true
     }
@@ -548,17 +417,17 @@
             
                 <!-- Previous / next buttons -->
 <div class='prev-next-area'> 
-    <a class='left-prev' id="prev-link" href="lecture.html" title="previous page">
+    <a class='left-prev' id="prev-link" href="../InterpFit/Splines.html" title="previous page">
         <i class="fas fa-angle-left"></i>
         <div class="prev-next-info">
             <p class="prev-next-subtitle">previous</p>
-            <p class="prev-next-title">Lecture</p>
+            <p class="prev-next-title">Splines</p>
         </div>
     </a>
-    <a class='right-next' id="next-link" href="lab.html" title="next page">
+    <a class='right-next' id="next-link" href="../../extras/coding-notes-general.html" title="next page">
     <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">Lab</p>
+        <p class="prev-next-title">On computation and codes</p>
     </div>
     <i class="fas fa-angle-right"></i>
     </a>
