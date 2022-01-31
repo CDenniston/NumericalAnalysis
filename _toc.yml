@@ -10,7 +10,7 @@ parts:
     - file: class/ErrorsModule/HornersAlgorithm
     - file: class/ErrorsModule/RoundoffAmplification
     - file: class/ErrorsModule/BackwardForwardConditioning
-- caption: Part 2 - Interpolation and Curve Fitting
+- caption: Part 2 - Interpolation
   chapters:
     - file: class/InterpFit/InterpFit_summary
     - file: class/InterpFit/LagrangeForm
