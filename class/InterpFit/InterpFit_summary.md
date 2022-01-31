@@ -29,7 +29,7 @@ $$ p(x_i)=f(x_i), \qquad\qquad i=0,1,2,...,n.$$
 There are a couple of practical things to note:  
 
 - there are actually $n+1$ data points here,
-- we are numbering the points from $0$ to $n$.  While this is probably the most common numbering scheme, N=not all texts and software libraries use the same scheme (some may have $n-1$ points numbered from $1$ to $n$, or $n$ points numbered $0$ to $n-1$, or some other variant).  While it is straightforward to convert between these different schemes, it is imperitive that you know which is being used or you will likely make an error when using or computing the interpolation.
+- we are numbering the points from $0$ to $n$.  While this is probably the most common numbering scheme, not all texts and software libraries use the same scheme (some may have $n-1$ points numbered from $1$ to $n$, or $n$ points numbered $0$ to $n-1$, or some other variant).  While it is straightforward to convert between these different schemes, it is imperitive that you know which is being used or you will likely make an error when using or computing the interpolation.
 
 
 
