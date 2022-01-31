@@ -117,4 +117,4 @@ We then select our Chebyshev points as
 
 $$y_0 = \cos\frac{\pi}{10},\,y_1=\cos \frac{3\pi}{10}\,y_2=\cos \frac{5\pi}{10}\,y_3=\cos \frac{7\pi}{10}\,y_4=\cos \frac{9\pi}{10}.$$
 
-and construct $p_4(y)$ for $f(y)=e^{(y+1)^2/4}$ using the standard barycentric Lagrange interpolation routine.  
+and construct $p_4(y)$ for $f(y)=e^{-(y+1)^2/4}$ using the standard barycentric Lagrange interpolation routine.  
