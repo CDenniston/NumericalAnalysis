@@ -22,6 +22,7 @@ and
 
 >
 > $T_k(x)$ oscillates between $-1$ and $1$ a total of $k+1$ times, hitting these extremes at  
+>
 > $$x=\cos 0, \cos(\pi/k), ...,\cos((k-1)\pi/k)$$ (prop3)
 >
 
