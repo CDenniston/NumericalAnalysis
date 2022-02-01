@@ -471,43 +471,46 @@ f(x_1) \\
 \end{align}
 \end{split}\]</div>
 <p>When used for <span class="math notranslate nohighlight">\(x_0\)</span> (upper element) this is typically called the <em>forward</em> difference formula and when used at <span class="math notranslate nohighlight">\(x_1\)</span> (lower element) this is called a <em>backward</em> difference.  Not surprisingly as this is based on linear interpolation, the approximation to the derivative is the same at both points here and were we to work out approximations for the second derivatives they would both be zero.</p>
-<p><strong>Example: Three point forumulas.</strong>  Suppose we have three equally spaced points <span class="math notranslate nohighlight">\(x_0,\,x_1=x_0+h,\,x_2=x_0+2h,\)</span> along with the function values at those points <span class="math notranslate nohighlight">\(f(x_0),\,f(x_1)\)</span> and <span class="math notranslate nohighlight">\(f(x_2)\)</span>.   The <a class="reference internal" href="../InterpFit/BarycentricInterp.html"><span class="doc std std-doc">formula for the weights</span></a> gives  <span class="math notranslate nohighlight">\(w_0= 2h^2,\,w_1=-h^2\)</span> and <span class="math notranslate nohighlight">\(w_2=2h^2\)</span>.  Using  Eq.<a class="reference internal" href="#equation-dlij">(20)</a> and <a class="reference internal" href="#equation-dlii">(21)</a> to fill the entries of <span class="math notranslate nohighlight">\(\mathbf{D}'\)</span> gives</p>
+<p><strong>Example: Three point forumulas.</strong>  Suppose we have three equally spaced points <span class="math notranslate nohighlight">\(x_0,\,x_1=x_0+h,\,x_2=x_0+2h,\)</span> along with the function values at those points <span class="math notranslate nohighlight">\(f(x_0),\,f(x_1)\)</span> and <span class="math notranslate nohighlight">\(f(x_2)\)</span>.   The <a class="reference internal" href="../InterpFit/BarycentricInterp.html"><span class="doc std std-doc">formula for the weights</span></a> gives  <span class="math notranslate nohighlight">\(w_0= 1/2h^2,\,w_1=-1/h^2\)</span> and <span class="math notranslate nohighlight">\(w_2=1/2h^2\)</span>.  Using  Eq.<a class="reference internal" href="#equation-dlij">(20)</a> and <a class="reference internal" href="#equation-dlii">(21)</a> to fill the entries of <span class="math notranslate nohighlight">\(\mathbf{D}'\)</span> gives</p>
 <div class="math notranslate nohighlight">
-\[ \begin{align}\begin{aligned}\begin{split}
+\[\begin{split}
 \begin{align}
 \left[{\begin{array}{c}
 f'(x_0) \\
 f'(x_1) \\
-f'(x_2) \\
+f'(x_2) 
 \end{array}} \right] \approx
 \mathbf{D}'\mathbf{F} &amp;=
 \left[{\begin{array}{ccc}
   L_0'(x_0) &amp;  L_1'(x_0) &amp; L_2'(x_0)\\
   L_0'(x_1) &amp;  L_1'(x_1) &amp; L_2'(x_1)\\
-  L_0'(x_2) &amp;  L_1'(x_2) &amp; L_2'(x_2)\\
+  L_0'(x_2) &amp;  L_1'(x_2) &amp; L_2'(x_2)
 \end{array}} \right]
 \left[{\begin{array}{c}
 f(x_0) \\
 f(x_1) \\
-f(x_2) \\
+f(x_2)
 \end{array}} \right] \\
 &amp;=
 \left[{\begin{array}{ccc}
-  L_0'(x_0) &amp;  L_1'(x_0) &amp; L_2'(x_0)\\
-  L_0'(x_1) &amp;  L_1'(x_1) &amp; L_2'(x_1)\\
-  L_0'(x_2) &amp;  L_1'(x_2) &amp; L_2'(x_2)\\
+  -\frac{3}{2h} &amp; \frac{4}{2h}  &amp; -\frac{1}{2h}\\
+  -\frac{1}{2h} &amp; 0  &amp; \frac{1}{2h}\\
+  \frac{1}{2h}&amp; -\frac{4}{2h}  &amp; \frac{3}{2h}
 \end{array}} \right]
 \left[{\begin{array}{c}
 f(x_0) \\
 f(x_1) \\
-f(x_2) \\
-\end{array}} \right] \end{split}\\\begin{split}\left[{\begin{array}{c}
-\frac{f(x_1)-f(x_0)}{h} \\
-\frac{f(x_1)-f(x_0)}{h} \\
+f(x_2)
+\end{array}} \right] \\
+&amp;=
+\left[{\begin{array}{c}
+\frac{-3f(x_0)+4f(x_1)-f(x_2)}{2h} \\
+\frac{f(x_2)-f(x_0)}{2h} \\
+\frac{3f(x_2)-4f(x_1)+f(x_0)}{2h} \\
 \end{array}} \right].
 \end{align}
-\end{split}\end{aligned}\end{align} \]</div>
-<p>When used for <span class="math notranslate nohighlight">\(x_0\)</span> (upper element) this is typically called the <em>forward</em> difference formula and when used at <span class="math notranslate nohighlight">\(x_1\)</span> (lower element) this is called a <em>backward</em> difference.  Not surprisingly as this is based on linear interpolation, the approximation to the derivative is the same at both points here and were we to work out approximations for the second derivatives they would both be zero.</p>
+\end{split}\]</div>
+<p>The formula for <span class="math notranslate nohighlight">\(x_0\)</span> and <span class="math notranslate nohighlight">\(x_1\)</span> are, presumably, higher order forward/backward differences and the formula for <span class="math notranslate nohighlight">\(x_1\)</span> is the <em>central</em> difference formula.</p>
 </div>
 
     <script type="text/x-thebe-config">

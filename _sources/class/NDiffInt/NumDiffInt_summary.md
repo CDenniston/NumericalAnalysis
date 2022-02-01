@@ -120,46 +120,49 @@ $$
 
 When used for $x_0$ (upper element) this is typically called the *forward* difference formula and when used at $x_1$ (lower element) this is called a *backward* difference.  Not surprisingly as this is based on linear interpolation, the approximation to the derivative is the same at both points here and were we to work out approximations for the second derivatives they would both be zero.
 
-**Example: Three point forumulas.**  Suppose we have three equally spaced points $x_0,\,x_1=x_0+h,\,x_2=x_0+2h,$ along with the function values at those points $f(x_0),\,f(x_1)$ and $f(x_2)$.   The [formula for the weights](../InterpFit/BarycentricInterp) gives  $w_0= 2h^2,\,w_1=-h^2$ and $w_2=2h^2$.  Using  Eq.{eq}`DLij` and {eq}`DLii` to fill the entries of $\mathbf{D}'$ gives
+**Example: Three point forumulas.**  Suppose we have three equally spaced points $x_0,\,x_1=x_0+h,\,x_2=x_0+2h,$ along with the function values at those points $f(x_0),\,f(x_1)$ and $f(x_2)$.   The [formula for the weights](../InterpFit/BarycentricInterp) gives  $w_0= 1/2h^2,\,w_1=-1/h^2$ and $w_2=1/2h^2$.  Using  Eq.{eq}`DLij` and {eq}`DLii` to fill the entries of $\mathbf{D}'$ gives  
 
 $$
 \begin{align}
 \left[{\begin{array}{c}
 f'(x_0) \\
 f'(x_1) \\
-f'(x_2) \\
+f'(x_2) 
 \end{array}} \right] \approx
 \mathbf{D}'\mathbf{F} &=
 \left[{\begin{array}{ccc}
   L_0'(x_0) &  L_1'(x_0) & L_2'(x_0)\\
   L_0'(x_1) &  L_1'(x_1) & L_2'(x_1)\\
-  L_0'(x_2) &  L_1'(x_2) & L_2'(x_2)\\
+  L_0'(x_2) &  L_1'(x_2) & L_2'(x_2)
 \end{array}} \right]
 \left[{\begin{array}{c}
 f(x_0) \\
 f(x_1) \\
-f(x_2) \\
+f(x_2)
 \end{array}} \right] \\
 &=
 \left[{\begin{array}{ccc}
-  L_0'(x_0) &  L_1'(x_0) & L_2'(x_0)\\
-  L_0'(x_1) &  L_1'(x_1) & L_2'(x_1)\\
-  L_0'(x_2) &  L_1'(x_2) & L_2'(x_2)\\
+  -\frac{3}{2h} & \frac{4}{2h}  & -\frac{1}{2h}\\
+  -\frac{1}{2h} & 0  & \frac{1}{2h}\\
+  \frac{1}{2h}& -\frac{4}{2h}  & \frac{3}{2h}
 \end{array}} \right]
 \left[{\begin{array}{c}
 f(x_0) \\
 f(x_1) \\
-f(x_2) \\
-\end{array}} \right] 
-
+f(x_2)
+\end{array}} \right] \\
+&=
 \left[{\begin{array}{c}
-\frac{f(x_1)-f(x_0)}{h} \\
-\frac{f(x_1)-f(x_0)}{h} \\
+\frac{-3f(x_0)+4f(x_1)-f(x_2)}{2h} \\
+\frac{f(x_2)-f(x_0)}{2h} \\
+\frac{3f(x_2)-4f(x_1)+f(x_0)}{2h} \\
 \end{array}} \right].
 \end{align}
-$$
+$$  
 
-When used for $x_0$ (upper element) this is typically called the *forward* difference formula and when used at $x_1$ (lower element) this is called a *backward* difference.  Not surprisingly as this is based on linear interpolation, the approximation to the derivative is the same at both points here and were we to work out approximations for the second derivatives they would both be zero.
+The formula for $x_0$ and $x_1$ are, presumably, higher order forward/backward differences and the formula for $x_1$ is the *central* difference formula.
+
+
 
 
 
