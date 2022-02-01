@@ -419,7 +419,7 @@ q_j''(x) &amp;= -2\sum_{k\neq j}^n w_k \frac{1}{(x-x_k)^2} + 2\sum_{k\neq j}^n w
 <div class="math notranslate nohighlight">
 \[\begin{split}
 \begin{align}
-q_j(x_j) = w_j,\\
+q_j(x_j) &amp;= w_j,\\
 q_j'(x_j) &amp;= \sum_{k\neq j}^n w_k \frac{1}{x_j-x_k},\\
 q_j''(x_j) &amp;= -2\sum_{k\neq j}^n w_k \frac{1}{(x_j-x_k)^2}.
 \end{align}
@@ -441,13 +441,13 @@ L_i''(x_i) &amp;= -\sum_{k\neq i} L_k''(x_i).
 \end{align}
 \end{split}\]</div>
 <p>These <span class="math notranslate nohighlight">\(L_i^{(m)}(x_j)\)</span> derivatives can be thought of as entries <span class="math notranslate nohighlight">\(D_{ji}^{(m)}\)</span> in <em>differentiation</em> matrices <span class="math notranslate nohighlight">\(\mathbf{D}^{(m)}\)</span>.  If we write our known function values <span class="math notranslate nohighlight">\(f(x_i)\)</span> in a column vector <span class="math notranslate nohighlight">\(\mathbf{F}\)</span> then  <span class="math notranslate nohighlight">\(\mathbf{D}^{(m)} F\)</span> provides a column vector of derivatives at the interpolating nodes <span class="math notranslate nohighlight">\(x_i\)</span>.  Let’s illustrate this with a few examples.</p>
-<p><strong>Example: Two point forumulas.</strong>  Suppose we have two points <span class="math notranslate nohighlight">\(x_0\)</span> and <span class="math notranslate nohighlight">\(x_1=x_0+h\)</span> along with the function values at those points <span class="math notranslate nohighlight">\(f(x_0)\)</span> and <span class="math notranslate nohighlight">\(f(x_1)\)</span>.   The <a class="reference internal" href="../InterpFit/BarycentricInterp.html"><span class="doc std std-doc">formula for the weights</span></a> gives  <span class="math notranslate nohighlight">\(w_0= -h\)</span> and <span class="math notranslate nohighlight">\(w_1=h\)</span>.  Eq.<a class="reference internal" href="#equation-dlij">(20)</a> then gives</p>
+<p><strong>Example: Two point forumulas.</strong>  Suppose we have two points <span class="math notranslate nohighlight">\(x_0\)</span> and <span class="math notranslate nohighlight">\(x_1=x_0+h\)</span> along with the function values at those points <span class="math notranslate nohighlight">\(f(x_0)\)</span> and <span class="math notranslate nohighlight">\(f(x_1)\)</span>.   The <a class="reference internal" href="../InterpFit/BarycentricInterp.html"><span class="doc std std-doc">formula for the weights</span></a> gives  <span class="math notranslate nohighlight">\(w_0= -1/h\)</span> and <span class="math notranslate nohighlight">\(w_1=1/h\)</span>.  Eq.<a class="reference internal" href="#equation-dlij">(20)</a> then gives</p>
 <div class="math notranslate nohighlight">
 \[ D_{10}'=L_0'(x_1) = -\frac{1}{h},\quad \text{and} D_{01}'=L_1'(x_0)=\frac{1}{h}.  \]</div>
 <p>Using these in Eq.<a class="reference internal" href="#equation-dlii">(21)</a> gives</p>
 <div class="math notranslate nohighlight">
 \[ D_{00}'=L_0'(x_0) = -\frac{1}{h},\quad \text{and} D_{11}'=L_1'(x_1)=\frac{1}{h}. \]</div>
-<p>Using this as the entries of <span class="math notranslate nohighlight">\(\mathbf{D}^{(m)}\)</span> gives</p>
+<p>Using this as the entries of <span class="math notranslate nohighlight">\(\mathbf{D}'\)</span> gives</p>
 <div class="math notranslate nohighlight">
 \[\begin{split}
 \begin{align}
@@ -470,6 +470,43 @@ f(x_1) \\
 \end{array}} \right].
 \end{align}
 \end{split}\]</div>
+<p>When used for <span class="math notranslate nohighlight">\(x_0\)</span> (upper element) this is typically called the <em>forward</em> difference formula and when used at <span class="math notranslate nohighlight">\(x_1\)</span> (lower element) this is called a <em>backward</em> difference.  Not surprisingly as this is based on linear interpolation, the approximation to the derivative is the same at both points here and were we to work out approximations for the second derivatives they would both be zero.</p>
+<p><strong>Example: Three point forumulas.</strong>  Suppose we have three equally spaced points <span class="math notranslate nohighlight">\(x_0,\,x_1=x_0+h,\,x_2=x_0+2h,\)</span> along with the function values at those points <span class="math notranslate nohighlight">\(f(x_0),\,f(x_1)\)</span> and <span class="math notranslate nohighlight">\(f(x_2)\)</span>.   The <a class="reference internal" href="../InterpFit/BarycentricInterp.html"><span class="doc std std-doc">formula for the weights</span></a> gives  <span class="math notranslate nohighlight">\(w_0= 2h^2,\,w_1=-h^2\)</span> and <span class="math notranslate nohighlight">\(w_2=2h^2\)</span>.  Using  Eq.<a class="reference internal" href="#equation-dlij">(20)</a> and <a class="reference internal" href="#equation-dlii">(21)</a> to fill the entries of <span class="math notranslate nohighlight">\(\mathbf{D}'\)</span> gives</p>
+<div class="math notranslate nohighlight">
+\[ \begin{align}\begin{aligned}\begin{split}
+\begin{align}
+\left[{\begin{array}{c}
+f'(x_0) \\
+f'(x_1) \\
+f'(x_2) \\
+\end{array}} \right] \approx
+\mathbf{D}'\mathbf{F} &amp;=
+\left[{\begin{array}{ccc}
+  L_0'(x_0) &amp;  L_1'(x_0) &amp; L_2'(x_0)\\
+  L_0'(x_1) &amp;  L_1'(x_1) &amp; L_2'(x_1)\\
+  L_0'(x_2) &amp;  L_1'(x_2) &amp; L_2'(x_2)\\
+\end{array}} \right]
+\left[{\begin{array}{c}
+f(x_0) \\
+f(x_1) \\
+f(x_2) \\
+\end{array}} \right] \\
+&amp;=
+\left[{\begin{array}{ccc}
+  L_0'(x_0) &amp;  L_1'(x_0) &amp; L_2'(x_0)\\
+  L_0'(x_1) &amp;  L_1'(x_1) &amp; L_2'(x_1)\\
+  L_0'(x_2) &amp;  L_1'(x_2) &amp; L_2'(x_2)\\
+\end{array}} \right]
+\left[{\begin{array}{c}
+f(x_0) \\
+f(x_1) \\
+f(x_2) \\
+\end{array}} \right] \end{split}\\\begin{split}\left[{\begin{array}{c}
+\frac{f(x_1)-f(x_0)}{h} \\
+\frac{f(x_1)-f(x_0)}{h} \\
+\end{array}} \right].
+\end{align}
+\end{split}\end{aligned}\end{align} \]</div>
 <p>When used for <span class="math notranslate nohighlight">\(x_0\)</span> (upper element) this is typically called the <em>forward</em> difference formula and when used at <span class="math notranslate nohighlight">\(x_1\)</span> (lower element) this is called a <em>backward</em> difference.  Not surprisingly as this is based on linear interpolation, the approximation to the derivative is the same at both points here and were we to work out approximations for the second derivatives they would both be zero.</p>
 </div>
 

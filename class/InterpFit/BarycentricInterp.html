@@ -402,7 +402,7 @@
 \[L_j^n(x) = \frac{\mathcal{l}(x)}{(x-x_j)} w_j,\]</div>
 <p>where the baricentric weight <span class="math notranslate nohighlight">\(w_j\)</span> is</p>
 <div class="math notranslate nohighlight">
-\[ w_j \equiv \prod_{i=0,i\neq j}^n (x_j-x_i).\]</div>
+\[ w_j \equiv \frac{1}{\prod_{i=0,i\neq j}^n (x_j-x_i)}.\]</div>
 <p>Our interpolating polynomial now becomes</p>
 <div class="math notranslate nohighlight">
 \[p_n(x) = \sum_{i=0}^n L_i^n(x) f(x_i) =  \mathcal{l}(x)\sum_{i=0}^n \frac{w_i}{x-x_i} f(x_i).\]</div>
