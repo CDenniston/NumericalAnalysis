@@ -441,12 +441,12 @@ L_i''(x_i) &amp;= -\sum_{k\neq i} L_k''(x_i).
 \end{align}
 \end{split}\]</div>
 <p>These <span class="math notranslate nohighlight">\(L_i^{(m)}(x_j)\)</span> derivatives can be thought of as entries <span class="math notranslate nohighlight">\(D_{ji}^{(m)}\)</span> in <em>differentiation</em> matrices <span class="math notranslate nohighlight">\(\mathbf{D}^{(m)}\)</span>.  If we write our known function values <span class="math notranslate nohighlight">\(f(x_i)\)</span> in a column vector <span class="math notranslate nohighlight">\(\mathbf{F}\)</span> then  <span class="math notranslate nohighlight">\(\mathbf{D}^{(m)} F\)</span> provides a column vector of derivatives at the interpolating nodes <span class="math notranslate nohighlight">\(x_i\)</span>.  Let’s illustrate this with a few examples.</p>
-<p>** Example: Two point forumulas.**  Suppose we have two points <span class="math notranslate nohighlight">\(x_0\)</span> and <span class="math notranslate nohighlight">\(x_1=x_0+h\)</span> along with the function values at those points <span class="math notranslate nohighlight">\(f(x_0)\)</span> and <span class="math notranslate nohighlight">\(f(x_1)\)</span>.   The <a class="reference internal" href="../InterpFit/BarycentricInterp.html"><span class="doc std std-doc">formula for the weights</span></a> gives  <span class="math notranslate nohighlight">\(w_0= -h\)</span> and <span class="math notranslate nohighlight">\(w_1=h\)</span>.  Eq.<a class="reference internal" href="#equation-dlij">(20)</a> then gives</p>
+<p><strong>Example: Two point forumulas.</strong>  Suppose we have two points <span class="math notranslate nohighlight">\(x_0\)</span> and <span class="math notranslate nohighlight">\(x_1=x_0+h\)</span> along with the function values at those points <span class="math notranslate nohighlight">\(f(x_0)\)</span> and <span class="math notranslate nohighlight">\(f(x_1)\)</span>.   The <a class="reference internal" href="../InterpFit/BarycentricInterp.html"><span class="doc std std-doc">formula for the weights</span></a> gives  <span class="math notranslate nohighlight">\(w_0= -h\)</span> and <span class="math notranslate nohighlight">\(w_1=h\)</span>.  Eq.<a class="reference internal" href="#equation-dlij">(20)</a> then gives</p>
 <div class="math notranslate nohighlight">
-\[ D_{10}=L_0'(x_1) = -\frac{1}{h},\quad \text{and} D_{01}=L_1'(x_0)=\frac{1}{h}.  \]</div>
+\[ D_{10}'=L_0'(x_1) = -\frac{1}{h},\quad \text{and} D_{01}'=L_1'(x_0)=\frac{1}{h}.  \]</div>
 <p>Using these in Eq.<a class="reference internal" href="#equation-dlii">(21)</a> gives</p>
 <div class="math notranslate nohighlight">
-\[ D_{00}=L_0'(x_0) = -\frac{1}{h},\quad \text{and} D_{11}=L_1'(x_1)=\frac{1}{h}. \]</div>
+\[ D_{00}'=L_0'(x_0) = -\frac{1}{h},\quad \text{and} D_{11}'=L_1'(x_1)=\frac{1}{h}. \]</div>
 <p>Using this as the entries of <span class="math notranslate nohighlight">\(\mathbf{D}^{(m)}\)</span> gives</p>
 <div class="math notranslate nohighlight">
 \[\begin{split}
@@ -455,7 +455,7 @@ L_i''(x_i) &amp;= -\sum_{k\neq i} L_k''(x_i).
 f'(x_0) \\
 f'(x_1) \\
 \end{array}} \right] \approx
-\mathbf{D}^{(m)}\mathbf{F} =
+\mathbf{D}'\mathbf{F} =
 \left[{\begin{array}{cc}
   -\frac{1}{h} &amp;  \frac{1}{h}\\
   -\frac{1}{h} &amp;  \frac{1}{h}\\
@@ -470,6 +470,7 @@ f(x_1) \\
 \end{array}} \right].
 \end{align}
 \end{split}\]</div>
+<p>When used for <span class="math notranslate nohighlight">\(x_0\)</span> (upper element) this is typically called the <em>forward</em> difference formula and when used at <span class="math notranslate nohighlight">\(x_1\)</span> (lower element) this is called a <em>backward</em> difference.  Not surprisingly as this is based on linear interpolation, the approximation to the derivative is the same at both points here and were we to work out approximations for the second derivatives they would both be zero.</p>
 </div>
 
     <script type="text/x-thebe-config">

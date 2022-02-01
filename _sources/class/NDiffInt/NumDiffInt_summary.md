@@ -86,13 +86,13 @@ $$ (DLii)
 
 These $L_i^{(m)}(x_j)$ derivatives can be thought of as entries $D_{ji}^{(m)}$ in *differentiation* matrices $\mathbf{D}^{(m)}$.  If we write our known function values $f(x_i)$ in a column vector $\mathbf{F}$ then  $\mathbf{D}^{(m)} F$ provides a column vector of derivatives at the interpolating nodes $x_i$.  Let's illustrate this with a few examples.
 
-** Example: Two point forumulas.**  Suppose we have two points $x_0$ and $x_1=x_0+h$ along with the function values at those points $f(x_0)$ and $f(x_1)$.   The [formula for the weights](../InterpFit/BarycentricInterp) gives  $w_0= -h$ and $w_1=h$.  Eq.{eq}`DLij` then gives
+**Example: Two point forumulas.**  Suppose we have two points $x_0$ and $x_1=x_0+h$ along with the function values at those points $f(x_0)$ and $f(x_1)$.   The [formula for the weights](../InterpFit/BarycentricInterp) gives  $w_0= -h$ and $w_1=h$.  Eq.{eq}`DLij` then gives
 
-$$ D_{10}=L_0'(x_1) = -\frac{1}{h},\quad \text{and} D_{01}=L_1'(x_0)=\frac{1}{h}.  $$
+$$ D_{10}'=L_0'(x_1) = -\frac{1}{h},\quad \text{and} D_{01}'=L_1'(x_0)=\frac{1}{h}.  $$
 
 Using these in Eq.{eq}`DLii` gives
 
-$$ D_{00}=L_0'(x_0) = -\frac{1}{h},\quad \text{and} D_{11}=L_1'(x_1)=\frac{1}{h}. $$
+$$ D_{00}'=L_0'(x_0) = -\frac{1}{h},\quad \text{and} D_{11}'=L_1'(x_1)=\frac{1}{h}. $$
 
 Using this as the entries of $\mathbf{D}^{(m)}$ gives
 
@@ -102,7 +102,7 @@ $$
 f'(x_0) \\
 f'(x_1) \\
 \end{array}} \right] \approx
-\mathbf{D}^{(m)}\mathbf{F} =
+\mathbf{D}'\mathbf{F} =
 \left[{\begin{array}{cc}
   -\frac{1}{h} &  \frac{1}{h}\\
   -\frac{1}{h} &  \frac{1}{h}\\
@@ -117,6 +117,9 @@ f(x_1) \\
 \end{array}} \right].
 \end{align}
 $$
+
+When used for $x_0$ (upper element) this is typically called the *forward* difference formula and when used at $x_1$ (lower element) this is called a *backward* difference.  Not surprisingly as this is based on linear interpolation, the approximation to the derivative is the same at both points here and were we to work out approximations for the second derivatives they would both be zero.
+
 
 
 
