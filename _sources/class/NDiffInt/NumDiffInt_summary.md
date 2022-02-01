@@ -26,7 +26,7 @@ $$ L_i(x) =  \frac{\frac{w_i}{x-x_i}}{\sum_{k=0}^n \frac{w_k}{x-x_k}}.$$ (Lieqn)
 
 So to work out the derivative estimates we need to compute $L_i'(x)$ and $L_i''(x)$ for all $i$ (note that these still depend on $n$, but $n$ is the same for all $L_i$ in a given application).
 
-In almost all cases, we are looking for the derivative at a node point, say $x_j$.  To ensure various terms remain differentiable, it is helpful to multiply both sides by $x-x_j$ and rearrange Eq. (Lieqn) to get
+In almost all cases, we are looking for the derivative at a node point, say $x_j$.  To ensure various terms remain differentiable, it is helpful to multiply both sides by $x-x_j$ and rearrange Eq. {eq}`Lieqn` to get
 
 $$ L_i(x)\sum_{k=0}^n w_k \frac{x-x_j}{x-x_k} = w_i\frac{x-x_j}{x-x_i},  $$(Lisetup)
 
@@ -73,4 +73,52 @@ $$
 L_i'(x_j)&=\frac{w_i/w_j}{x_j-x_i},\\
 L_i''(x_j)&=-2\frac{w_i/w_j}{x_j-x_i}\left[\sum_{k\neq j}\frac{w_k/w_j}{x_j-x_k}-\frac{1}{x_j-x_i} \right].
 \end{align}
+$$ (DLij)
+
+The $x_i=x_j$ case is more simply obtained from noting that if you interpolate $g(x)\equiv 1$, which can be done exactly (as its derivatives are all zero, the polynomial interpolation error formula says the error is zero), you get $1=\sum_k L_k(x)$.  As a result, by taking derivatives of this expression we get $0=\sum_k L_k^{(m)}(x)$ for each differentiation order $m$.  Hence,
+
 $$
+\begin{align}
+L_i'(x_i) &= -\sum_{k\neq i} L_k'(x_i),\\
+L_i''(x_i) &= -\sum_{k\neq i} L_k''(x_i).
+\end{align}
+$$ (DLii)
+
+These $L_i^{(m)}(x_j)$ derivatives can be thought of as entries $D_{ji}^{(m)}$ in *differentiation* matrices $\mathbf{D}^{(m)}$.  If we write our known function values $f(x_i)$ in a column vector $\mathbf{F}$ then  $\mathbf{D}^{(m)} F$ provides a column vector of derivatives at the interpolating nodes $x_i$.  Let's illustrate this with a few examples.
+
+** Example: Two point forumulas.**  Suppose we have two points $x_0$ and $x_1=x_0+h$ along with the function values at those points $f(x_0)$ and $f(x_1)$.   The [formula for the weights](../InterpFit/BarycentricInterp) gives  $w_0= -h$ and $w_1=h$.  Eq.{eq}`DLij` then gives
+
+$$ D_{10}=L_0'(x_1) = -\frac{1}{h},\quad \text{and} D_{01}=L_1'(x_0)=\frac{1}{h}.  $$
+
+Using these in Eq.{eq}`DLii` gives
+
+$$ D_{00}=L_0'(x_0) = -\frac{1}{h},\quad \text{and} D_{11}=L_1'(x_1)=\frac{1}{h}. $$
+
+Using this as the entries of $\mathbf{D}^{(m)}$ gives
+
+$$
+\begin{align}
+\left[{\begin{array}{c}
+f'(x_0) \\
+f'(x_1) \\
+\end{array}} \right] \approx
+\mathbf{D}^{(m)}\mathbf{F} =
+\left[{\begin{array}{cc}
+  -\frac{1}{h} &  \frac{1}{h}\\
+  -\frac{1}{h} &  \frac{1}{h}\\
+\end{array}} \right]
+\left[{\begin{array}{c}
+f(x_0) \\
+f(x_1) \\
+\end{array}} \right] =
+\left[{\begin{array}{c}
+\frac{f(x_1)-f(x_0)}{h} \\
+\frac{f(x_1)-f(x_0)}{h} \\
+\end{array}} \right].
+\end{align}
+$$
+
+
+
+
+
