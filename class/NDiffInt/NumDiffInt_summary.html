@@ -419,17 +419,17 @@ q_j''(x) &amp;= -2\sum_{k\neq j}^n w_k \frac{1}{(x-x_k)^2} + 2\sum_{k\neq j}^n w
 <div class="math notranslate nohighlight">
 \[\begin{split}
 \begin{align}
-q_j(x_j) = w_j
+q_j(x_j) = w_j,\\
 q_j'(x_j) &amp;= \sum_{k\neq j}^n w_k \frac{1}{x_j-x_k},\\
 q_j''(x_j) &amp;= -2\sum_{k\neq j}^n w_k \frac{1}{(x_j-x_k)^2}.
 \end{align}
 \end{split}\]</div>
-<p>This, along with knowing that <span class="math notranslate nohighlight">\(L_i(x_j)=0\)</span>, in Eq.<code class="xref eq docutils literal notranslate"><span class="pre">Liderivesetup</span></code> gives for <span class="math notranslate nohighlight">\(x_i \neq x_j\)</span>,</p>
+<p>This, along with knowing that <span class="math notranslate nohighlight">\(L_i(x_j)=0\)</span>, in Eq.<a class="reference internal" href="#equation-liderivsetup">(19)</a> gives for <span class="math notranslate nohighlight">\(x_i \neq x_j\)</span>,</p>
 <div class="math notranslate nohighlight">
 \[\begin{split}
 \begin{align}
 L_i'(x_j)&amp;=\frac{w_i/w_j}{x_j-x_i},\\
-L_i''(x_j)&amp;=-2\frac{w_i/w_j}{x_j-x_i}.
+L_i''(x_j)&amp;=-2\frac{w_i/w_j}{x_j-x_i}\left[\sum_{k\neq j}\frac{w_k/w_j}{x_j-x_k}-\frac{1}{x_j-x_i} \right].
 \end{align}
 \end{split}\]</div>
 </div>

@@ -60,17 +60,17 @@ For $x_i \neq x_j$, evaluating these at $x=x_j$ we see that
 
 $$
 \begin{align}
-q_j(x_j) = w_j
+q_j(x_j) = w_j,\\
 q_j'(x_j) &= \sum_{k\neq j}^n w_k \frac{1}{x_j-x_k},\\
 q_j''(x_j) &= -2\sum_{k\neq j}^n w_k \frac{1}{(x_j-x_k)^2}.
 \end{align}
 $$
 
-This, along with knowing that $L_i(x_j)=0$, in Eq.{eq}`Liderivesetup` gives for $x_i \neq x_j$,  
+This, along with knowing that $L_i(x_j)=0$, in Eq.{eq}`Liderivsetup` gives for $x_i \neq x_j$,  
 
 $$
 \begin{align}
 L_i'(x_j)&=\frac{w_i/w_j}{x_j-x_i},\\
-L_i''(x_j)&=-2\frac{w_i/w_j}{x_j-x_i}.
+L_i''(x_j)&=-2\frac{w_i/w_j}{x_j-x_i}\left[\sum_{k\neq j}\frac{w_k/w_j}{x_j-x_k}-\frac{1}{x_j-x_i} \right].
 \end{align}
 $$
