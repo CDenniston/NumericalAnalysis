@@ -388,39 +388,48 @@
 \[ p_n'(x) =  \sum_{i=0}^n L_i'(x) f(x_i), \qquad p_n''(x) =  \sum_{i=0}^n L_i''(x) f(x_i)\]</div>
 <p>and</p>
 <div class="math notranslate nohighlight" id="equation-lieqn">
-<span class="eqno">(17)<a class="headerlink" href="#equation-lieqn" title="Permalink to this equation">¶</a></span>\[ L_i(x) =  \frac{\frac{w_i}{x-x_i}}{\sum_{i=0}^n \frac{w_i}{x-x_i}}.\]</div>
+<span class="eqno">(17)<a class="headerlink" href="#equation-lieqn" title="Permalink to this equation">¶</a></span>\[ L_i(x) =  \frac{\frac{w_i}{x-x_i}}{\sum_{k=0}^n \frac{w_k}{x-x_k}}.\]</div>
 <p>So to work out the derivative estimates we need to compute <span class="math notranslate nohighlight">\(L_i'(x)\)</span> and <span class="math notranslate nohighlight">\(L_i''(x)\)</span> for all <span class="math notranslate nohighlight">\(i\)</span> (note that these still depend on <span class="math notranslate nohighlight">\(n\)</span>, but <span class="math notranslate nohighlight">\(n\)</span> is the same for all <span class="math notranslate nohighlight">\(L_i\)</span> in a given application).</p>
 <p>In almost all cases, we are looking for the derivative at a node point, say <span class="math notranslate nohighlight">\(x_j\)</span>.  To ensure various terms remain differentiable, it is helpful to multiply both sides by <span class="math notranslate nohighlight">\(x-x_j\)</span> and rearrange Eq. (Lieqn) to get</p>
 <div class="math notranslate nohighlight" id="equation-lisetup">
-<span class="eqno">(18)<a class="headerlink" href="#equation-lisetup" title="Permalink to this equation">¶</a></span>\[ L_i(x)\sum_{i=0}^n w_i \frac{x-x_j}{x-x_i} = w_i\frac{x-x_j}{x-x_i},  \]</div>
+<span class="eqno">(18)<a class="headerlink" href="#equation-lisetup" title="Permalink to this equation">¶</a></span>\[ L_i(x)\sum_{k=0}^n w_k \frac{x-x_j}{x-x_k} = w_i\frac{x-x_j}{x-x_i},  \]</div>
 <p>where both sides are now differentiable at <span class="math notranslate nohighlight">\(x_j\)</span>.  Defining</p>
 <div class="math notranslate nohighlight">
-\[q_i(x)\equiv \sum_{i=0}^n w_i \frac{x-x_j}{x-x_i},\]</div>
+\[q_j(x)\equiv \sum_{k=0}^n w_k \frac{x-x_j}{x-x_k},\]</div>
 <p>we can rewrite <a class="reference internal" href="#equation-lisetup">(18)</a> as</p>
 <div class="math notranslate nohighlight">
-\[ L_i(x)q_i(x) = w_i\frac{x-x_j}{x-x_i},  \]</div>
+\[ L_i(x)q_j(x) = w_i\frac{x-x_j}{x-x_i},  \]</div>
 <p>then take the first and second derivative to get</p>
-<div class="math notranslate nohighlight">
-\[\begin{split}
+<div class="math notranslate nohighlight" id="equation-liderivsetup">
+<span class="eqno">(19)<a class="headerlink" href="#equation-liderivsetup" title="Permalink to this equation">¶</a></span>\[\begin{split}
 \begin{align}
-L_i'(x)q_i(x)+L_i(x)q_i'(x)&amp;=w_i \left[\frac{1}{x-x_i}-\frac{x-x_j}{(x-x_i)^2}\right],\\
-L_i''(x)q_i(x)+2L_i'(x)q_i'(x)+L_i(x)q_i''(x) &amp;= w_i \left[-2\frac{1}{(x-x_i)^2}+2\frac{x-x_j}{(x-x_i)^3}\right].
+L_i'(x)q_j(x)+L_i(x)q_j'(x)&amp;=w_i \left[\frac{1}{x-x_i}-\frac{x-x_j}{(x-x_i)^2}\right],\\
+L_i''(x)q_j(x)+2L_i'(x)q_j'(x)+L_i(x)q_j''(x) &amp;= w_i \left[-2\frac{1}{(x-x_i)^2}+2\frac{x-x_j}{(x-x_i)^3}\right].
 \end{align}
 \end{split}\]</div>
-<p>From the definition of <span class="math notranslate nohighlight">\(q_i(x)\)</span> one can also work out</p>
+<p>From the definition of <span class="math notranslate nohighlight">\(q_j(x)\)</span> one can also work out</p>
 <div class="math notranslate nohighlight">
 \[\begin{split}
 \begin{align}
-q_i'(x) &amp;=  \sum_{i\neq j}^n w_i \frac{1}{x-x_i}-\sum_{i\neq j}^n w_i \frac{x-x_j}{(x-x_i)^2},\\
-q_i''(x) &amp;= -2\sum_{i\neq j}^n w_i \frac{1}{(x-x_i)^2} + 2\sum_{i\neq j}^n w_i \frac{x-x_j}{(x-x_i)^3}.
+q_j'(x) &amp;=  \sum_{k\neq j}^n w_k \frac{1}{x-x_k}-\sum_{k\neq j}^n w_k \frac{x-x_j}{(x-x_k)^2},\\
+q_j''(x) &amp;= -2\sum_{k\neq j}^n w_k \frac{1}{(x-x_k)^2} + 2\sum_{k\neq j}^n w_k \frac{x-x_j}{(x-x_k)^3}.
 \end{align}
 \end{split}\]</div>
-<p>Evaluating these at <span class="math notranslate nohighlight">\(x=x_j\)</span> we see that</p>
+<p>For <span class="math notranslate nohighlight">\(x_i \neq x_j\)</span>, evaluating these at <span class="math notranslate nohighlight">\(x=x_j\)</span> we see that</p>
 <div class="math notranslate nohighlight">
 \[\begin{split}
 \begin{align}
-q_i'(x_j) = \sum_{i\neq j}^n w_i \frac{1}{x_j-x_i},\\
-q_i''(x_j) &amp;= -2\sum_{i\neq j}^n w_i \frac{1}{(x_j-x_i)^2}.
+q_j(x_j) = w_j
+q_j'(x_j) &amp;= \sum_{k\neq j}^n w_k \frac{1}{x_j-x_k},\\
+q_j''(x_j) &amp;= -2\sum_{k\neq j}^n w_k \frac{1}{(x_j-x_k)^2}.
+\end{align}
+\end{split}\]</div>
+<p>This, along with knowing that <span class="math notranslate nohighlight">\(L_i(x_j)=0\)</span>, in Eq.<code class="xref eq docutils literal notranslate"><span class="pre">Liderivesetup</span></code> gives for <span class="math notranslate nohighlight">\(x_i \neq x_j\)</span>,</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\begin{align}
+L_i'(x_j)&amp;=\frac{w_i/w_j}{x_j-x_i},\\
+L_i''(x_j)&amp;=-2\frac{w_i/w_j}{x_j-x_i}.
 \end{align}
 \end{split}\]</div>
 </div>
