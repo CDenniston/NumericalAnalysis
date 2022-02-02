@@ -20,7 +20,8 @@ parts:
     - file: class/InterpFit/Splines
 - caption: Part 3 - Numerical Differentiation & Integration
   chapters:
-  - file: class/NDiffInt/NumDiffInt_summary
+  - file: class/NDiffInt/NumDiffInt
+  - file: class/NDiffInt/NumDiffInt_Errors
 - caption: Mikko Extras
   chapters:
   - file: extras/coding-notes-general
