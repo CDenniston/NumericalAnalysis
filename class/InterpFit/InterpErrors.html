@@ -192,8 +192,13 @@
 </p>
 <ul class="nav bd-sidenav">
  <li class="toctree-l1">
-  <a class="reference internal" href="../NDiffInt/NumDiffInt_summary.html">
+  <a class="reference internal" href="../NDiffInt/NumDiffInt.html">
    Numerical Differentiation
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../NDiffInt/NumDiffInt_Errors.html">
+   Errors in Numerical Differentiation
   </a>
  </li>
 </ul>
@@ -436,7 +441,7 @@ for any <span class="math notranslate nohighlight">\(x\in[a,b]\)</span>  there e
 <div class="math notranslate nohighlight" id="equation-inter-err">
 <span class="eqno">(1)<a class="headerlink" href="#equation-inter-err" title="Permalink to this equation">¶</a></span>\[\begin{equation} f(x)-p_n(x) = \frac{f^{n+1}(\xi)}{(n+1)!}\prod_{j=0}^n (x-x_j). \end{equation}\]</div>
 </div></blockquote>
-<p>Proof: Take some fixed <span class="math notranslate nohighlight">\(x\in[a,b]\)</span>.  If <span class="math notranslate nohighlight">\(x=x_k\)</span> for some <span class="math notranslate nohighlight">\(k\)</span> then the error formula <a class="reference internal" href="#equation-inter-err">(1)</a> gives zero (which is, indeed the true error as the interpolating polynomial agrees with the function at node points by definition).  If <span class="math notranslate nohighlight">\(x\neq x_k\)</span>, then let’s define an auxiliary function</p>
+<p>Proof: Take some fixed <span class="math notranslate nohighlight">\(x\in[a,b]\)</span>.  If <span class="math notranslate nohighlight">\(x=x_k\)</span> for some <span class="math notranslate nohighlight">\(k\)</span> then the error formula <a class="reference internal" href="../NDiffInt/NumDiffInt_Errors.html#equation-inter-err">(24)</a> gives zero (which is, indeed the true error as the interpolating polynomial agrees with the function at node points by definition).  If <span class="math notranslate nohighlight">\(x\neq x_k\)</span>, then let’s define an auxiliary function</p>
 <div class="math notranslate nohighlight">
 \[g(t)=f(t)-p_n(t) - \left[ f(x)-p_n(x) \right] \frac{(t-x_0)(t-x_1)...(t-x_n)}{(x-x_0)(x-x_1)...(x-x_n)}\]</div>
 <p>Now note that <span class="math notranslate nohighlight">\(g(t)=0\)</span> for <span class="math notranslate nohighlight">\(t=x_k\)</span> (for any <span class="math notranslate nohighlight">\(k\)</span>) because the numerator in the last term will contain the factor <span class="math notranslate nohighlight">\((t-x_k)\)</span> which is zero at <span class="math notranslate nohighlight">\(t=x_k\)</span> and the first two terms cancel at <span class="math notranslate nohighlight">\(t=x_k\)</span> as <span class="math notranslate nohighlight">\(f(x_k)=p_n(x_k)\)</span> by definition of the interpolating polynomial.  Also note that <span class="math notranslate nohighlight">\(g(t)=0\)</span> for <span class="math notranslate nohighlight">\(t=x\)</span> as well since the fraction in the last term is one and the remaining terms cancel for <span class="math notranslate nohighlight">\(t=x\)</span>.  As a result, we see that <span class="math notranslate nohighlight">\(g(t)\)</span> has <span class="math notranslate nohighlight">\(n+2\)</span> zeros (at <span class="math notranslate nohighlight">\(x\)</span> and at <span class="math notranslate nohighlight">\(x_0, x_1,...,x_n\)</span>).</p>
@@ -457,7 +462,7 @@ for any <span class="math notranslate nohighlight">\(x\in[a,b]\)</span>  there e
 <p>where we have used the fact that <span class="math notranslate nohighlight">\(p_n(t)\)</span> is a <span class="math notranslate nohighlight">\(n\)</span>th degree polynomial so that its <span class="math notranslate nohighlight">\((n+1)\)</span>st derivative must be zero.  Now we have</p>
 <div class="math notranslate nohighlight">
 \[g^{(n+1)}(\xi)=0=f^{(n+1)}(\xi) - \left[ f(x)-p_n(x) \right] \frac{(n+1)!}{(x-x_0)(x-x_1)...(x-x_n)}.\]</div>
-<p>Rearranging this expression gives us the error  formula <a class="reference internal" href="#equation-inter-err">(1)</a>.  <span class="math notranslate nohighlight">\(\blacksquare\)</span></p>
+<p>Rearranging this expression gives us the error  formula <a class="reference internal" href="../NDiffInt/NumDiffInt_Errors.html#equation-inter-err">(24)</a>.  <span class="math notranslate nohighlight">\(\blacksquare\)</span></p>
 <p>There are a few things to note about the error formula,</p>
 <ul class="simple">
 <li><p>It’s form is remarkably similar to the remainder term (error) for the <a class="reference internal" href="../ErrorsModule/TaylorExample.html"><span class="doc std std-doc">Taylor series</span></a>.  This should not be surprising as it should be clear that the interpolating polynomial should have the Taylor series as its limit if you gradually reduce the spacing between the nodes until they coincide.</p></li>
@@ -491,7 +496,7 @@ for any <span class="math notranslate nohighlight">\(x\in[a,b]\)</span>  there e
 <img alt="../../_images/InterpErrors_3_0.png" src="../../_images/InterpErrors_3_0.png" />
 </div>
 </div>
-<p>It would appear that our interpolating function does a <em>terrible</em> job of approximating <span class="math notranslate nohighlight">\(f(x)\)</span>, <em>especially</em> near the ends of the interval.  Unfortunately, this is a rather typical result and is referred to as the <strong>Runge phenomena</strong>, named after <a class="reference external" href="https://en.wikipedia.org/wiki/Carl_Runge">Carl Runge</a> who noticed the effect in 1901.  The understand the origin of this effect we examine the error formula <a class="reference internal" href="#equation-inter-err">(1)</a> .  From Equation <a class="reference internal" href="#equation-inter-err">(1)</a> it is clear that possible sources are</p>
+<p>It would appear that our interpolating function does a <em>terrible</em> job of approximating <span class="math notranslate nohighlight">\(f(x)\)</span>, <em>especially</em> near the ends of the interval.  Unfortunately, this is a rather typical result and is referred to as the <strong>Runge phenomena</strong>, named after <a class="reference external" href="https://en.wikipedia.org/wiki/Carl_Runge">Carl Runge</a> who noticed the effect in 1901.  The understand the origin of this effect we examine the error formula <a class="reference internal" href="../NDiffInt/NumDiffInt_Errors.html#equation-inter-err">(24)</a> .  From Equation <a class="reference internal" href="../NDiffInt/NumDiffInt_Errors.html#equation-inter-err">(24)</a> it is clear that possible sources are</p>
 <ul class="simple">
 <li><p><span class="math notranslate nohighlight">\(f^{n+1}(\xi)\)</span> and keeping in mind that <span class="math notranslate nohighlight">\(\xi\)</span> may be different for different <span class="math notranslate nohighlight">\(x\)</span>.</p></li>
 <li><p>The polynomial <span class="math notranslate nohighlight">\(E_n(x)=\prod_{j=0}^n (x-x_j)\)</span>.</p></li>

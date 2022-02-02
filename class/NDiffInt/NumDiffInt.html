@@ -58,10 +58,10 @@
         const thebe_selector_output = ".output,.cell_output"
     </script>
     <script async="async" src="../../_static/sphinx-thebe.js"></script>
-    <link rel="canonical" href="https://cdenniston.github.io/NumericalAnalysis/class/NDiffInt/NumDiffInt_summary.html" />
+    <link rel="canonical" href="https://cdenniston.github.io/NumericalAnalysis/class/NDiffInt/NumDiffInt.html" />
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
-    <link rel="next" title="On computation and codes" href="../../extras/coding-notes-general.html" />
+    <link rel="next" title="Errors in Numerical Differentiation" href="NumDiffInt_Errors.html" />
     <link rel="prev" title="Splines" href="../InterpFit/Splines.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="None">
@@ -196,6 +196,11 @@
    Numerical Differentiation
   </a>
  </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="NumDiffInt_Errors.html">
+   Errors in Numerical Differentiation
+  </a>
+ </li>
 </ul>
 <p aria-level="2" class="caption" role="heading">
  <span class="caption-text">
@@ -328,7 +333,7 @@
         <!-- ipynb file if we had a myst markdown file -->
         
         <!-- Download raw file -->
-        <a class="dropdown-buttons" href="../../_sources/class/NDiffInt/NumDiffInt_summary.md"><button type="button"
+        <a class="dropdown-buttons" href="../../_sources/class/NDiffInt/NumDiffInt.md"><button type="button"
                 class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
                 data-placement="left">.md</button></a>
         <!-- Download PDF via print -->
@@ -519,7 +524,7 @@ L_i''(x_j)&amp;=-2L_i'(x_j)\left[\sum_{k\neq j}L_k'(x_j)+\frac{1}{x_j-x_i}\right
 &amp;= 2L_i'(x_j)\left[L_j'(x_j)-\frac{1}{x_j-x_i}\right].
 \end{align}
 \end{split}\]</div>
-<p>where for the second line we have make use of <a class="reference internal" href="#equation-dlii">(21)</a> for the first derivative sum.  Making use of this first for the off-diagonal elements and then using <a class="reference internal" href="#equation-dlii">(21)</a> for the second derivatives on the diagonal we get</p>
+<p>where for the second line we have make use of <a class="reference internal" href="#equation-dlii">(21)</a> for the first derivative sum.  Making use of this for the off-diagonal elements and then using <a class="reference internal" href="#equation-dlii">(21)</a> for the second derivatives on the diagonal we get</p>
 <div class="math notranslate nohighlight">
 \[\begin{split}
 \begin{align}
@@ -593,10 +598,10 @@ f(x_2)
             <p class="prev-next-title">Splines</p>
         </div>
     </a>
-    <a class='right-next' id="next-link" href="../../extras/coding-notes-general.html" title="next page">
+    <a class='right-next' id="next-link" href="NumDiffInt_Errors.html" title="next page">
     <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">On computation and codes</p>
+        <p class="prev-next-title">Errors in Numerical Differentiation</p>
     </div>
     <i class="fas fa-angle-right"></i>
     </a>

@@ -171,7 +171,7 @@ L_i''(x_j)&=-2L_i'(x_j)\left[\sum_{k\neq j}L_k'(x_j)+\frac{1}{x_j-x_i}\right],\\
 \end{align}
 $$ (DL2fromDL1)
 
-where for the second line we have make use of {eq}`DLii` for the first derivative sum.  Making use of this first for the off-diagonal elements and then using {eq}`DLii` for the second derivatives on the diagonal we get
+where for the second line we have make use of {eq}`DLii` for the first derivative sum.  Making use of this for the off-diagonal elements and then using {eq}`DLii` for the second derivatives on the diagonal we get
 
 $$
 \begin{align}

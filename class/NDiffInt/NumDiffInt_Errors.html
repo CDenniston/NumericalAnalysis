@@ -5,7 +5,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Example: Evaluating polynomials &#8212; Numerical Analysis</title>
+    <title>Errors in Numerical Differentiation &#8212; Numerical Analysis</title>
     
   <link href="../../_static/css/theme.css" rel="stylesheet">
   <link href="../../_static/css/index.ff1ffe594081f20da1ef19478df9384b.css" rel="stylesheet">
@@ -58,11 +58,11 @@
         const thebe_selector_output = ".output,.cell_output"
     </script>
     <script async="async" src="../../_static/sphinx-thebe.js"></script>
-    <link rel="canonical" href="https://cdenniston.github.io/NumericalAnalysis/class/ErrorsModule/HornersAlgorithm.html" />
+    <link rel="canonical" href="https://cdenniston.github.io/NumericalAnalysis/class/NDiffInt/NumDiffInt_Errors.html" />
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
-    <link rel="next" title="Roundoff Error Amplification" href="RoundoffAmplification.html" />
-    <link rel="prev" title="Finite Precision" href="FinitePrecision.html" />
+    <link rel="next" title="On computation and codes" href="../../extras/coding-notes-general.html" />
+    <link rel="prev" title="Numerical Differentiation" href="NumDiffInt.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="None">
     
@@ -111,39 +111,39 @@
   Part 1 - Errors in Scientific Computing
  </span>
 </p>
-<ul class="current nav bd-sidenav">
+<ul class="nav bd-sidenav">
  <li class="toctree-l1">
-  <a class="reference internal" href="Errors_summary.html">
+  <a class="reference internal" href="../ErrorsModule/Errors_summary.html">
    Numerical Analysis
   </a>
  </li>
  <li class="toctree-l1">
-  <a class="reference internal" href="Error_sources.html">
+  <a class="reference internal" href="../ErrorsModule/Error_sources.html">
    Sources of Errors in Scientific Computing
   </a>
  </li>
  <li class="toctree-l1">
-  <a class="reference internal" href="TaylorExample.html">
+  <a class="reference internal" href="../ErrorsModule/TaylorExample.html">
    Truncation Error in Taylor’s series
   </a>
  </li>
  <li class="toctree-l1">
-  <a class="reference internal" href="FinitePrecision.html">
+  <a class="reference internal" href="../ErrorsModule/FinitePrecision.html">
    Finite Precision
   </a>
  </li>
- <li class="toctree-l1 current active">
-  <a class="current reference internal" href="#">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../ErrorsModule/HornersAlgorithm.html">
    Example: Evaluating polynomials
   </a>
  </li>
  <li class="toctree-l1">
-  <a class="reference internal" href="RoundoffAmplification.html">
+  <a class="reference internal" href="../ErrorsModule/RoundoffAmplification.html">
    Roundoff Error Amplification
   </a>
  </li>
  <li class="toctree-l1">
-  <a class="reference internal" href="BackwardForwardConditioning.html">
+  <a class="reference internal" href="../ErrorsModule/BackwardForwardConditioning.html">
    Forward and Backwards Errors
   </a>
  </li>
@@ -190,14 +190,14 @@
   Part 3 - Numerical Differentiation &amp; Integration
  </span>
 </p>
-<ul class="nav bd-sidenav">
+<ul class="current nav bd-sidenav">
  <li class="toctree-l1">
-  <a class="reference internal" href="../NDiffInt/NumDiffInt.html">
+  <a class="reference internal" href="NumDiffInt.html">
    Numerical Differentiation
   </a>
  </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="../NDiffInt/NumDiffInt_Errors.html">
+ <li class="toctree-l1 current active">
+  <a class="current reference internal" href="#">
    Errors in Numerical Differentiation
   </a>
  </li>
@@ -333,9 +333,9 @@
         <!-- ipynb file if we had a myst markdown file -->
         
         <!-- Download raw file -->
-        <a class="dropdown-buttons" href="../../_sources/class/ErrorsModule/HornersAlgorithm.ipynb"><button type="button"
+        <a class="dropdown-buttons" href="../../_sources/class/NDiffInt/NumDiffInt_Errors.md"><button type="button"
                 class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
-                data-placement="left">.ipynb</button></a>
+                data-placement="left">.md</button></a>
         <!-- Download PDF via print -->
         <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
                 onclick="printPdf(this)" data-toggle="tooltip" data-placement="left">.pdf</button>
@@ -353,26 +353,6 @@
 
             <!-- Launch buttons -->
 
-<div class="dropdown-buttons-trigger">
-    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
-        aria-label="Launch interactive content"><i class="fas fa-rocket"></i></button>
-    <div class="dropdown-buttons">
-        
-        <a class="binder-button" href="https://mybinder.org/v2/gh/firasm/jupyterbook_course_template/master?urlpath=lab/tree/class/ErrorsModule/HornersAlgorithm.ipynb"><button type="button"
-                class="btn btn-secondary topbarbtn" title="Launch Binder" data-toggle="tooltip"
-                data-placement="left"><img class="binder-button-logo"
-                    src="../../_static/images/logo_binder.svg"
-                    alt="Interact on binder">Binder</button></a>
-        
-        
-        
-        <button type="button" class="btn btn-secondary topbarbtn"
-            onclick="initThebeSBT()" title="Launch Thebe" data-toggle="tooltip" data-placement="left"><i
-                class="fas fa-play"></i><span style="margin-left: .4em;">Live Code</span></button>
-        
-    </div>
-</div>
-
         </div>
 
         <!-- Table of contents -->
@@ -385,7 +365,7 @@
         <div class="col-12 col-md-9 pl-md-3 pr-md-0">
             <!-- Table of contents that is only displayed when printing the page -->
             <div id="jb-print-docs-body" class="onlyprint">
-                <h1>Example: Evaluating polynomials</h1>
+                <h1>Errors in Numerical Differentiation</h1>
                 <!-- Table of contents -->
                 <div id="print-main-content">
                     <div id="jb-print-toc">
@@ -396,77 +376,32 @@
             
               <div>
                 
-  <div class="section" id="example-evaluating-polynomials">
-<h1>Example: Evaluating polynomials<a class="headerlink" href="#example-evaluating-polynomials" title="Permalink to this headline">¶</a></h1>
-<p><em>Example</em>: To illustrate the affect of accumulation of roundoff errors let’s imagine a decimal computer that does floating point arithemetic using a 3-digit chop.  Let’s use this to compute the value of a polynomial written in the standard monomial basis:</p>
+  <div class="tex2jax_ignore mathjax_ignore section" id="errors-in-numerical-differentiation">
+<span id="page-topic1"></span><h1>Errors in Numerical Differentiation<a class="headerlink" href="#errors-in-numerical-differentiation" title="Permalink to this headline">¶</a></h1>
+<p>In order for the finite difference formulas derived in the previous section to be useful, we need to have some idea of the errors involved in using these formulas.  As mentioned, we are replacing <span class="math notranslate nohighlight">\(f(x)\)</span> with its polynomial interpolant <span class="math notranslate nohighlight">\(p_n(x)\)</span> and then taking the derivatives, so that</p>
 <div class="math notranslate nohighlight">
-\[ p(x) = x^3-6x^2+3x-0.147 \]</div>
-<p>at the point <span class="math notranslate nohighlight">\(x=4.71\)</span>.  Using exact arithmetic</p>
+\[ f'(x) = p_n'(x) + \epsilon'(x),\qquad f''(x) = p_n''(x) + \epsilon''(x).\]</div>
+<p>We need to <span class="math notranslate nohighlight">\(\epsilon'(x)\)</span> and \epsilon’’(x) to determine the errors in the formulas we derived.</p>
+<p>First recall <a class="reference internal" href="../InterpFit/InterpErrors.html"><span class="doc std std-doc">the polynomial interpolation error</span></a> is</p>
+<div class="math notranslate nohighlight" id="equation-inter-err">
+<span class="eqno">(24)<a class="headerlink" href="#equation-inter-err" title="Permalink to this equation">¶</a></span>\[\begin{equation} \epsilon(x)= f(x)-p_n(x) = \frac{f^{n+1}(\xi)}{(n+1)!}\prod_{j=0}^n (x-x_j). \end{equation}\]</div>
+<p>Taking the derivative of this using the product rule yields</p>
+<div class="math notranslate nohighlight" id="equation-errprime">
+<span class="eqno">(25)<a class="headerlink" href="#equation-errprime" title="Permalink to this equation">¶</a></span>\[
+\begin{equation} \epsilon'(x) = \frac{f^{n+1}(\xi)}{(n+1)!}\left[\sum_{k=0}^n \prod_{j=0,j\neq k}^n (x-x_j)\right] + \frac{f^{n+2}(\xi)\xi'}{(n+1)!}\prod_{j=0}^n (x-x_j), \end{equation}\]</div>
+<p>where the second term arises from the fact that <span class="math notranslate nohighlight">\(\xi\)</span> may depend on <span class="math notranslate nohighlight">\(x\)</span>.  Evaluating this at one of the gridpoints, say <span class="math notranslate nohighlight">\(x_i\)</span>, simplifies the expression considerably as all but one of the terms contain the factor <span class="math notranslate nohighlight">\((x_i-x_i)\)</span>,</p>
 <div class="math notranslate nohighlight">
-\[ p(4.71) = -14.634489. \]</div>
-<p>Let <span class="math notranslate nohighlight">\(\mathcal{fl}(.)\)</span> denote the 3 digit chop operation and note that this imaginary computer must do this recursively (i.e. after every arithemtic operation) so an expression like  <span class="math notranslate nohighlight">\(\mathcal{fl}(6 x^2)\)</span> is evaluated as <span class="math notranslate nohighlight">\(\mathcal{fl}(6 \mathcal{fl}(x^2))\)</span>.  In particular, <span class="math notranslate nohighlight">\( \mathcal{fl}(4.71^2)=\mathcal{fl}(22.1841)=22.1\)</span> and <span class="math notranslate nohighlight">\(\mathcal{fl}(6 \mathcal{fl}(4.71^2))=\mathcal{fl}(6\times 22.1)=\mathcal{fl}(132.6)=132\)</span>.  Doing this for every arithmetic operation leads to</p>
+\[
+\begin{equation} \epsilon'(x_i) = \frac{f^{n+1}(\xi)}{(n+1)!}\prod_{j=0,j\neq i}^n (x_i-x_j). \end{equation}\]</div>
+<p>We can now use this expression for the errors in our first derivative finite difference formulas.  Before we do, let’s derive the error formula for the second derivatives.</p>
+<p>Taking the derivative <a class="reference internal" href="#equation-errprime">(25)</a> yields</p>
 <div class="math notranslate nohighlight">
-\[ p^* = \mathcal{fl}(p(4.71)) = -14.0 \]</div>
-<p>Clearly we have lost a full digit of accuracy here (so only have 2 significant digits).  In this case, the result is not significantly improved using a rounding operation instead of a chop.  The question is:  Can we do any better or is this something we have to accept as part of not doing exact arithemtic?  The answer is that we can do better by rewriting the polynomial into a different, but mathematically equivalent form.  In this case, a nested multiplication:</p>
+\[
+\begin{equation} \epsilon''(x) = \frac{f^{n+1}(\xi)}{(n+1)!}\left[\sum_{m=0}^n \sum_{k=0}^n \prod_{j=0,j\neq k,m}^n (x-x_j)\right] + \frac{f^{n+2}(\xi)\xi''+f^{n+3}(\xi)\xi'}{(n+1)!}\prod_{j=0}^n (x-x_j) + \frac{f^{n+2}(\xi)\xi'}{(n+1)!}\left[\sum_{k=0}^n \prod_{j=0,j\neq k}^n (x-x_j)\right],\end{equation}\]</div>
+<p>Evaluating this at one of the gridpoints, say <span class="math notranslate nohighlight">\(x_i\)</span>, simplifies the expression to,</p>
 <div class="math notranslate nohighlight">
-\[ \bar{p}(x) = ((x-6)x+3)x-0.147). \]</div>
-<p>It should not be too hard to see that <span class="math notranslate nohighlight">\(\bar{p}(x)\)</span> is mathematically equivalent to our original polynomial <span class="math notranslate nohighlight">\(p(x)\)</span>.  If we evaluate this expression as written we get</p>
-<div class="math notranslate nohighlight">
-\[ \bar{p}^* =  \mathcal{fl}(\bar{p}(4.71)) = -14.5, \]</div>
-<p>much closer to the exact result (and still retaining 3 significant digits).  Why?  It turns out that <span class="math notranslate nohighlight">\(\bar{p}(x)\)</span> requires fewer arithmetic operations to compute than <span class="math notranslate nohighlight">\(p(x)\)</span> and this results in a smaller accumulation of roundoff errors.</p>
-<p>Let’s generalize this to a generic polynomial in an <a class="reference external" href="https://en.wikipedia.org/wiki/Horner%27s_method#:~:text=In%20mathematics%20and%20computer%20science%2C%20Horner%27s%20method%20%28or,hundreds%20of%20years%20to%20Chinese%20and%20Persian%20mathematicians.">algorithm usually attributed to William Horner</a>.  There is evidence, however, that it is actually much older.</p>
-<p><strong>Horner’s Algorithm</strong> (a.k.a. “nested multiplication”)
-To evaluate the polynomial</p>
-<div class="math notranslate nohighlight">
-\[p(x) = a_{n-1} x^{n-1} + a_{n-2} x^{n-2} + ... + a_1 x + a_0,\]</div>
-<p>first rewrite it in the form:</p>
-<div class="math notranslate nohighlight">
-\[p(x) = ((...((a_{n-1} x + a_{n-2})x+a_{n-3})x+...)x+a_1)x + a_0.\]</div>
-<p>Note that, without loss of generality and in anticipation of coding this up, the coefficiencts have been labelled from <span class="math notranslate nohighlight">\(0\)</span> to <span class="math notranslate nohighlight">\(n-1\)</span> rather than <span class="math notranslate nohighlight">\(0\)</span> to <span class="math notranslate nohighlight">\(n\)</span>.  This can now be easily turned into a short python code as follows.</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Use Horner&#39;s algorithm to compute and return the polynomial</span>
-<span class="c1">#    p(x) = a[0] + a[1] x^1 + a[2] x^2 + ... + a[n-1] x^(n-1)</span>
-<span class="c1"># evaluated at x.</span>
-<span class="k">def</span> <span class="nf">horners</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">x</span><span class="p">):</span>
-    <span class="n">result</span> <span class="o">=</span> <span class="n">a</span><span class="p">[</span><span class="nb">len</span><span class="p">(</span><span class="n">a</span><span class="p">)</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
-    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">a</span><span class="p">)</span><span class="o">-</span><span class="mi">2</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">):</span>
-        <span class="n">result</span> <span class="o">=</span> <span class="n">result</span><span class="o">*</span><span class="n">x</span> <span class="o">+</span> <span class="n">a</span><span class="p">[</span><span class="n">i</span><span class="p">]</span>
-    <span class="k">return</span> <span class="n">result</span>
- 
-<span class="c1"># Let&#39;s use the horners function defined above to evaluate the polynomial from the example above</span>
-<span class="n">coefficients</span> <span class="o">=</span> <span class="p">[</span><span class="o">-</span><span class="mf">0.147</span><span class="p">,</span> <span class="mf">3.</span><span class="p">,</span> <span class="o">-</span><span class="mf">6.</span><span class="p">,</span> <span class="mf">1.</span><span class="p">]</span>
-<span class="n">x</span> <span class="o">=</span> <span class="mf">4.71</span>
-
-<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;p(x) = &quot;</span><span class="p">,</span> <span class="n">horners</span><span class="p">(</span><span class="n">coefficients</span><span class="p">,</span> <span class="n">x</span><span class="p">))</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>p(x) =  -14.634489
-</pre></div>
-</div>
-</div>
-</div>
-<p>To analyze the efficiency of algorithms like this, one usually counts the number of flops.</p>
-<p><strong>flop</strong>: floating point operation consisting of one * and one + (i.e. <span class="math notranslate nohighlight">\(a*x+b\)</span> is 1 flop).</p>
-<p>Comparing Horner’s algorithm with the evaluation using the monomial basis it is not too hard to see</p>
-<table class="colwidths-auto table">
-<thead>
-<tr class="row-odd"><th class="head"><p>method</p></th>
-<th class="head"><p>number of flops</p></th>
-</tr>
-</thead>
-<tbody>
-<tr class="row-even"><td><p>Horner</p></td>
-<td><p><span class="math notranslate nohighlight">\(n\)</span></p></td>
-</tr>
-<tr class="row-odd"><td><p>monomial basis</p></td>
-<td><p><span class="math notranslate nohighlight">\(2 n -1\)</span></p></td>
-</tr>
-</tbody>
-</table>
-<p>The fewer flops involved, the lower the chance for the accumulation of roundoff errors plus you get the bonus of a faster and more efficient program.</p>
+\[
+\begin{equation} \epsilon'(x_i) = \frac{f^{n+1}(\xi)}{(n+1)!}\prod_{j=0,j\neq i}^n (x_i-x_j). \end{equation}\]</div>
 </div>
 
     <script type="text/x-thebe-config">
@@ -482,7 +417,7 @@ To evaluate the polynomial</p>
         },
         kernelOptions: {
             kernelName: "python3",
-            path: "./class/ErrorsModule"
+            path: "./class/NDiffInt"
         },
         predefinedOutput: true
     }
@@ -494,17 +429,17 @@ To evaluate the polynomial</p>
             
                 <!-- Previous / next buttons -->
 <div class='prev-next-area'> 
-    <a class='left-prev' id="prev-link" href="FinitePrecision.html" title="previous page">
+    <a class='left-prev' id="prev-link" href="NumDiffInt.html" title="previous page">
         <i class="fas fa-angle-left"></i>
         <div class="prev-next-info">
             <p class="prev-next-subtitle">previous</p>
-            <p class="prev-next-title">Finite Precision</p>
+            <p class="prev-next-title">Numerical Differentiation</p>
         </div>
     </a>
-    <a class='right-next' id="next-link" href="RoundoffAmplification.html" title="next page">
+    <a class='right-next' id="next-link" href="../../extras/coding-notes-general.html" title="next page">
     <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">Roundoff Error Amplification</p>
+        <p class="prev-next-title">On computation and codes</p>
     </div>
     <i class="fas fa-angle-right"></i>
     </a>
