@@ -30,7 +30,7 @@ Taking the derivative {eq}`errprime` yields
 $$
 \begin{align} \epsilon''(x) = & \frac{f^{n+1}(\xi)}{(n+1)!}\left[\sum_{m=0}^n \sum_{k=0}^n \prod_{j=0,j\neq k,m}^n (x-x_j)\right]\\
 & + \frac{f^{n+2}(\xi)\xi''+f^{n+3}(\xi)\xi'}{(n+1)!}\prod_{j=0}^n (x-x_j) \\
-&+ \frac{f^{n+2}(\xi)\xi'}{(n+1)!}\left[\sum_{k=0}^n \prod_{j=0,j\neq k}^n (x-x_j)\right],\end{equation}$$
+&+ \frac{f^{n+2}(\xi)\xi'}{(n+1)!}\left[\sum_{k=0}^n \prod_{j=0,j\neq k}^n (x-x_j)\right],\end{align}$$
 
 Evaluating this at one of the gridpoints, say $x_i$, simplifies the expression to,
 
