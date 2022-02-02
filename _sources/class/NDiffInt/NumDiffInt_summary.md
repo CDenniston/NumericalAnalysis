@@ -71,7 +71,7 @@ This, along with knowing that $L_i(x_j)=0$, in Eq.{eq}`Liderivsetup` gives for $
 $$
 \begin{align}
 L_i'(x_j)&=\frac{w_i/w_j}{x_j-x_i},\\
-L_i''(x_j)&=-2\frac{w_i/w_j}{x_j-x_i}\left[\sum_{k\neq j}\frac{w_k/w_j}{x_j-x_k}-\frac{1}{x_j-x_i} \right].
+L_i''(x_j)&=-2\frac{w_i/w_j}{x_j-x_i}\left[\sum_{k\neq j}\frac{w_k/w_j}{x_j-x_k}+\frac{1}{x_j-x_i} \right].
 \end{align}
 $$ (DLij)
 
@@ -86,13 +86,13 @@ $$ (DLii)
 
 These $L_i^{(m)}(x_j)$ derivatives can be thought of as entries $D_{ji}^{(m)}$ in *differentiation* matrices $\mathbf{D}^{(m)}$.  If we write our known function values $f(x_i)$ in a column vector $\mathbf{F}$ then  $\mathbf{D}^{(m)} F$ provides a column vector of derivatives at the interpolating nodes $x_i$.  Let's illustrate this with a few examples.
 
-**Example: Two point forumulas.**  Suppose we have two points $x_0$ and $x_1=x_0+h$ along with the function values at those points $f(x_0)$ and $f(x_1)$.   The [formula for the weights](../InterpFit/BarycentricInterp) gives  $w_0= -1/h$ and $w_1=1/h$.  Eq.{eq}`DLij` then gives
+**Example: Two point formulas.**  Suppose we have two points $x_0$ and $x_1=x_0+h$ along with the function values at those points $f(x_0)$ and $f(x_1)$.   The [formula for the weights](../InterpFit/BarycentricInterp) gives  $w_0= -1/h$ and $w_1=1/h$.  Eq.{eq}`DLij` then gives
 
-$$ D_{10}'=L_0'(x_1) = -\frac{1}{h},\quad \text{and} D_{01}'=L_1'(x_0)=\frac{1}{h}.  $$
+$$ D_{10}'=L_0'(x_1) = -\frac{1}{h},\quad \text{and}\quad D_{01}'=L_1'(x_0)=\frac{1}{h}.  $$
 
 Using these in Eq.{eq}`DLii` gives
 
-$$ D_{00}'=L_0'(x_0) = -\frac{1}{h},\quad \text{and} D_{11}'=L_1'(x_1)=\frac{1}{h}. $$
+$$ D_{00}'=L_0'(x_0) = -\frac{1}{h},\quad \text{and}\quad D_{11}'=L_1'(x_1)=\frac{1}{h}. $$
 
 Using this as the entries of $\mathbf{D}'$ gives
 
@@ -116,11 +116,11 @@ f(x_1) \\
 \frac{f(x_1)-f(x_0)}{h} \\
 \end{array}} \right].
 \end{align}
-$$
+$$ (forbackD)
 
-When used for $x_0$ (upper element) this is typically called the *forward* difference formula and when used at $x_1$ (lower element) this is called a *backward* difference.  Not surprisingly as this is based on linear interpolation, the approximation to the derivative is the same at both points here and were we to work out approximations for the second derivatives they would both be zero.
+When used for $x_0$ (upper element) this is typically called the *forward* difference formula and when used at $x_1$ (lower element) this is called a *backward* difference.  Not surprisingly as this is based on linear interpolation, the approximation to the derivative is the same at both points here and were we to work out approximations for the second (or higher) derivatives, using just these two points, they would be zero.
 
-**Example: Three point forumulas.**  Suppose we have three equally spaced points $x_0,\,x_1=x_0+h,\,x_2=x_0+2h,$ along with the function values at those points $f(x_0),\,f(x_1)$ and $f(x_2)$.   The [formula for the weights](../InterpFit/BarycentricInterp) gives  $w_0= 1/2h^2,\,w_1=-1/h^2$ and $w_2=1/2h^2$.  Using  Eq.{eq}`DLij` and {eq}`DLii` to fill the entries of $\mathbf{D}'$ gives  
+**Example: Three point formulas.**  Suppose we have three equally spaced points $x_0,\,x_1=x_0+h,$ and $x_2=x_0+2h,$ along with the function values at those points $f(x_0),\,f(x_1)$ and $f(x_2)$.   The [formula for the weights](../InterpFit/BarycentricInterp) gives  $w_0= 1/2h^2,\,w_1=-1/h^2$ and $w_2=1/2h^2$.  Using  Eq.{eq}`DLij` and {eq}`DLii` to fill the entries of $\mathbf{D}'$ gives  
 
 $$
 \begin{align}
@@ -160,9 +160,58 @@ f(x_2)
 \end{align}
 $$  
 
-The formula for $x_0$ and $x_1$ are, presumably, higher order forward/backward differences and the formula for $x_1$ is the *central* difference formula.
+The formula for $x_0$ and $x_1$ are, presumably, higher order (than {eq}`forbackD`) forward/backward differences and the formula for $x_1$ is the *central* difference formula.
 
+With three points, we can also work out approximations for the second derivative.  First, as we have already worked out all the $L_i'(x_j)$, we note that using the formulas for the first derivatives, the second derivative formula in {eq}`DLij` for $i\neq j$ can be rewritten as
 
+$$
+\begin{align}
+L_i''(x_j)&=-2L_i'(x_j)\left[\sum_{k\neq j}L_k'(x_j)+\frac{1}{x_j-x_i}\right],\\
+&= 2L_i'(x_j)\left[L_j'(x_j)-\frac{1}{x_j-x_i}\right].
+\end{align}
+$$ (DL2fromDL1)
+
+where for the second line we have make use of {eq}`DLii` for the first derivative sum.  Making use of this first for the off-diagonal elements and then using {eq}`DLii` for the second derivatives on the diagonal we get
+
+$$
+\begin{align}
+\left[{\begin{array}{c}
+f''(x_0) \\
+f''(x_1) \\
+f''(x_2) 
+\end{array}} \right] \approx
+\mathbf{D}''\mathbf{F} &=
+\left[{\begin{array}{ccc}
+  L_0''(x_0) &  L_1''(x_0) & L_2''(x_0)\\
+  L_0''(x_1) &  L_1''(x_1) & L_2''(x_1)\\
+  L_0''(x_2) &  L_1''(x_2) & L_2''(x_2)
+\end{array}} \right]
+\left[{\begin{array}{c}
+f(x_0) \\
+f(x_1) \\
+f(x_2)
+\end{array}} \right] \\
+&=
+\left[{\begin{array}{ccc}
+  \frac{1}{h^2} & -\frac{2}{h^2}  & \frac{1}{h^2}\\
+  \frac{1}{h^2} & -\frac{2}{h^2}  & \frac{1}{h^2}\\
+  \frac{1}{h^2} & -\frac{2}{h^2}  & \frac{1}{h^2}
+\end{array}} \right]
+\left[{\begin{array}{c}
+f(x_0) \\
+f(x_1) \\
+f(x_2)
+\end{array}} \right] \\
+&=
+\left[{\begin{array}{c}
+\frac{f(x_0)-2f(x_1)+f(x_2)}{h^2} \\
+\frac{f(x_0)-2f(x_1)+f(x_2)}{h^2} \\
+\frac{f(x_0)-2f(x_1)+f(x_2)}{h^2}
+\end{array}} \right].
+\end{align}
+$$  
+
+Not surprisingly as this is based on a single quadratic interpolation, the approximation to the second derivative is the same at all points here and were we to work out approximations for the higher derivatives based on just three points they would all be zero.
 
 
 
