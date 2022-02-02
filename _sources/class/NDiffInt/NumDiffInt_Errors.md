@@ -44,7 +44,7 @@ This is a bit messier than the error for the first derivative {eq}`pprimeerr`.  
 
 **Example: Error in the two point formulas**  In the previous section, for two points $x_0$ and $x_1=x_0+h$ we derived the forward/backwards difference formulae and we would now like to know the error in using these formulae.  Using {eq}`pprimeerr` with $n=1$ we straightforwardly get
 
-$$ \epsilon'(x_0) = \frac{f^(2)(\xi)}{2}(-h),\quad \text{and}\quad  \epsilon'(x_1) = \frac{f^(2)(\xi)}{2}(h),$$
+$$ \epsilon'(x_0) = \frac{f''(\xi)}{2}(-h),\quad \text{and}\quad  \epsilon'(x_1) = \frac{f''(\xi)}{2}(h),$$
 
 noting that $\xi$ is not likely to be the same number in the two cases.  So, in summary, we now have
 
@@ -59,15 +59,33 @@ f'(x_1) \\
 \frac{f(x_1)-f(x_0)}{h} \\
 \end{array}} \right] +
 \left[{\begin{array}{c}
-  -\frac{f^(2)(\xi)}{2}h \\
-   \frac{f^(2)(\xi)}{2}h \\
+  -f''(\xi)\frac{h}{2} \\
+   f''(\xi)\frac{h}{2} \\
 \end{array}} \right].
 \end{equation}
 $$
 
+**Example: Error in the three point formulae**  In the previous section, for three points $x_0,\,x_1=x_0+h,$ and $x_2=x_0+2h,$ $x_0$ we derived finite difference formulae for first and second derivatives and we would now like to know the error in using these formulae.  Using {eq}`pprimeerr` with $n=2$ we straightforwardly get the result for the first derivatives:
 
-
-
+$$
+\begin{equation}
+\left[{\begin{array}{c}
+f'(x_0) \\
+f'(x_1) \\
+f'(x_2)
+\end{array}} \right] =
+\left[{\begin{array}{c}
+\frac{-3f(x_0)+4f(x_1)-f(x_2)}{2h} \\
+\frac{f(x_2)-f(x_0)}{2h} \\
+\frac{3f(x_2)-4f(x_1)+f(x_0)}{2h}
+\end{array}} \right] +
+\left[{\begin{array}{c}
+  f'''(\xi)\frac{h^2}{3} \\
+  -f'''(\xi)\frac{h^2}{6} \\\
+  f'''(\xi)\frac{h^2}{3} \\
+\end{array}} \right].
+\end{equation}
+$$
 
 
 

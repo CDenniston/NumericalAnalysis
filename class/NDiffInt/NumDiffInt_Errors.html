@@ -410,7 +410,7 @@
 <p>This is a bit messier than the error for the first derivative <a class="reference internal" href="#equation-pprimeerr">(26)</a>.  In most cases one can argue that the second term is small compared to the first as it contains one additional factor of the difference of grid points and one expects <span class="math notranslate nohighlight">\(\xi'\)</span> to be small.</p>
 <p><strong>Example: Error in the two point formulas</strong>  In the previous section, for two points <span class="math notranslate nohighlight">\(x_0\)</span> and <span class="math notranslate nohighlight">\(x_1=x_0+h\)</span> we derived the forward/backwards difference formulae and we would now like to know the error in using these formulae.  Using <a class="reference internal" href="#equation-pprimeerr">(26)</a> with <span class="math notranslate nohighlight">\(n=1\)</span> we straightforwardly get</p>
 <div class="math notranslate nohighlight">
-\[ \epsilon'(x_0) = \frac{f^(2)(\xi)}{2}(-h),\quad \text{and}\quad  \epsilon'(x_1) = \frac{f^(2)(\xi)}{2}(h),\]</div>
+\[ \epsilon'(x_0) = \frac{f''(\xi)}{2}(-h),\quad \text{and}\quad  \epsilon'(x_1) = \frac{f''(\xi)}{2}(h),\]</div>
 <p>noting that <span class="math notranslate nohighlight">\(\xi\)</span> is not likely to be the same number in the two cases.  So, in summary, we now have</p>
 <div class="math notranslate nohighlight">
 \[\begin{split}
@@ -424,8 +424,29 @@ f'(x_1) \\
 \frac{f(x_1)-f(x_0)}{h} \\
 \end{array}} \right] +
 \left[{\begin{array}{c}
-  -\frac{f^(2)(\xi)}{2}h \\
-   \frac{f^(2)(\xi)}{2}h \\
+  -f''(\xi)\frac{h}{2} \\
+   f''(\xi)\frac{h}{2} \\
+\end{array}} \right].
+\end{equation}
+\end{split}\]</div>
+<p><strong>Example: Error in the three point formulae</strong>  In the previous section, for three points <span class="math notranslate nohighlight">\(x_0,\,x_1=x_0+h,\)</span> and <span class="math notranslate nohighlight">\(x_2=x_0+2h,\)</span> <span class="math notranslate nohighlight">\(x_0\)</span> we derived finite difference formulae for first and second derivatives and we would now like to know the error in using these formulae.  Using <a class="reference internal" href="#equation-pprimeerr">(26)</a> with <span class="math notranslate nohighlight">\(n=2\)</span> we straightforwardly get the result for the first derivatives:</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\begin{equation}
+\left[{\begin{array}{c}
+f'(x_0) \\
+f'(x_1) \\
+f'(x_2)
+\end{array}} \right] =
+\left[{\begin{array}{c}
+\frac{-3f(x_0)+4f(x_1)-f(x_2)}{2h} \\
+\frac{f(x_2)-f(x_0)}{2h} \\
+\frac{3f(x_2)-4f(x_1)+f(x_0)}{2h}
+\end{array}} \right] +
+\left[{\begin{array}{c}
+  f'''(\xi)\frac{h^2}{3} \\
+  -f'''(\xi)\frac{h^2}{6} \\\
+  f'''(\xi)\frac{h^2}{3} \\
 \end{array}} \right].
 \end{equation}
 \end{split}\]</div>
