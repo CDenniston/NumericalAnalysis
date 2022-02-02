@@ -396,8 +396,10 @@
 <p>We can now use this expression for the errors in our first derivative finite difference formulas.  Before we do, let’s derive the error formula for the second derivatives.</p>
 <p>Taking the derivative <a class="reference internal" href="#equation-errprime">(25)</a> yields</p>
 <div class="math notranslate nohighlight">
-\[
-\begin{equation} \epsilon''(x) = \frac{f^{n+1}(\xi)}{(n+1)!}\left[\sum_{m=0}^n \sum_{k=0}^n \prod_{j=0,j\neq k,m}^n (x-x_j)\right] + \frac{f^{n+2}(\xi)\xi''+f^{n+3}(\xi)\xi'}{(n+1)!}\prod_{j=0}^n (x-x_j) + \frac{f^{n+2}(\xi)\xi'}{(n+1)!}\left[\sum_{k=0}^n \prod_{j=0,j\neq k}^n (x-x_j)\right],\end{equation}\]</div>
+\[\begin{split}
+\begin{align} \epsilon''(x) = &amp; \frac{f^{n+1}(\xi)}{(n+1)!}\left[\sum_{m=0}^n \sum_{k=0}^n \prod_{j=0,j\neq k,m}^n (x-x_j)\right]\\
+&amp; + \frac{f^{n+2}(\xi)\xi''+f^{n+3}(\xi)\xi'}{(n+1)!}\prod_{j=0}^n (x-x_j) \\
+&amp;+ \frac{f^{n+2}(\xi)\xi'}{(n+1)!}\left[\sum_{k=0}^n \prod_{j=0,j\neq k}^n (x-x_j)\right],\end{equation}\end{split}\]</div>
 <p>Evaluating this at one of the gridpoints, say <span class="math notranslate nohighlight">\(x_i\)</span>, simplifies the expression to,</p>
 <div class="math notranslate nohighlight">
 \[
