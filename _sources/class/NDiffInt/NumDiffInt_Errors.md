@@ -59,11 +59,11 @@ f'(x_1) \\
 \frac{f(x_1)-f(x_0)}{h} \\
 \end{array}} \right] +
 \left[{\begin{array}{c}
-  -f''(\xi)\frac{h}{2} \\
-   f''(\xi)\frac{h}{2} \\
+  -\frac{h}{2}f''(\xi) \\
+   \frac{h}{2}f''(\xi) \\
 \end{array}} \right].
 \end{equation}
-$$
+$$ (twopoint)
 
 **Example: Error in the three point formulae**  In the previous section, for three points $x_0,\,x_1=x_0+h,$ and $x_2=x_0+2h,$ $x_0$ we derived finite difference formulae for first and second derivatives and we would now like to know the error in using these formulae.  Using {eq}`pprimeerr` with $n=2$ we straightforwardly get the result for the first derivatives:
 
@@ -80,12 +80,59 @@ f'(x_2)
 \frac{3f(x_2)-4f(x_1)+f(x_0)}{2h}
 \end{array}} \right] +
 \left[{\begin{array}{c}
-  f'''(\xi)\frac{h^2}{3} \\
-  -f'''(\xi)\frac{h^2}{6} \\\
-  f'''(\xi)\frac{h^2}{3} \\
+  \frac{h^2}{3}f(3)(\xi) \\
+  -\frac{h^2}{6}f(3)(\xi) \\\
+  \frac{h^2}{3}f(3)(\xi) \\
 \end{array}} \right].
 \end{equation}
 $$
+
+First note that the errors here are $\mathcal{O}(h^2)$ compared to {eq}`twopoint` for the two-point formulae which are $\mathcal{O}(h)$.  So, assuming $h$ is small these do indeed have a higher order accuracy.  Further, the error in the *central* difference formula is *half* that of the backward/forward differences.  As a result, the central difference formula is the one most widely used.
+
+We now turn to the second derivative errors.  At $x_0$ {eq}`ppperr` gives
+
+$$
+\begin{align}
+\epsilon''(x_0) = 2\frac{f^{(3)}(\xi)}{3!}\left[(x_0-x_1)+(x_0-x_2)\right]+\frac{f^{(4)}(\xi)\xi'}{3!}(x_0-x_1)(x_0-x_2)\\
+&= -f^{(3)}(\xi) h + \frac{f^{(4)}(\xi)\xi'}{3}h^2.
+\end{align}
+$$
+
+At $x_1$ we get
+
+$$
+\begin{align}
+\epsilon''(x_1) = 2\frac{f^{(3)}(\xi)}{3!}\left[(x_1-x_0)+(x_1-x_2)\right]+\frac{f^{(4)}(\xi)\xi'}{3!}(x_1-x_0)(x_1-x_2)\\
+&= -\frac{f^{(4)}(\xi)\xi'}{6} h^2.
+\end{align}
+$$
+
+These, together wit the result at $x_2$ gives
+
+$$
+\begin{equation}
+\left[{\begin{array}{c}
+f''(x_0) \\
+f''(x_1) \\
+f''(x_2)
+\end{array}} \right] =
+\left[{\begin{array}{c}
+\frac{f(x_0)-2f(x_1)+f(x_2)}{h^2} \\
+\frac{f(x_0)-2f(x_1)+f(x_2)}{h^2} \\
+\frac{f(x_0)-2f(x_1)+f(x_2)}{h^2}
+\end{array}} \right] +
+\left[{\begin{array}{c}
+  -h f(3)(\xi) \\
+  -\frac{h^2}{6}f(4)(\xi)\xi' \\\
+  h f(3)(\xi) \\
+\end{array}} \right].
+\end{equation}
+$$
+
+Note that even through the approximation formula is the same for all 3 points, the error in this formula is much worse at the endpoints ($\mathcal{O}(h)$ versus $\mathcal{O}(h^2)$).  In homework you will see that you can also derive the central difference formula using a Taylor series expansion (including errors) about $x_1$ and then using the mean value theorem to combine the errors at the points $x_1\pm h$ at a new, also unknown, point $\eta$ to get
+
+$$ f''(x_1) = \frac{f(x_0)-2f(x_1)+f(x_2)}{h^2} -\frac{h^2}{12}f(4)(\eta). $$
+
 
 
 
