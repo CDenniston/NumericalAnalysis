@@ -390,8 +390,8 @@
 <span class="eqno">(25)<a class="headerlink" href="#equation-errprime" title="Permalink to this equation">¶</a></span>\[
 \begin{equation} \epsilon'(x) = \frac{f^{n+1}(\xi)}{(n+1)!}\left[\sum_{k=0}^n \prod_{j=0,j\neq k}^n (x-x_j)\right] + \frac{f^{n+2}(\xi)\xi'}{(n+1)!}\prod_{j=0}^n (x-x_j), \end{equation}\]</div>
 <p>where the second term arises from the fact that <span class="math notranslate nohighlight">\(\xi\)</span> may depend on <span class="math notranslate nohighlight">\(x\)</span>.  Evaluating this at one of the gridpoints, say <span class="math notranslate nohighlight">\(x_i\)</span>, simplifies the expression considerably as all but one of the terms contain the factor <span class="math notranslate nohighlight">\((x_i-x_i)\)</span>,</p>
-<div class="math notranslate nohighlight">
-\[
+<div class="math notranslate nohighlight" id="equation-pprimeerr">
+<span class="eqno">(26)<a class="headerlink" href="#equation-pprimeerr" title="Permalink to this equation">¶</a></span>\[
 \begin{equation} \epsilon'(x_i) = \frac{f^{n+1}(\xi)}{(n+1)!}\prod_{j=0,j\neq i}^n (x_i-x_j). \end{equation}\]</div>
 <p>We can now use this expression for the errors in our first derivative finite difference formulas.  Before we do, let’s derive the error formula for the second derivatives.</p>
 <p>Taking the derivative <a class="reference internal" href="#equation-errprime">(25)</a> yields</p>
@@ -401,12 +401,34 @@
 &amp; + \frac{f^{n+2}(\xi)\xi''+f^{n+3}(\xi)\xi'}{(n+1)!}\prod_{j=0}^n (x-x_j) \\
 &amp;+ \frac{f^{n+2}(\xi)\xi'}{(n+1)!}\left[\sum_{k=0}^n \prod_{j=0,j\neq k}^n (x-x_j)\right],\end{align}\end{split}\]</div>
 <p>Evaluating this at one of the gridpoints, say <span class="math notranslate nohighlight">\(x_i\)</span>, simplifies the expression to,</p>
-<div class="math notranslate nohighlight">
-\[\begin{split}
+<div class="math notranslate nohighlight" id="equation-ppperr">
+<span class="eqno">(27)<a class="headerlink" href="#equation-ppperr" title="Permalink to this equation">¶</a></span>\[\begin{split}
 \begin{align}
 \epsilon''(x_i) &amp;=\frac{f^{n+1}(\xi)}{(n+1)!}\left[\sum_{m=0,m\neq i}^n \prod_{j=0, j\neq i,m} (x_i-x_j) + \sum_{k=0,k\neq i}^n \prod_{j=0, j\neq i,k} (x_i-x_j) \right] +\frac{f^{n+2}(\xi)\xi'}{(n+1)!}\prod_{j=0,j\neq i}^n (x_i-x_j),\\
 &amp;=\frac{2f^{n+1}(\xi)}{(n+1)!}\left[\sum_{k=0,k\neq i}^n \prod_{j=0, j\neq i,k} (x_i-x_j) \right] +\frac{f^{n+2}(\xi)\xi'}{(n+1)!}\prod_{j=0,j\neq i}^n (x_i-x_j).
 \end{align}\end{split}\]</div>
+<p>This is a bit messier than the error for the first derivative <a class="reference internal" href="#equation-pprimeerr">(26)</a>.  In most cases one can argue that the second term is small compared to the first as it contains one additional factor of the difference of grid points and one expects <span class="math notranslate nohighlight">\(\xi'\)</span> to be small.</p>
+<p><strong>Example: Error in the two point formulas</strong>  In the previous section, for two points <span class="math notranslate nohighlight">\(x_0\)</span> and <span class="math notranslate nohighlight">\(x_1=x_0+h\)</span> we derived the forward/backwards difference formulae and we would now like to know the error in using these formulae.  Using <a class="reference internal" href="#equation-pprimeerr">(26)</a> with <span class="math notranslate nohighlight">\(n=1\)</span> we straightforwardly get</p>
+<div class="math notranslate nohighlight">
+\[ \epsilon'(x_0) = \frac{f^(2)(\xi)}{2}(-h),\quad \text{and}\quad  \epsilon'(x_1) = \frac{f^(2)(\xi)}{2}(h),\]</div>
+<p>noting that <span class="math notranslate nohighlight">\(\xi\)</span> is not likely to be the same number in the two cases.  So, in summary, we now have</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\begin{equation}
+\left[{\begin{array}{c}
+f'(x_0) \\
+f'(x_1) \\
+\end{array}} \right] =
+\left[{\begin{array}{c}
+\frac{f(x_1)-f(x_0)}{h} \\
+\frac{f(x_1)-f(x_0)}{h} \\
+\end{array}} \right] +
+\left[{\begin{array}{c}
+  -\frac{f^(2)(\xi)}{2}h \\
+   \frac{f^(2)(\xi)}{2}h \\
+\end{array}} \right].
+\end{equation}
+\end{split}\]</div>
 </div>
 
     <script type="text/x-thebe-config">

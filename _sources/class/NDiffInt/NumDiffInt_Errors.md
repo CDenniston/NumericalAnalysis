@@ -20,7 +20,7 @@ $$
 where the second term arises from the fact that $\xi$ may depend on $x$.  Evaluating this at one of the gridpoints, say $x_i$, simplifies the expression considerably as all but one of the terms contain the factor $(x_i-x_i)$,
 
 $$
-\begin{equation} \epsilon'(x_i) = \frac{f^{n+1}(\xi)}{(n+1)!}\prod_{j=0,j\neq i}^n (x_i-x_j). \end{equation}$$
+\begin{equation} \epsilon'(x_i) = \frac{f^{n+1}(\xi)}{(n+1)!}\prod_{j=0,j\neq i}^n (x_i-x_j). \end{equation}$$ (pprimeerr)
 
 We can now use this expression for the errors in our first derivative finite difference formulas.  Before we do, let's derive the error formula for the second derivatives.
 
@@ -38,7 +38,36 @@ $$
 \begin{align}
 \epsilon''(x_i) &=\frac{f^{n+1}(\xi)}{(n+1)!}\left[\sum_{m=0,m\neq i}^n \prod_{j=0, j\neq i,m} (x_i-x_j) + \sum_{k=0,k\neq i}^n \prod_{j=0, j\neq i,k} (x_i-x_j) \right] +\frac{f^{n+2}(\xi)\xi'}{(n+1)!}\prod_{j=0,j\neq i}^n (x_i-x_j),\\
 &=\frac{2f^{n+1}(\xi)}{(n+1)!}\left[\sum_{k=0,k\neq i}^n \prod_{j=0, j\neq i,k} (x_i-x_j) \right] +\frac{f^{n+2}(\xi)\xi'}{(n+1)!}\prod_{j=0,j\neq i}^n (x_i-x_j).
-\end{align}$$
+\end{align}$$ (ppperr)
+
+This is a bit messier than the error for the first derivative {eq}`pprimeerr`.  In most cases one can argue that the second term is small compared to the first as it contains one additional factor of the difference of grid points and one expects $\xi'$ to be small.
+
+**Example: Error in the two point formulas**  In the previous section, for two points $x_0$ and $x_1=x_0+h$ we derived the forward/backwards difference formulae and we would now like to know the error in using these formulae.  Using {eq}`pprimeerr` with $n=1$ we straightforwardly get
+
+$$ \epsilon'(x_0) = \frac{f^(2)(\xi)}{2}(-h),\quad \text{and}\quad  \epsilon'(x_1) = \frac{f^(2)(\xi)}{2}(h),$$
+
+noting that $\xi$ is not likely to be the same number in the two cases.  So, in summary, we now have
+
+$$
+\begin{equation}
+\left[{\begin{array}{c}
+f'(x_0) \\
+f'(x_1) \\
+\end{array}} \right] =
+\left[{\begin{array}{c}
+\frac{f(x_1)-f(x_0)}{h} \\
+\frac{f(x_1)-f(x_0)}{h} \\
+\end{array}} \right] +
+\left[{\begin{array}{c}
+  -\frac{f^(2)(\xi)}{2}h \\
+   \frac{f^(2)(\xi)}{2}h \\
+\end{array}} \right].
+\end{equation}
+$$
+
+
+
+
 
 
 
