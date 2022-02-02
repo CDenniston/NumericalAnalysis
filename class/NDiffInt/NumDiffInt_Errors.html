@@ -444,18 +444,18 @@ f'(x_2)
 \frac{3f(x_2)-4f(x_1)+f(x_0)}{2h}
 \end{array}} \right] +
 \left[{\begin{array}{c}
-  \frac{h^2}{3}f(3)(\xi) \\
-  -\frac{h^2}{6}f(3)(\xi) \\\
-  \frac{h^2}{3}f(3)(\xi) \\
+  \frac{h^2}{3}f^{(3)}(\xi) \\
+  -\frac{h^2}{6}f^{(3)}(\xi) \\\
+  \frac{h^2}{3}f^{(3)}(\xi) \\
 \end{array}} \right].
 \end{equation}
 \end{split}\]</div>
-<p>First note that the errors here are <span class="math notranslate nohighlight">\(\mathcal{O}(h^2)\)</span> compared to <a class="reference internal" href="#equation-twopoint">(28)</a> for the two-point formulae which are <span class="math notranslate nohighlight">\(\mathcal{O}(h)\)</span>.  So, assuming <span class="math notranslate nohighlight">\(h\)</span> is small these do indeed have a higher order accuracy.  Further, the error in the <em>central</em> difference formula is <em>half</em> that of the backward/forward differences.  As a result, the central difference formula is the one most widely used.</p>
+<p>First note that the errors here are <span class="math notranslate nohighlight">\(\mathcal{O}(h^2)\)</span> compared to <a class="reference internal" href="#equation-twopoint">(28)</a> for the two-point formulae which are <span class="math notranslate nohighlight">\(\mathcal{O}(h)\)</span>.  So, assuming <span class="math notranslate nohighlight">\(h\)</span> is small, these do indeed have a higher order accuracy.  Further, the error in the <em>central</em> difference formula is <em>half</em> that of the backward/forward differences.  As a result, the central difference formula is the one most widely used.</p>
 <p>We now turn to the second derivative errors.  At <span class="math notranslate nohighlight">\(x_0\)</span> <a class="reference internal" href="#equation-ppperr">(27)</a> gives</p>
 <div class="math notranslate nohighlight">
 \[\begin{split}
 \begin{align}
-\epsilon''(x_0) = 2\frac{f^{(3)}(\xi)}{3!}\left[(x_0-x_1)+(x_0-x_2)\right]+\frac{f^{(4)}(\xi)\xi'}{3!}(x_0-x_1)(x_0-x_2)\\
+\epsilon''(x_0) &amp;= 2\frac{f^{(3)}(\xi)}{3!}\left[(x_0-x_1)+(x_0-x_2)\right]+\frac{f^{(4)}(\xi)\xi'}{3!}(x_0-x_1)(x_0-x_2)\\
 &amp;= -f^{(3)}(\xi) h + \frac{f^{(4)}(\xi)\xi'}{3}h^2.
 \end{align}
 \end{split}\]</div>
@@ -463,7 +463,7 @@ f'(x_2)
 <div class="math notranslate nohighlight">
 \[\begin{split}
 \begin{align}
-\epsilon''(x_1) = 2\frac{f^{(3)}(\xi)}{3!}\left[(x_1-x_0)+(x_1-x_2)\right]+\frac{f^{(4)}(\xi)\xi'}{3!}(x_1-x_0)(x_1-x_2)\\
+\epsilon''(x_1) &amp;= 2\frac{f^{(3)}(\xi)}{3!}\left[(x_1-x_0)+(x_1-x_2)\right]+\frac{f^{(4)}(\xi)\xi'}{3!}(x_1-x_0)(x_1-x_2)\\
 &amp;= -\frac{f^{(4)}(\xi)\xi'}{6} h^2.
 \end{align}
 \end{split}\]</div>
@@ -482,15 +482,15 @@ f''(x_2)
 \frac{f(x_0)-2f(x_1)+f(x_2)}{h^2}
 \end{array}} \right] +
 \left[{\begin{array}{c}
-  -h f(3)(\xi) \\
-  -\frac{h^2}{6}f(4)(\xi)\xi' \\\
-  h f(3)(\xi) \\
-\end{array}} \right].
+  -h f^{(3)}(\xi) \\
+  -\frac{h^2}{6}f^{(4)}(\xi)\xi' \\\
+  h f^{(3)}(\xi) \\
+\end{array}} \right],
 \end{equation}
 \end{split}\]</div>
-<p>Note that even through the approximation formula is the same for all 3 points, the error in this formula is much worse at the endpoints (<span class="math notranslate nohighlight">\(\mathcal{O}(h)\)</span> versus <span class="math notranslate nohighlight">\(\mathcal{O}(h^2)\)</span>).  In homework you will see that you can also derive the central difference formula using a Taylor series expansion (including errors) about <span class="math notranslate nohighlight">\(x_1\)</span> and then using the mean value theorem to combine the errors at the points <span class="math notranslate nohighlight">\(x_1\pm h\)</span> at a new, also unknown, point <span class="math notranslate nohighlight">\(\eta\)</span> to get</p>
+<p>where we have dropped the higher order error terms.  Note that even through the approximation formula is the same for all 3 points, the error in this formula is much worse at the endpoints (<span class="math notranslate nohighlight">\(\mathcal{O}(h)\)</span> versus <span class="math notranslate nohighlight">\(\mathcal{O}(h^2)\)</span>).  In homework you will see that you can also derive the central difference formula using a Taylor series expansion (including errors) about <span class="math notranslate nohighlight">\(x_1\)</span> and then using the mean value theorem to combine the errors at the points <span class="math notranslate nohighlight">\(x_1\pm h\)</span> at a new, also unknown, point <span class="math notranslate nohighlight">\(\eta\)</span> to get</p>
 <div class="math notranslate nohighlight">
-\[ f''(x_1) = \frac{f(x_0)-2f(x_1)+f(x_2)}{h^2} -\frac{h^2}{12}f(4)(\eta). \]</div>
+\[ f''(x_1) \approx \frac{f(x_0)-2f(x_1)+f(x_2)}{h^2} -\frac{h^2}{12}f^{(4)}(\eta). \]</div>
 </div>
 
     <script type="text/x-thebe-config">
