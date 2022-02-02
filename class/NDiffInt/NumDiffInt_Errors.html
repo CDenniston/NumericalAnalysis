@@ -397,13 +397,13 @@
 <p>Taking the derivative <a class="reference internal" href="#equation-errprime">(25)</a> yields</p>
 <div class="math notranslate nohighlight">
 \[\begin{split}
-\begin{align} \epsilon''(x) = &amp; \frac{f^{n+1}(\xi)}{(n+1)!}\left[\sum_{m=0}^n \sum_{k=0}^n \prod_{j=0,j\neq k,m}^n (x-x_j)\right]\\
+\begin{align} \epsilon''(x) = &amp; \frac{f^{n+1}(\xi)}{(n+1)!}\left[ \sum_{k=0}^n \sum_{m=0, m\neq k}^n \prod_{j=0,j\neq k,m}^n (x-x_j)\right]\\
 &amp; + \frac{f^{n+2}(\xi)\xi''+f^{n+3}(\xi)\xi'}{(n+1)!}\prod_{j=0}^n (x-x_j) \\
 &amp;+ \frac{f^{n+2}(\xi)\xi'}{(n+1)!}\left[\sum_{k=0}^n \prod_{j=0,j\neq k}^n (x-x_j)\right],\end{align}\end{split}\]</div>
 <p>Evaluating this at one of the gridpoints, say <span class="math notranslate nohighlight">\(x_i\)</span>, simplifies the expression to,</p>
 <div class="math notranslate nohighlight">
 \[
-\begin{equation} \epsilon'(x_i) = \frac{f^{n+1}(\xi)}{(n+1)!}\prod_{j=0,j\neq i}^n (x_i-x_j). \end{equation}\]</div>
+\begin{equation} \epsilon''(x_i) = +\frac{f^{n+2}(\xi)\xi'}{(n+1)!}\prod_{j=0,j\neq i}^n (x_i-x_j). \end{equation}\]</div>
 </div>
 
     <script type="text/x-thebe-config">
