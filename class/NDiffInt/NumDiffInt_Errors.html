@@ -544,7 +544,7 @@ f''(x_2)
 \[
 f'(x_1)=\frac{f(x_2)-f(x_0)}{2h}-\frac{h^2}{6}f^{(3)}(\xi),
 \]</div>
-<p>involves two things we warned about when we talked about <a class="reference internal" href="../ErrorsModule/RoundoffAmplification.html"><span class="doc std std-doc">roundoff errors</span></a>.  Namely, subtraction of two similar numbers, the <span class="math notranslate nohighlight">\(f(x_2)-f(x_0)\)</span>, and division by a small number <span class="math notranslate nohighlight">\(h\)</span>.  As a result, attempting to obtain the “exact” value of <span class="math notranslate nohighlight">\(f`(x_1)\)</span> by taking ever smaller <span class="math notranslate nohighlight">\(h\)</span> is <strong>not</strong> a numerically stable operation as we will now demonstrate.</p>
+<p>involves two things we warned about when we talked about <a class="reference internal" href="../ErrorsModule/RoundoffAmplification.html"><span class="doc std std-doc">roundoff errors</span></a>.  Namely, subtraction of two similar numbers, the <span class="math notranslate nohighlight">\(f(x_2)-f(x_0)\)</span>, and division by a small number <span class="math notranslate nohighlight">\(h\)</span>.  As a result, attempting to obtain the “exact” value of <span class="math notranslate nohighlight">\(f'(x_1)\)</span> by taking ever smaller <span class="math notranslate nohighlight">\(h\)</span> is <strong>not</strong> a numerically stable operation as we will now demonstrate.</p>
 <p>As in our discussion of <a class="reference internal" href="../ErrorsModule/HornersAlgorithm.html"><span class="doc std std-doc">roundoff errors</span></a> let <span class="math notranslate nohighlight">\(\mathcal{fl}(.)\)</span> denote the finite precision arithmetic on the computer, i.e.</p>
 <div class="math notranslate nohighlight">
 \[
@@ -568,7 +568,7 @@ E(h) \leq \frac{\beta}{h} + \frac{h^2}{6}|f^{(3)}(\xi)|.
 \[
 \frac{dE}{dh}\approx -\frac{\beta}{h^2}+\frac{h}{3}|f^{(3)}(\xi)| = 0.
 \]</div>
-<p>Solving this for the optimal <span class="math notranslate nohighlight">\(h_op\)</span> gives</p>
+<p>Solving this for the optimal <span class="math notranslate nohighlight">\(h_{op}\)</span> gives</p>
 <div class="math notranslate nohighlight">
 \[
 h_{op}=  \sqrt[3]{\frac{3 \beta}{|f^{(3)}(\xi)|}}.
@@ -578,7 +578,7 @@ h_{op}=  \sqrt[3]{\frac{3 \beta}{|f^{(3)}(\xi)|}}.
 <span class="eqno">(29)<a class="headerlink" href="#equation-hop" title="Permalink to this equation">¶</a></span>\[
 h_{op}\approx  \sqrt[3]{\frac{3 \epsilon_r |f(x)|}{|f^{(3)}(x)|}}.
 \]</div>
-<p><strong>Example</strong> Suppose we use the central difference formula to evaluate the derivative of <span class="math notranslate nohighlight">\(f(x)=e^x\)</span>.  What is the error and what is the optimal <span class="math notranslate nohighlight">\(h_op\)</span>?</p>
+<p><strong>Example</strong> Suppose we use the central difference formula to evaluate the derivative of <span class="math notranslate nohighlight">\(f(x)=e^x\)</span>.  What is the error and what is the optimal <span class="math notranslate nohighlight">\(h_{op}\)</span>?</p>
 <p>First note that we can work out the analytic derivative (<span class="math notranslate nohighlight">\(f'(x)=e^x\)</span>) and the third derivative here (<span class="math notranslate nohighlight">\(f^{(3)}(x)=e^x\)</span>).  In this case, <a class="reference internal" href="#equation-hop">(29)</a> then gives,</p>
 <div class="math notranslate nohighlight">
 \[
@@ -604,6 +604,7 @@ h_{op}=6.7\times 10^{-6}.
 </div>
 </div>
 <p>Indeed, we do see the minimum in the error plot is around our calculated <span class="math notranslate nohighlight">\(h_{op}\)</span>.  Interestingly, the error using <span class="math notranslate nohighlight">\(h=10^{-12}\)</span> is comparable to the error using <span class="math notranslate nohighlight">\(h=10^{-2}\)</span>.  Also, the part of the curve dominated by roundoff errors (<span class="math notranslate nohighlight">\(h&lt;h_{op}\)</span>) is quite noisy.  This is simply a refection of the somewhat unpreditable nature or roundoff errors.  Importantly, our arguments correctly predict the trends here.  In practise, though, one should keep in mind that roundoff errors may fluctuate an order or magnitude around these trends.</p>
+<p>Note that similar problems arise when attempting to apply numerical differentiation to noisy data (data with stochastic noise).  A similar construction with the errors being from stochastic noise rather than roundoff limits how small <span class="math notranslate nohighlight">\(h\)</span> can be before the results for the derivative become less accurate.  In this case, a presmoothing operation to reduce the noise amplitude should be applied before attempting to construct a finite difference for the derivative.</p>
 </div>
 </div>
 
