@@ -155,7 +155,7 @@ f(x_2)
 \left[{\begin{array}{c}
 \frac{-3f(x_0)+4f(x_1)-f(x_2)}{2h} \\
 \frac{f(x_2)-f(x_0)}{2h} \\
-\frac{3f(x_2)-4f(x_1)+f(x_0)}{2h} \\
+\frac{3f(x_2)-4f(x_1)+f(x_0)}{2h}
 \end{array}} \right].
 \end{align}
 $$  
