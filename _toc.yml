@@ -22,6 +22,7 @@ parts:
   chapters:
   - file: class/NDiffInt/NumDiffInt
   - file: class/NDiffInt/NumDiffInt_Errors
+  - file: class/NDiffInt/Int
 - caption: Mikko Extras
   chapters:
   - file: extras/coding-notes-general
