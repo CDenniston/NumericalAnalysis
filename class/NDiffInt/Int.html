@@ -437,13 +437,13 @@ E =  \int_a^b  \frac{f^{n+1}(\xi)}{(n+1)!}\prod_{j=0}^n (x-x_j) dx.
 \]</div>
 <p><strong>Example: Trapezoidal Rule.</strong>  Here we use a linear interpolation between the endpoints so <span class="math notranslate nohighlight">\(x_0=a\)</span> and <span class="math notranslate nohighlight">\(x_1=b\)</span>.  Integration of the Lagrange polynomials for this case gives</p>
 <div class="math notranslate nohighlight">
-\[
+\[\begin{split}
 \begin{align}
-a_0 &amp;= \int_a^b L_0(x) dx,
-&amp;= \int_a^b \frac{x-x_1}{x_0-x_1) dx
+a_0 &amp;= \int_a^b L_0(x) dx,\\
+&amp;= \int_a^b \frac{x-x_1}{x_0-x_1) dx,\\
 &amp;= \frac{b-a}{2}.
 \end{align}
-\]</div>
+\end{split}\]</div>
 <p>A very similar integration for <span class="math notranslate nohighlight">\(L_1(x)\)</span> gives</p>
 <div class="math notranslate nohighlight">
 \[
