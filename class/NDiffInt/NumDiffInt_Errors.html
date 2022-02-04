@@ -61,7 +61,7 @@
     <link rel="canonical" href="https://cdenniston.github.io/NumericalAnalysis/class/NDiffInt/NumDiffInt_Errors.html" />
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
-    <link rel="next" title="On computation and codes" href="../../extras/coding-notes-general.html" />
+    <link rel="next" title="Numerical Integration" href="Int.html" />
     <link rel="prev" title="Numerical Differentiation" href="NumDiffInt.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="None">
@@ -199,6 +199,11 @@
  <li class="toctree-l1 current active">
   <a class="current reference internal" href="#">
    Errors in Numerical Differentiation
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="Int.html">
+   Numerical Integration
   </a>
  </li>
 </ul>
@@ -604,7 +609,7 @@ h_{op}=6.7\times 10^{-6}.
 </div>
 </div>
 <p>Indeed, we do see the minimum in the error plot is around our calculated <span class="math notranslate nohighlight">\(h_{op}\)</span>.  Interestingly, the error using <span class="math notranslate nohighlight">\(h=10^{-12}\)</span> is comparable to the error using <span class="math notranslate nohighlight">\(h=10^{-2}\)</span>.  Also, the part of the curve dominated by roundoff errors (<span class="math notranslate nohighlight">\(h&lt;h_{op}\)</span>) is quite noisy.  This is simply a refection of the somewhat unpreditable nature or roundoff errors.  Importantly, our arguments correctly predict the trends here.  In practise, though, one should keep in mind that roundoff errors may fluctuate an order or magnitude around these trends.</p>
-<p>Note that similar problems arise when attempting to apply numerical differentiation to noisy data (data with stochastic noise).  A similar construction with the errors being from stochastic noise rather than roundoff limits how small <span class="math notranslate nohighlight">\(h\)</span> can be before the results for the derivative become less accurate.  In this case, a presmoothing operation to reduce the noise amplitude should be applied before attempting to construct a finite difference for the derivative.</p>
+<p>Note that similar problems arise when attempting to apply numerical differentiation to noisy data (data with stochastic noise).  A similar construction, with the errors being from stochastic noise rather than roundoff, limits how small <span class="math notranslate nohighlight">\(h\)</span> can be before the results for the derivative become less accurate.  In this case, a presmoothing operation to reduce the noise amplitude should be applied before attempting to construct a finite difference for the derivative.</p>
 </div>
 </div>
 
@@ -640,10 +645,10 @@ h_{op}=6.7\times 10^{-6}.
             <p class="prev-next-title">Numerical Differentiation</p>
         </div>
     </a>
-    <a class='right-next' id="next-link" href="../../extras/coding-notes-general.html" title="next page">
+    <a class='right-next' id="next-link" href="Int.html" title="next page">
     <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">On computation and codes</p>
+        <p class="prev-next-title">Numerical Integration</p>
     </div>
     <i class="fas fa-angle-right"></i>
     </a>
