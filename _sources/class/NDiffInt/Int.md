@@ -12,51 +12,51 @@ where $p(x)$ is our interpolation and $\epsilon(x)$ is the error in the interpol
 
 $$ \int_a^b f(x) dx= \int_a^b p(x) dx + \int_a^b \epsilon(x) dx.$$
 
-Applying this to Lagrange interpolation we get
+Applying this to Lagrange interpolation we get  
 
 $$
 \begin{align}
-\int_a^b f(x) dx &approx \int_a^b \sum_{k=0}^n f(x_k) L_k(x) dx,\\
+\int_a^b f(x) dx &\approx \int_a^b \sum_{k=0}^n f(x_k) L_k(x) dx,\\
 & = \sum_{k=0}^n f(x_k)  \int_a^b L_k(x) dx,\\
 & = \sum_{k=0}^n a_k f(x_k),
 \end{align}
 $$ (LagrangeInt)
 
-with
+with  
 
 $$
 a_k=\int_a^b L_k(x) dx,
 $$
 
-and error
+and error  
 
 $$
 E =  \int_a^b  \frac{f^{n+1}(\xi)}{(n+1)!}\prod_{j=0}^n (x-x_j) dx.
-$$
+$$  
 
-** Example: Trapezoidal Rule. **  Here we use a linear interpolation between the endpoints so $x_0=a$ and $x_1=b$.  Integration of the Lagrange polynomials for this case gives
+**Example: Trapezoidal Rule.**  Here we use a linear interpolation between the endpoints so $x_0=a$ and $x_1=b$.  Integration of the Lagrange polynomials for this case gives  
  
 $$
 \begin{align}
-a_0 &=\int_a^b L_0(x) dx,
+a_0 &= \int_a^b L_0(x) dx,
 &= \int_a^b \frac{x-x_1}{x_0-x_1) dx
 &= \frac{b-a}{2}.
 \end{align}
-$$
+$$  
 
-A very similar integration for $L_1(x)$ gives
+A very similar integration for $L_1(x)$ gives  
 
 $$
 a_1 =\int_a^b L_0(x) dx = \frac{b-a}{2}.
 $$
 
-Putting this into Eq. {eq}`LagrangeInt` yields
+Putting this into Eq. {eq}`LagrangeInt` yields  
 
 $$
-\int_a^b f(x) dx \approx \frac{b-a}{2}\left(f(a)+f(b)).
+\int_a^b f(x) dx \approx \frac{b-a}{2}\left(f(a)+f(b)\right).
 $$
 
-This is called the *trapezoidal$ rule as the shape under the line we are integration over is a trapezoid.  To find the error,
+This is called the *trapezoidal* rule as the shape under the line we are integration over is a trapezoid.  To find the error,
 
 $$
 E =  \int_{x_0}^{x_1}  \frac{f''(\xi)}{2}(x-x_0)(x-x_1) dx.
@@ -66,10 +66,11 @@ The difficulty here is that $\xi$ depends on $x$ in an unknown manner.  Noting t
 
 ````{dropdown} **The Weighted Mean Value Theorem**  
 
-If $f(x)$ is continuously and $g(x)$ is an integrable function that does not change sign on $[a,b]$, then there exists $\eta \in (a,b)$ such that
+If $f(x)$ is continuously and $g(x)$ is an integrable function that does not change sign on $[a,b]$, then there exists $\eta \in (a,b)$ such that  
 
+$$
 \int_a^b f(x)g(x) dx = f(\eta)\int_a^b g(x)dx.
-
+$$
 
 ````
 
@@ -80,6 +81,7 @@ $$
 E &= \frac{f''(\eta)}{2} \int_{x_0}^{x_1} (x-x_0)(x-x_1) dx,\\
 &= - \frac{(x_1-x_0)^3}{6} f''(\eta),\\
 &= - \frac{(b-a)^3}{6} f''(\eta),
+\end{align}
 $$
 
 for some (unknown) $\eta\in (a,b)$.
