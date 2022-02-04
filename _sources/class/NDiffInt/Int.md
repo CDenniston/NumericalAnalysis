@@ -39,7 +39,7 @@ $$
 $$
 \begin{align}
 a_0 &= \int_a^b L_0(x) dx,\\
-&= \int_a^b \frac{x-x_1}{x_0-x_1) dx,\\
+&= \int_a^b \frac{x-x_1}{x_0-x_1} dx,\\
 &= \frac{b-a}{2}.
 \end{align}
 $$  
