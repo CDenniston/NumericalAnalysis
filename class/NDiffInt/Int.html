@@ -492,8 +492,8 @@ E &amp;= \frac{f''(\eta)}{2} \int_{x_0}^{x_1} (x-x_0)(x-x_1) dx,\\
 \[\begin{split}
 \begin{align}
 \int_a^b f(x) dx &amp;= \int_{x^0}^{x_1} f(x) dx + \int_{x^1}^{x_2} f(x) dx + \cdots +\int_{x^{n-1}}^{x_n} f(x) dx,\\
-&amp;= \sum_j=0^{n-1} \int_{x_j}^{x_{j+1} f(x) dx,\\
-&amp;= \sum_j=0^{n-1} \frac{h}{2}(f(x_j)+f(x_{j+1})) - \frac{h^3}{12} \sum_j=0^{n-1} f''(\xi_j).
+&amp;= \sum_{j=0}^{n-1} \int_{x_j}^{x_{j+1} f(x) dx,\\
+&amp;= \sum_{j=0}^{n-1} \frac{h}{2}(f(x_j)+f(x_{j+1})) - \frac{h^3}{12} \sum_{j=0}^{n-1} f''(\xi_j).
 \end{align}
 \end{split}\]</div>
 <p>Note that the unknown <span class="math notranslate nohighlight">\(\xi_j\)</span>’s are each in a differnt subinterval <span class="math notranslate nohighlight">\((x_j,x_{j+1})\)</span>. In additon, any given <span class="math notranslate nohighlight">\(f(x_i)\)</span> appears in two terms in the first sum, except for the endpoints.  We can the rearrange the terms to get</p>
@@ -501,7 +501,7 @@ E &amp;= \frac{f''(\eta)}{2} \int_{x_0}^{x_1} (x-x_0)(x-x_1) dx,\\
 \[
 \begin{align}
 \int_a^b f(x) dx 
-&amp;= \sum_j=0^{n-1} \frac{h}{2}(f(a) + 2 \sum_j=1^{n-1} f(x_j)+f(b)) - \frac{(nh)h^2}{12} \frac{\sum_j=0^{n-1} f''(\xi_j)}{n}.
+&amp;= \sum_{j=0}^{n-1} \frac{h}{2}(f(a) + 2 \sum_{j=1}^{n-1} f(x_j)+f(b)) - \frac{(nh)h^2}{12} \frac{\sum_{j=0}^{n-1} f''(\xi_j)}{n}.
 \end{align}
 \]</div>
 <p>The sum in the error term is the mean value of <span class="math notranslate nohighlight">\(n\)</span> values of <span class="math notranslate nohighlight">\(f''(x)\)</span> at different values in <span class="math notranslate nohighlight">\((a,b)\)</span>.  It is not too hard to argue that, if <span class="math notranslate nohighlight">\(f''(x)\)</span> is continuous on <span class="math notranslate nohighlight">\([a,b]\)</span>, that this mean value is realized at some <span class="math notranslate nohighlight">\(x=\eta\)</span>.  As such, we can write this as</p>
@@ -509,7 +509,7 @@ E &amp;= \frac{f''(\eta)}{2} \int_{x_0}^{x_1} (x-x_0)(x-x_1) dx,\\
 \[
 \begin{align}
 \int_a^b f(x) dx 
-&amp;= \sum_j=0^{n-1} \frac{h}{2}(f(a) + 2 \sum_j=1^{n-1} f(x_j)+f(b)) - \frac{h^2(b-a)}{12} f''(\eta),
+&amp;= \frac{h}{2}(f(a) + 2 \sum_{j=1}^{n-1} f(x_j)+f(b)) - \frac{h^2(b-a)}{12} f''(\eta),
 \end{align}
 \]</div>
 <p>where we also used the fact that <span class="math notranslate nohighlight">\(nh=(b-a)\)</span>.</p>

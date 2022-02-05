@@ -92,22 +92,22 @@ To improve upon the trapezoidal rule (i.e. reduce the error) we could use more p
 
 ### Composite Integration
 
-Let's assume that we are given data at equally spaced points $x_j=a+jh$ on the interval $[a,b]$, for $j=0,\cdots,n$ so $h=(b-a)/n$.  We break up the integral into $n$ separate intevals over each segment $(x_j,x_{j+1})$ and apply the trapezoidal rule to each segment:
+Let's assume that we are given data at equally spaced points $x_j=a+jh$ on the interval $[a,b]$, for $j=0,\cdots,n$ so $h=(b-a)/n$.  We break up the integral into $n$ separate intevals over each segment $(x_j,x_{j+1})$ and apply the trapezoidal rule to each segment:  
 
 $$
 \begin{align}
 \int_a^b f(x) dx &= \int_{x^0}^{x_1} f(x) dx + \int_{x^1}^{x_2} f(x) dx + \cdots +\int_{x^{n-1}}^{x_n} f(x) dx,\\
-&= \sum_j=0^{n-1} \int_{x_j}^{x_{j+1} f(x) dx,\\
-&= \sum_j=0^{n-1} \frac{h}{2}(f(x_j)+f(x_{j+1})) - \frac{h^3}{12} \sum_j=0^{n-1} f''(\xi_j).
+&= \sum_{j=0}^{n-1} \int_{x_j}^{x_{j+1} f(x) dx,\\
+&= \sum_{j=0}^{n-1} \frac{h}{2}(f(x_j)+f(x_{j+1})) - \frac{h^3}{12} \sum_{j=0}^{n-1} f''(\xi_j).
 \end{align}
-$$
+$$  
 
 Note that the unknown $\xi_j$'s are each in a differnt subinterval $(x_j,x_{j+1})$. In additon, any given $f(x_i)$ appears in two terms in the first sum, except for the endpoints.  We can the rearrange the terms to get
 
 $$
 \begin{align}
 \int_a^b f(x) dx 
-&= \sum_j=0^{n-1} \frac{h}{2}(f(a) + 2 \sum_j=1^{n-1} f(x_j)+f(b)) - \frac{(nh)h^2}{12} \frac{\sum_j=0^{n-1} f''(\xi_j)}{n}.
+&= \sum_{j=0}^{n-1} \frac{h}{2}(f(a) + 2 \sum_{j=1}^{n-1} f(x_j)+f(b)) - \frac{(nh)h^2}{12} \frac{\sum_{j=0}^{n-1} f''(\xi_j)}{n}.
 \end{align}
 $$
 
@@ -116,7 +116,7 @@ The sum in the error term is the mean value of $n$ values of $f''(x)$ at differe
 $$
 \begin{align}
 \int_a^b f(x) dx 
-&= \sum_j=0^{n-1} \frac{h}{2}(f(a) + 2 \sum_j=1^{n-1} f(x_j)+f(b)) - \frac{h^2(b-a)}{12} f''(\eta),
+&= \frac{h}{2}(f(a) + 2 \sum_{j=1}^{n-1} f(x_j)+f(b)) - \frac{h^2(b-a)}{12} f''(\eta),
 \end{align}
 $$
 
