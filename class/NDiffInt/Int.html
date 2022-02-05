@@ -373,6 +373,11 @@
    Composite Integration
   </a>
  </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#stability">
+   Stability
+  </a>
+ </li>
 </ul>
 
             </nav>
@@ -396,6 +401,11 @@
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#composite-integration">
    Composite Integration
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#stability">
+   Stability
   </a>
  </li>
 </ul>
@@ -501,7 +511,7 @@ E &amp;= \frac{f''(\eta)}{2} \int_{x_0}^{x_1} (x-x_0)(x-x_1) dx,\\
 \[
 \begin{align}
 \int_a^b f(x) dx 
-&amp;= \sum_{j=0}^{n-1} \frac{h}{2}(f(a) + 2 \sum_{j=1}^{n-1} f(x_j)+f(b)) - \frac{(nh)h^2}{12} \frac{\sum_{j=0}^{n-1} f''(\xi_j)}{n}.
+&amp;= \frac{h}{2}(f(a) + 2 \sum_{j=1}^{n-1} f(x_j)+f(b)) - \frac{(nh)h^2}{12} \frac{\sum_{j=0}^{n-1} f''(\xi_j)}{n}.
 \end{align}
 \]</div>
 <p>The sum in the error term is the mean value of <span class="math notranslate nohighlight">\(n\)</span> values of <span class="math notranslate nohighlight">\(f''(x)\)</span> at different values in <span class="math notranslate nohighlight">\((a,b)\)</span>.  It is not too hard to argue that, if <span class="math notranslate nohighlight">\(f''(x)\)</span> is continuous on <span class="math notranslate nohighlight">\([a,b]\)</span>, that this mean value is realized at some <span class="math notranslate nohighlight">\(x=\eta\)</span>.  As such, we can write this as</p>
@@ -509,10 +519,37 @@ E &amp;= \frac{f''(\eta)}{2} \int_{x_0}^{x_1} (x-x_0)(x-x_1) dx,\\
 \[
 \begin{align}
 \int_a^b f(x) dx 
-&amp;= \frac{h}{2}(f(a) + 2 \sum_{j=1}^{n-1} f(x_j)+f(b)) - \frac{h^2(b-a)}{12} f''(\eta),
+&amp;= \frac{h}{2}\left(f(a) + 2 \sum_{j=1}^{n-1} f(x_j)+f(b)\right) - (b-a)\frac{h^2}{12} f''(\eta),
 \end{align}
 \]</div>
 <p>where we also used the fact that <span class="math notranslate nohighlight">\(nh=(b-a)\)</span>.</p>
+</div>
+<div class="section" id="stability">
+<h2>Stability<a class="headerlink" href="#stability" title="Permalink to this headline">¶</a></h2>
+<p>We discovered that numerical differentiation using finite differences was numerically unstable for small <span class="math notranslate nohighlight">\(h\)</span>.  We now examine the stability of numerical integration, and in particular, the composite trapezoidal rule.   As in <a class="reference internal" href="NumDiffInt_Errors.html"><span class="doc std std-doc">that discussion</span></a>, we will let <span class="math notranslate nohighlight">\(\mathcal{fl}(.)\)</span> denote the finite precision arithmetic on the computer, i.e.</p>
+<div class="math notranslate nohighlight">
+\[
+\mathcal{fl}(f(x))=f(x) + e_r(x)
+\]</div>
+<p>where <span class="math notranslate nohighlight">\(e_r\)</span> is the roundoff error. The error in evaluation of the composite trapezoidal run is then</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\begin{align}
+E(h) &amp;= \left| \int_a^b f(x) dx - \mathcal{fl}\left( \frac{h}{2}\left(f(a) + 2 \sum_{j=1}^{n-1} f(x_j)+f(b)\right)  \right) \right|,\\
+&amp;= \left| \frac{h}{2}\left(e_r(a) + 2 \sum_{j=1}^{n-1} e_r(x_j)+e_r(b)\right)  - (b-a)\frac{h^2}{12} f''(\eta) \right|,\\
+\end{align}
+\end{split}\]</div>
+<p>Again, roundoff errors are unlikely to be correlated and, in particular, are as likely to be positive as negative.  We do expect it to be bounded so let’s assume <span class="math notranslate nohighlight">\(|e_r(x)|&lt;\beta\)</span>. Putting this together, along with use of the triangle inequality gives</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\begin{align}
+E(h) &amp; \leq (b-a)\frac{h^2}{12}\left| f''(\eta) \right| + \frac{h}{2}\left( \beta + 2 (n-1) \beta + \beta),\\
+&amp;= (b-a)\frac{h^2}{12}\left| f''(\eta) \right| + nh \beta,\\
+&amp;= (b-a)\frac{h^2}{12}\left| f''(\eta) \right| + (b-a)\beta.
+\end{align}
+\end{split}\]</div>
+<p>Examining this result, we see that as <span class="math notranslate nohighlight">\(h\rightarrow 0\)</span> the truncation error (first term) goes to zero while the second term remains constant (in contrast to differentiation where the roundoff error became bigger).  We conclude that numerical integration is stable as <span class="math notranslate nohighlight">\(h\rightarrow 0\)</span>.</p>
+<p>Again, similar arguments can be applied to numerical integration of noisy data (data with stochastic noise).  In this case, numerical integration can be applied directly without any presmoothing operation (in fact, you should <em>not</em> apply a presmoothing operation).</p>
 </div>
 </div>
 
