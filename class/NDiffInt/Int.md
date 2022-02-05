@@ -107,7 +107,7 @@ Note that the unknown $\xi_j$'s are each in a differnt subinterval $(x_j,x_{j+1}
 $$
 \begin{align}
 \int_a^b f(x) dx 
-&= \sum_{j=0}^{n-1} \frac{h}{2}(f(a) + 2 \sum_{j=1}^{n-1} f(x_j)+f(b)) - \frac{(nh)h^2}{12} \frac{\sum_{j=0}^{n-1} f''(\xi_j)}{n}.
+&= \frac{h}{2}(f(a) + 2 \sum_{j=1}^{n-1} f(x_j)+f(b)) - \frac{(nh)h^2}{12} \frac{\sum_{j=0}^{n-1} f''(\xi_j)}{n}.
 \end{align}
 $$
 
@@ -116,7 +116,7 @@ The sum in the error term is the mean value of $n$ values of $f''(x)$ at differe
 $$
 \begin{align}
 \int_a^b f(x) dx 
-&= \frac{h}{2}(f(a) + 2 \sum_{j=1}^{n-1} f(x_j)+f(b)) - \frac{h^2(b-a)}{12} f''(\eta),
+&= \frac{h}{2}\left(f(a) + 2 \sum_{j=1}^{n-1} f(x_j)+f(b)\right) - (b-a)\frac{h^2}{12} f''(\eta),
 \end{align}
 $$
 
@@ -124,3 +124,33 @@ where we also used the fact that $nh=(b-a)$.
 
 
 
+### Stability
+
+We discovered that numerical differentiation using finite differences was numerically unstable for small $h$.  We now examine the stability of numerical integration, and in particular, the composite trapezoidal rule.   As in [that discussion](./NumDiffInt_Errors), we will let $\mathcal{fl}(.)$ denote the finite precision arithmetic on the computer, i.e.
+
+$$
+\mathcal{fl}(f(x))=f(x) + e_r(x)
+$$
+
+where $e_r$ is the roundoff error. The error in evaluation of the composite trapezoidal run is then
+
+$$
+\begin{align}
+E(h) &= \left| \int_a^b f(x) dx - \mathcal{fl}\left( \frac{h}{2}\left(f(a) + 2 \sum_{j=1}^{n-1} f(x_j)+f(b)\right)  \right) \right|,\\
+&= \left| \frac{h}{2}\left(e_r(a) + 2 \sum_{j=1}^{n-1} e_r(x_j)+e_r(b)\right)  - (b-a)\frac{h^2}{12} f''(\eta) \right|,\\
+\end{align}
+$$
+
+Again, roundoff errors are unlikely to be correlated and, in particular, are as likely to be positive as negative.  We do expect it to be bounded so let's assume $|e_r(x)|<\beta$. Putting this together, along with use of the triangle inequality gives
+
+$$
+\begin{align}
+E(h) & \leq (b-a)\frac{h^2}{12}\left| f''(\eta) \right| + \frac{h}{2}\left( \beta + 2 (n-1) \beta + \beta),\\
+&= (b-a)\frac{h^2}{12}\left| f''(\eta) \right| + nh \beta,\\
+&= (b-a)\frac{h^2}{12}\left| f''(\eta) \right| + (b-a)\beta.
+\end{align}
+$$
+
+Examining this result, we see that as $h\rightarrow 0$ the truncation error (first term) goes to zero while the second term remains constant (in contrast to differentiation where the roundoff error became bigger).  We conclude that numerical integration is stable as $h\rightarrow 0$.
+
+Again, similar arguments can be applied to numerical integration of noisy data (data with stochastic noise).  In this case, numerical integration can be applied directly without any presmoothing operation (in fact, you should *not* apply a presmoothing operation). 
