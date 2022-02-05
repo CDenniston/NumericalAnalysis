@@ -97,7 +97,7 @@ Let's assume that we are given data at equally spaced points $x_j=a+jh$ on the i
 $$
 \begin{align}
 \int_a^b f(x) dx &= \int_{x^0}^{x_1} f(x) dx + \int_{x^1}^{x_2} f(x) dx + \cdots +\int_{x^{n-1}}^{x_n} f(x) dx,\\
-&= \sum_{j=0}^{n-1} \int_{x_j}^{x_{j+1} f(x) dx,\\
+&= \sum_{j=0}^{n-1} \int_{x_j}^{x_{j+1}} f(x) dx,\\
 &= \sum_{j=0}^{n-1} \frac{h}{2}(f(x_j)+f(x_{j+1})) - \frac{h^3}{12} \sum_{j=0}^{n-1} f''(\xi_j).
 \end{align}
 $$  
