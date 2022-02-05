@@ -145,7 +145,7 @@ Again, roundoff errors are unlikely to be correlated and, in particular, are as 
 
 $$
 \begin{align}
-E(h) & \leq (b-a)\frac{h^2}{12}\left| f''(\eta) \right| + \frac{h}{2}\left( \beta + 2 (n-1) \beta + \beta),\\
+E(h) &\leq (b-a)\frac{h^2}{12}\left| f''(\eta) \right| + \frac{h}{2}\left( \beta + 2 (n-1) \beta + \beta),\\
 &= (b-a)\frac{h^2}{12}\left| f''(\eta) \right| + nh \beta,\\
 &= (b-a)\frac{h^2}{12}\left| f''(\eta) \right| + (b-a)\beta.
 \end{align}
