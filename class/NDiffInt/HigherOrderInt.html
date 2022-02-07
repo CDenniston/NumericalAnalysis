@@ -5,7 +5,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Truncation Error in Taylor’s series &#8212; Numerical Analysis</title>
+    <title>Higher Order Integration Schemes &#8212; Numerical Analysis</title>
     
   <link href="../../_static/css/theme.css" rel="stylesheet">
   <link href="../../_static/css/index.ff1ffe594081f20da1ef19478df9384b.css" rel="stylesheet">
@@ -58,11 +58,11 @@
         const thebe_selector_output = ".output,.cell_output"
     </script>
     <script async="async" src="../../_static/sphinx-thebe.js"></script>
-    <link rel="canonical" href="https://cdenniston.github.io/NumericalAnalysis/class/ErrorsModule/TaylorExample.html" />
+    <link rel="canonical" href="https://cdenniston.github.io/NumericalAnalysis/class/NDiffInt/HigherOrderInt.html" />
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
-    <link rel="next" title="Finite Precision" href="FinitePrecision.html" />
-    <link rel="prev" title="Sources of Errors in Scientific Computing" href="Error_sources.html" />
+    <link rel="next" title="On computation and codes" href="../../extras/coding-notes-general.html" />
+    <link rel="prev" title="Numerical Integration" href="Int.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="None">
     
@@ -111,39 +111,39 @@
   Part 1 - Errors in Scientific Computing
  </span>
 </p>
-<ul class="current nav bd-sidenav">
+<ul class="nav bd-sidenav">
  <li class="toctree-l1">
-  <a class="reference internal" href="Errors_summary.html">
+  <a class="reference internal" href="../ErrorsModule/Errors_summary.html">
    Numerical Analysis
   </a>
  </li>
  <li class="toctree-l1">
-  <a class="reference internal" href="Error_sources.html">
+  <a class="reference internal" href="../ErrorsModule/Error_sources.html">
    Sources of Errors in Scientific Computing
   </a>
  </li>
- <li class="toctree-l1 current active">
-  <a class="current reference internal" href="#">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../ErrorsModule/TaylorExample.html">
    Truncation Error in Taylor’s series
   </a>
  </li>
  <li class="toctree-l1">
-  <a class="reference internal" href="FinitePrecision.html">
+  <a class="reference internal" href="../ErrorsModule/FinitePrecision.html">
    Finite Precision
   </a>
  </li>
  <li class="toctree-l1">
-  <a class="reference internal" href="HornersAlgorithm.html">
+  <a class="reference internal" href="../ErrorsModule/HornersAlgorithm.html">
    Example: Evaluating polynomials
   </a>
  </li>
  <li class="toctree-l1">
-  <a class="reference internal" href="RoundoffAmplification.html">
+  <a class="reference internal" href="../ErrorsModule/RoundoffAmplification.html">
    Roundoff Error Amplification
   </a>
  </li>
  <li class="toctree-l1">
-  <a class="reference internal" href="BackwardForwardConditioning.html">
+  <a class="reference internal" href="../ErrorsModule/BackwardForwardConditioning.html">
    Forward and Backwards Errors
   </a>
  </li>
@@ -190,24 +190,24 @@
   Part 3 - Numerical Differentiation &amp; Integration
  </span>
 </p>
-<ul class="nav bd-sidenav">
+<ul class="current nav bd-sidenav">
  <li class="toctree-l1">
-  <a class="reference internal" href="../NDiffInt/NumDiffInt.html">
+  <a class="reference internal" href="NumDiffInt.html">
    Numerical Differentiation
   </a>
  </li>
  <li class="toctree-l1">
-  <a class="reference internal" href="../NDiffInt/NumDiffInt_Errors.html">
+  <a class="reference internal" href="NumDiffInt_Errors.html">
    Errors in Numerical Differentiation
   </a>
  </li>
  <li class="toctree-l1">
-  <a class="reference internal" href="../NDiffInt/Int.html">
+  <a class="reference internal" href="Int.html">
    Numerical Integration
   </a>
  </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="../NDiffInt/HigherOrderInt.html">
+ <li class="toctree-l1 current active">
+  <a class="current reference internal" href="#">
    Higher Order Integration Schemes
   </a>
  </li>
@@ -343,7 +343,7 @@
         <!-- ipynb file if we had a myst markdown file -->
         
         <!-- Download raw file -->
-        <a class="dropdown-buttons" href="../../_sources/class/ErrorsModule/TaylorExample.ipynb"><button type="button"
+        <a class="dropdown-buttons" href="../../_sources/class/NDiffInt/HigherOrderInt.ipynb"><button type="button"
                 class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
                 data-placement="left">.ipynb</button></a>
         <!-- Download PDF via print -->
@@ -368,7 +368,7 @@
         aria-label="Launch interactive content"><i class="fas fa-rocket"></i></button>
     <div class="dropdown-buttons">
         
-        <a class="binder-button" href="https://mybinder.org/v2/gh/firasm/jupyterbook_course_template/master?urlpath=lab/tree/class/ErrorsModule/TaylorExample.ipynb"><button type="button"
+        <a class="binder-button" href="https://mybinder.org/v2/gh/firasm/jupyterbook_course_template/master?urlpath=lab/tree/class/NDiffInt/HigherOrderInt.ipynb"><button type="button"
                 class="btn btn-secondary topbarbtn" title="Launch Binder" data-toggle="tooltip"
                 data-placement="left"><img class="binder-button-logo"
                     src="../../_static/images/logo_binder.svg"
@@ -393,14 +393,14 @@
             </div>
             <nav id="bd-toc-nav" aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#taylor-s-theorem">
-   Taylor’s Theorem
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#">
+   Higher Order Integration Schemes
   </a>
  </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#example">
-   Example
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#romberg-s-method">
+   Romberg’s Method
   </a>
  </li>
 </ul>
@@ -413,7 +413,7 @@
         <div class="col-12 col-md-9 pl-md-3 pr-md-0">
             <!-- Table of contents that is only displayed when printing the page -->
             <div id="jb-print-docs-body" class="onlyprint">
-                <h1>Truncation Error in Taylor’s series</h1>
+                <h1>Higher Order Integration Schemes</h1>
                 <!-- Table of contents -->
                 <div id="print-main-content">
                     <div id="jb-print-toc">
@@ -423,14 +423,14 @@
                         </div>
                         <nav aria-label="Page">
                             <ul class="visible nav section-nav flex-column">
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#taylor-s-theorem">
-   Taylor’s Theorem
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#">
+   Higher Order Integration Schemes
   </a>
  </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#example">
-   Example
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#romberg-s-method">
+   Romberg’s Method
   </a>
  </li>
 </ul>
@@ -442,62 +442,150 @@
             
               <div>
                 
-  <div class="section" id="truncation-error-in-taylor-s-series">
-<h1>Truncation Error in Taylor’s series<a class="headerlink" href="#truncation-error-in-taylor-s-series" title="Permalink to this headline">¶</a></h1>
-<p>Most algorithms in Numerical Analysis suffer from some form of truncation error.  Often this truncation error comes about from some series solution to the problem of interest that we <em>truncate</em> at some finite order in order to solve.  To illustrate the concept of a <em>truncation</em> error, let’s look at an example for Taylor’s series.  It is helpful to recall Taylor’s theorem from first year calculus:</p>
-<div class="section" id="taylor-s-theorem">
-<h2>Taylor’s Theorem<a class="headerlink" href="#taylor-s-theorem" title="Permalink to this headline">¶</a></h2>
-<p>Suppose we have a function <span class="math notranslate nohighlight">\(f\in C^n[a,b]\)</span>  (i.e. <span class="math notranslate nohighlight">\(f\)</span> is <span class="math notranslate nohighlight">\(n\)</span> times continuously differentiable), that <span class="math notranslate nohighlight">\(f^{(n+1)}\)</span> exists on <span class="math notranslate nohighlight">\([a,b]\)</span> and <span class="math notranslate nohighlight">\(x_0\in [a,b]\)</span>.  Then for <span class="math notranslate nohighlight">\(x\in [a,b]\)</span> we have</p>
+  <div class="section" id="higher-order-integration-schemes">
+<h1>Higher Order Integration Schemes<a class="headerlink" href="#higher-order-integration-schemes" title="Permalink to this headline">¶</a></h1>
+<p>The composite trapezoidal rule is functional, but not all that accurate.  At this point, the only method we have to improve accuracy is to divide the interval into smaller segments.  We can, however, use results for different step sizes <span class="math notranslate nohighlight">\(h\)</span> to improve both results by eliminating the lowest order error.  To illustrate, consider the trapezoidal rule for a step <span class="math notranslate nohighlight">\(h_1=(b-a)\)</span> and then <span class="math notranslate nohighlight">\(h_2=(b-a)/2\)</span>,</p>
 <div class="math notranslate nohighlight">
-\[f(x)=f(x_0)+f'(x_0)(x-x_0)+\frac{f''(x_0)}{2}(x-x_0)^2+ ... + \frac{f^{(n)}(x_0)}{n!}(x-x_0)^n  + R_n(x,x_0),\]</div>
-<p>provided <span class="math notranslate nohighlight">\(R_n\rightarrow 0\)</span> as <span class="math notranslate nohighlight">\(n\rightarrow \infty\)</span>, where the <em>truncation error</em> (from truncating the series at the <span class="math notranslate nohighlight">\(n\)</span>’th term is</p>
+\[\begin{split}
+\begin{align}
+I_1 &amp;=\int_a^b f(x) dx = \frac{h_1}{2}\left[f(a)+f(b)\right] - (b-a)\frac{h_1^2}{12} f''(\eta_1),\\
+I_2 &amp;=\int_a^b f(x) dx = \frac{h_2}{2}\left[f(a)+2f(a+h)+f(b)\right] - (b-a)\frac{h_2^2}{12} f''(\eta_2).
+\end{align}
+\end{split}\]</div>
+<p>The problem with attempting to use these two equations to eliminate the error term lies in the fact that <span class="math notranslate nohighlight">\(\eta_1\)</span> and <span class="math notranslate nohighlight">\(\eta_2\)</span> are not likely to be the same.  However, it is possible to show that, for a suitably smooth function, the error term can be replaced by a power series om even powers of <span class="math notranslate nohighlight">\(h\)</span>, namely</p>
 <div class="math notranslate nohighlight">
-\[R_n(x,x_0) = \frac{f^{(n+1)}(\xi)}{(n+1)!}(x-x_0)^{n+1},\]</div>
-<p>for some <span class="math notranslate nohighlight">\(\xi \in [x_0,x]\)</span>.</p>
-<p>Note that</p>
-<ul class="simple">
-<li><p><span class="math notranslate nohighlight">\(R_n\)</span> could be positive or negative so the absolute error, <span class="math notranslate nohighlight">\(|R_n|\)</span> is usually what one would quote for the error.</p></li>
-<li><p>we do not usually know what <span class="math notranslate nohighlight">\(\xi\)</span> is, other than it is in <span class="math notranslate nohighlight">\((x_0,x)\)</span>.  However, if we can guess <span class="math notranslate nohighlight">\(max|f^{(n+1)}(x)|\)</span> on <span class="math notranslate nohighlight">\([a,b]\)</span> then we can bound the absolute error.</p></li>
-</ul>
+\[
+E(h) = - (b-a)\frac{h^2}{12} f''(\eta_1) = \sum_{j=1}^n K_j h^{2j} + \mathcal{O}(h^{2n+2}),
+\]</div>
+<p>where the <span class="math notranslate nohighlight">\(K_j\)</span> are constants, independent of the division <span class="math notranslate nohighlight">\(h\)</span>. Using this, and <span class="math notranslate nohighlight">\(h_2=h_1/2\)</span> we can rewrite the two trapezoidal methods above as</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\begin{align}
+I_1 &amp;= \frac{h_1}{2}\left[f(a)+f(b)\right] + K_1 h_1^2 + K_2 h_1^4+ \mathcal{O}(h_1^6),\\
+I_2 &amp;= \frac{h_2}{2}\left[f(a)+2f(a+h_2)+f(b)\right] + K_1 h_2^2 + K_2 h_2^4 + \mathcal{O}(h_2^6),\\
+&amp;= \frac{h_1}{4}\left[f(a)+2f(a+h_2)+f(b)\right] + K_1 \frac{h_1^2}{4} + K_2 h_2^4+\mathcal{O}(h_1^6).
+\end{align}
+\end{split}\]</div>
+<p>Now note that</p>
+<div class="math notranslate nohighlight">
+\[
+\int_a^b f(x) dx=\frac{4 I_2 - I_1}{3} = \frac{h_2}{3}\left[f(a) + 4 f(a+h_2) + f(b) \right] - \frac{12}{3} K_2 h_2^4 + \mathcal{O}(h_2^6).
+\]</div>
+<p>The resulting numerical integration scheme is known as <em>Simpson’s Rule</em> and the error is now <span class="math notranslate nohighlight">\(\mathcal{O}(h^4)\)</span> rather than the <span class="math notranslate nohighlight">\(\mathcal{O}(h^2)\)</span> for the (composite) trapezoidal rule.</p>
+<p>This technique of eliminating error terms using results from two step sizes is generally referred to as Richardson’s extrapolation.  We can also use this method to get rid of higher order error terms as well which brings us to <em>Romberg’s Method</em>.</p>
 </div>
-<div class="section" id="example">
-<h2>Example<a class="headerlink" href="#example" title="Permalink to this headline">¶</a></h2>
-<p>Let’s construct the Taylor series and bound the truncation error for the function <span class="math notranslate nohighlight">\(f(x)=1/(1+x)\)</span> about <span class="math notranslate nohighlight">\(x_0=0\)</span>.  First note that <span class="math notranslate nohighlight">\(f^{(n)}(x)=\frac{(-1)^n}{(1+x)^{n+1}}\)</span>.  So, using Taylor’s theorem, we see that</p>
+<div class="section" id="romberg-s-method">
+<h1>Romberg’s Method<a class="headerlink" href="#romberg-s-method" title="Permalink to this headline">¶</a></h1>
+<p>We start by using the composite trapezoidal rule for <span class="math notranslate nohighlight">\(m_1=1,\, m_2=2,\, m_3=4,\,\cdots m_n=2^{n-1}\)</span> subintervals with regularly spaced points <span class="math notranslate nohighlight">\(h_k=\frac{b-a}{m_k}\)</span> apart. In particular, when we do this we don’t want to recompute <span class="math notranslate nohighlight">\(f(x)\)</span> any more than necessary so we need to write the trapezoidal rule for the different intervals in such a way that we use our previous work:</p>
 <div class="math notranslate nohighlight">
-\[\frac{1}{1+x} = 1 - x + x^2 - x^3 + ... + (-1)^n x^n + R_n,\]</div>
-<p>and in this case the truncation error is</p>
+\[\begin{split}
+\begin{align}
+R_{1,1} &amp;= \frac{h_1}{2}\left[f(a)+f(b)\right],\\
+R_{2,1} &amp;= \frac{h_2}{2}\left[f(a)+f(b) + 2 f(a+h_2)\right],\\
+&amp;= \frac{1}{2}\left[ \frac{h_1}{2}\left\{ f(a)+f(b)\right\} + 2h_2 f(a+h_2)\right],\\
+&amp;= \frac{1}{2}\left[ R_{1,1} + h_1 f(a+h_2)\right],\\
+R_{3,1} &amp;= \frac{h_3}{2}\left[f(a)+f(b) + 2\left\{f(a+h_3)+f(a+2 h_3) + f(a+3 h_r)\right\}\right],\\
+&amp;= \frac{1}{2}\left[ R_{2,1} + h_2 \left\{ f(a+h_3)+ f(a+3 h_r)\right\}\right],\\
+&amp;\vdots \\
+R_{k,1} &amp;= \frac{1}{2}\left[ R_{k-1,1}+h_{k-1} \sum_{i=1}^{2^{k-2}} f(a+(2i-1)h_k) \right].
+\end{align}
+\end{split}\]</div>
+<p>We now apply the extrapolation technique to refine our results using</p>
 <div class="math notranslate nohighlight">
-\[ R_n(x,0) = \frac{(-1)^{n+1}x^{n+1}}{(1+\xi)^{n+2}}.\]</div>
-<p>To bound the truncation (absolute) error, we need to consider a few points:</p>
-<ul class="simple">
-<li><p>We need an interval over which we are considering the Taylor series.  In this case the series only converges for <span class="math notranslate nohighlight">\(|x|&lt;1\)</span> so let’s assume <span class="math notranslate nohighlight">\(x \in [0,1)\)</span> (i.e. the <span class="math notranslate nohighlight">\(a\)</span> and <span class="math notranslate nohighlight">\(b\)</span> in Taylor’s theorem will be taken to be <span class="math notranslate nohighlight">\(a=0\)</span> and <span class="math notranslate nohighlight">\(b=1\)</span>).</p></li>
-<li><p>It is ok if the bound in <span class="math notranslate nohighlight">\(|R_n|\)</span> depends on <span class="math notranslate nohighlight">\(x\)</span> as we will certainly know what <span class="math notranslate nohighlight">\(x\)</span> is.  However, the only thing we know about <span class="math notranslate nohighlight">\(\xi\)</span> is that it must be in the interval <span class="math notranslate nohighlight">\([0,x)\)</span>.  So to bound the error, we first must bound the deriviative <span class="math notranslate nohighlight">\(|f^{(n+1)}(x)|=|\frac{(-1)^(n+1)}{(1+x)^{n+1}}|=\frac{1}{(1+x)^{n+1}}\)</span>.  To get an idea of how to do this, a plot is always a good place to start.</p></li>
-</ul>
+\[
+R_{k,2}=\frac{4 R_{k,1}-R_{k-1,1}}{3},
+\]</div>
+<p>on each successive pair of our previous results.</p>
+<p>We then apply the extrapolation technique to successivly higher orders using</p>
+<div class="math notranslate nohighlight">
+\[
+R_{i,j} = \frac{4^{j-1}R_{i,j-1}-R_{i-1,j-1}}{4^{j-1}-1},\qquad j=2,3,\cdots,n.
+\]</div>
+<p><strong>Example</strong>  Suppose we want to compute <span class="math notranslate nohighlight">\(\int_0^\pi \sin x\, dx\)</span>  (which in this case we know is <span class="math notranslate nohighlight">\(2\)</span>).  We construct the following tableau:</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\begin{align}
+{\begin{array}{ccccccc}
+    R_{1,1}    &amp;         &amp;         &amp;         &amp;         &amp; &amp;\\
+    \downarrow &amp; \rangle &amp; R_{2,2} &amp;         &amp;         &amp; &amp;\\
+    R_{2,1}    &amp;         &amp;         &amp; \rangle &amp; R_{3,3} &amp; &amp;\\
+    \downarrow &amp; \rangle &amp; R_{3,2} &amp;         &amp;         &amp; \rangle &amp; R_{4,4}\\
+    R_{3,1}    &amp;         &amp;         &amp; \rangle &amp; R_{4,3} &amp; &amp;\\
+    \downarrow &amp; \rangle &amp; R_{4,2} &amp;         &amp;         &amp; &amp;\\
+    R_{4,1}    &amp;         &amp;         &amp;         &amp;         &amp;\\
+  \end{array} } 
+\end{align}
+\end{split}\]</div>
+<p>With actual numbers, this translates to</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\begin{align}
+{\begin{array}{ccccccc}
+    0    &amp;         &amp;         &amp;         &amp;         &amp; &amp;\\
+    \downarrow &amp; \rangle &amp; 2.094... &amp;         &amp;         &amp; &amp;\\
+    1.57079...    &amp;         &amp;         &amp; \rangle &amp; 1.9985... &amp; &amp;\\
+    \downarrow &amp; \rangle &amp; 2.0045... &amp;         &amp;         &amp; \rangle &amp; 2.0000055...\\
+    1.896...    &amp;         &amp;         &amp; \rangle &amp; 1.999983... &amp; &amp;\\
+    \downarrow &amp; \rangle &amp; 2.00026... &amp;         &amp;         &amp; &amp;\\
+    1.974...    &amp;         &amp;         &amp;         &amp;         &amp;\\
+  \end{array} } 
+\end{align}
+\end{split}\]</div>
+<p>We see that even though the underlying composite trapezoidal rule results in the first column are not all that accurate, extrapolation of those results to the fourth column gives  six digits of accuracy.  It should also be clear that we can get an estimate for our (forward) error by comparing the difference between our best two results, in this case <span class="math notranslate nohighlight">\(R_{4,4}\)</span> and <span class="math notranslate nohighlight">\(R_{4,3}\)</span> where <span class="math notranslate nohighlight">\(|R_{4,4}-R_{4,3}|\sim 2\times 10^{-5}\)</span>.  Here, this is the error in <span class="math notranslate nohighlight">\(R_{4,3}\)</span> and so an overestimate of the error for <span class="math notranslate nohighlight">\(R_{4,4}\)</span>.</p>
+<p>While these are fairly easy to code up yourself, there are also scipy versions of all of these integration routines as illustrated below where we use the various schemes to integrate <span class="math notranslate nohighlight">\(\frac{1}{\sqrt{\pi}}e^{-x^2}\)</span> from <span class="math notranslate nohighlight">\(0\)</span> to <span class="math notranslate nohighlight">\(2\)</span>.  We start with the results of the cumulative trapezoidal and cumulative Simpson’s rule with our interval divided into eight segments:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">matplotlib</span> <span class="kn">import</span> <span class="n">pyplot</span> <span class="k">as</span> <span class="n">plt</span>
-<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
-<span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mf">0.05</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="mi">1</span><span class="o">/</span><span class="p">(</span><span class="mi">1</span><span class="o">+</span><span class="n">x</span><span class="p">))</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="mi">1</span><span class="o">/</span><span class="p">(</span><span class="mi">1</span><span class="o">+</span><span class="n">x</span><span class="p">)</span><span class="o">**</span><span class="mi">2</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="mi">1</span><span class="o">/</span><span class="p">(</span><span class="mi">1</span><span class="o">+</span><span class="n">x</span><span class="p">)</span><span class="o">**</span><span class="mi">3</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="mi">1</span><span class="o">/</span><span class="p">(</span><span class="mi">1</span><span class="o">+</span><span class="n">x</span><span class="p">)</span><span class="o">**</span><span class="mi">4</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="sa">r</span><span class="s1">&#39;$\xi$&#39;</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="sa">r</span><span class="s1">&#39;$1/(1+\xi)^{n+2}$&#39;</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+
+<span class="k">def</span> <span class="nf">f</span><span class="p">(</span><span class="n">x</span><span class="p">):</span>
+   <span class="k">return</span> <span class="mi">1</span><span class="o">/</span><span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">pi</span><span class="p">)</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="o">-</span><span class="n">x</span><span class="o">**</span><span class="mi">2</span><span class="p">)</span>
+
+<span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="n">num</span><span class="o">=</span><span class="mi">9</span><span class="p">,</span> <span class="n">endpoint</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;sample points: &quot;</span><span class="p">,</span><span class="n">x</span><span class="p">)</span>
+
+<span class="n">y</span> <span class="o">=</span> <span class="n">f</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+<span class="kn">from</span> <span class="nn">scipy</span> <span class="kn">import</span> <span class="n">integrate</span>
+<span class="n">I1</span> <span class="o">=</span> <span class="n">integrate</span><span class="o">.</span><span class="n">trapezoid</span><span class="p">(</span><span class="n">y</span><span class="p">,</span> <span class="n">x</span><span class="p">)</span>
+<span class="n">I2</span> <span class="o">=</span> <span class="n">integrate</span><span class="o">.</span><span class="n">simpson</span><span class="p">(</span><span class="n">y</span><span class="p">,</span> <span class="n">x</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;trapezoidal = &quot;</span><span class="p">,</span><span class="n">I1</span><span class="p">,</span> <span class="s2">&quot;, Simpsons = &quot;</span><span class="p">,</span><span class="n">I2</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../_images/TaylorExample_2_0.png" src="../../_images/TaylorExample_2_0.png" />
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>sample points:  [0.   0.25 0.5  0.75 1.   1.25 1.5  1.75 2.  ]
+trapezoidal =  0.49744809484415425 , Simpsons =  0.4976521729751664
+</pre></div>
 </div>
 </div>
-<p>From the plot it is clear that <span class="math notranslate nohighlight">\(\frac{1}{(1+x)^{n+1}}\)</span> is a monotonically decreasing function on the interval <span class="math notranslate nohighlight">\([0,1]\)</span> and that its maximum
-is at its leftmost endpoint, <span class="math notranslate nohighlight">\(x=1\)</span> where it takes the value 1 independent of <span class="math notranslate nohighlight">\(n\)</span>.
-Plugging this into the bound on the absolute error gives</p>
-<div class="math notranslate nohighlight">
-\[ |R_n| \leq x^{n+1}.\]</div>
 </div>
+<p>The accuracy of these results is difficult to judge, other than by comparing them which gives us an estimate for the trapezoidal rule.  In contrast, the Romberg integration keeps adding a row to the tableau until the results converge:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">scipy</span> <span class="kn">import</span> <span class="n">integrate</span>
+
+<span class="n">normaldist</span> <span class="o">=</span> <span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="mi">1</span><span class="o">/</span><span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">pi</span><span class="p">)</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="o">-</span><span class="n">x</span><span class="o">**</span><span class="mi">2</span><span class="p">)</span>
+<span class="n">result</span> <span class="o">=</span> <span class="n">integrate</span><span class="o">.</span><span class="n">romberg</span><span class="p">(</span><span class="n">normaldist</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="n">show</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Romberg integration of &lt;function vectorize1.&lt;locals&gt;.vfunc at 0x7f6238694670&gt; from [0, 2]
+
+ Steps  StepSize   Results
+     1  2.000000  0.574523 
+     2  1.000000  0.494815  0.468246 
+     4  0.500000  0.496836  0.497509  0.499460 
+     8  0.250000  0.497448  0.497652  0.497662  0.497633 
+    16  0.125000  0.497607  0.497661  0.497661  0.497661  0.497661 
+    32  0.062500  0.497648  0.497661  0.497661  0.497661  0.497661  0.497661 
+    64  0.031250  0.497658  0.497661  0.497661  0.497661  0.497661  0.497661  0.497661 
+
+The final result is 0.4976611325094085 after 65 function evaluations.
+</pre></div>
+</div>
+</div>
+</div>
+<p>Our previous results from the trapezoidal and Simpson’s rule correspond to the first two results in the fourth row.</p>
 </div>
 
     <script type="text/x-thebe-config">
@@ -513,7 +601,7 @@ Plugging this into the bound on the absolute error gives</p>
         },
         kernelOptions: {
             kernelName: "python3",
-            path: "./class/ErrorsModule"
+            path: "./class/NDiffInt"
         },
         predefinedOutput: true
     }
@@ -525,17 +613,17 @@ Plugging this into the bound on the absolute error gives</p>
             
                 <!-- Previous / next buttons -->
 <div class='prev-next-area'> 
-    <a class='left-prev' id="prev-link" href="Error_sources.html" title="previous page">
+    <a class='left-prev' id="prev-link" href="Int.html" title="previous page">
         <i class="fas fa-angle-left"></i>
         <div class="prev-next-info">
             <p class="prev-next-subtitle">previous</p>
-            <p class="prev-next-title">Sources of Errors in Scientific Computing</p>
+            <p class="prev-next-title">Numerical Integration</p>
         </div>
     </a>
-    <a class='right-next' id="next-link" href="FinitePrecision.html" title="next page">
+    <a class='right-next' id="next-link" href="../../extras/coding-notes-general.html" title="next page">
     <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">Finite Precision</p>
+        <p class="prev-next-title">On computation and codes</p>
     </div>
     <i class="fas fa-angle-right"></i>
     </a>
