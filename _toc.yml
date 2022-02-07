@@ -23,6 +23,7 @@ parts:
   - file: class/NDiffInt/NumDiffInt
   - file: class/NDiffInt/NumDiffInt_Errors
   - file: class/NDiffInt/Int
+  - file: class/NDiffInt/HigherOrderInt
 - caption: Mikko Extras
   chapters:
   - file: extras/coding-notes-general
