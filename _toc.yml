@@ -24,6 +24,7 @@ parts:
   - file: class/NDiffInt/NumDiffInt_Errors
   - file: class/NDiffInt/Int
   - file: class/NDiffInt/HigherOrderInt
+  - file: class/NDiffInt/GaussianInt
 - caption: Mikko Extras
   chapters:
   - file: extras/coding-notes-general
