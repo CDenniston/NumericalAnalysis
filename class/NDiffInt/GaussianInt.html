@@ -480,21 +480,96 @@ q(x) = \sum_{i=0}^{n-1} a_i P_i(x),
 \end{split}\]</div>
 <p>where the last step is exact as <span class="math notranslate nohighlight">\(r(x)\)</span> is of degree less than <span class="math notranslate nohighlight">\(n\)</span> (and we showed this was exact for such polynomials in the first step of the proof above).</p>
 <hr class="docutils" />
-<p>A general formula for the weights and nodes for Gauss-Legendre integration is not available.  However, the first few have all been tabulated and are listed below for reference:</p>
+<p>A general formula for the weights and nodes for Gauss-Legendre integration is not available.  However, the first few have all been tabulated and are listed below for reference :</p>
 <table class="colwidths-auto table">
 <thead>
-<tr class="row-odd"><th class="head"><p>Number of points, <span class="math notranslate nohighlight">\(n\)</span></p></th>
-<th class="head"><p>Points, <span class="math notranslate nohighlight">\(x_i\)</span></p></th>
-<th class="head"><p>weights, <span class="math notranslate nohighlight">\(w_i\)</span></p></th>
+<tr class="row-odd"><th class="text-align:center head"><p>Number of nodes, <span class="math notranslate nohighlight">\(n\)</span></p></th>
+<th class="text-align:center head"><p>Points, <span class="math notranslate nohighlight">\(x_i\)</span></p></th>
+<th class="text-align:center head"><p>weights, <span class="math notranslate nohighlight">\(w_i\)</span></p></th>
 </tr>
 </thead>
 <tbody>
-<tr class="row-even"><td><p>: 1 :</p></td>
-<td><p>: 0 :</p></td>
-<td><p>: 2 :</p></td>
+<tr class="row-even"><td class="text-align:center"><p>1</p></td>
+<td class="text-align:center"><p>0</p></td>
+<td class="text-align:center"><p>2</p></td>
+</tr>
+<tr class="row-odd"><td class="text-align:center"><p>2</p></td>
+<td class="text-align:center"><p>$<span class="math notranslate nohighlight">\(\pm \frac{1}{\sqrt{3}}\)</span>$</p></td>
+<td class="text-align:center"><p>1</p></td>
+</tr>
+<tr class="row-even"><td class="text-align:center"><p>3</p></td>
+<td class="text-align:center"><p>0,</p></td>
+<td class="text-align:center"><p>$<span class="math notranslate nohighlight">\(\frac{8}{9},\)</span>$</p></td>
+</tr>
+<tr class="row-odd"><td class="text-align:center"><p></p></td>
+<td class="text-align:center"><p>$<span class="math notranslate nohighlight">\(\pm \sqrt{\frac{3}{5}}\)</span>$</p></td>
+<td class="text-align:center"><p>$<span class="math notranslate nohighlight">\(\frac{5}{9}\)</span>$</p></td>
+</tr>
+<tr class="row-even"><td class="text-align:center"><p>4</p></td>
+<td class="text-align:center"><p>$<span class="math notranslate nohighlight">\(\pm \sqrt{\frac{3}{7}-\frac{2}{7}\sqrt{\frac{6}{5}}},\)</span>$</p></td>
+<td class="text-align:center"><p>$<span class="math notranslate nohighlight">\(\frac{18+\sqrt{30}}{36},\)</span>$</p></td>
+</tr>
+<tr class="row-odd"><td class="text-align:center"><p></p></td>
+<td class="text-align:center"><p>$<span class="math notranslate nohighlight">\(\pm \sqrt{\frac{3}{7}+\frac{2}{7}\sqrt{\frac{6}{5}}}\)</span>$</p></td>
+<td class="text-align:center"><p>$<span class="math notranslate nohighlight">\(\frac{18-\sqrt{30}}{36}\)</span>$</p></td>
+</tr>
+<tr class="row-even"><td class="text-align:center"><p>5</p></td>
+<td class="text-align:center"><p>0,</p></td>
+<td class="text-align:center"><p>$<span class="math notranslate nohighlight">\(\frac{128}{225},\)</span>$</p></td>
+</tr>
+<tr class="row-odd"><td class="text-align:center"><p></p></td>
+<td class="text-align:center"><p>$<span class="math notranslate nohighlight">\(\qquad \pm \frac{1}{3}\sqrt{5-2\sqrt{\frac{10}{7}}},\qquad \)</span>$</p></td>
+<td class="text-align:center"><p>$<span class="math notranslate nohighlight">\(\frac{322+13\sqrt{70}}{900},\)</span>$</p></td>
+</tr>
+<tr class="row-even"><td class="text-align:center"><p></p></td>
+<td class="text-align:center"><p>$<span class="math notranslate nohighlight">\(\pm \frac{1}{3}\sqrt{5+2\sqrt{\frac{10}{7}}}\)</span>$</p></td>
+<td class="text-align:center"><p>$<span class="math notranslate nohighlight">\(\frac{322-13\sqrt{70}}{900}\)</span>$</p></td>
+</tr>
+<tr class="row-odd"><td class="text-align:center"><p>7</p></td>
+<td class="text-align:center"><p>0,</p></td>
+<td class="text-align:center"><p>0.41795 91836 73469,</p></td>
+</tr>
+<tr class="row-even"><td class="text-align:center"><p></p></td>
+<td class="text-align:center"><p><span class="math notranslate nohighlight">\(\pm\)</span>0.40584 51513 77397,</p></td>
+<td class="text-align:center"><p>0.38183 00505 05119,</p></td>
+</tr>
+<tr class="row-odd"><td class="text-align:center"><p></p></td>
+<td class="text-align:center"><p><span class="math notranslate nohighlight">\(\pm\)</span>0.74153 11855 99394,</p></td>
+<td class="text-align:center"><p>0.27970 53914 89277,</p></td>
+</tr>
+<tr class="row-even"><td class="text-align:center"><p></p></td>
+<td class="text-align:center"><p><span class="math notranslate nohighlight">\(\pm\)</span>0.94910 79123 42759</p></td>
+<td class="text-align:center"><p>0.12948 49661 68870</p></td>
 </tr>
 </tbody>
 </table>
+<p>SciPy has an implementation of Gauss-Legendre integration illustrated in the example below:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">from</span> <span class="nn">scipy</span> <span class="kn">import</span> <span class="n">integrate</span>
+<span class="n">normaldist</span> <span class="o">=</span> <span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="mi">1</span><span class="o">/</span><span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">pi</span><span class="p">)</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="o">-</span><span class="n">x</span><span class="o">**</span><span class="mi">2</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;n=1 result = &quot;</span><span class="p">,</span><span class="n">integrate</span><span class="o">.</span><span class="n">fixed_quad</span><span class="p">(</span><span class="n">normaldist</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">,</span> <span class="mf">2.0</span><span class="p">,</span> <span class="n">n</span><span class="o">=</span><span class="mi">1</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;n=2 result = &quot;</span><span class="p">,</span><span class="n">integrate</span><span class="o">.</span><span class="n">fixed_quad</span><span class="p">(</span><span class="n">normaldist</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">,</span> <span class="mf">2.0</span><span class="p">,</span> <span class="n">n</span><span class="o">=</span><span class="mi">2</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;n=3 result = &quot;</span><span class="p">,</span><span class="n">integrate</span><span class="o">.</span><span class="n">fixed_quad</span><span class="p">(</span><span class="n">normaldist</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">,</span> <span class="mf">2.0</span><span class="p">,</span> <span class="n">n</span><span class="o">=</span><span class="mi">3</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;n=4 result = &quot;</span><span class="p">,</span><span class="n">integrate</span><span class="o">.</span><span class="n">fixed_quad</span><span class="p">(</span><span class="n">normaldist</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">,</span> <span class="mf">2.0</span><span class="p">,</span> <span class="n">n</span><span class="o">=</span><span class="mi">4</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;n=5 result = &quot;</span><span class="p">,</span><span class="n">integrate</span><span class="o">.</span><span class="n">fixed_quad</span><span class="p">(</span><span class="n">normaldist</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">,</span> <span class="mf">2.0</span><span class="p">,</span> <span class="n">n</span><span class="o">=</span><span class="mi">5</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;n=7 result = &quot;</span><span class="p">,</span><span class="n">integrate</span><span class="o">.</span><span class="n">fixed_quad</span><span class="p">(</span><span class="n">normaldist</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">,</span> <span class="mf">2.0</span><span class="p">,</span> <span class="n">n</span><span class="o">=</span><span class="mi">7</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>n=1 result =  (0.4151074974205947, None)
+n=2 result =  (0.5187644892255823, None)
+n=3 result =  (0.4958462362382512, None)
+n=4 result =  (0.49774446622792934, None)
+n=5 result =  (0.49765922944191265, None)
+n=7 result =  (0.4976611363409025, None)
+</pre></div>
+</div>
+</div>
+</div>
+<p>We also integrated this same function in our example for <a class="reference internal" href="HigherOrderInt.html"><span class="doc std std-doc">Romberg integration</span></a>.  The accuracy of our result for <span class="math notranslate nohighlight">\(n=7\)</span> here (so 7 function evaluations) was only obtained in the row for 16 steps (17 function evaluations) using Romberg integration!</p>
 </div>
 
     <script type="text/x-thebe-config">
