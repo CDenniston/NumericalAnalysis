@@ -5,7 +5,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Forward and Backwards Errors &#8212; Numerical Analysis</title>
+    <title>Gaussian Integration &#8212; Numerical Analysis</title>
     
   <link href="../../_static/css/theme.css" rel="stylesheet">
   <link href="../../_static/css/index.ff1ffe594081f20da1ef19478df9384b.css" rel="stylesheet">
@@ -58,11 +58,11 @@
         const thebe_selector_output = ".output,.cell_output"
     </script>
     <script async="async" src="../../_static/sphinx-thebe.js"></script>
-    <link rel="canonical" href="https://cdenniston.github.io/NumericalAnalysis/class/ErrorsModule/BackwardForwardConditioning.html" />
+    <link rel="canonical" href="https://cdenniston.github.io/NumericalAnalysis/class/NDiffInt/GaussianInt.html" />
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
-    <link rel="next" title="Interpolation" href="../InterpFit/InterpFit_summary.html" />
-    <link rel="prev" title="Roundoff Error Amplification" href="RoundoffAmplification.html" />
+    <link rel="next" title="On computation and codes" href="../../extras/coding-notes-general.html" />
+    <link rel="prev" title="Higher Order Integration Schemes" href="HigherOrderInt.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="None">
     
@@ -111,39 +111,39 @@
   Part 1 - Errors in Scientific Computing
  </span>
 </p>
-<ul class="current nav bd-sidenav">
+<ul class="nav bd-sidenav">
  <li class="toctree-l1">
-  <a class="reference internal" href="Errors_summary.html">
+  <a class="reference internal" href="../ErrorsModule/Errors_summary.html">
    Numerical Analysis
   </a>
  </li>
  <li class="toctree-l1">
-  <a class="reference internal" href="Error_sources.html">
+  <a class="reference internal" href="../ErrorsModule/Error_sources.html">
    Sources of Errors in Scientific Computing
   </a>
  </li>
  <li class="toctree-l1">
-  <a class="reference internal" href="TaylorExample.html">
+  <a class="reference internal" href="../ErrorsModule/TaylorExample.html">
    Truncation Error in Taylor’s series
   </a>
  </li>
  <li class="toctree-l1">
-  <a class="reference internal" href="FinitePrecision.html">
+  <a class="reference internal" href="../ErrorsModule/FinitePrecision.html">
    Finite Precision
   </a>
  </li>
  <li class="toctree-l1">
-  <a class="reference internal" href="HornersAlgorithm.html">
+  <a class="reference internal" href="../ErrorsModule/HornersAlgorithm.html">
    Example: Evaluating polynomials
   </a>
  </li>
  <li class="toctree-l1">
-  <a class="reference internal" href="RoundoffAmplification.html">
+  <a class="reference internal" href="../ErrorsModule/RoundoffAmplification.html">
    Roundoff Error Amplification
   </a>
  </li>
- <li class="toctree-l1 current active">
-  <a class="current reference internal" href="#">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../ErrorsModule/BackwardForwardConditioning.html">
    Forward and Backwards Errors
   </a>
  </li>
@@ -190,29 +190,29 @@
   Part 3 - Numerical Differentiation &amp; Integration
  </span>
 </p>
-<ul class="nav bd-sidenav">
+<ul class="current nav bd-sidenav">
  <li class="toctree-l1">
-  <a class="reference internal" href="../NDiffInt/NumDiffInt.html">
+  <a class="reference internal" href="NumDiffInt.html">
    Numerical Differentiation
   </a>
  </li>
  <li class="toctree-l1">
-  <a class="reference internal" href="../NDiffInt/NumDiffInt_Errors.html">
+  <a class="reference internal" href="NumDiffInt_Errors.html">
    Errors in Numerical Differentiation
   </a>
  </li>
  <li class="toctree-l1">
-  <a class="reference internal" href="../NDiffInt/Int.html">
+  <a class="reference internal" href="Int.html">
    Numerical Integration
   </a>
  </li>
  <li class="toctree-l1">
-  <a class="reference internal" href="../NDiffInt/HigherOrderInt.html">
+  <a class="reference internal" href="HigherOrderInt.html">
    Higher Order Integration Schemes
   </a>
  </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="../NDiffInt/GaussianInt.html">
+ <li class="toctree-l1 current active">
+  <a class="current reference internal" href="#">
    Gaussian Integration
   </a>
  </li>
@@ -348,9 +348,9 @@
         <!-- ipynb file if we had a myst markdown file -->
         
         <!-- Download raw file -->
-        <a class="dropdown-buttons" href="../../_sources/class/ErrorsModule/BackwardForwardConditioning.md"><button type="button"
+        <a class="dropdown-buttons" href="../../_sources/class/NDiffInt/GaussianInt.ipynb"><button type="button"
                 class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
-                data-placement="left">.md</button></a>
+                data-placement="left">.ipynb</button></a>
         <!-- Download PDF via print -->
         <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
                 onclick="printPdf(this)" data-toggle="tooltip" data-placement="left">.pdf</button>
@@ -368,34 +368,31 @@
 
             <!-- Launch buttons -->
 
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Launch interactive content"><i class="fas fa-rocket"></i></button>
+    <div class="dropdown-buttons">
+        
+        <a class="binder-button" href="https://mybinder.org/v2/gh/firasm/jupyterbook_course_template/master?urlpath=lab/tree/class/NDiffInt/GaussianInt.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Launch Binder" data-toggle="tooltip"
+                data-placement="left"><img class="binder-button-logo"
+                    src="../../_static/images/logo_binder.svg"
+                    alt="Interact on binder">Binder</button></a>
+        
+        
+        
+        <button type="button" class="btn btn-secondary topbarbtn"
+            onclick="initThebeSBT()" title="Launch Thebe" data-toggle="tooltip" data-placement="left"><i
+                class="fas fa-play"></i><span style="margin-left: .4em;">Live Code</span></button>
+        
+    </div>
+</div>
+
         </div>
 
         <!-- Table of contents -->
         <div class="d-none d-md-block col-md-2 bd-toc show noprint">
             
-            <div class="tocsection onthispage pt-5 pb-3">
-                <i class="fas fa-list"></i> Contents
-            </div>
-            <nav id="bd-toc-nav" aria-label="Page">
-                <ul class="visible nav section-nav flex-column">
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#example-a-poorly-conditioned-problem">
-   Example: A poorly conditioned problem
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#example-conditioning-for-linear-systems">
-   Example: Conditioning for linear systems
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#stability">
-   Stability
-  </a>
- </li>
-</ul>
-
-            </nav>
         </div>
     </div>
 </div>
@@ -403,102 +400,101 @@
         <div class="col-12 col-md-9 pl-md-3 pr-md-0">
             <!-- Table of contents that is only displayed when printing the page -->
             <div id="jb-print-docs-body" class="onlyprint">
-                <h1>Forward and Backwards Errors</h1>
+                <h1>Gaussian Integration</h1>
                 <!-- Table of contents -->
                 <div id="print-main-content">
                     <div id="jb-print-toc">
                         
-                        <div>
-                            <h2> Contents </h2>
-                        </div>
-                        <nav aria-label="Page">
-                            <ul class="visible nav section-nav flex-column">
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#example-a-poorly-conditioned-problem">
-   Example: A poorly conditioned problem
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#example-conditioning-for-linear-systems">
-   Example: Conditioning for linear systems
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#stability">
-   Stability
-  </a>
- </li>
-</ul>
-
-                        </nav>
                     </div>
                 </div>
             </div>
             
               <div>
                 
-  <div class="section" id="forward-and-backwards-errors">
-<h1>Forward and Backwards Errors<a class="headerlink" href="#forward-and-backwards-errors" title="Permalink to this headline">¶</a></h1>
-<p>You might assume that scientific computing consists of the process:</p>
-<p>Problem formulated mathematically <span class="math notranslate nohighlight">\(\Rightarrow\)</span> algorithm <span class="math notranslate nohighlight">\(\Rightarrow\)</span> solution.</p>
-<p>Implicit in this is the assumption that all mathematically formulated problems have meaningful solutions.  You might be surprised to learn that this is not actually the case.</p>
-<div class="section" id="example-a-poorly-conditioned-problem">
-<h2>Example: A poorly conditioned problem<a class="headerlink" href="#example-a-poorly-conditioned-problem" title="Permalink to this headline">¶</a></h2>
-<p>Consider the initial value problem</p>
+  <div class="section" id="gaussian-integration">
+<h1>Gaussian Integration<a class="headerlink" href="#gaussian-integration" title="Permalink to this headline">¶</a></h1>
+<p>So far, we have focussed on integration schemes where the function is sampled at regular intervals.  These are very useful for data that comes to us in this form, but if we wish to integrate a known function as accurately as possible it is better to take advantage of the freedom we have to choose our nodes, just as we did for interpolation where selecting Chebyshev points was optimal.</p>
+<p>Consider that quadrature formulas are typically of the form</p>
 <div class="math notranslate nohighlight">
-\[ \frac{dx}{dt}-x=e^{-2t}, \qquad x(0)=-\frac{1}{3}.\]</div>
-<p>It is straightforward to verify (by plugging it in the above equation) that the exact solution to this problem is</p>
+\[
+\int_a^b f(x) dx = \sum_{i=0}^{n-1} c_i f(x_i) + error,
+\]</div>
+<p>which has <span class="math notranslate nohighlight">\(2n\)</span> parameters (note for this section we are stopping the sum at <span class="math notranslate nohighlight">\(n-1\)</span> rather than <span class="math notranslate nohighlight">\(n\)</span> as this is conventional for Gaussian quadrature formulas).  The idea of Gaussian integration is that with these <span class="math notranslate nohighlight">\(2n\)</span> parameters it should be possible to chose them to ensure that we can integrate all polynomials of degree less than or equal to <span class="math notranslate nohighlight">\(2n-1\)</span> <em>exactly</em>.</p>
+<p>Before we do this, it is useful to first transform to a standard interval, namely <span class="math notranslate nohighlight">\(y\)</span> in <span class="math notranslate nohighlight">\([-1,1]\)</span>, from the original <span class="math notranslate nohighlight">\(x\)</span> in <span class="math notranslate nohighlight">\([a,b]\)</span>.  Similar to what we did with the Chebyshev interpolation, we use the change of variables</p>
 <div class="math notranslate nohighlight">
-\[x(t)=-\frac{e^{-2t}}{3}.\]</div>
-<p>However, if we <em>perturb</em> the initial value by a small number <span class="math notranslate nohighlight">\(\epsilon\)</span>, so that <span class="math notranslate nohighlight">\(\tilde{x}(0)=-\frac{1}{3}+\epsilon\)</span> the exact solution is now</p>
+\[ x = \frac{b-a}{2}y+\frac{b+a}{2}. \]</div>
+<p>We must also remember to perform the appropriate change of the integral measure,</p>
 <div class="math notranslate nohighlight">
-\[\tilde{x}(t)=\epsilon e^{+t}-\frac{e^{-2t}}{3}.\]</div>
-<p>After a short time <span class="math notranslate nohighlight">\(t\)</span> the first term will dominate the second no matter how small <span class="math notranslate nohighlight">\(\epsilon\)</span> is (assuming it is non-zero).  Also, consider that <span class="math notranslate nohighlight">\(x(0)=-1/3=-0.33333...\)</span> cannot be represented exactly on a computer so we would never be able to recover the exact solution numerically, independent of whatever algorithm you might attempt to use.</p>
-<p>We refer to problems like this as <em>ill-conditioned</em> problems.  Meaning that small changes (perturbations) in the input data (problem formulation) cause large changes in the resulting solution.  To quantify this further it is useful to consider the following:</p>
-<ul class="simple">
-<li><p><strong>backward error, <span class="math notranslate nohighlight">\(E_b\)</span></strong>:  This is what we use to quantify how close our formulation of the problem is to the true problem we are trying to solve, or more precisely, how close our approximate solution comes to solving the true problem.</p></li>
-<li><p><strong>forward error, <span class="math notranslate nohighlight">\(E_f\)</span></strong>:  This quantifies how close the solution we find is to the solution to the true problem we are trying to solve.</p></li>
-<li><p><strong>condition number</strong>, <span class="math notranslate nohighlight">\(\mathcal{C}=\frac{E_f}{E_b}\)</span>.</p></li>
-</ul>
-<p>Note that these definitions are not precise in the sense that they leave a few choices open, such as whether <span class="math notranslate nohighlight">\(E_f\)</span> and <span class="math notranslate nohighlight">\(E_b\)</span> are absolute or relative errors.  However, independent of this choice, a larger condition number <span class="math notranslate nohighlight">\(\mathcal{C}\)</span> indicates a more poorly conditioned problem.  As such, the relative magnitude of <span class="math notranslate nohighlight">\(\mathcal{C}\)</span> can be used to evaluate different formulations of a given mathematical problem to decide which formulation is better conditioned.</p>
-<p>In our example above where we solve the differential equation analytically, the perturbed solution <span class="math notranslate nohighlight">\(\tilde{x}(t)\)</span> satisfies the differential equation exactly so the only source of backward error here is the initial condition so <span class="math notranslate nohighlight">\(E_b=\epsilon\)</span>.  The forward error is also fairly straightforward as <span class="math notranslate nohighlight">\(E_f = |x(t)-\tilde{x}(t)| = \epsilon\, e^t\)</span>.  So here we see the condition number</p>
+\[\int_a^b f(x) dx = \int_{-1}^1 f\left(\frac{b-a}{2}y+\frac{b+a}{2}\right) \frac{dx}{dy} dy,\]</div>
+<p>with <span class="math notranslate nohighlight">\(\frac{dx}{dy}=\frac{b-a}{2}\)</span>.  The <span class="math notranslate nohighlight">\(n-\)</span>point Gaussian quadrature routine will then result in</p>
 <div class="math notranslate nohighlight">
-\[\mathcal{C} =  \frac{E_f}{E_b} = e^t.\]</div>
-<p>The condition number here grows with time.  What this means is that if we refine our question to something like: What is <span class="math notranslate nohighlight">\(x(T)\)</span> for <span class="math notranslate nohighlight">\(T=0.5\)</span>?  The condition number for this more precise problem is <span class="math notranslate nohighlight">\(\mathcal{C}=e^{0.5}\approx 1.64\)</span> which makes this a reasonable question to ask (i.e. is reasonably well-conditioned).  However, if you ask the question: What is <span class="math notranslate nohighlight">\(x(T)\)</span> for <span class="math notranslate nohighlight">\(T=25\)</span>? then the condition number is <span class="math notranslate nohighlight">\(\mathcal{C}=e^{25} \approx 7\times 10^{10}\)</span> which is a very poorly conditioned problem, meaning it is not really a question you can give a meaningful answer to.</p>
-</div>
-<div class="section" id="example-conditioning-for-linear-systems">
-<h2>Example: Conditioning for linear systems<a class="headerlink" href="#example-conditioning-for-linear-systems" title="Permalink to this headline">¶</a></h2>
-<p>Suppose you want to solve the problem</p>
+\[\int_a^b f(x) dx \approx \frac{b-a}{2}\sum_{i=0}^{n-1} c_i f\left(\frac{b-a}{2}y_i+\frac{b+a}{2}\right).\]</div>
+<p>So, we will focus on integration over <span class="math notranslate nohighlight">\([-1,1]\)</span> below.</p>
+<p><strong>Theorem</strong> Suppose <span class="math notranslate nohighlight">\(\{x_0,x_1,\cdots,x_{n-1}\}\)</span> are the roots of the <span class="math notranslate nohighlight">\(n\)</span>th Legendre polynomial <span class="math notranslate nohighlight">\(P_n(x)\)</span> and</p>
 <div class="math notranslate nohighlight">
-\[\mathbf{A}\mathbf{x}=\mathbf{b}.\]</div>
-<p>Where we will assume <span class="math notranslate nohighlight">\(\mathbf{A}\)</span> is a <span class="math notranslate nohighlight">\(n\times n\)</span> matrix, <span class="math notranslate nohighlight">\(\mathbf{x}\)</span> is the unknown we are trying to find and is a <span class="math notranslate nohighlight">\(n\times 1\)</span> column vector, and <span class="math notranslate nohighlight">\(\mathbf{b}\)</span> is a known <span class="math notranslate nohighlight">\(n\times 1\)</span> column vector.  Unless <span class="math notranslate nohighlight">\(\mathbf{A}\)</span> and <span class="math notranslate nohighlight">\(\mathbf{b}\)</span> are a special form of matrices with particular choices of rational numbers for their entries, we cannot usually solve this problem exactly.  In other words, due to issues such as finite precision and other problems we will discuss in more detail in a later chapter, we can only find an approximation to our solution which we will call <span class="math notranslate nohighlight">\(\tilde{\mathbf{x}}\)</span>.  In this case it is fairly clear the absolute <em>forward</em> error would be</p>
+\[ c_i=\int_{-1}^1 L_i^{n-1}(x) dx,\quad i=0,1,\cdots,n-1\]</div>
+<p>where <span class="math notranslate nohighlight">\(L_i^{n-1}(x)\)</span> is the Lagrange polynomial (from interpolation).  Then if <span class="math notranslate nohighlight">\(p(x)\)</span> is any polynomial of degree less than or equal to <span class="math notranslate nohighlight">\(2n-1\)</span>, then</p>
 <div class="math notranslate nohighlight">
-\[E_f=||\mathbf{x}-\tilde{\mathbf{x}}||\]</div>
-<p>where <span class="math notranslate nohighlight">\(||\cdot||\)</span> indicates a suitable vector norm (for error estimates it is usually sufficient to just use the <span class="math notranslate nohighlight">\(\infty\)</span>-norm, the absolute value of the largest element in magnitude). The absolute <em>backward</em> error is just the measure of how well our approximate solution solves the exact formulation of the problem,</p>
+\[ \int_{-1}^1 p(x) dx = \sum_{i=0}^{n-1} c_i p(x_i),\]</div>
+<p>exactly.</p>
+<p><strong>Proof:</strong>  First look at the case where the degree of <span class="math notranslate nohighlight">\(p(x)\)</span> is less than <span class="math notranslate nohighlight">\(n\)</span>.  Then</p>
 <div class="math notranslate nohighlight">
-\[E_b=||\mathbf{A} \tilde{\mathbf{x}}-\mathbf{b}||.\]</div>
-<p>Note, however, that we can also consider <span class="math notranslate nohighlight">\(\tilde{\mathbf{x}}\)</span> to be the exact solution to a different, but “nearby” problem</p>
+\[ p(x) = \sum{i=0}^{n-1} L_i^n(x) p(x_i) \]</div>
+<p>is an exact interpolation of <span class="math notranslate nohighlight">\(p(x)\)</span> (the <a class="reference internal" href="../InterpFit/InterpErrors.html"><span class="doc std std-doc">interpolation error</span></a> involves <span class="math notranslate nohighlight">\(\frac{d^n p(x)}{dx^n}\)</span> which is zero for a polynomial of degree less than <span class="math notranslate nohighlight">\(n\)</span>).  Hence,</p>
 <div class="math notranslate nohighlight">
-\[\mathbf{A}\tilde{\mathbf{x}}=\tilde{\mathbf{b}}\]</div>
-<p>and this means that the backward error</p>
+\[\int_{-1}^1 p(x)dx = \int_{-1}^1 \sum{i=0}^{n-1} L_i^n(x) p(x_i) = \sum{i=0}^{n-1} c_i p(x_i),\]</div>
+<p>as claimed in the theorem.  Now suppose that the degree of <span class="math notranslate nohighlight">\(p(x)\)</span> is at least <span class="math notranslate nohighlight">\(n\)</span> but less than or equal to <span class="math notranslate nohighlight">\(2n-1\)</span>.  Then we can write</p>
 <div class="math notranslate nohighlight">
-\[E_b=||\mathbf{A} \tilde{\mathbf{x}}-\mathbf{b}||=||\tilde{\mathbf{b}}-\mathbf{b}||\]</div>
-<p>is a measure of how “close” this nearby problem is to the original problem we set out to solve.</p>
-<p>The condition number for linear systems is usually defined in terms of relative errors so for this problem it would be</p>
+\[p(x) = q(x)P_n(x) + r(x),\]</div>
+<p>where <span class="math notranslate nohighlight">\(P_n(x)\)</span> is the <span class="math notranslate nohighlight">\(n\)</span>th Legendre polynomial (which has degree <span class="math notranslate nohighlight">\(n\)</span>) and <span class="math notranslate nohighlight">\(q(x)\)</span> and <span class="math notranslate nohighlight">\(r(x)\)</span> are polynomials of degree less than <span class="math notranslate nohighlight">\(n\)</span>.  (To construct <span class="math notranslate nohighlight">\(q(x)\)</span> you pick its coefficients so that <span class="math notranslate nohighlight">\(q(x)P_n(x)\)</span> has coefficients that match coefficients of <span class="math notranslate nohighlight">\(p(x)\)</span> for terms <span class="math notranslate nohighlight">\(x^{2n-1}\)</span> to <span class="math notranslate nohighlight">\(x^n\)</span>.  <span class="math notranslate nohighlight">\(r(x)\)</span> is then whatever is left over).  Now,</p>
 <div class="math notranslate nohighlight">
-\[\mathcal{C} = \frac{\frac{||\mathbf{x}-\tilde{\mathbf{x}}||}{||\mathbf{x}||}}{\frac{||\tilde{\mathbf{b}}-\mathbf{b}||}{||\mathbf{b}||}}.\]</div>
-<p>One thing you may have already realized is that we would not normally be able to compute the forward error for our problem (because we do not know the exact solution).  However, the backward error <em>is</em> easily computed.  As a result, we can often compute the backward error and then, using an estimate of an upper bound for the condition number, estimate a bound for our forward error.</p>
-</div>
-<div class="section" id="stability">
-<h2>Stability<a class="headerlink" href="#stability" title="Permalink to this headline">¶</a></h2>
-<p>Suppose we are given a well-conditioned problem, then a <strong>stable algorithm</strong> is one that preserves this property (i.e. small changes in the problem data formulation <em>and</em> application of our algorithm result in small changes to our approximate solution).  Conversely, an <strong>unstable algorithm</strong> is one where, given a well-conditioned problem, small errors in the problem data and application of the algorithm gives large changes in the approximate solution.  Typically, a stable algorithm is one that gives us a numerically exact solution to a problem that is nearby (in the backward error sense) to our original problem.</p>
-<p>When you encounter what appears to a large condition number (it is usually fairly obvious is small changes to input result in huge changes to output), it is very important to undersand whether the issue is due to poor conditioning of the underlying problem or application of an unstable algortihm.  Applying a stable algorithm to a poorly conditioned problem will give very similar results to applying an unstable algorithm to a well conditioned problem.  The solution is <em>very</em> different for these two cases.  In the case where the underlying problem is poorly conditioned you are <em>asking the wrong question</em> and need to think hard about what the right question would be.  If the problem is well conditioned but the algorithm is unstable there may be algorithmic parameter that could be adjusted (such as making a step size smaller) or perhaps a completely different algorithm is needed.</p>
-<p>In algorithms that involve a large number of repeated steps, such as integrating a differential equation forward in time, it is clear that the absolute error will inevitably grow with time as errors accumulate.  As a rule of thumb, if the input error is <span class="math notranslate nohighlight">\(\epsilon\)</span> and after <span class="math notranslate nohighlight">\(n\)</span> steps the error is <span class="math notranslate nohighlight">\(E_n\)</span> then</p>
-<ul class="simple">
-<li><p>if <span class="math notranslate nohighlight">\(E_n \approx C n \epsilon\)</span> where C is constant, then the algorithm is stable,</p></li>
-<li><p>if <span class="math notranslate nohighlight">\(E_n \approx k^n \epsilon\)</span> with <span class="math notranslate nohighlight">\(k&gt;1\)</span> then the algorithm is unstable.</p></li>
-</ul>
-</div>
+\[ p(x_i) = q(x_i)P_n(x_i) + r(x_i) = r(x_i),\]</div>
+<p>where the last step follows from the fact that the <span class="math notranslate nohighlight">\(x_i\)</span> are the roots of <span class="math notranslate nohighlight">\(P_n(x_i)\)</span>.  As a result,</p>
+<div class="math notranslate nohighlight">
+\[\sum_{i=0}^{n-1} c_i p(x_i) = \sum_{i=0}^{n-1} c_i r(x_i).\]</div>
+<p>Also,</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\begin{align}
+\int_{-1}^1 p(x) dx &amp;= \int_{-1}^1\left(q(x)P_n(x) + r(x)\right)dx,\\
+&amp;= \int_{-1}^1 q(x)P_n(x) dx + \int_{-1}^1  r(x) dx.
+\end{align}
+\end{split}\]</div>
+<p>Now <span class="math notranslate nohighlight">\(q(x)\)</span> has degree less than <span class="math notranslate nohighlight">\(n\)</span> so can be written using the Legendre polynomials as a basis (they are an orthogonal basis set for polynomials), i.e.</p>
+<div class="math notranslate nohighlight">
+\[
+q(x) = \sum_{i=0}^{n-1} a_i P_i(x),
+\]</div>
+<p>for some constants <span class="math notranslate nohighlight">\(a_i\)</span>.  As a result,</p>
+<div class="math notranslate nohighlight">
+\[
+\int_{-1}^1 q(x)P_n(x) dx = \sum_{i=0}^{n-1} a_i \int_{-1}^1 P_i(x)P_n(x) dx =0,
+\]</div>
+<p>as <span class="math notranslate nohighlight">\(P_n(x)\)</span> is orthogonal to all the <span class="math notranslate nohighlight">\(P_i(x)\)</span> with <span class="math notranslate nohighlight">\(i&lt;n\)</span>.  As a result, we now have</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\begin{align}
+\int_{-1}^1 p(x) dx&amp;=\int_{-1}^1  r(x) dx,\\
+&amp;= \sum_{i=0}^{n-1} c_i r(x_i),
+\end{align}
+\end{split}\]</div>
+<p>where the last step is exact as <span class="math notranslate nohighlight">\(r(x)\)</span> is of degree less than <span class="math notranslate nohighlight">\(n\)</span> (and we showed this was exact for such polynomials in the first step of the proof above).</p>
+<hr class="docutils" />
+<p>A general formula for the weights and nodes for Gauss-Legendre integration is not available.  However, the first few have all been tabulated and are listed below for reference:</p>
+<table class="colwidths-auto table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Number of points, <span class="math notranslate nohighlight">\(n\)</span></p></th>
+<th class="head"><p>Points, <span class="math notranslate nohighlight">\(x_i\)</span></p></th>
+<th class="head"><p>weights, <span class="math notranslate nohighlight">\(w_i\)</span></p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>: 1 :</p></td>
+<td><p>: 0 :</p></td>
+<td><p>: 2 :</p></td>
+</tr>
+</tbody>
+</table>
 </div>
 
     <script type="text/x-thebe-config">
@@ -514,7 +510,7 @@
         },
         kernelOptions: {
             kernelName: "python3",
-            path: "./class/ErrorsModule"
+            path: "./class/NDiffInt"
         },
         predefinedOutput: true
     }
@@ -526,17 +522,17 @@
             
                 <!-- Previous / next buttons -->
 <div class='prev-next-area'> 
-    <a class='left-prev' id="prev-link" href="RoundoffAmplification.html" title="previous page">
+    <a class='left-prev' id="prev-link" href="HigherOrderInt.html" title="previous page">
         <i class="fas fa-angle-left"></i>
         <div class="prev-next-info">
             <p class="prev-next-subtitle">previous</p>
-            <p class="prev-next-title">Roundoff Error Amplification</p>
+            <p class="prev-next-title">Higher Order Integration Schemes</p>
         </div>
     </a>
-    <a class='right-next' id="next-link" href="../InterpFit/InterpFit_summary.html" title="next page">
+    <a class='right-next' id="next-link" href="../../extras/coding-notes-general.html" title="next page">
     <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">Interpolation</p>
+        <p class="prev-next-title">On computation and codes</p>
     </div>
     <i class="fas fa-angle-right"></i>
     </a>
