@@ -41,20 +41,22 @@
     <script src="../_static/jquery.js"></script>
     <script src="../_static/underscore.js"></script>
     <script src="../_static/doctools.js"></script>
-    <script src="../_static/togglebutton.js"></script>
     <script src="../_static/clipboard.min.js"></script>
     <script src="../_static/copybutton.js"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../_static/togglebutton.js"></script>
     <script src="../_static/save_state.js"></script>
     <script async="async" kind="hypothesis" src="https://hypothes.is/embed.js"></script>
     <script async="async" kind="dokieli" src="https://dokie.li/scripts/dokieli.js"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
     <script src="../_static/sphinx-book-theme.d59cb220de22ca1c485ebbdc042f0030.js"></script>
-    <script async="async" src="https://unpkg.com/thebe@0.5.1/lib/index.js"></script>
-    <script>
-        const thebe_selector = ".thebe,.cell"
-        const thebe_selector_input = "pre,.cell_input div.highlight"
-        const thebe_selector_output = ".output,.cell_output"
-    </script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
     <script async="async" src="../_static/sphinx-thebe.js"></script>
     <link rel="canonical" href="https://cdenniston.github.io/NumericalAnalysis/extras/python-intro.html" />
     <link rel="index" title="Index" href="../genindex.html" />
@@ -1022,23 +1024,23 @@ or summary contain a given string such as &quot;spam&quot;, type &quot;modules s
 <span class="g g-Whitespace">   </span><span class="mi">1945</span> <span class="k">else</span><span class="p">:</span>
 <span class="g g-Whitespace">   </span><span class="mi">1946</span>     <span class="bp">self</span><span class="o">.</span><span class="n">output</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="n">prompt</span><span class="p">)</span>
 
-<span class="nn">File /opt/hostedtoolcache/Python/3.8.12/x64/lib/python3.8/site-packages/ipykernel/kernelbase.py:1041,</span> in <span class="ni">Kernel.raw_input</span><span class="nt">(self, prompt)</span>
-<span class="g g-Whitespace">   </span><span class="mi">1034</span> <span class="sd">&quot;&quot;&quot;Forward raw_input to frontends</span>
-<span class="g g-Whitespace">   </span><span class="mi">1035</span><span class="sd"> </span>
-<span class="g g-Whitespace">   </span><span class="mi">1036</span><span class="sd"> Raises</span>
-<span class="g g-Whitespace">   </span><span class="mi">1037</span><span class="sd"> ------</span>
-<span class="g g-Whitespace">   </span><span class="mi">1038</span><span class="sd"> StdinNotImplementedError if active frontend doesn&#39;t support stdin.</span>
-<span class="g g-Whitespace">   </span><span class="mi">1039</span><span class="sd"> &quot;&quot;&quot;</span>
-<span class="g g-Whitespace">   </span><span class="mi">1040</span> <span class="k">if</span> <span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">_allow_stdin</span><span class="p">:</span>
-<span class="ne">-&gt; </span><span class="mi">1041</span>     <span class="k">raise</span> <span class="n">StdinNotImplementedError</span><span class="p">(</span>
-<span class="g g-Whitespace">   </span><span class="mi">1042</span>         <span class="s2">&quot;raw_input was called, but this frontend does not support input requests.&quot;</span>
-<span class="g g-Whitespace">   </span><span class="mi">1043</span>     <span class="p">)</span>
-<span class="g g-Whitespace">   </span><span class="mi">1044</span> <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_input_request</span><span class="p">(</span>
-<span class="g g-Whitespace">   </span><span class="mi">1045</span>     <span class="nb">str</span><span class="p">(</span><span class="n">prompt</span><span class="p">),</span>
-<span class="g g-Whitespace">   </span><span class="mi">1046</span>     <span class="bp">self</span><span class="o">.</span><span class="n">_parent_ident</span><span class="p">[</span><span class="s2">&quot;shell&quot;</span><span class="p">],</span>
-<span class="g g-Whitespace">   </span><span class="mi">1047</span>     <span class="bp">self</span><span class="o">.</span><span class="n">get_parent</span><span class="p">(</span><span class="s2">&quot;shell&quot;</span><span class="p">),</span>
-<span class="g g-Whitespace">   </span><span class="mi">1048</span>     <span class="n">password</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
-<span class="g g-Whitespace">   </span><span class="mi">1049</span> <span class="p">)</span>
+<span class="nn">File /opt/hostedtoolcache/Python/3.8.12/x64/lib/python3.8/site-packages/ipykernel/kernelbase.py:1072,</span> in <span class="ni">Kernel.raw_input</span><span class="nt">(self, prompt)</span>
+<span class="g g-Whitespace">   </span><span class="mi">1065</span> <span class="sd">&quot;&quot;&quot;Forward raw_input to frontends</span>
+<span class="g g-Whitespace">   </span><span class="mi">1066</span><span class="sd"> </span>
+<span class="g g-Whitespace">   </span><span class="mi">1067</span><span class="sd"> Raises</span>
+<span class="g g-Whitespace">   </span><span class="mi">1068</span><span class="sd"> ------</span>
+<span class="g g-Whitespace">   </span><span class="mi">1069</span><span class="sd"> StdinNotImplementedError if active frontend doesn&#39;t support stdin.</span>
+<span class="g g-Whitespace">   </span><span class="mi">1070</span><span class="sd"> &quot;&quot;&quot;</span>
+<span class="g g-Whitespace">   </span><span class="mi">1071</span> <span class="k">if</span> <span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">_allow_stdin</span><span class="p">:</span>
+<span class="ne">-&gt; </span><span class="mi">1072</span>     <span class="k">raise</span> <span class="n">StdinNotImplementedError</span><span class="p">(</span>
+<span class="g g-Whitespace">   </span><span class="mi">1073</span>         <span class="s2">&quot;raw_input was called, but this frontend does not support input requests.&quot;</span>
+<span class="g g-Whitespace">   </span><span class="mi">1074</span>     <span class="p">)</span>
+<span class="g g-Whitespace">   </span><span class="mi">1075</span> <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_input_request</span><span class="p">(</span>
+<span class="g g-Whitespace">   </span><span class="mi">1076</span>     <span class="nb">str</span><span class="p">(</span><span class="n">prompt</span><span class="p">),</span>
+<span class="g g-Whitespace">   </span><span class="mi">1077</span>     <span class="bp">self</span><span class="o">.</span><span class="n">_parent_ident</span><span class="p">[</span><span class="s2">&quot;shell&quot;</span><span class="p">],</span>
+<span class="g g-Whitespace">   </span><span class="mi">1078</span>     <span class="bp">self</span><span class="o">.</span><span class="n">get_parent</span><span class="p">(</span><span class="s2">&quot;shell&quot;</span><span class="p">),</span>
+<span class="g g-Whitespace">   </span><span class="mi">1079</span>     <span class="n">password</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
+<span class="g g-Whitespace">   </span><span class="mi">1080</span> <span class="p">)</span>
 
 <span class="ne">StdinNotImplementedError</span>: raw_input was called, but this frontend does not support input requests.
 </pre></div>
@@ -1602,18 +1604,18 @@ dict_values([[&#39;Toosie slide&#39;, &#39;Hotline Bling&#39;], [&#39;Sorry&#39;
 </summary><div class="summary-content card-body docutils">
 <p class="card-text"><strong>Note:</strong> Videos may contain material that some people may find offensive. Watch at your own discretion. YouTube is also a bot unpredictable in what it allows so you may or may not be able to watch the videos.</p>
 <div class="tabbed-set docutils">
-<input checked="checked" id="f378add1-ea54-4391-bf61-7b008c4b5263" name="6f89ad8c-3b66-4db7-81b9-f02b240d92af" type="radio">
-</input><label class="tabbed-label" for="f378add1-ea54-4391-bf61-7b008c4b5263">
+<input checked="checked" id="1d30305d-0778-4b33-9876-75907b8515e3" name="dc075fc7-dc6c-49ab-b086-21cb413a7c39" type="radio">
+</input><label class="tabbed-label" for="1d30305d-0778-4b33-9876-75907b8515e3">
 Justin Bieber: </label><div class="tabbed-content docutils">
 <iframe width="560" height="315" src="https://www.youtube.com/embed/xQOO2xGQ1Pc" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 </div>
-<input id="57af2b4e-b160-47a2-8170-ab7fecb74889" name="6f89ad8c-3b66-4db7-81b9-f02b240d92af" type="radio">
-</input><label class="tabbed-label" for="57af2b4e-b160-47a2-8170-ab7fecb74889">
+<input id="7849a847-89ef-417f-8afa-d7e01663247c" name="dc075fc7-dc6c-49ab-b086-21cb413a7c39" type="radio">
+</input><label class="tabbed-label" for="7849a847-89ef-417f-8afa-d7e01663247c">
 La Femme: </label><div class="tabbed-content docutils">
 <iframe width="560" height="315" src="https://www.youtube.com/embed/iMDwrnLrdgs" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 </div>
-<input id="e892f2b6-362a-47e6-a546-244aae9acd63" name="6f89ad8c-3b66-4db7-81b9-f02b240d92af" type="radio">
-</input><label class="tabbed-label" for="e892f2b6-362a-47e6-a546-244aae9acd63">
+<input id="f9751fed-b70c-4547-85e4-345bf79c152b" name="dc075fc7-dc6c-49ab-b086-21cb413a7c39" type="radio">
+</input><label class="tabbed-label" for="f9751fed-b70c-4547-85e4-345bf79c152b">
 Drake:</label><div class="tabbed-content docutils">
 <iframe width="560" height="315" src="https://www.youtube.com/embed/xWggTb45brM" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 </div>

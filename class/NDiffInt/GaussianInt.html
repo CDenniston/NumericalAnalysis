@@ -41,23 +41,25 @@
     <script src="../../_static/jquery.js"></script>
     <script src="../../_static/underscore.js"></script>
     <script src="../../_static/doctools.js"></script>
-    <script src="../../_static/togglebutton.js"></script>
     <script src="../../_static/clipboard.min.js"></script>
     <script src="../../_static/copybutton.js"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../../_static/togglebutton.js"></script>
     <script src="../../_static/save_state.js"></script>
     <script async="async" kind="hypothesis" src="https://hypothes.is/embed.js"></script>
     <script async="async" kind="dokieli" src="https://dokie.li/scripts/dokieli.js"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
     <script src="../../_static/sphinx-book-theme.d59cb220de22ca1c485ebbdc042f0030.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
+    <script async="async" src="../../_static/sphinx-thebe.js"></script>
     <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
     <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
-    <script async="async" src="https://unpkg.com/thebe@0.5.1/lib/index.js"></script>
-    <script>
-        const thebe_selector = ".thebe,.cell"
-        const thebe_selector_input = "pre,.cell_input div.highlight"
-        const thebe_selector_output = ".output,.cell_output"
-    </script>
-    <script async="async" src="../../_static/sphinx-thebe.js"></script>
     <link rel="canonical" href="https://cdenniston.github.io/NumericalAnalysis/class/NDiffInt/GaussianInt.html" />
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
@@ -439,10 +441,10 @@
 <p>exactly.</p>
 <p><strong>Proof:</strong>  First look at the case where the degree of <span class="math notranslate nohighlight">\(p(x)\)</span> is less than <span class="math notranslate nohighlight">\(n\)</span>.  Then</p>
 <div class="math notranslate nohighlight">
-\[ p(x) = \sum{i=0}^{n-1} L_i^n(x) p(x_i) \]</div>
+\[ p(x) = \sum_{i=0}^{n-1} L_i^n(x) p(x_i) \]</div>
 <p>is an exact interpolation of <span class="math notranslate nohighlight">\(p(x)\)</span> (the <a class="reference internal" href="../InterpFit/InterpErrors.html"><span class="doc std std-doc">interpolation error</span></a> involves <span class="math notranslate nohighlight">\(\frac{d^n p(x)}{dx^n}\)</span> which is zero for a polynomial of degree less than <span class="math notranslate nohighlight">\(n\)</span>).  Hence,</p>
 <div class="math notranslate nohighlight">
-\[\int_{-1}^1 p(x)dx = \int_{-1}^1 \sum{i=0}^{n-1} L_i^n(x) p(x_i) = \sum{i=0}^{n-1} c_i p(x_i),\]</div>
+\[\int_{-1}^1 p(x)dx = \int_{-1}^1 \sum_{i=0}^{n-1} L_i^n(x) p(x_i) = \sum_{i=0}^{n-1} c_i p(x_i),\]</div>
 <p>as claimed in the theorem.  Now suppose that the degree of <span class="math notranslate nohighlight">\(p(x)\)</span> is at least <span class="math notranslate nohighlight">\(n\)</span> but less than or equal to <span class="math notranslate nohighlight">\(2n-1\)</span>.  Then we can write</p>
 <div class="math notranslate nohighlight">
 \[p(x) = q(x)P_n(x) + r(x),\]</div>

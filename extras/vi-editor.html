@@ -41,20 +41,22 @@
     <script src="../_static/jquery.js"></script>
     <script src="../_static/underscore.js"></script>
     <script src="../_static/doctools.js"></script>
-    <script src="../_static/togglebutton.js"></script>
     <script src="../_static/clipboard.min.js"></script>
     <script src="../_static/copybutton.js"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../_static/togglebutton.js"></script>
     <script src="../_static/save_state.js"></script>
     <script async="async" kind="hypothesis" src="https://hypothes.is/embed.js"></script>
     <script async="async" kind="dokieli" src="https://dokie.li/scripts/dokieli.js"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
     <script src="../_static/sphinx-book-theme.d59cb220de22ca1c485ebbdc042f0030.js"></script>
-    <script async="async" src="https://unpkg.com/thebe@0.5.1/lib/index.js"></script>
-    <script>
-        const thebe_selector = ".thebe,.cell"
-        const thebe_selector_input = "pre,.cell_input div.highlight"
-        const thebe_selector_output = ".output,.cell_output"
-    </script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
     <script async="async" src="../_static/sphinx-thebe.js"></script>
     <link rel="canonical" href="https://cdenniston.github.io/NumericalAnalysis/extras/vi-editor.html" />
     <link rel="index" title="Index" href="../genindex.html" />
@@ -591,22 +593,22 @@
 </div>
 <p>If <code class="docutils literal notranslate"><span class="pre">filename.txt</span></code> exists it will be simply opened. If it doesn’t exist, it will be created.</p>
 <div class="tabbed-set docutils">
-<input checked="checked" id="c7cbd112-6b02-4898-ba92-bd79088b7d49" name="6c72af17-e913-499f-a8da-1062885b68ac" type="radio">
-</input><label class="tabbed-label" for="c7cbd112-6b02-4898-ba92-bd79088b7d49">
+<input checked="checked" id="81704543-bd0a-441d-932f-d0424d37e8c8" name="fdd9187a-a342-48d9-9bbf-dac201887f42" type="radio">
+</input><label class="tabbed-label" for="81704543-bd0a-441d-932f-d0424d37e8c8">
 Starting vi</label><div class="tabbed-content docutils">
 <div class="figure align-center">
 <a class="reference internal image-reference" href="images/vi-insert-mode.png"><img alt="vi" src="images/vi-insert-mode.png" style="width: 650px;" /></a>
 </div>
 </div>
-<input id="1037eac6-fb39-4355-a915-00e9329f48d7" name="6c72af17-e913-499f-a8da-1062885b68ac" type="radio">
-</input><label class="tabbed-label" for="1037eac6-fb39-4355-a915-00e9329f48d7">
+<input id="3bf9ad18-823e-462c-8389-d596a908f8da" name="fdd9187a-a342-48d9-9bbf-dac201887f42" type="radio">
+</input><label class="tabbed-label" for="3bf9ad18-823e-462c-8389-d596a908f8da">
 Searching in vi</label><div class="tabbed-content docutils">
 <div class="figure align-center">
 <a class="reference internal image-reference" href="images/vi-insert-search.png"><img alt="vi search" src="images/vi-insert-search.png" style="width: 600px;" /></a>
 </div>
 </div>
-<input id="5f5b7dfd-fe3f-473b-9514-e9edbb46d7a3" name="6c72af17-e913-499f-a8da-1062885b68ac" type="radio">
-</input><label class="tabbed-label" for="5f5b7dfd-fe3f-473b-9514-e9edbb46d7a3">
+<input id="71e0fe33-67d3-4664-b9c9-4ea97efcaa6a" name="fdd9187a-a342-48d9-9bbf-dac201887f42" type="radio">
+</input><label class="tabbed-label" for="71e0fe33-67d3-4664-b9c9-4ea97efcaa6a">
 Saving in vi</label><div class="tabbed-content docutils">
 <div class="figure align-center">
 <a class="reference internal image-reference" href="images/vi-save.png"><img alt="vi save" src="images/vi-save.png" style="width: 600px;" /></a>
